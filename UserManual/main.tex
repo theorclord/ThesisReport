@@ -59,29 +59,18 @@ Here you write the abstract of the project. The reason for having it as an abstr
 \pagebreak
 \section{Section}
 A section is the top level of document. The structure goes section, subsection, and subsubsection.
-\subsection{Subsection}
-\subsubsection{Subsubsection}
-\section{Background}
-\subsection{Bar Chart Ball}
-\label{back:barchartball}
-\subsection{Open Data}
-\subsubsection{Linked Data}
-\subsection{Data Games}
-\label{datagames}
 
-\subsection{Procedural Content Generation in Games}
-\label{procgen}
+The figure, a simple Image, can be referenced by its label. The figure \ref{fig:simpleImage}, will be the simple image.
 
-\subsubsection{Search-based procedural content generation}
-
-\subsection{Evolutionary computing}
-\label{evolcomp}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{Images/EvolFlowChart.jpg}
-    \caption{Evolution Flow chart. The chart visualizes the steps in an evolutionary algorithm taken from "Introduction to Evolutionary Computing"\cite{EibenSmith2007}.}
-    \label{fig:EvolFlowChart}
+    \includegraphics[width=0.8\textwidth]{Images/SimpleImage.png}
+    \caption{This is the caption of the image. The figure is placed as close as possible to the text above. This is determined by the [h] command at the figure. The image is 80\% of the text width as given above. The image is located in a subfolder, as given in the path.}
+    \label{fig:simpleImage}
 \end{figure}
+
+\subsection{Subsection}
+\subsubsection{Subsubsection}
 
 \begin{table}
 	\begin{tabular}{|l|l|}
@@ -148,8 +137,8 @@ A section is the top level of document. The structure goes section, subsection, 
 \end{table}
 
 \begin{equation}
-	fitness = numberRuns-|target-numberBallDestroyed|*averageAttempts/40
-	\label{func:fitness}
+	y = \alpha \times x -\beta
+	\label{func:function}
 \end{equation}
 
 \bibliography{sources}{}
