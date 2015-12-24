@@ -70,79 +70,54 @@ The figure, a simple Image, can be referenced by its label. The figure \ref{fig:
 \end{figure}
 
 \subsection{Subsection}
-\subsubsection{Subsubsection}
+\label{sec:subsection}
+A subsection. you can reference to other sections by including a label beneath the section header.
 
-\begin{table}
-	\begin{tabular}{|l|l|}
-		\hline
-		Table name & column name\\ 
-		\hline
-		Human Development Index & Name \\
-		and its components & 2012 Life Expectancy at Birth\\
-		& 2010 Mean Years of Schooling\\
-		\hline
-		Gender Inequality Index & 2012 Gender Inequality Index Value\\
-		& 2010 Maternal Mortality Ratio\\
-		& Adolescent Fertility Rate\\
-		& 2012 Seats in National Parliament (\% female)\\
-		& 2006-2010 Population with at least secondary education (Female)\\
-		\hline
-		Command over resources & 2011 GDP\\
-		& 2005-2010 Education \% of GDP\\
-		& 2010 Military \% of GDP\\
-		\hline
-		Health & 2009 Adult Mortality Rate - Female\\
-		& 2009 Adult Mortality Rate - Male\\ 
-		\hline
-		Education & 2010 Population with at least secondary education\\
-		& 2009 Mathematics Mean Score\\
-		& 2009 Science Mean Score\\ 
-		& 2009 Reading Derivation from Mean\\
-		\hline
-		Social integration & 2011 Employment to Population Ratio\\
-		& 2005-2011 Youth Unemployment\\
-		& 2007-2011 Trust in National Government\\
-		\hline
-		International trade flows & 2010 Exports of merchandise goods (\$ Billions)\\
-		of goods and services & 2010 Imports of merchandise goods (\$ Billions)\\
-		& 2010 Exports of services (\$ Billions)\\
-		& 2010 Imports of Services (\$ Billions)\\
-		& 2010 Agricultural Share of Merchandise Exports\\
-		& 2010 Manufactured Share of Merchandise Exports\\
-		& 2010 Agricultural Share of Imports \\
-		& 2010 Manufacutured Share of Imports \\
-		\hline
-		International capital & 2007-2011 Total reserves minus gold\\
-		flows and migration & 2010 International inbound tourism\\
-		\hline
-		Innovation and technology & 2002-2010 Research and Development Researchers\\
-		& 2002-2011 Graduates in Science and Engineering\\
-		& 2002-2009 Personal Computers\\
-		& 2010 Internet Users\\
-		\hline
-		Environment & 2009 Fossil Fuel Usage\\
-		& 2009 Renewable Energy Usage\\ 
-		& 2008 Carbon Dioxide Emissions\\
-		& 2010 Forest Area\\ 
-		& 2011 Endangered Species\\
-		& 2009 Agricultural Land\\
-		\hline
-		Population trends & 2012 Population\\
-		& 2012 Urban Population\\
-		& 2010 Median Age\\
-		\hline
-	\end{tabular}
-	\caption{The selected tables data and selected columns}
-	\label{Tab:dataSelect}
-\end{table}
-
+In this section there is an equation. The equation \ref{func:function} is a simple linear function.
 \begin{equation}
 	y = \alpha \times x -\beta
 	\label{func:function}
 \end{equation}
+\subsubsection{Subsubsection}
+Here there is a reference to the section above. The section \ref{sec:subsection} is the over section above this sub subsection.
 
-\bibliography{sources}{}
-\bibliographystyle{plain}
+\begin{table}[h]
+\centering
+	\begin{tabular}{|c|l|r}
+		% horizontal line, creates the lines in the table.
+		\hline
+		Center column & Left column & Right column\\ 
+		\hline
+		This is a table cell & This is another cell & so is this \\
+		\hline
+		There is no line & & \\
+		between these cells & & \\		
+		\hline
+	\end{tabular}
+	\caption{The selected tables data and selected columns}
+	\label{Tab:simTab}
+\end{table}
+
+\section*{Hidden section}
+This section does not appear in the table of contents. This is because of the star in the section declaration. Nor does a number appear next to the section header.
+\subsection*{Hidden subsection}
+The star can be applied to all levels of sections.
+\subsubsection*{Hidden subsubsection}
+This hidden style can be used as small headings, without adding it to the table of contents.
+
+\section{Other notes}
+It is possible to do much more than described here, and usually you can simple google want you want to do, followed by Latex. That will usually give you a quick guide.
+\subsection{Importing latex files}
+It is possible to import other latex files into a main file. For our purpose we will have other latex files imported using the \textbackslash include command.
+
+
+\begin{thebibliography}{1}
+
+\bibitem{bibitemName}
+Author 1, Author 2, and Author 3, \emph{Title of article or book}, Place of print and or writing, publishing year.
+\bibitem{experience}
+Georgios N. Yannakakis and Julian Togelius, \emph{Experience-Driven Procedural Content Generation}, Member, IEEE, 2011.
+\end{thebibliography}
 
 
 
