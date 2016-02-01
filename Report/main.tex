@@ -1,0 +1,363 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage[vmargin=3.5cm, top=2cm]{geometry}
+\usepackage[linktocpage=true]{hyperref}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{pdfpages}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[section]{placeins}
+\usepackage{listings}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\newcommand{\tmtable}{\begin{longtable}{ p{2.7cm} p{10cm} }}
+\newcommand{\tmtableend}{\end{longtable}}
+
+\begin{document}
+\lstset{language=C}  
+\begin{titlepage}
+
+\centering \parindent=0pt
+\newcommand{\HRule}{\rule{\textwidth}{1mm}}
+\vspace*{\stretch{1}} \HRule\\[1cm]\large\bfseries
+Thesis title\\[0.7cm]
+\large Masters Project\\[1cm]
+\HRule\\[1cm]
+
+\begin{figure}[h]
+	\centering
+    \includegraphics[width=1\textwidth]{Images/FrontPage.jpg}
+    \label{fig:frontPage}
+\end{figure}
+\large by 
+\\Mikkel Stolborg (msto@itu.dk)
+\vspace*{\stretch{2}} \normalsize
+\begin{flushleft}
+IT University of Copenhagen \\
+Supervisor\\
+Julian Togelius\\
+\today \end{flushleft}
+\end{titlepage}
+
+\begin{abstract}
+Data games are games which rely on open data and which purpose is, in one way or another, to get the user engaged in the data. Manipulating the data so that it can be used in a game and ensuring its effect can be a challenge. An attempt to visualize the data has been done in creating a bar chart with a ball. Using this concept the idea was to recreate the game with a wider range of features along with level generation from open data. This visualization will then be able to take any data input which conforms to simple rules. 
+
+To achieve the desired solution a number of tools were employed. To visualize the game the game engine Unity3d was used. Its framework and game engine were used to ensure the game functioned within Newtonian physics. The Unity framework was integrated with scripts written in C\# which provided the logic for the game. The data used in the game stems from the United Nations Development Programme. This data is processed in a separate script into a comma separated file, such that is easier to import into the actual game. The data can be of any numerical source, the only thing the script does is order it in a file. The processed data is then loaded into the game where it can be visualized in the height of the columns. To ensure playability the data input is tested through simulation, which discards the couplings of data with no solutions. The simulation uses a search-based evolutionary algorithm which through mutation of the data structures defining the game setup, produces the levels of the game.
+
+The final product is a game which can visualize any numerical data which can be related to each other in the fashion of a bar chart. The thesis answers the question of how to make a data game playable and on how to create a game which can have its data input change with little difficulty. The game achieves to be both a data game and have the desired qualities of challenge and engaging gameplay.
+\end{abstract}
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Introduction}
+How can we make data games playable? This questions stands as the basis for this thesis and its goal is to implement a data game which answers the question. The thesis takes its game idea from an existing paper, a bar chart with a ball.
+Generating content for games is a time consuming process. The idea in this project is to explore content generation as a core game idea, generating an entire game session using Open Data. 
+Open data is real-world data, an example being UK demographic data. If one could create game content and gameplay using algorithms, one could create advanced game concepts which then could be populated using AI technology. 
+
+This bachelor project aims to take an existing game concept and generate content for it using Open Data. Algorithms are employed to ensure that the game is playable. Playable in this context, means that each level generated should have atleast one possible solution. Furthermore the game should not depend on specific open data, but rather have the capability to visualize any data structure which follows a simple set of rules. This entails that the data used for generating the levels of the game is interchangeable with data which have the same format.
+
+The game idea is to control a ball using a bar chart. The ball falls in the center of the ball chart and the player then needs to get the ball to bounce out of the chart. 
+
+The first part of the project was to create the actual game. The game needed a graphical representation, a bar chart with a ball on it, and the ability to choose between different data options which could change the game. 
+
+The second part of the project was to ensure that game had possible solutions. A game which just loads the data, might have configurations that did not allow for a solution. To achieve configurations which had solutions an algorithm will be implemented using evolutionary computing.
+
+The thesis first explains the background for the project. The background will detail the tools used and the motivation for creating the game, specially the game from which it draws its inspiration. Then the methods of generating the game and selecting the data input will be discussed. Then the simulations and test used to determine the final components of the game are detailed. This is follow by the search-based level generation method and the discussion of levels. Then the game itself will be introduced along with a manual for playing the game. Lastly the thesis will conclude trying to answer the question stated, how can we make data games playable? And furthermore, how can we create a complete game from the concept at hand and ensure the levels based on open data are challenging and playable?
+\pagebreak
+\section{Background}
+In this section this thesis will go through some of the background for the project. First a discussion of the game from which it draws the inspiration and game layout from. In the section Bar Chart Ball\ref{back:barchartball} the previous instalment is referenced and the goal for the new game is detailed. Second Open data\ref{datagames} is detailed, which is used in both games. The concept and purpose of open data will then be described. Then a bit about procedural content generation\ref{procgen} in games and why it is an interesting subject and what it seeks to achieve. Search-based procedural content generation will be mentioned and how it relates to evolutionary computing. Lastly he term evolutionary computing\ref{evolcomp} will be covered. It will go through the workings of an Evolutionary Algorithm, describing in detail each of the components used in an evolutionary algorithm.
+\subsection{Bar Chart Ball}
+\label{back:barchartball}
+Bar chart Ball is the original game which provides the main idea for this project\cite{barchartball}. The basic idea is a bar chart which visualizes open data, a concept which will be explained in the next section. The bar chart is the landscape of the game and the player object is a ball, which is dropped on the center of the bar chart. The goal is to get the ball to fall out the chart by changing the data which the chart presents. When changing the data selection, the columns move into their new position over a short period of time. The ball, which is pushed by the columns, then follows simple Newtonian physics until it comes to a rest. To achieve the goal, one had to think about which data selection to choose, such that the ball eventually leaves the chart. 
+
+Bar chart ball is a data game. Being a data game, as will be explained in greater detail in section \ref{datagames}, mean that your game in some way incorporates open data. Bar chart ball uses open data to generate the level of the game, ensuring that if player want to play smart, they have to understand how the data connects to the game and the real world. The idea in this project is to expand upon the original concept, ensuring that each level has a solution by using search-based procedural content generation with evolutionary computing.
+
+The purpose of bar chart ball was, and is, to get the player to engage with open data and thereby learn how data on each of the countries relates to each other. The bar chart achieve this through the fact that a player which understands the correlation between the features and the countries will complete the game easier than one who do not.
+
+Bar chart ball was previously implemented as a browser game in JavaScript. This previous instalment was created as a proof of concept. The idea there was to make data a part of the game play, such that player would have to understand the data in order to play it. The game had limited graphical visualization, had little extensibility to other data structures, and had no level generation. 
+The implementation in this project will improve upon the idea. The implementation will feature more extensive graphical interface and most importantly generates levels from open data which are ensured to have possible solutions. 
+\subsection{Open Data}
+Open data is the foundation for both the previous game and the game created in this project. Open data is the idea that data should be freely available and easy to manipulate. Freely available means that the data should be free to acquire, preferably online, with no restrictions forced upon the user of the data. Easy to manipulate covers the fact that the data should be readable, not only by humans, but by computers as well. The data should as an example not be a scanned page from a book, but rather a digital document from which the data can be extract to plain text. Open data is an initiative which shares much with the open source software initiative and like movements\cite{opendatawiki}. Open data formats includes documents, vidoes, music, spreadsheets and more. The definition of data in this context, is to an extend all sorts of digital data. The Open Definition describes the requirements for a piece of data to be open\cite{opendefinition}.
+
+The data used in this project is open data from "United Nations Development Programme"\cite{undpMain} and is on Human Development. The data is available online and has been downloaded in CSV format in this project.
+\subsubsection{Linked Data}
+Linked data is a concept about using the internet for sharing data. The linked data concept is to make data available online and able to be linked with other such data. The idea is that when you search for data, the search cross references the other data packets linked to the search parameters. The idea with linked data is if you search for a specific word, which have multiple meanings or links, the search provider will ask which of the data packets, you are searching for based on key words linked to your search. An example could be that you are searching for a specific painting, but your search parameter might hit an artist or a concept. The idea is then that the search provider will ask if you are searching for a painting, an artist, or a concept. The linked data could potentially be used in open data games if the data could be linked together and gathered up from directly from the web. 
+\subsection{Data Games}
+\label{datagames}
+Data games are games which tries to get player to engage with and understand data through interactive gameplay. Data games can be described as a form of interactive data visualization, they use real world data in their gameplay and thereby help the player understand the data. Data games provides an alternative way of discovering and understanding data, than through spreadsheets. The data can be presented as a part of the game world, build a world based on the data available. As an example a level or map in a game could be generated by using geographical data of real world countries. When the player then interacts with the game, the player then has the possibility of obtaining new knowledge related to the data visualized.  Letting data have an influence on the game is a great way to allow a greater audience to experience knowledge they otherwise might not have the possibility to discover. More about data games can be found online at data-games.org\cite{datagames}.
+
+\subsection{Procedural Content Generation in Games}
+\label{procgen}
+Procedural content generation takes many shapes and forms. I will primarily focus on procedural content generation with the respect to video games and the generation of content based on existing data. A discussion of the subject related what exactly the term PCG covers and what a game is can be found in chapter 2 of the book Procedural Content Generation in Games\cite[p. 1]{shaker2014procedural}.
+Procedural content generation(PCG), is the generation of game content with little or no human input. This could be the generation of dungeons for a dungeon crawler or the generation of weapons for a first person shooter. Generation this content is usually done by defining a few rules and limitations, such as setting the criteria that a dungeon is required to have both an entrance and an exit. 
+
+The motivation behind PCG is that generating content is expensive, which limits the creativity and extend of games being created. PCG can be used in combination with human input, as a tool for generating complex texture or landscape, to generate monster from a predefined set of rules, or generating content with no human input. The content generated could be the entire mountain range which the game takes place, using a fractal algorithm. The algorithm could take human inputs, such as maximum height, number of valleys, the gradient of the steepest slope, and so forth, or it could simply generate a mountain based on data of real mountain ranges. 
+Other motivation for PCG includes limitations by the hardware. A game with content, such as map generation, which is to large to be kept in memory, can take advantage of PCG to keep only the current visible content in the memory along with the necessary components for generating the rest of the game content. By using PCG you can generate entire planetary systems using only a small representation. This allows for much more complex games to be created whilst taking up very little space.
+PCG can also be used to enable game designers. By using PCG to generate the foundation for games and level of such, the designers can focus on detailing and polishing the end product. PCG can be used for tools enabling designers to manipulate objects and flesh out the world. As an example of a tool could be a tree generator. The designer could design the tree, selecting the number of branches and height. After the generator has generated the tree, the designer could then manipulate the look of the tree.
+
+\subsubsection{Search-based procedural content generation}
+A method for generating content is called search-based procedural content generation. A search based approach means that an algorithm is used to search through the space of solutions, sometimes called population, for the optimal configuration. A search based approach is usually done using an evolutionary algorithm. The common method for a search based evolutionary algorithm is to search through the possible solutions and through a slight mutation of the best solutions, compute the optimal solutions. The terms used will be described in greater detail in section \ref{evolcomp}.
+
+In the paper with the same name as the section, "Search-based Procedural Content Generation"\cite{searchbased}, two general qualities are acquitted to search-based procedural content generation. The first is that the grades each of the candidates in the search space with a value. This value is often called the fitness value, a term also used in evolutionary computing. The second quality is that new content generated in the search space is based on the fitness value which is assigned to the previous content. 
+
+These ideas are also employed within this project as will be further expanded upon in section \ref{meth:levelgen}. The article uses the term search-based rather than evolutionary due to a few of the algorithms used for content generation which conforms with the qualities above are not evolutionary, and the fact that search-based is a more neutral term than evolutionary. Where the two differs from each other is mostly in the method, where some search-based algorithms do not follow the evolutionary approach, also the evolutionary search-based algorithms mostly follow the pattern of mutation. These terms will be described in greater detail in section \ref{evolcomp}.
+
+\subsection{Evolutionary computing}
+\label{evolcomp}
+An evolutionary algorithm(EA) is best described by its function. From population create by individuals, parents are selected through a selection pattern determined by the EA. These parents are then used to create the offspring of the population. The creation of the offspring is usually done through either mutation or recombination. After offspring creation, survivor selection is employed to cull the population to its original size. This iteration continues until the population has reached the desired fitness. The process of the iteration is visualized in figure \ref{fig:EvolFlowChart}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/EvolFlowChart.jpg}
+    \caption{Evolution Flow chart. The chart visualizes the steps in an evolutionary algorithm taken from "Introduction to Evolutionary Computing"\cite{EibenSmith2007}.}
+    \label{fig:EvolFlowChart}
+\end{figure}
+
+\subsubsection{Individuals and Population}
+Individuals are data structures of solutions to the problem presented to the EA. An individual, sometimes called a possible solution, is a data structure which need to be evaluated in the EA. A population is a collection of individuals. The population contains the possible solutions and is sometimes called the solution space.  
+Individuals in a population are the link between the algorithms world and the "real" world. The terms used to describe the individuals, data structures with possible solutions for the problem, are referred to as phenotypes in the "real" world context, whilst being called genotypes in the EA context.
+The genotypes are often referred to as chromosomes in the EA solution space, whilst the phenotypes are often referred to as candidate solutions. The elements of the individuals are in terms referred to as a gene or simply as a variable. The value of the elements are further referred to an allele or simply a value. 
+An individual can represent just about anything. An individual can represent the parameters for an airplane, a spacecraft, a country, or a winged dragon, just about anything. The challenge is to implement a mapping from the real world to the representation within the EA context. Breaking down the objects of interest into data structures is the first step when creating an EA, as the individuals are the basis for the solutions found by the EA. 
+
+\subsubsection{Evaluation function}
+The goal of the evaluation function is to have a a set of requirements that the EA should try to attain. The value given by the evaluation function is often called the fitness of the solution. Maximizing this value is usually the main goal of the EA, ensuring a population with high fitness. The evaluation function presents the actual task that the EA should try to solve, by evaluating the individuals of the population and giving them a fitness value related to how well they fair within the goal set by the EA.
+
+\subsubsection{Offspring creation and selection}
+Offspring is created primarily through either of the methods, recombination or mutation. Before looking at the individual methods, I will go through the parent selection, a step needed for both methods. 
+Parent selection is the name for selection existing individuals within the population suitable for creating new offspring. The eligibility of the parents can either be determined from a evaluating function on the individual within, as an example it could be determined by their fitness value described i the next section, or by random selection.
+
+The parents chromosome is then used to generate the child. This can be done through recombination or through mutation of the chromosome. 
+Recombination is, as it sounds, creating a new child by combining the values of their parents individuals. Normally each parent provides half of the values required for creating a new offspring, but this can differ from EA to EA.
+Another way to create offspring is through mutation. Mutation is achieved by changing the elements of the chosen individuals from the population. The mutation can be very drastic, by changing almost all of the genes of the individual, or it can be more subtle by only changing a few genes. 
+
+The number of offspring chosen to generate from your population depends on your EA and the chosen amount will have an impact on the survivor selection which will be described shortly.
+
+\subsubsection{Survivor selection}
+The role of survivor selection is culling the population to a set size each time new offspring a introduced. The idea of an EA is to keep the population almost constant, which means that after offspring have been generated one must select which individuals to keep and which to discard. The survivor selection , also called environment selection, is often deterministic, deciding which individuals to keep based their fitness value as an example. Generally the fitness of each individual determines whether or whether not they are kept within the population, however, sometimes age factors in as well. Age is an expression of how many iterations the individual have survived. When generating few offspring compared to the size of the population, it is often preferred to exclude the oldest members in favour of the new. As an example size relation, generating 5 offspring compared to a population of 200. When using this option survivor selection is often called replacement or replacement strategy.
+The other example could be when you generate a vast amount of offspring compared to the population size. In this case simply replacing the oldest members with the newest is not possible and a better solution is required. Such a case might be generating 500 offspring from a population of 100. 
+
+
+\section{Methods}
+In this section I will discuss the workings of the completed program and its support programs. First the selection of data, the process of bringing the open data to a structure understandable for the game. Then I will go through the implementation of the program and its two subsections. Here I will detail how the program works and how the EA is implemented in the simulation. 
+\subsection{Manual data selection}
+\label{meth:dataselect}
+Data is download from "United Nations Development Programme"\cite{undpMain}. The data consist of 11 csv files which are extracted from the tables provided at the site. There is a total of 14 files available, but only 11 of them have been selected. The selection of data have been based on how easy it is to understand each of the categories in their own right, and how much they differ from country to country. A value that is almost identical for all of the countries, would not make for an interesting value for the game. 
+The data is extracted from these files using a simple script. The script is given the desired indexes corresponding to the columns and rows of the individual files and processes this information in to a single file, which can be used by the main program to generate its content. In table \ref{Tab:dataSelect} you see the selected tables and their selected columns.
+\begin{table}
+	\begin{tabular}{|l|l|}
+		\hline
+		Table name & column name\\ 
+		\hline
+		Human Development Index & Name \\
+		and its components & 2012 Life Expectancy at Birth\\
+		& 2010 Mean Years of Schooling\\
+		\hline
+		Gender Inequality Index & 2012 Gender Inequality Index Value\\
+		& 2010 Maternal Mortality Ratio\\
+		& Adolescent Fertility Rate\\
+		& 2012 Seats in National Parliament (\% female)\\
+		& 2006-2010 Population with at least secondary education (Female)\\
+		\hline
+		Command over resources & 2011 GDP\\
+		& 2005-2010 Education \% of GDP\\
+		& 2010 Military \% of GDP\\
+		\hline
+		Health & 2009 Adult Mortality Rate - Female\\
+		& 2009 Adult Mortality Rate - Male\\ 
+		\hline
+		Education & 2010 Population with at least secondary education\\
+		& 2009 Mathematics Mean Score\\
+		& 2009 Science Mean Score\\ 
+		& 2009 Reading Derivation from Mean\\
+		\hline
+		Social integration & 2011 Employment to Population Ratio\\
+		& 2005-2011 Youth Unemployment\\
+		& 2007-2011 Trust in National Government\\
+		\hline
+		International trade flows & 2010 Exports of merchandise goods (\$ Billions)\\
+		of goods and services & 2010 Imports of merchandise goods (\$ Billions)\\
+		& 2010 Exports of services (\$ Billions)\\
+		& 2010 Imports of Services (\$ Billions)\\
+		& 2010 Agricultural Share of Merchandise Exports\\
+		& 2010 Manufactured Share of Merchandise Exports\\
+		& 2010 Agricultural Share of Imports \\
+		& 2010 Manufacutured Share of Imports \\
+		\hline
+		International capital & 2007-2011 Total reserves minus gold\\
+		flows and migration & 2010 International inbound tourism\\
+		\hline
+		Innovation and technology & 2002-2010 Research and Development Researchers\\
+		& 2002-2011 Graduates in Science and Engineering\\
+		& 2002-2009 Personal Computers\\
+		& 2010 Internet Users\\
+		\hline
+		Environment & 2009 Fossil Fuel Usage\\
+		& 2009 Renewable Energy Usage\\ 
+		& 2008 Carbon Dioxide Emissions\\
+		& 2010 Forest Area\\ 
+		& 2011 Endangered Species\\
+		& 2009 Agricultural Land\\
+		\hline
+		Population trends & 2012 Population\\
+		& 2012 Urban Population\\
+		& 2010 Median Age\\
+		\hline
+	\end{tabular}
+	\caption{The selected tables data and selected columns}
+	\label{Tab:dataSelect}
+\end{table}
+
+Having the data in a separate file, which merely complies to a few rules, also means that the data input easily could be change to visualize something other than the human development reports results. The final data file has the following constraints, the first row must contain the column headers and the first column the identifiers. In my case the column headers corresponds to the chosen data, as show in Table \ref{Tab:dataSelect}, and the first column contains the names of the countries.
+The script for the data selection can be found in the compressed zip file "AttachedPrograms", in the folder "BachelorDataCollector".
+\subsection{Implementation in unity}
+\label{meth:unity}
+The implementation is done using the Unity3d application\cite{unity3d}. Unity3d, or Unity, is an application which supplies a front end for graphical representation and comes with its own physics engine. Unity is both an game engine and an editor. The Editor allows you to create and manipulate 3D or 2D objects, add scripts which may control the objects, and specify the game cameras among other. The program was chosen to be written in unity, as opposed to other alternatives, as it came with a free physics engine and that it is compatible with C\# whilst being web deployable and platform independent. The game is created in 2D and makes use of unity's built in physics engine for movement, momentum, and friction of the elements within the game. Unity separates its components into something called scenes. The scenes contains the game cameras and the game objects which have the scripts attached.
+
+The program is divided into two sections, each of two scenes, the data generating simulation and the playable main game. To ensure consistency the two sections loads the same base data, the processed data as explained in section \ref{meth:dataselect}. The actual game furthermore loads the output that have been generated from the simulation. In the following I will discuss the layout of the simulation and the main game respectively. I will go over their functionality, the differences, and similarities.
+
+The game setup is similar to the setup described in section \ref{back:barchartball}. The game consist of ten columns and a ball. The columns can be seen as the platforms for the ball to manoeuvre. The ball moves around using the physics provided by the unity game engine. The goal is still to get the ball to fall out of the bar chart by changing the data selection. The game will be described in greater detail in section \ref{meth:implemgame}.
+A total of ten columns were needed for creating a level, else it would be to easy to get the ball to leave the chart. The exact amount of columns were selected through empirical test, where ten were found to be sufficient to ensure a length of the level. A larger level would be a possibility, but it might render the game to become to lengthy. It is possible that a larger amount of columns also would cause the levels to become less varied as the number of countries which could be swapped would decrease. In the end the ten columns were chosen from a gameplay and visually aesthetic view point.
+
+The Unity project is found in the attached compressed zip file, "AttachedPrograms", in the folder "ballchart".
+\subsubsection{Simulation}
+The simulation is responsible for generating the data which is used in the game. The simulation runs a simplified version of the actual game. The simulation is rid of all GUI elements and screen elements, such as country names and the axis. In short the simulation runs the game, testing each of the data configurations, and saves the data structures which scored the highest in the simulation. The actual algorithm and how the data structures are scored, is discussed in section \ref{meth:levelgen}.
+The simulations starts with loading the data, which was processed as described in section \ref{meth:dataselect}. The data is loaded into a suitable collection to ease the data processing whilst the simulation is running. The visualization of the simulation is at the bare minimum. Only the columns and the ball is instantiated, as all other objects has no effect on the actual simulation. A frame from the simulation is visible in figure \ref{fig:sim}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/simRun.jpg}
+    \caption{Simulation screen. The simulation screen does not contain anything but the game elements. The GUI and the remaining elements does not effect the game in a technical way.}
+    \label{fig:sim}
+\end{figure}
+
+The levels which are loaded at first consist of pseudo random data. The data is randomly selected among the available countries and features. To ensure there is no duplications in the columns or features, a collection containing all of the features and a collection containing all of the countries are created. The two collections are then randomized and a snippet is retrieved which contains 10 countries and 5 features. The values of the features are then normalized to have a value between 1 and 0. The normalization is done setting the highest value of the data selection to 1 and dividing the remainder of the data with its value. The value of the columns represents the column center height above zero. These 10 countries and 5 features represents the data structure which is saved when the simulation is over. The actual checks and how many of the data structures which are saved are explained in section \ref{meth:levelgen}. Each data structure is tested in 100 runs. In each of these runs the features selection is changed 20 times. Each time a features is changed, the columns are given a velocity, which moves them towards their new position. The features are changed whenever the columns come to a still when arriving at their new position. A short delay between the feature change is included to allow the ball to move out of the chart. This delay is necessary as the ball might be in motion towards the border, but not reach it before the columns reach their resting position. This iteration is done for each of the data structures, giving them a value of the average number of attempts and the number of times the ball exited the bar chart. Finally a fitness value for the data structure is calculated as described in section \ref{meth:levelgen}.
+
+The simulation runs a the highest speed possible for the Unity framework, which still is not the optimal compared to a true simulation, meaning a simulation of the game running with out the graphical interface. The reason that a simulation have not been devised outside the unity framework is that the physic engine would have to be reinvented along with all of the collision detection. This would create a massive overhead for this project and was therefore the idea was discarded. This optimization could mean that a new simulation could be run before each game, as opposed to before the game is deployed. 
+\subsubsection{Game}
+\label{meth:implemgame}
+The game loads the processed data as explained in section \ref{meth:dataselect} and furthermore loads the data saved by the simulation. First a screen containing two GUI buttons are show. The first button is titled "Start game" whilst the second button is titled "Instructions". One of the reasons the game first loads a start screen, is to be compatible with the web interface. The request to load the data in an online environment takes instance of a html request for a text file. The reason you cannot load the game instantly is that the request needs to be processed before the game can start to load. Hence the "Start game" button can only start a new game once the data has been loaded. The instructions button is there in order to teach the players how to play the game. The screen explains the simple instructions for the game and the game credits are also displayed. The instructions screen is in reality merely another camera rather than a new level. This also means that the player can look at the instructions whilst the data loads. 
+
+After clicking the start button the game instantiates the scene containing the actual game. This scene contains all the game objects described at the end of section \ref{meth:unity}. The scenes GUI consist of five buttons, each tagged with the name of a feature. These buttons changes the feature selection. They can be access manually or through key inputs. The number keys one through five changes the data to the selection describe on the corresponding buttons. Each time a feature change is invoked, even to the one already selected, a counter logs the number of used attempts. This counter is reset each time a ball leaves the bar chart. Furthermore each time a ball leaves the score increases. When the ball leaves the chart a new level is loaded, the ball is reset to its original location, and data selection is set to the first feature.
+\section{Test}
+This section is dedicated to the simulation test run before selecting an algorithm for the final dataset selection. It was thought to have user test, however, due to time limitations these where not possible to conduct. The purpose of play test would be to check if the current selection of data was engaging enough, that a player noticed that data and learned from it, and that the selected difficulty levels were satisfying. A play test may well have been conducted by having the players answer a simple questionnaire after playing the game, answering whether they have learned anything from the experience. The play test could also determine if some of the selected features had to little variation or were to coupled. 
+
+The first idea was also to incorporate user test, however, due to time limitations this proved undo-able. Having user test would have given better arguments for difficulty and complexity of the game. To the defence of the program, there have been play test, which have numbered several people, however no methodical data collection were put in effect. 
+\subsection{Simulation data}
+In order to determine an appropriate fitness function, a simulation was run, where random data was generated for each individual of the population. A total of 210 individuals were created and the average number of attempts and the number of successes related to each of them were logged. The results were sorted in categories, whom might contain the desired individuals. 
+
+Figure \ref{fig:averattem} displays the number of individuals sorted by average number of attempts. Looking at the concentrations, there is fewer individuals which have a low number of average attempts. Looking at the two left most columns, even though they together represents a greater range than any one of the other columns, they represent only almost as much combined as the second lowest column. The distribution tell us that most game will have between 14 and 16 attempts, regardless of difficulty. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/GrafAverageAttempts.jpg}
+    \caption{Number of datasets sorted by average attempts}
+    \label{fig:averattem}
+\end{figure}
+
+Figure \ref{fig:numsucces} displays the number of individuals sorted by number of successes. The motivation for the first two columns were to see how many levels at random could be within the range which could be described as hard. From the chart we can see that most of the levels are in the high end of number of successes. To challenge the players, one would have to set the number of successes to be achieved to be lower than at least half of the collected data average.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/GrafNumberOfSuccess.jpg}
+    \caption{Number of datasets sorted by number of successes}
+    \label{fig:numsucces}
+\end{figure}
+
+Using the data collected from the simulation a number of evolutionary algorithms were constructed. In order to create a game that was increasingly challenging, 3 different EAs where created, one for easy levels, one for medium levels, and one for hard levels. 
+The hard levels were set to have 5 successes per simulation run, the medium levels were set to 25 successes, and the easiest where set to 45 successes. These levels are harder than the average levels as from the simulation data. One of the reasons for this is that the simulations test each level at random, rather than through intelligent choices. The simulation is also limited to only 20 attempts, meaning the that a player which have unlimited attempts, have a greater chance to win. 
+
+\section{Search-based level generation}
+\label{meth:levelgen}
+The final levels of the game are determined through 3 evaluations functions. Each of the evaluation functions are optimised in separate iterations of the simulation described above.
+The evaluation functions calculates the fitness of each of the individuals located inside the population. The fitness is based on the number of successes, the average amount of attempts, and a target value. The entire equation is visualized in equation \ref{func:fitness}.
+\begin{equation}
+	fitness = numberRuns-|target-numberBallDestroyed|*averageAttempts/40
+	\label{func:fitness}
+\end{equation}
+First variable is the number of runs done on the individual, minus the absolute value of the difference of target number successes and actual number successes. Average attempts is then modified with a normalized value of the average attempts. The last value is there to ensure that the individual with the lowest amounts of attempts is picked above the ones with more attempts. This is a way of making the levels slightly easier as described in section \ref{meth:levels}. 
+The reason to have the number of runs as a variable is mostly a semantic one. The remain terms could easily make up a fitness value in its own right. Having the fitness value depend on the number of runs, however, allows for easier calculations on which value the function should try to maximize.
+The target value is there to have a goal for the difficulty. The target value is directly related to how difficult one chooses the levels to be. More on this in section \ref{meth:levels}.
+After a population has been filled and their individual fitness values calculated, the population undergoes the steps described in section \ref{evolcomp}. As the population first needs to be generated the entire process varies somewhat from the general aspect described. The basics of the algorithm is illustrated in figure \ref{fig:EvolAlgor}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/EvolAlgor.jpg}
+    \caption{Search based Algorithm. The flow chart represents the evolutionary algorithm used.}
+    \label{fig:EvolAlgor}
+\end{figure}
+
+The way it differs, as can be seen in the figure, is that first iteration through the algorithm does not use a defined population, but rather creates one. After the population has been created, the EA enter a loop until 10 generations or till it has reached a certain threshold. The final threshold in this instance were when the total fitness of the population were within 10 percent of the possible maxima. The parents are selected by taking the fittest of the existing individuals. These are then mutated and added to the population. The mutation function selects 4 random parts of the individual and changes them to another feature or country respectively. The Survivor step is first enforced after the new fitness values has been found. The survivor selection discards individuals down to the original population size after the population has been ordered by fitness.
+
+Once the EA concludes the data is saved to a file which can be loaded into the main game. The file is external to the rest of the program, which allows for changing of the levels, without redeploying the entire game.
+
+\subsection{Levels of the game}
+\label{meth:levels}
+Each level of the game consist of a selection of ten countries and five features. The question is how to create a level which both proves challenging whilst still being engaging. There are many way to measure the quality of each level, one could look into what the average number of attempts was for getting a success, how likely you are to get a success, or other qualities. These other qualities are more interesting to discuss in full. The average number of attempts to get a success, should be low enough for the player to stay engaged whilst high enough to provide a challenge. A game that is over to quickly will not engage the player with the data presented, whilst a game which is to difficult will leave the player frustrated. How likely you are at getting a success is tied to the average number of attempts. In itself the how likely it is to get a success can determine how challenging a level is, however when tied to average attempts one can link it to both how difficult, and how enjoyable the level is. The fewer number of success, the harder the game, but in relation to that, the level with fewer attempts at the same likelihood for success would be more enjoyable.
+
+Some of the other factors of the game will be discussed individually in the following. A problem with a level could be the presence of a two column system which traps the ball. This specific configuration is when the ball falls into a pit of two high columns. Then no matter which feature you chose, the ball would still be stuck between the two columns, as the always would be higher than the columns between them. This is a rare phenomenon, but it has been present in few of the simulation outputs. This pit is of course a hindrance of the game's enjoyability. A visualization of this particular incident can be found in figure \ref{fig:gamevalley}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/GameValley.jpg}
+    \caption{A ball caught in a valley between two columns}
+    \label{fig:gamevalley}
+\end{figure}
+Another factor could be that the game simply is ordered such that once instantiated the ball will automatically rolls of the chart. This of course makes for a rather funny situation, if not very challenging. The problem also is that the player does not engage with the data, undermining the idea behind data games. 
+A more interesting factor is whether or not the player is challenged to think whilst playing a level. A level designed such that each move has to follow a certain pattern, which can be discerned by inspecting the features, is both a challenging and an educational experience. This is in my perspective what contributes to an excellent gaming experience.
+
+\section{Bar chart ball with level generation}
+The game takes much of its inspiration from the bar chart ball game described in its dedicated section\ref{back:barchartball}. The object of the game, as stated previously, is to get the ball to leave the bar chart by changing the selected feature. Each time you select a feature the game logs the number of attempts which you have used since the last score. You score a point each time the ball falls out of chart. When the ball exits the chart, the next data set is loaded, the attempts count is set to zero, and a new ball instantiated. If you get stuck you are able to restart the game by pressing the 'R' button on the keyboard. This sends you back to the very first level and resets the score. The features, who are mentioned earlier, are changed manually by either pushing the buttons visible in the top left corner of game. These can also be operated by pressing the numbers one through five on the keyboard. 
+\subsection{Manual / play description}
+The game is compiled to a webplayable version. The game is deployed at the address: "http://www.itu.dk/people/msto/Builds.html". The game is playable after installing the Unity webplayer. When the player has loaded the intro scene is loaded. presenting the player with two buttons on the menu screen as seen in figure \ref{fig:menu}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/startScreen.jpg}
+    \caption{The main menu presented after the player have been loaded. In the middle two buttons are situated, the "Start game" button launching the game, and the "Instructions" button which shows the instructions screen. In the lower left corner is a text tag which identifies whether or whether not the data has been loaded correctly.}
+    \label{fig:menu}
+\end{figure}
+
+The first button, labelled "Start game", initiates the game. Pressing the button takes you to a new game scene where the bar chart is instantiated. This scene can only start if the game is loaded correctly. If the button fails to respond, either wait until the label in the button left corner shows data found or refresh the webpage.
+The second button, labelled "Instructions", chances the view to the game instructions. At the instructions screen the goal of the game and the shortcuts for the game are mentioned. The screen also displays the credits of the game. The screen is show in figure \ref{fig:instruc}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/InstrucScreen.jpg}
+    \caption{The instructions screen. The screen contains a description of the goal of the game, along with instructions for manipulating the game. Lastly it also displays the game credits.}
+    \label{fig:instruc}
+\end{figure}
+
+Starting the game will you lead you to the main game screen as seen in figure \ref{fig:game}. The screen contains the columns which makes up the bar chart, the ball which represents the player, and buttons for manipulating the data input. Each of the columns are tagged with a name, located just below the columns. The screen also contains 5 buttons, each for one of the available features. A click on one of the buttons changes the height of the columns in the chart, making the ball move around until it comes to a rest. In the top right corner of the game, there is two text tags, one dedicated to keeping of the game score, the other for tracking number of attempts. The number of attempts increases each time the you select a new feature and is reset once you get the ball to leave the chart. When the ball leaves the chart, the score tag increases by one and the data used to generate the chart is changed. A text is then displayed on the screen that the level is complete. The text indicates that a new level can be loaded by pressing 'n', if pressing n a new level is loaded. This means that the ball is re-instantiated and the number of attempts is reset. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/mainScreen.jpg}
+    \caption{The main game screen. In the center of the screen 10 columns appear, each coupled with a text tag indicating its name. A ball is visible in the center of the bar chart. Its represents the player. In the top left corner 5 buttons are located. Each of the buttons are labelled after a feature. In the top right corner, two text tags appear. The top tag contains the current score of the game, whilst the lower contains the current number of attempts.}
+    \label{fig:game}
+\end{figure}
+
+\section{Conclusion}
+The goal of the thesis was prove that you could create a playable data game. This question was expanded upon to have more requirements than just being playable. The game had to be both challenging, engaging, and have possible solutions. 
+This game was created with the use of several tools to ensure the requirements were met. The game concept were already established as a bar chart with a ball as the player object. The goal were to get the ball to leave the chart. 
+
+The first achievement was to create the game from the given concept. The game was implemented using the Unity3d engine with game logic written in C\# using visual studios. The Unity engine supplied the Newtonian physics and the logic dictated the actions of the game and the data processing.
+The game used open data from "United Nations Development Programme". This data was incorporated into the game as its levels and enabled the interaction with the data by the player. 
+The game is deployed to the web using the Unity webplayer. This player allows anyone with a browser to play the game, giving the player accessibility to a wide audience.
+
+Second was to create an algorithm which could ensure that the data loaded would provide levels which had possible solutions. Using a search-based procedural generation with an evolutionary algorithm each of the levels were created and tested. Using mutation of the best levels the evolutionary algorithm iterates through the solutions, selecting the fittest at each iteration, saving the fittest levels. 
+
+The final game were the product of the thesis. The game then had to stand up to the questions posted in the introduction of this thesis. The game created is playable in the sense stated. The algorithm which have been implemented ensures that the game is playable. This concludes that the game created is a data game which is held to the requirements of playability. 
+
+Is the game then challenging and engaging? The answer to this question is a difficult one. What makes a game challenging? The discussion of this is only based on a few people's spoken input, which does not make for a solid argument. What could have been done to support this claim was a user test. As a test was not conducted, only the input can be used as a weak statement. The users said that the game had a satisfying reward mechanism when you won the levels by calculating your next move. This answers mostly for the engaging part, but the players also attributed this to be the challenging part of the game. Furthermore simulation test run on the data structures, ensured atleast a minimum of challenging were to be had.
+
+The game stands up to the requirements given in the introduction. This can be said as the game is playable and through simulation, a certain level of difficulty is ensured. 
+
+Further development for this game could be to design a better simulation and perhaps to allow the players to select their choice of open data to generate a game from. If a simulation could be made to run within reasonable time limits, a game could be generated on the fly each time by the search algorithm.
+
+\pagebreak
+\bibliography{sources}{}
+\bibliographystyle{plain}
+
+\pagebreak
+
+
+\end{document}
