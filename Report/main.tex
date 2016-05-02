@@ -28,7 +28,7 @@
 \centering \parindent=0pt
 \newcommand{\HRule}{\rule{\textwidth}{1mm}}
 \vspace*{\stretch{1}} \HRule\\[1cm]\large\bfseries
-Thesis title\\[0.7cm]
+Exploring the design space and technical challenges of Procedural Content Generation integration in hybrid games\\[0.7cm]
 \large Masters Project\\[1cm]
 \HRule\\[1cm]
 
@@ -38,12 +38,15 @@ Thesis title\\[0.7cm]
     \label{fig:frontPage}
 \end{figure}
 \large by 
+\\Mats Stenhaug (msten@itu.dk)
+\\Maxime Moze (mafm@itu.dk)
 \\Mikkel Stolborg (msto@itu.dk)
 \vspace*{\stretch{2}} \normalsize
 \begin{flushleft}
 IT University of Copenhagen \\
-Supervisor\\
-Julian Togelius\\
+Supervisors\\
+Gordon Calleja\\
+Joel Anthony Lehman\\
 \today \end{flushleft}
 \end{titlepage}
 
@@ -57,27 +60,11 @@ Conclusion.
 \pagebreak
 \tableofcontents
 \pagebreak
-\section{Introduction}
-Introduction to the ideas behind the project. 
-
-Thesis layout.
-\pagebreak
-\section{Background}
-Background for our project. 
-Related work with PCG.
-Algorithms used.
-Board games of a similar manner.
-
-\section{Methods}
-How we created our project. 
-The algorithms used and the tools used.
-The design process.
-
-\section{Discussion}
-Here we will discuss the project result.
-
-\section{Conclusion}
-Here we will conclude on the project.
+\include{introduction}
+\include{background}
+\include{methods}
+\include{discussion}
+\include{conclusion}
 
 \pagebreak
 \bibliography{sources}{}
