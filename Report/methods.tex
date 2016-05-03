@@ -1,4 +1,3 @@
-
 \section{Methods}
 The progress and process of the project
 \subsection{Brainstorming and design choices}
@@ -22,6 +21,39 @@ Special events
 UX (App/Board)
 \subsection{App structure (How the game is composed (Technical))}
 Scenes and their purpose
+
+The scenes included in the app are as follows:
+- StartScene
+- WorldScene
+- NodeScene
+- EndScene
+
+All of the scenes mentioned above will be explained and gone through in more details in this part.
+
+StartScene:
+
+As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
+As soon as the "Start Game" button is clicked, the app will generate the contents of the world, and present it to the user within the next scene, which is the WorldScene.
+
+WorldScene:
+
+This is the "main" layout of the world. It contains all the locations that the players can travel, and shows them where they are, where they have been, and where they have to go. When you first see this part of the program, you will notice that it has floating islands with circles around it, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
+At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
+
+Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within said circle, are available to be travelled to.
+
+When travelling from one island to another, the circle around the island you arrived at will turn green (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they so choose. 
+When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavor text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will then be moved towards that chosen island and stop once it reaches it. 
+Once the castle has reached the island and the colliders on the object are triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
+
+NodeScene:
+
+The NodeScene is probably best known as the island scene or event scene.
+This is where all the events take place, and it the main place where the players will have to interact with each other in order to choose their wanted event. 
+To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to.
+
+
+
 UI elements
 Camera
 Datamanager
