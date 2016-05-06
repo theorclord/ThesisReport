@@ -140,8 +140,7 @@ There are several usages of the data manager, and they range from saving the isl
 
 \subsubsection{Access}
 	
-Accessing via Datamanager.instance: 	
-	
+Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content that is based on previous events. Which is something that would be hard to do with only a physical board game. 	
 
 
 World Nodes and Sub Nodes
