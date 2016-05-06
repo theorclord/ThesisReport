@@ -87,31 +87,62 @@ As the main goal of the game, within the application, is to reach the goal node,
 \subsubsection{Castle}
 	
 This is the center piece on the table. The board in itself is a layout of the castle as represented within the application.
+When moving around in the generated world, you move your entire castle. The castle is basically acting as the player object within the game. Since this is a collaborative game, however, it is up to the players to discuss amongst themselves how to use and distribute the resources that are "contained" within the castle, and use their own minds to select how an event is to be resolved when the castle is entering an island.
+
 \subsubsection{Rings} 
-	
+
+Every island on the map has a ring around it. The color of the ring indicates whether the island is explored, unexplored or the goal, with the colors green, white and blue respectively. Having these rings is a way to signify to the users where they have been, where they can go, and gives the players a quick and easy overview of the map situation.
+The castle also has a ring around it, but this is a significantly larger ring. This is because this ring signifies how far the castle is able to travel in one turn. Every island that is within that ring around the castle, is an island that they players are able to explore, and the map is made so, by the use of an L-System, that each node is possible to be visited, it is just up to the players to decide how and where they want to travel.
+
 \subsubsection{Arrow} 
-	
+
+The functionality of the arrow located in the lower right corner of the world scene, is to give an easy way for the players to see which direction they need to go in order to reach the goal island.
+This arrow is a nice little feature, because if the map is too big, and the users of the application were to focus the camera too far away from the map section, they will have an easy way to find the direction again. There are also other "safety" features implemented in case of camera issues, and they are described in the "Camera" section.
+
 \subsubsection{Token Indicators (events)}
 	
+Functionality-wise, the token indicators are only there to allow the players to quickly get an idea of what physical board pieces are being used in any given event, whether it be in the conditions, or in the results. The tokens creates a link between the application and the physical part of the game by having recognizable images of the tokens that are identical to the ones actually used in the physical part. This again allows the players to get a notion of what is being used just by having a quick glimpse at the icons.
 
 \subsection{Camera}
 
+In this section, we will explain the uses of the camera and the functionalities that is implemented with it. 
+
 \subsubsection{Centring on castle}
-	
+
+A problem that could occur when playing the game, was that the camera would go too far off to one side of the map. This could happen if a player would be reckless when moving the camera around the map in order to get a proper view of the situation. As a result of this problem being able to happen, there came a need to be able to quickly get back to the castle, so the solution was simple: Center the camera on the castle on command. So by simply double clicking anywhere on the map, the camera will reset it's position to the castle's current location. On top of having this, there is also the arrow, as described in the "UI Elements" section, pointing towards the end goal, so that if the players know the castle's relative position to the goal, they can navigate back to the castle if needed. 
+
 \subsubsection{Zoom}
 	
+In order for the players to be able to get a good overview of the entirety of the map, there had to be a way for the camera to zoom out. However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, so the maximum and minimum zoom distance are set within the app itself.	
+
 \subsubsection{Reset Position}
+
+(REMOVE, as same as the Center on castle?)
 	
 \subsubsection{Move around}
-	
+
+The players using the app are able to move the camera around all of the map in which ever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
+There is not set any max distance the camera can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
 
 \subsection{Datamanager}
 
+The data manager is a collection of all the data saved locally within the application. In this section, we will elaborate on the purpose for it, how it is being accessed, and the overall usage of the manager and the data it contains.
+
 \subsubsection{Purpose}
 	
+The purpose of having a data manager, is to have all data we want, in one convenient location. And by doing so, allowing all aspects of the application to have access to it. By allowing access from anywhere, all the data that is saved will be shared and available to use from wherever it is needed whenever it is needed. This also means that we can save data in real-time as for example an event is concluded.
+
+\subsubsection{Usage}
+
+There are several usages of the data manager, and they range from saving the islands, events, outcomes and selections, factions and standing to much more.
+
+(Saving all the nodes, events, outcomes, selections, factions and their standing, castle and camera position, etc.)
+
 \subsubsection{Access}
 	
-\subsubsection{Usage}
+Accessing via Datamanager.instance: 	
+	
+
 
 World Nodes and Sub Nodes
 Map Layout, spacing and placement
