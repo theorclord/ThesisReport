@@ -51,49 +51,67 @@ To briefly describe the looks of the Scene, it has a background representation o
 Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. ((ABOUT THE EVENT TYPES HERE?))
 After the confirmation, a new box will appear, where the event flavor text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
 The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. \\
-EndScene:
+\subsubsection{EndScene:}
 
 Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. What happens then is that all the data is cleared from the app, the WorldScene shifts to the EndScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
 
 
 
-UI elements
+\subsection{UI elements}
 
-	- Boxes
+In this section, we will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
+
+\subsubsection{Boxes}
+
+There are a number of different boxes that will appear over the course of a game session with this app. By "boxes" we refer to the dialog boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
+The purpose of each box on a high level, is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
+Each box has it's own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavor text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
+Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavor about that mine. Again there is a button for accepting, and one for declining. 
+Next up, you have the event box. This is the main box of the game, one might say. It contains a text field where the procedurally generated flavor text is displayed, along with 2 or 3 buttons that has the options for completion that the players may choose from. 
+Once an option has been chosen, the application loads the result box. This box is mainly a field where the description of what happened during the event is shown. it also has a field where the results in terms of board pieces gained/lost, reputation changes, etc. are shown. In addition, it has a "return" button, where once clicked, the players are taken back to the WorldScene where their game continues.
+
+
+\subsubsection{Faction icons}
+
+The faction icons have a rather small visual part in the application, but the impact it makes on understanding the game and seeing what opportunities and rewards the players might get, is rather substantial. In the top left corner of each NodeScene screen, there is an icon that conveys to the players, which of the current 3 factions controls the island that they are on. With this information, and the information that the players might have a specific standing with said faction, allows the players to mentally make an image of what the outcomes of the event might be, in terms of good, bad or neutral.
+
+\subsubsection{Buttons}	
+
+The buttons in this application is the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built on to other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialog boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, we are able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are between 2 or 3 buttons that holds options for how to solve the given event, and that means that we can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
+
+\subsubsection{Islands}
 	
-	- Faction icons
+The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
+As the main goal of the game, within the application, is to reach the goal node, it is important that the islands are spread around the world in a way so that the players themselves can choose which route they want to take in order to reach it. Be it the shortest way, or a longer way that requires more exploring and will take a longer time. Each island also have their own name and flavor to them, so that it hopefully will feel to the players that they have a history and a meaning.
+
+\subsubsection{Castle}
 	
-	- Buttons
+This is the center piece on the table. The board in itself is a layout of the castle as represented within the application.
+\subsubsection{Rings} 
 	
-	- Islands
+\subsubsection{Arrow} 
 	
-	- Castle
-	
-	- Rings
-	
-	- Arrow
-	
-	- Token Indicators (events)
+\subsubsection{Token Indicators (events)}
 	
 
-Camera
+\subsection{Camera}
 
-	- centring on castle
+\subsubsection{Centring on castle}
 	
-	- Zoom
+\subsubsection{Zoom}
 	
-	- Reset Position
+\subsubsection{Reset Position}
 	
-	- Move around
+\subsubsection{Move around}
 	
 
-Datamanager
+\subsection{Datamanager}
 
-	- Purpose
+\subsubsection{Purpose}
 	
-	- Access
+\subsubsection{Access}
 	
-	- Usage
+\subsubsection{Usage}
 
 World Nodes and Sub Nodes
 Map Layout, spacing and placement
