@@ -140,16 +140,29 @@ There are several usages of the data manager, and they range from saving the isl
 
 \subsubsection{Access}
 	
-Accessing via Datamanager.instance: 	
-	
+Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content that is based on previous events. Which is something that would be hard to do with only a physical board game. 	
 
 
 World Nodes and Sub Nodes
 Map Layout, spacing and placement
 Raycasting?
 \subsection{PCG Generating the content}
-\subsubsection{L-system}
+\subsubsection{L-system and the world map}
 General Description of an L-system (Theory)
+
+A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, and rules/grammar that explains what in the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changes, the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to that given character, and then apply the result of said rule to the string result. 
+For instance:
+\\ you have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
+n0: "A"\\
+n1: "A" $\rightarrow$  "AB"\\
+n2: "AB"  $\rightarrow$ "ABAA"\\
+n3: "ABAA"  $\rightarrow$  "ABAAABAB"\\
+And this would go on if n were set higher.\\
+
+What we do next, is to interpret the resulting string and go through each character, and do specific calculations based on how the application would utilize the algorithm.
+
+In our case, we use other characters than 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, which means we have to introduce a way of saving the current state of the system.\\
+
 
 LRules
 
