@@ -50,56 +50,118 @@ To briefly describe the looks of the Scene, it has a background representation o
 Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. ((ABOUT THE EVENT TYPES HERE?))
 After the confirmation, a new box will appear, where the event flavor text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
 The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. \\
-EndScene:
+\subsubsection{EndScene:}
 
 Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. What happens then is that all the data is cleared from the app, the WorldScene shifts to the EndScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
 
 
 
-UI elements
+\subsection{UI elements}
 
-	- Boxes
-	
-	- Faction icons
-	
-	- Buttons
-	
-	- Islands
-	
-	- Castle
-	
-	- Rings
-	
-	- Arrow
-	
-	- Token Indicators (events)
-	
+In this section, we will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
 
-Camera
+\subsubsection{Boxes}
 
-	- centring on castle
-	
-	- Zoom
-	
-	- Reset Position
-	
-	- Move around
-	
+There are a number of different boxes that will appear over the course of a game session with this app. By "boxes" we refer to the dialog boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
+The purpose of each box on a high level, is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
+Each box has it's own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavor text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
+Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavor about that mine. Again there is a button for accepting, and one for declining. 
+Next up, you have the event box. This is the main box of the game, one might say. It contains a text field where the procedurally generated flavor text is displayed, along with 2 or 3 buttons that has the options for completion that the players may choose from. 
+Once an option has been chosen, the application loads the result box. This box is mainly a field where the description of what happened during the event is shown. it also has a field where the results in terms of board pieces gained/lost, reputation changes, etc. are shown. In addition, it has a "return" button, where once clicked, the players are taken back to the WorldScene where their game continues.
 
-Datamanager
 
-	- Purpose
+\subsubsection{Faction icons}
+
+The faction icons have a rather small visual part in the application, but the impact it makes on understanding the game and seeing what opportunities and rewards the players might get, is rather substantial. In the top left corner of each NodeScene screen, there is an icon that conveys to the players, which of the current 3 factions controls the island that they are on. With this information, and the information that the players might have a specific standing with said faction, allows the players to mentally make an image of what the outcomes of the event might be, in terms of good, bad or neutral.
+
+\subsubsection{Buttons}	
+
+The buttons in this application is the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built on to other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialog boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, we are able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are between 2 or 3 buttons that holds options for how to solve the given event, and that means that we can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
+
+\subsubsection{Islands}
 	
-	- Access
+The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
+As the main goal of the game, within the application, is to reach the goal node, it is important that the islands are spread around the world in a way so that the players themselves can choose which route they want to take in order to reach it. Be it the shortest way, or a longer way that requires more exploring and will take a longer time. Each island also have their own name and flavor to them, so that it hopefully will feel to the players that they have a history and a meaning.
+
+\subsubsection{Castle}
 	
-	- Usage
+This is the center piece on the table. The board in itself is a layout of the castle as represented within the application.
+When moving around in the generated world, you move your entire castle. The castle is basically acting as the player object within the game. Since this is a collaborative game, however, it is up to the players to discuss amongst themselves how to use and distribute the resources that are "contained" within the castle, and use their own minds to select how an event is to be resolved when the castle is entering an island.
+
+\subsubsection{Rings} 
+
+Every island on the map has a ring around it. The color of the ring indicates whether the island is explored, unexplored or the goal, with the colors green, white and blue respectively. Having these rings is a way to signify to the users where they have been, where they can go, and gives the players a quick and easy overview of the map situation.
+The castle also has a ring around it, but this is a significantly larger ring. This is because this ring signifies how far the castle is able to travel in one turn. Every island that is within that ring around the castle, is an island that they players are able to explore, and the map is made so, by the use of an L-System, that each node is possible to be visited, it is just up to the players to decide how and where they want to travel.
+
+\subsubsection{Arrow} 
+
+The functionality of the arrow located in the lower right corner of the world scene, is to give an easy way for the players to see which direction they need to go in order to reach the goal island.
+This arrow is a nice little feature, because if the map is too big, and the users of the application were to focus the camera too far away from the map section, they will have an easy way to find the direction again. There are also other "safety" features implemented in case of camera issues, and they are described in the "Camera" section.
+
+\subsubsection{Token Indicators (events)}
+	
+Functionality-wise, the token indicators are only there to allow the players to quickly get an idea of what physical board pieces are being used in any given event, whether it be in the conditions, or in the results. The tokens creates a link between the application and the physical part of the game by having recognizable images of the tokens that are identical to the ones actually used in the physical part. This again allows the players to get a notion of what is being used just by having a quick glimpse at the icons.
+
+\subsection{Camera}
+
+In this section, we will explain the uses of the camera and the functionalities that is implemented with it. 
+
+\subsubsection{Centring on castle}
+
+A problem that could occur when playing the game, was that the camera would go too far off to one side of the map. This could happen if a player would be reckless when moving the camera around the map in order to get a proper view of the situation. As a result of this problem being able to happen, there came a need to be able to quickly get back to the castle, so the solution was simple: Center the camera on the castle on command. So by simply double clicking anywhere on the map, the camera will reset it's position to the castle's current location. On top of having this, there is also the arrow, as described in the "UI Elements" section, pointing towards the end goal, so that if the players know the castle's relative position to the goal, they can navigate back to the castle if needed. 
+
+\subsubsection{Zoom}
+	
+In order for the players to be able to get a good overview of the entirety of the map, there had to be a way for the camera to zoom out. However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, so the maximum and minimum zoom distance are set within the app itself.	
+
+\subsubsection{Reset Position}
+
+(REMOVE, as same as the Center on castle?)
+	
+\subsubsection{Move around}
+
+The players using the app are able to move the camera around all of the map in which ever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
+There is not set any max distance the camera can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
+
+\subsection{Datamanager}
+
+The data manager is a collection of all the data saved locally within the application. In this section, we will elaborate on the purpose for it, how it is being accessed, and the overall usage of the manager and the data it contains.
+
+\subsubsection{Purpose}
+	
+The purpose of having a data manager, is to have all data we want, in one convenient location. And by doing so, allowing all aspects of the application to have access to it. By allowing access from anywhere, all the data that is saved will be shared and available to use from wherever it is needed whenever it is needed. This also means that we can save data in real-time as for example an event is concluded.
+
+\subsubsection{Usage}
+
+There are several usages of the data manager, and they range from saving the islands, events, outcomes and selections, factions and standing to much more.
+
+(Saving all the nodes, events, outcomes, selections, factions and their standing, castle and camera position, etc.)
+
+\subsubsection{Access}
+	
+Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content that is based on previous events. Which is something that would be hard to do with only a physical board game. 	
+
 
 World Nodes and Sub Nodes
 Map Layout, spacing and placement
 Raycasting?
 \subsection{PCG Generating the content}
-\subsubsection{L-system}
+\subsubsection{L-system and the world map}
 General Description of an L-system (Theory)
+
+A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, and rules/grammar that explains what in the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changes, the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to that given character, and then apply the result of said rule to the string result. 
+For instance:
+\\ you have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
+n0: "A"\\
+n1: "A" $\rightarrow$  "AB"\\
+n2: "AB"  $\rightarrow$ "ABAA"\\
+n3: "ABAA"  $\rightarrow$  "ABAAABAB"\\
+And this would go on if n were set higher.\\
+
+What we do next, is to interpret the resulting string and go through each character, and do specific calculations based on how the application would utilize the algorithm.
+
+In our case, we use other characters than 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, which means we have to introduce a way of saving the current state of the system.\\
+
 
 LRules
 
