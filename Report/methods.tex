@@ -149,7 +149,7 @@ Raycasting?
 \subsubsection{L-system and the world map}
 General Description of an L-system (Theory)
 
-A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, and rules/grammar that explains what in the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changes, the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to that given character, and then apply the result of said rule to the string result. 
+A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, along with rules/grammar that explains what within the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changed; the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to each given character, and then apply the result of said rule to the result string. 
 For instance:
 \\ you have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
 n0: "A"\\
@@ -158,20 +158,21 @@ n2: "AB"  $\rightarrow$ "ABAA"\\
 n3: "ABAA"  $\rightarrow$  "ABAAABAB"\\
 And this would go on if n were set higher.\\
 
-What we do next, is to interpret the resulting string and go through each character, and do specific calculations based on how the application would utilize the algorithm.
+What we do next, is to interpret the resulting string by going through each character and do specific calculations based on how the application will be utilizing the algorithm.
 
-In our case, we use other characters than 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, which means we have to introduce a way of saving the current state of the system.\\
+In our case, we use several other characters than just 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, as the map generation have to keep track of positioning, which means we have to introduce a way of saving the current state of the system.\\
 
+A state as used in the generation of a map layout, has to keep track of positions and angles. So when the L-System hits a '[' in the result string, it knows that it has to save the current state at that position, as this will be needed when the branching is done and it is returning the next time a ']' is hit. 
 
-LRules
+When the complete expansion of the string is completed, the next stage is to interpret the result. By using this algorithm for a map layout with nodes with different properties, there was a need to use quite a few different characters. For instance, having 'N' will result in a normal node being placed at the current location of the state, whilst having 'E' will result in an end node being placed. Other characters can also be used to have different rules and calculations, e.g. having 'a' and 'A' can result in them having different angles or spacing.
+Going through the resulting axiom string, we make a lot of different calculations to be able to properly place the nodes on the map. Every time a node is being placed, the direction is calculated from the state, along with the spacing. Then the algorithm moves the state's "position marker" forward in the calculated direction, and places the node at that mark and saves the state along with the location and angling.
+This goes on until all characters of the string have been visited, and all the nodes have been placed, then the algorithm is complete.
 
-RuleCollection
+There are many different patterns that can be made with this algorithm, and in our solution, we made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
+In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit.
 
-States
+The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$\wedge$3(iteration number) + the extra start and goal node $\rightarrow$ 4*5$\wedge$3 + 2 = 502.
 
-Interpreting
-
-Expanding
 \subsubsection{Events}
 The applications main purpose is to generate events which is the main interaction for the physical part of the game. The events provides resources for players and challenges in form of lost crew or constructed rooms.
 
