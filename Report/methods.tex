@@ -271,13 +271,11 @@ This concept goes for all possible combinations of result flavor. And each piece
 
 \subsubsection{Using memory to generate special event occurrences}
 
+Special events is a feature that takes use of the fact that the application has memory. By checking the previous events, conditions and overall parameters within the data, we can compare the data and check how everything is connected. In doing so, we can make a list of conditions that needs to be met within an event, in order for a special event to be triggered and created. What we do as of now, is to have very specific requirements for an event to be able to trigger the special events. If the original event has a 3rd option, which is the "special" option, a check will be made to see if the overall conditions of the event checks out in comparison to the list of special events.
+For instance; a special event will be triggered if a preceding event was affiliated with the faction "Highbournes", and the location was a forest. Then the special event will occur on the world map X turns later, determined by a random initializer integer. When said special event then is triggered, it will use the data saved from the event that triggered it, and check which option was chosen, what the conditions for that option was, and then generate the text and result from that data.
 
-The life of the app. 
-Start game 
-Generate nodes
-Generate events
-How an event is built
-Moving around
-Interacting with the islands
-Flavor text combinations and it's purpose
-Using memory to generate special event occurrences
+All the resulting data is then also saved into the datamanager class, and the values are updated, e.g. the reputation with a faction increases/decreases, etc.
+
+
+This concept of having special events being triggered and be based on already saved data, is one that really separates this game from being just a board game, to being something of a more technological game. There are a lot of different way this data can be used, and this is just one of them. More ways and our thoughts and ideas on this matter will be discussed in the discussion section.
+
