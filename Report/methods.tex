@@ -135,17 +135,24 @@ The purpose of having a data manager, is to have all data we want, in one conven
 
 There are several usages of the data manager, and they range from saving the islands, events, outcomes and selections, factions and standing to much more.
 
-(Saving all the nodes, events, outcomes, selections, factions and their standing, castle and camera position, etc.)
+It is important that all the data is freely and easily accessible from anywhere in the rest of the code. Since all the data is only saved in one location, it reduces the need for duplication and copies of the already stored data. By having only one instance of the datamanager created, space is being saved, and it is making it easier to know where to find what any specific case might need.
+
+The main usage for the datamanager, aside from actually saving data, is to have all the pieces necessary for creating new data and events. It holds all the previous events that the players have completed, and all the changes that comes with completing them. Say you want to create a new event that will be sure to boost the players' least gotten reward - the datamanager then holds all the pieces that has been rewarded, and calculations can then fairly easily be made to figure out which resource has occurred the least amount of times.
+There are also statistical values of having all data saved in one location. If the need to pull out a quick overlook over past events, finding trends, classifying the types chosen the most, etc. this can also be done as it is supported by having all the data saved.
+
+The faction system is also made possible by the datamanager. Every faction has an allegiance factor, ranging from -150 to 150, and is split up in 3 sections; Enemy, Neutral and Friendly. Having these values saved in the datamanager, allows the events to chance their outcomes and rewards based on said allegiance. A quick look and check against the thresholds and an event can go from being a bountiful one to being a tough one with enemies killing you, just as an example.
+
 
 \subsubsection{Access}
 	
-Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content that is based on previous events. Which is something that would be hard to do with only a physical board game. 	
+Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content based on previous events which is something that would be hard to do with only a physical board game. 
+The fact that you at any time can go in and compare previous values to current ones, opens up for possibilities of changing data on the spot. If your current event has too much of the same values as used in previous events, you can just access the saved data, find what needs to be changed, and update your current events accordingly.	
 
 
 World Nodes and Sub Nodes
 Map Layout, spacing and placement
 Raycasting?
-\subsection{PCG Generating the content}
+\subsection{PCG - Generating the content}
 \subsubsection{L-system and the world map}
 General Description of an L-system (Theory)
 
@@ -226,6 +233,19 @@ What is needed
 How to access
 How to build from it
 \subsection{The app - From start to end}
+In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
+
+\subsubsection{Start}
+As the game starts, and the application is running, the first screen that is shown is the start screen. Visually, this scene is rather empty, as all it really contains is a button to start the game. The purpose of this screen is to give the users an option to choose when they want to start the game themselves. It is also used as a clean-up scene after having ended a previous game. By going back to the start menu from the end screen will erase any saved data and create a new map as soon as the start button is pressed.
+
+\subsubsection{Generate Nodes}
+After the start button has been pressed, the program will start generating all the nodes that will be portrayed in the world map. This means that the program will initialize the L-System (see the "PCG - Generating the content" section above for the detailed description of how the algorithm works) and create all the nodes, or "islands" based on the result string of the L-System algorithm. Once all the nodes are generated, they will be added into the Datamanager class and be saved there for when they are being loaded in the World Scene after. 
+\subsubsection{Generate events}
+\subsubsection{How an event is built}
+\subsubsection{Moving around the world}
+\subsubsection{Interacting with the islands}
+\subsubsection{Flavor text combinations and it's purpose}
+\subsubsection{Using memory to generate special event occurrences}
 The life of the app. 
 Start game 
 Generate nodes
