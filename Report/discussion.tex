@@ -1,6 +1,6 @@
 \section{Discussion}
 \subsection{Basic design choices} 
-Flavor text combinations
+\subsubsection{Flavor text combinations}
 Early on we knew that we would have to have the text and events being shown to the players by using some way of generating connected strings. The question a head was then: How would this be done?
 We started by having fully formed lines of text for every possible outcome and event, but realized that this was not beneficial, and that it would not create enough diversity to work as a proof of concept.
 All the text strings needed to be broken down into bits and pieces that would somehow connect with each other and combine into one fully functional sentence. 
@@ -9,18 +9,36 @@ First way was to create smaller pieces of text, that would show their meaning, b
 The next way was to generate a premade set of combinations for the events. This would mean that every possible combination that was "wanted" in the game, would have to be made ahead of time. And with every option, there would have to be rewards and outcomes for each. Again for each outcome, there would have to be at least one for "success", one for "Neutral and one for "Enemy". With all these pieces that had to be premade, the realization was that it was sort of the right way, but that it should be the other way around. The way to go would be to generate smaller blocks of text for all outcome and option pieces, and then have extra flavor that would tie it all together. This meant a drastic reduction in how much flavor would have to be premade, and the possible combinations would be far greater. 
 
 
+\subsubsection{Option combinations}
+
+There are a multitude of ways to come up with a way to combine the options the players will have. Some that were touched will be discussed here.
+The first way is to have a random selection. This would mean to just have a collection of all the possible requirements that would constitute an option, and having a number of them be selected at random.\\
+PROS:\\
+Some good things about this, is that it reduces the need for expensive and complex computing, as it only requires a simple random value to be chosen. This can of course also be influenced by a seed or a bias counter leaning towards a specific option, however then it would not be completely random either.\\
+CONS:\\
+The fact that it is so simplistic and random, means that several things can go wrong. The same option can be selected multiple times, there may not be enough options to choose from so that the options might not be diverse enough, and the overall feel that the options are based on anything might get lost by the overwhelming randomness, just to mention some.\\
+
+Another way to Selection based on location\\
 
 
-Option combinations
-Layout of the map
+selection based on factions
+selection based on faction standings
+selection based on previous events
+selection based on accumulated data/rewards
+Have a gradually changing selection
+Increase cost and reward based on stages
 
-Board layout
-Tokens and rooms
-Story
-Theme
+combinations of these.
 
-Gameplay
-Connection between Board and App
+\subsubsection{Layout of the map}
+
+\subsubsection{Board layout}
+\subsubsection{Tokens and rooms}
+\subsubsection{Story}
+\subsubsection{Theme}
+
+\subsubsection{Gameplay}
+\subsubsection{Connection between Board and App}
 
 
 \subsection{Collaborative game} 
