@@ -1,9 +1,60 @@
 \section{Discussion}
-Where we discuss about the basic design choices. Why is the game co-op? Why are there 2 phases? Why is it a management game?
-The result of the game
-Future work
-PCG contribution
-App vs. boardgame design challenges
-Benefits of having PCG
-Benefits of having memory in the app
-Possible alternatives to our solution.
+\subsection{Basic design choices} 
+Flavor text combinations
+Early on we knew that we would have to have the text and events being shown to the players by using some way of generating connected strings. The question a head was then: How would this be done?
+We started by having fully formed lines of text for every possible outcome and event, but realized that this was not beneficial, and that it would not create enough diversity to work as a proof of concept.
+All the text strings needed to be broken down into bits and pieces that would somehow connect with each other and combine into one fully functional sentence. 
+The way to approach this problem, was more than one.
+First way was to create smaller pieces of text, that would show their meaning, but not really combine into a well formulated sentence. This was tested out for a while, but was not the optimum solution we wanted for our product.
+The next way was to generate a premade set of combinations for the events. This would mean that every possible combination that was "wanted" in the game, would have to be made ahead of time. And with every option, there would have to be rewards and outcomes for each. Again for each outcome, there would have to be at least one for "success", one for "Neutral and one for "Enemy". With all these pieces that had to be premade, the realization was that it was sort of the right way, but that it should be the other way around. The way to go would be to generate smaller blocks of text for all outcome and option pieces, and then have extra flavor that would tie it all together. This meant a drastic reduction in how much flavor would have to be premade, and the possible combinations would be far greater. 
+
+
+
+
+Option combinations
+Layout of the map
+
+Board layout
+Tokens and rooms
+Story
+Theme
+
+Gameplay
+Connection between Board and App
+
+
+\subsection{Collaborative game} 
+\subsection{The 2 phases of the game}
+\subsection{A management-game}
+\subsection{The result of the game}
+\subsection{Future work}
+In this part, we will discuss what possible work could be done in the future. What we would like to implement, thought on how to do that, and what could have been done differently in order to make this easier in the future.
+\subsubsection{Better use of saved data}
+One of the big impacts this project brought to light, was the use of saved events and its data to generate new events that were based on those. In this solution, we save the events that happen over the course of the game, and we use them in a rather minimalistic way, more as a proof of concept. However, it would be interesting to see how this data could be used more efficiently over an entire game session. Generating more experience driven content, that would have a bigger impact on the players' experience, by creating other mechanics in the game, is one thought that comes to mind. 
+
+In stead of using only the faction and location type of a given island-event to select premade special events, using all the data in some smart way and maybe generate new pieces, rewards and penalties could prove useful? 
+
+Scaling the difficulty of the events based on the resources and rewards the players have gotten up till any given point in the game.
+
+Increasing amount of rewards depending on how far in the game you are.
+
+\subsubsection{More options and outcomes}
+At his point in time, there are a finite number of possible outcome types, rewards and penalties. For a future version of the game, it would be interesting to see how the game would be experienced if there were more types of tokens to be played around with. It would also be nice to have more flavor text pieces that could be combined, maybe in a new way, and presented to the players. Right now, there are somewhere around 3-7 text strings for each board piece, and all of them are able to be combined with each other. Having more pieces, variety of flavor, and ways of combining the flavor, would be like creating an expansion pack of cards that would be added to the physical board game. 
+
+\subsection{PCG contribution and it's benefits}
+What the PCG part did for this project, was to remove the need for the physical part of the game to have cards, map-board, a pre-written explanation on how to set up the map locations, and it removed the need for dice rolls. This being a collaborative game, the focus of the players needed to be more on each other and the "story" of the game, rather than having to focus on reading from a piece of paper each turn, each time one rolls a die, and each time a card would be picked and had to be combined.
+
+One of the biggest ways tht PCG has contributed to the game, is the fact that it gives the game access to memory. This means that the game can suddenly surprise the players by presenting a newly generated event, that is based on occurrences that happened maybe 15 turns ago. Unless the players have a book to write down every little detail of the story as the game unfolds, this would not be a very likely scenario without PCG. 
+Having memory also opens up for the possibility of hiding information from players. Take the faction system for example: most of the information is hidden, and the only thing the players see is the little dialog box that pops up when a faction's allegiance has been changed from one to another. This means that the only information the players have available is their current standing with the factions, and they will have to remember it themselves, as there is currently no way to see the current standing with any given faction, except for when said faction standing is changed. 
+
+
+\subsection{App vs. boardgame design challenges}
+\subsection{Benefits of having memory in the app}
+\subsection{Possible alternatives to our solution}
+One of the most obvious alternatives to our solution, is to create a complete board game, or a complete digital game, instead of using both as a hybrid. 
+
+
+
+
+
+
