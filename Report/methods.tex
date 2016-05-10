@@ -135,21 +135,28 @@ The purpose of having a data manager, is to have all data we want, in one conven
 
 There are several usages of the data manager, and they range from saving the islands, events, outcomes and selections, factions and standing to much more.
 
-(Saving all the nodes, events, outcomes, selections, factions and their standing, castle and camera position, etc.)
+It is important that all the data is freely and easily accessible from anywhere in the rest of the code. Since all the data is only saved in one location, it reduces the need for duplication and copies of the already stored data. By having only one instance of the datamanager created, space is being saved, and it is making it easier to know where to find what any specific case might need.
+
+The main usage for the datamanager, aside from actually saving data, is to have all the pieces necessary for creating new data and events. It holds all the previous events that the players have completed, and all the changes that comes with completing them. Say you want to create a new event that will be sure to boost the players' least gotten reward - the datamanager then holds all the pieces that has been rewarded, and calculations can then fairly easily be made to figure out which resource has occurred the least amount of times.
+There are also statistical values of having all data saved in one location. If the need to pull out a quick overlook over past events, finding trends, classifying the types chosen the most, etc. this can also be done as it is supported by having all the data saved.
+
+The faction system is also made possible by the datamanager. Every faction has an allegiance factor, ranging from -150 to 150, and is split up in 3 sections; Enemy, Neutral and Friendly. Having these values saved in the datamanager, allows the events to chance their outcomes and rewards based on said allegiance. A quick look and check against the thresholds and an event can go from being a bountiful one to being a tough one with enemies killing you, just as an example.
+
 
 \subsubsection{Access}
 	
-Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content that is based on previous events. Which is something that would be hard to do with only a physical board game. 	
+Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content based on previous events which is something that would be hard to do with only a physical board game. 
+The fact that you at any time can go in and compare previous values to current ones, opens up for possibilities of changing data on the spot. If your current event has too much of the same values as used in previous events, you can just access the saved data, find what needs to be changed, and update your current events accordingly.	
 
 
 World Nodes and Sub Nodes
 Map Layout, spacing and placement
 Raycasting?
-\subsection{PCG Generating the content}
+\subsection{PCG - Generating the content}
 \subsubsection{L-system and the world map}
 General Description of an L-system (Theory)
 
-A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, and rules/grammar that explains what in the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changes, the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to that given character, and then apply the result of said rule to the string result. 
+A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, along with rules/grammar that explains what within the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changed; the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to each given character, and then apply the result of said rule to the result string. 
 For instance:
 \\ you have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
 n0: "A"\\
@@ -158,20 +165,21 @@ n2: "AB"  $\rightarrow$ "ABAA"\\
 n3: "ABAA"  $\rightarrow$  "ABAAABAB"\\
 And this would go on if n were set higher.\\
 
-What we do next, is to interpret the resulting string and go through each character, and do specific calculations based on how the application would utilize the algorithm.
+What we do next, is to interpret the resulting string by going through each character and do specific calculations based on how the application will be utilizing the algorithm.
 
-In our case, we use other characters than 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, which means we have to introduce a way of saving the current state of the system.\\
+In our case, we use several other characters than just 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, as the map generation have to keep track of positioning, which means we have to introduce a way of saving the current state of the system.\\
 
+A state as used in the generation of a map layout, has to keep track of positions and angles. So when the L-System hits a '[' in the result string, it knows that it has to save the current state at that position, as this will be needed when the branching is done and it is returning the next time a ']' is hit. 
 
-LRules
+When the complete expansion of the string is completed, the next stage is to interpret the result. By using this algorithm for a map layout with nodes with different properties, there was a need to use quite a few different characters. For instance, having 'N' will result in a normal node being placed at the current location of the state, whilst having 'E' will result in an end node being placed. Other characters can also be used to have different rules and calculations, e.g. having 'a' and 'A' can result in them having different angles or spacing.
+Going through the resulting axiom string, we make a lot of different calculations to be able to properly place the nodes on the map. Every time a node is being placed, the direction is calculated from the state, along with the spacing. Then the algorithm moves the state's "position marker" forward in the calculated direction, and places the node at that mark and saves the state along with the location and angling.
+This goes on until all characters of the string have been visited, and all the nodes have been placed, then the algorithm is complete.
 
-RuleCollection
+There are many different patterns that can be made with this algorithm, and in our solution, we made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
+In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit.
 
-States
+The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$\wedge$3(iteration number) + the extra start and goal node $\rightarrow$ 4*5$\wedge$3 + 2 = 502.
 
-Interpreting
-
-Expanding
 \subsection{Events}
 The applications main purpose is to generate events which is the main interaction for the physical part of the game. The events provides resources for players and challenges in form of lost crew or constructed rooms.
 
@@ -243,12 +251,49 @@ The bottom part of figure \ref{fig:eGen2} represents the event outcome structure
 The class in this case is the separator for where the different conditions are situated. The one class only contains outcomes which have one condition in total.
 
 \subsection{The app - From start to end}
-The life of the app. 
-Start game 
-Generate nodes
-Generate events
-How an event is built
-Moving around
-Interacting with the islands
-Flavor text combinations and it's purpose
-Using memory to generate special event occurrences
+In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
+
+\subsubsection{Start}
+As the game starts, and the application is running, the first screen that is shown is the start screen. Visually, this scene is rather empty, as all it really contains is a button to start the game. The purpose of this screen is to give the users an option to choose when they want to start the game themselves. It is also used as a clean-up scene after having ended a previous game. By going back to the start menu from the end screen will erase any saved data and create a new map as soon as the start button is pressed.
+
+\subsubsection{Generate Nodes}
+After the start button has been pressed, the program will start generating all the nodes that will be portrayed in the world map. This means that the program will initialize the L-System (see the "PCG - Generating the content" section above for the detailed description of how the algorithm works) and create all the nodes, or "islands" based on the result string of the L-System algorithm. Once all the nodes are generated, they will be added into the Datamanager class and be saved there for when they are being loaded in the World Scene after. 
+Each island has a faction affiliated with it, which is also being determined here. Also, the island will have events added to them for each location that is within the island, e.g. a mine, a forest, a lake, etc. These events, however are being added via online PCG which means they will be generated on the go, as the players are entering the island.
+
+\subsubsection{Generate events}
+In the world map, all the islands that were generated are being displayed. And when the player moves the castle to an island, i.e. goes to explore it, a new screen will be shown to the players, called the NodeScene. This screen is showing the island and the "explorable" locations on it. But before they can be displayed, they need to be built. 
+
+\subsubsection{How an event is built}
+An event is generated by selecting which type of event it is going to be; Gathering or Research. Both of these event types have 5 different location types affiliated with them. Mines, quarry etc. for the gathering, and Lake, forest etc. for the research. As soon as the event type is selected, a location is also selected. Now the algorithm goes into an XML file containing all the different rewards and conditions, and picks a number of them; 1, 2 or 3 different options that the players can select from. Associated with all the conditions used in the event, there are a list of possible outcomes that can happen if said condition is chosen, be it gaining resources or losing player tokens. The outcomes of every event is changed by the current standing the players have with the faction controlling the island the players are currently on. 
+Once the options and outcomes have been generated, the location icons will be loaded to the island, and the players are free to choose which one they would like to explore.
+
+\subsubsection{Moving around the world}
+The main course of the game is to move from the start all the way to the goal node. But the castle can only move a certain length each turn. This means that the players will have to plan their way by looking at which island they can reach at any given time. The layout however is made so that the castle that is being moved, always is able to reach at least 1 island each turn. If there are more than 1 island within the circle surrounding the castle (indicator for where they can move to), it is up to the players to choose where they want to go, and which direction to take. There is always the little arrow in the lower right corner of the screen, indicating which direction the final goal is. The players are always welcome to go back where they came from, and travel to already visited islands, though they will not be able to "re-explore" them. So should the players by chance start off going the wrong way, it does not ruin the game for them and make them unable to return.
+
+\subsubsection{Interacting with the islands}
+In order to travel to an island, you will have to click on the sprite image that is representing them in the world map. The island also have to be within range of the castle in order for any interaction to be possible. 
+Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the camera a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
+
+When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
+When a location is selected, the event will begin, and based on the choices selected, the outcome will be good, bad or neutral, and the rewards or penalties associated will be presented.
+
+\subsubsection{Flavor text combinations and it's purpose}
+Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavor text that will tell the players these things. 
+
+Every island has a name and a short piece of text along with it. These texts are premade and are applied to the island when they are generated in the beginning. 
+It is in the events that the real challenge is. The flavor text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavor for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavor also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
+
+Now that all the conditions have been "flavorized", the challenge moves on to the result flavor. This is the flavor that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavor text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
+This concept goes for all possible combinations of result flavor. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.
+
+
+\subsubsection{Using memory to generate special event occurrences}
+
+Special events is a feature that takes use of the fact that the application has memory. By checking the previous events, conditions and overall parameters within the data, we can compare the data and check how everything is connected. In doing so, we can make a list of conditions that needs to be met within an event, in order for a special event to be triggered and created. What we do as of now, is to have very specific requirements for an event to be able to trigger the special events. If the original event has a 3rd option, which is the "special" option, a check will be made to see if the overall conditions of the event checks out in comparison to the list of special events.
+For instance; a special event will be triggered if a preceding event was affiliated with the faction "Highbournes", and the location was a forest. Then the special event will occur on the world map X turns later, determined by a random initializer integer. When said special event then is triggered, it will use the data saved from the event that triggered it, and check which option was chosen, what the conditions for that option was, and then generate the text and result from that data.
+
+All the resulting data is then also saved into the datamanager class, and the values are updated, e.g. the reputation with a faction increases/decreases, etc.
+
+
+This concept of having special events being triggered and be based on already saved data, is one that really separates this game from being just a board game, to being something of a more technological game. There are a lot of different way this data can be used, and this is just one of them. More ways and our thoughts and ideas on this matter will be discussed in the discussion section.
+
