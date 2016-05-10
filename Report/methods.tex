@@ -180,11 +180,35 @@ In the end we are only showcasing the latest and biggest map pattern layout, whi
 
 The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$\wedge$3(iteration number) + the extra start and goal node $\rightarrow$ 4*5$\wedge$3 + 2 = 502.
 
-\subsubsection{Events}
+\subsection{Events}
 The applications main purpose is to generate events which is the main interaction for the physical part of the game. The events provides resources for players and challenges in form of lost crew or constructed rooms.
 
 Throughout the development of the game there have been several approaches to the problem of generating these events in an interesting manner and ensure the perceived space of possibilities was large enough for the events not to repeat themselves to often.
 
+How they are used. The scalability 
+The different files
+Flavor vs content
+
+The structure of event generation
+getting the type of event.
+getting the conditions
+getting the outcomes
+saving the event
+Structure of events in app
+
+Combining the flavor text
+Conditions and Outcomes (How they are connected)
+Problem solving
+Paper prototypes of building blocks(Strings)
+Reverse engineering of text
+Finding an acceptable way to combine
+Saving data to produce new data
+Having the right values
+What is needed
+How to access
+How to build from it
+
+\subsubsection{Structured Events}
 The first implementation used the type of the selected node to determine the events.
 The idea was that the program was supplied with the location type, gathering, research, or diplomacy, and from there a set of events were picked. The location type were generated at start along with the events. 
 Each event could contain between 1 to 3 options which was randomly determined.
@@ -202,36 +226,30 @@ The outcomes represented the board pieces and the changes which occurred to them
     \label{fig:eGen1}
 \end{figure}
 
+This first structure allowed to populate the application with events which were scripted by the type and selected from a pool of set events. In order to try to create a wider range of events and create a greater space of event possibilities, another approach was attempted.
 
+\subsubsection{Constructed Events}
+In order to construct a broader range of events, the idea were to have the building blocks to be interchangeable and then generate events from a pool of building blocks to have a greater diversity of the events.
 
-The different approaches
-Generating from type and selecting predefined events
-Building from building blocks
-Final version
+This change were implemented through several iterations, with several changes being made to the algorithms, to better suit the game. The final event structure uses and XML file containing building blocks which have some linkage as to influence the general idea of the outcomes of the events.
 
-The xml files.
-How they are used. The scalability 
-The different files
-Flavor vs content
+In figure \ref{fig:eGen2} you can see the total structure of the XML file used in the final event generation algorithm. 
+The events are built by selecting a number of conditions and selecting outcomes based on the selected conditions. 
+First the conditions and outcomes will be discussed and then how they are combined.
 
-The structure of event generation
-getting the type of event.
-getting the conditions
-getting the outcomes
-saving the event
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Images/EventGen2.png}
+    \caption{This is the event generation XML structure for the final event generation process. Each box represents an XML node and the writing within the name of the node. The few exceptions to this is if a name has a parentheses around it, then the name in the parentheses is an example of the node names in that level. The figure contains two parts, one for the conditions and one for the outcomes.}
+    \label{fig:eGen2}
+\end{figure}
 
+The top part of the figure visualizes the structure of a condition. The condition is made up of the piece, the related board piece the players require in order to activate the event option, the amount of pieces required, and the classification type.
+The classification type is used in order to group the conditions and limit which pieces appears in what event option. This ensures that the ordinary pieces are more often in use by the application.
 
-Combining the flavor text
-Conditions and Outcomes (How they are connected)
-Problem solving
-Paper prototypes of building blocks(Strings)
-Reverse engineering of text
-Finding an acceptable way to combine
-Saving data to produce new data
-Having the right values
-What is needed
-How to access
-How to build from it
+The bottom part of figure \ref{fig:eGen2} represents the event outcome structure. The events are separated into type as before, gathering and research, and in class, one, two, three. 
+The class in this case is the separator for where the different conditions are situated. The one class only contains outcomes which have one condition in total.
+
 \subsection{The app - From start to end}
 In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
 
