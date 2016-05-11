@@ -185,7 +185,7 @@ The applications main purpose is to generate events which is the main interactio
 
 Throughout the development of the game there have been several approaches to the problem of generating these events in an interesting manner and ensure the perceived space of possibilities was large enough for the events not to repeat themselves to often.
 
-First the event structure of the final events will be explained. Then a short explanation of the first event generation, detailing where the project began and some of the limitations posed by it. This is followed by an explanation of the final event structure. After that the algorithm used to generate the events i detailed. Finally the how the flavor text is generated is explained.
+First the event structure of the final events will be explained. Then a short explanation of the first event generation, detailing where the project began and some of the limitations posed by it. This is followed by an explanation of the final event structure. Finally the how the flavor text is generated is explained.
 
 \subsubsection{Event structure}
 In figure \ref{fig:eStruc} you see the general structure of the events in the applications contextual environment. The keywords presented in this structure is referenced in the following subsections in order to specify where the different aspects are being used.
@@ -262,31 +262,9 @@ The outcome also contains the results. This node comes in 3 types, success, fail
 Each outcome has 1 or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
 By having the options this way it is possible to add more variety in the outcomes without rewriting the event in any other way.
 
-\subsubsection{Event Algorithm}
-In order to use the events in the game, they must be translated from the XML file to the structure visualized in figure \ref{fig:estruc}. 
-
-
-
-The XML structure explained in the previous section is translated in to the events structured as shown in figure \ref{fig:eStruc}.
-
-
 \subsubsection{Flavor of the Events}
 
-
-
-How they are used. The scalability 
-The different files
-Flavor vs content
-
-The structure of event generation
-getting the type of event.
-getting the conditions
-getting the outcomes
-saving the event
-Structure of events in app
-
 Combining the flavor text
-Conditions and Outcomes (How they are connected)
 Problem solving
 Paper prototypes of building blocks(Strings)
 Reverse engineering of text
