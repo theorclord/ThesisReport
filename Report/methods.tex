@@ -275,17 +275,63 @@ The XML structure explained in the previous section is translated in to the even
 
 
 How they are used. The scalability 
+
+The flavor of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavor string. The way they are split up varies from what type of flavor it is. 
+
+- The Condition Flavor:\\
+
+The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavor texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavors that will fit that location, and also how the individual pieces can be used there. All flavor is made so that they can be combined together and form one larger and complete flavor text.\\
+
+- The Introduction Flavor:\\
+
+The introduction flavor is organized in the same manner as the condition flavor is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavor texts, as only one is selected at any given location.\\
+
+- The Result Flavor:\\
+
+The result flavor is a bit more comprehensive than the  condition flavor, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
+Each of these results can have as many flavor texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\
+
+- The End Flavor:\\
+
+At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.\\
+
+The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavors will cause few problems, as they all follow the same format and template. Is is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.\\\\
+
+
 The different files
+There are a number of different files used to keep track of all the flavors and data that is being used within the game, and the reason for splitting them up is to better keep track of where one can find what is needed at any given time, without having to go through just one big file and searching through all its contents.
+For the structure of the events there is the XML file named "EventStructure". This is the main file where all the smaller blocks of text for all the board pieces, conditions and outcomes are located. It is split up into 7 branches; Conditions, ConditionFlavor, Gathering, Research, IntroFlavor, EndFlavor and ResultFlavor.
+The "Conditions" is basically a list of all the possible board pieces that can occur in an event, while the "ConditionsFlavor" is all the flavor associated with those pieces.
+"Gathering" and "Research" are holding the event setup, how the events can be combined, what the chances of success, neutral and failure is, and what results options there is for the combinations.
+The remaining "IntroFlavor", "EndFlavor" and "ResultFlavor" are holders of the flavor of their respective fields as described above.\\
+
+
+
+
 Flavor vs content
 
-The structure of event generation
-getting the type of event.
-getting the conditions
-getting the outcomes
-saving the event
-Structure of events in app
+The structure of event generation\\
+-getting the type of event.\\
+-getting the conditions\\
+-getting the outcomes\\
+-saving the event\\
+-Structure of events in app\\\\
 
-Combining the flavor text
+Combining the flavor text\\
+
+The flavor texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.\\
+
+The conditions:\\
+As the event generating algorithm has selected which conditions are to be used in the event, the flavor combination algorithm takes over. What it does, is to have a preset way of combining the flavors, and executes that template on the flavor blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
+This is how the flavor text would then be combined:\\
+In the first option, the algorithm would open up the XML file called EventStructure.xml, find the place where the condition flavor is located, and load that in. Then the algorithm would go through the branches until it came across the one called "crew". This consists of a basic text and a secondary text. The first part would be "Send", the second would be " x Castle crew". Then it would place the number of crew, in this case 1, between the 2 blocks of flavor, and end up with "Send 1x Castle crew".
+Now that we have the introduction of the condition, the next step is to get the location-based flavor. The algorithm would then continue through its data until it came upon the matching location, which in this case would be "mine". Under the mine section, all the pieces are listed again, with their respective lists of flavor blocks. Say the first one is selected, which says: " to explore the mine's riches.". This would then be put at the end of the first part, and combined into the final flavor text for the first option: "Send 1x Castle crew to explore the mine's riches.".
+
+After the first option was completed, the algorithm would see that there was one more to be done, and do the same for that, but since there is more than one piece in that option, the algorithm would do the same as it did for the crew, for the alchemy point.
+An example of how the selected text could look would be this: "Send 1x Castle Crew to explore the mine's riches. Use 1x alchemy point to create a strenght potion for your crew".\\\\
+
+
+
 Conditions and Outcomes (How they are connected)
 Problem solving
 Paper prototypes of building blocks(Strings)
