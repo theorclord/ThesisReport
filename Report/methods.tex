@@ -25,10 +25,10 @@ UX (App/Board)
 Scenes and their purpose
 
 The scenes included in the app are as follows:
-- StartScene
-- WorldScene
-- NodeScene
-- EndScene
+- StartScene\\
+- WorldScene\\
+- NodeScene\\
+- EndScene\\
 
 All of the scenes mentioned above will be explained and gone through in more details in this part.
 \subsubsection{StartScene:}
@@ -116,9 +116,6 @@ A problem that could occur when playing the game, was that the camera would go t
 	
 In order for the players to be able to get a good overview of the entirety of the map, there had to be a way for the camera to zoom out. However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, so the maximum and minimum zoom distance are set within the app itself.	
 
-\subsubsection{Reset Position}
-
-(REMOVE, as same as the Center on castle?)
 	
 \subsubsection{Move around}
 
@@ -158,7 +155,13 @@ Raycasting?
 \subsubsection{L-system and the world map}
 General Description of an L-system (Theory)
 
-A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, along with rules/grammar that explains what within the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changed; the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to each given character, and then apply the result of said rule to the result string. 
+A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, along with rules/grammar that explains what within the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changed; the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to each given character, and then apply the result of said rule to the result string. \\\\
+
+Quickly refer to the background about L-Systems, and use this example to move on to what we are doing in this project.
+
+
+
+
 For instance:
 \\ you have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
 n0: "A"\\
