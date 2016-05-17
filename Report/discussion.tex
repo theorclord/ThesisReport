@@ -1,12 +1,15 @@
 \section{Discussion}
 \subsection{Basic design choices} 
-\subsubsection{Flavor text combinations}
-Early on we knew that we would have to have the text and events being shown to the players by using some way of generating connected strings. The question a head was then: How would this be done?
-We started by having fully formed lines of text for every possible outcome and event, but realized that this was not beneficial, and that it would not create enough diversity to work as a proof of concept.
+\subsubsection{Flavour text combinations}
+Early on we knew that we would have to have the flavour text and events being shown to the players. Showing it to the player required generating connected strings in some form that could relate to what was happening in game terms.. 
+Then the question ahead was: How would this be done?
+We started by having fully formed lines of text for every possible outcome and event, but realized that this was not beneficial, and that it would not create enough diversity to work as a proof of concept. 
+The initial fully formed event text were rigid and would not scale well with the implementation of more pieces or with new combinations. Each time a new piece would be added, or a piece removed, would require new events to be fully written to account for the change. 
+
 All the text strings needed to be broken down into bits and pieces that would somehow connect with each other and combine into one fully functional sentence. 
-The way to approach this problem, was more than one.
+There was more than one way to approach this problem.
 First way was to create smaller pieces of text, that would show their meaning, but not really combine into a well formulated sentence. This was tested out for a while, but was not the optimum solution we wanted for our product.
-The next way was to generate a premade set of combinations for the events. This would mean that every possible combination that was "wanted" in the game, would have to be made ahead of time. And with every option, there would have to be rewards and outcomes for each. Again for each outcome, there would have to be at least one for "success", one for "Neutral and one for "Enemy". With all these pieces that had to be premade, the realization was that it was sort of the right way, but that it should be the other way around. The way to go would be to generate smaller blocks of text for all outcome and option pieces, and then have extra flavor that would tie it all together. This meant a drastic reduction in how much flavor would have to be premade, and the possible combinations would be far greater. 
+The next way was to generate a premade set of combinations for the events. This would mean that every possible combination that was "wanted" in the game, would have to be made ahead of time. And with every option, there would have to be rewards and outcomes for each. Again for each outcome, there would have to be at least one for "success", one for "Neutral" and one for "Enemy". With all these pieces that had to be premade, the realization was that it was sort of the right way, but that it should be the other way around. The way to go would be to generate smaller blocks of text for all outcome and option pieces, and then have extra flavour that would tie it all together. This meant a drastic reduction in how much flavour would have to be premade, and the possible combinations would be far greater. 
 
 
 \subsubsection{Option combinations}
@@ -82,6 +85,7 @@ Also a story could be brewed by linking all the outcomes of the events. In the e
 By using the current layout, one could even imagine that the app could piece together the state of the board game, using the input from the events. Whenever the players resolves the events, they declare, indirectly the tells the app how they have used their resources. Saving this could help to give a more complete look of how the players are doing and surprise the players by revealing to them in events that the app knows what they have built.
 
 In the end the saved data could be used in many ways to give the players a feeling of a game which reacts to their input, even without them having directly to manipulate the app with the results and state of their board.
+
 \subsubsection{More options and outcomes}
 At his point in time, there are a finite number of possible outcome types, rewards and penalties. For a future version of the game, it would be interesting to see how the game would be experienced if there were more types of tokens to be played around with. It would also be nice to have more flavor text pieces that could be combined, maybe in a new way, and presented to the players. Right now, there are somewhere around 3-7 text strings for each board piece, and all of them are able to be combined with each other. Having more pieces, variety of flavor, and ways of combining the flavor, would be like creating an expansion pack of cards that would be added to the physical board game. 
 
@@ -97,6 +101,7 @@ Having memory also opens up for the possibility of hiding information from playe
 \subsection{Possible alternatives to our solution}
 One of the most obvious alternatives to our solution, is to create a complete board game, or a complete digital game, instead of using both as a hybrid. 
 
+\subsection{Team Dynamics}
 
 
 
