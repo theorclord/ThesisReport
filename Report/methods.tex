@@ -34,9 +34,27 @@ UX (App/Board)
 
 \subsection{Development Structure}
 This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
-\subsubsection{Prototyping}
-
 \subsubsection{From design to implementation}
+When working as a developer, you also work closely with the designer, what we did during our development period, was to get the wants and needs from the designer, and try to implement it into a prototype for overlook and feedback. If things needed to be changed, added or removed, we would be told in general terms what needed to be done, and then we would make the adjustments requested to the prototypes.
+
+In the next part of this section, we will go into more detail on how the prototyping would take place, and how the communication between programmer and developer took place.
+
+\subsubsection{Prototyping}
+Right from the start, it was important to quickly produce smaller prototypes so that we could get an idea of how to continue, and to test the implementations that were made. The first part of the project is to set up the app and have a starting point that you can build on. In our case, this meant an initial screen with a simple UI that could be added to, moved around and overall that could display text and data. On top of that, the backbone of the system would be to have different data classes that could contain the various sorts of information that would be needed.\\\\ 
+
+Prototype 1: 
+A simple UI with text boxes, buttons and a simple data manager that contains the initial values.
+
+Going onwards, designer and programmers alike, would come with inputs as to what would set the grounds for what types of data would be needed in order to produce the desired results.
+It was decided early on that there would be events that the players could interact with, and that these events would have board pieces and flavour text associated with them. The basic layout for the "flow" of the game is then set, with the idea that there would be a main world scene where all the destinations would be displayed, and each of these destinations would have their own scene where the locations possible would be shown.\\\\
+
+Prototype 2:
+Now the application has a main world screen with a multitude of destinations would be displayed in the form of simple circles that can be clicked. When clicked, the destination scene would be shown, which contains the simple representation of locations, also in the form of circles.
+
+At this point, the need to link the application with the board game occurs. A player object is needed within the application, and it needs to be able to move around the world space. Also the initial event structure is taking form, which means there is a need for the data to be constructed along with some dummy flavour to be shown on the screen.\\\\
+
+Prototype 3:
+Introducing the event class and XML files with the initial flavour texts. 
 
 \subsubsection{Problem solving}
 One of the biggest concerns in terms of being able to present the game with "feel" to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
