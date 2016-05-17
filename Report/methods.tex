@@ -45,33 +45,41 @@ UX (App/Board)
 \subsection{Development Structure}
 This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
 \subsubsection{From design to implementation}
-When working as a developer, you also work closely with the designer, what we did during our development period, was to get the wants and needs from the designer, and try to implement it into a prototype for overlook and feedback. If things needed to be changed, added or removed, we would be told in general terms what needed to be done, and then we would make the adjustments requested to the prototypes.
+When working as a developer, you also work closely with the designer. What we did during our development period, was to get the wants and needs from the designer, and try to implement it into a prototype for overlook and feedback. 
+If things needed to be changed, added or removed, we would be told in general terms what needed to be done, and then we would make the adjustments requested to the prototypes.
 
 In the next part of this section, we will go into more detail on how the prototyping would take place, and how the communication between programmer and developer took place.
 
 \subsubsection{Prototyping}
-Right from the start, it was important to quickly produce smaller prototypes so that we could get an idea of how to continue, and to test the implementations that were made. The first part of the project is to set up the app and have a starting point that you can build on. In our case, this meant an initial screen with a simple UI that could be added to, moved around and overall that could display text and data. On top of that, the backbone of the system would be to have different data classes that could contain the various sorts of information that would be needed.\\\\ 
+Right from the start, it was important to quickly produce smaller prototypes so that we could get an idea of how to continue, and to test the implementations that were made. The first part of the project is to set up the app and have a starting point that you can build on. In our case, this meant an initial screen with a simple UI that could be added to, moved around and overall that could display text and data. On top of that, the backbone of the system would be to have different data classes that could contain the various sorts of information that would be needed.
 
-Prototype 1: 
+\begin{center}
+\textbf{Prototype 1:}
 A simple UI with text boxes, buttons and a simple data manager that contains the initial values.
+\end{center}
 
-Going onwards, designer and programmers alike, would come with inputs as to what would set the grounds for what types of data would be needed in order to produce the desired results.
-It was decided early on that there would be events that the players could interact with, and that these events would have board pieces and flavour text associated with them. The basic layout for the "flow" of the game is then set, with the idea that there would be a main world scene where all the destinations would be displayed, and each of these destinations would have their own scene where the locations possible would be shown.\\\\
+Going onwards, designer and programmers alike, would come with inputs to set the foundation for which data types would be needed in order to produce the desired results.
+It was decided early on that there would be events that the players could interact with, and that these events would have board pieces and flavour text associated with them. The basic layout for the \textit{flow} of the game is then set, with the idea that there would be a main world scene where all the destinations would be displayed, and each of these destinations would have their own scene where the locations possible would be shown.
 
-Prototype 2:
-Now the application has a main world screen with a multitude of destinations would be displayed in the form of simple circles that can be clicked. When clicked, the destination scene would be shown, which contains the simple representation of locations, also in the form of circles.
+\begin{center}
+\textbf{Prototype 2:}
+Now the application has a main world screen with a multitude of destinations would be displayed in the form of simple spheres that can be clicked. When clicked, the destination scene would be shown, which contains the simple representation of locations, also in the form of spheres.
+\end{center}
 
-At this point, the need to link the application with the board game occurs. A player object is needed within the application, and it needs to be able to move around the world space. Also the initial event structure is taking form, which means there is a need for the data to be constructed along with some dummy flavour to be shown on the screen.\\\\
+At this point, the need to link the application with the board game occurs. A player object is needed within the application, and it needs to be able to move around the world space. Also the initial event structure is taking form, which means there is a need for the data to be constructed along with some dummy flavour to be shown on the screen.
 
-Prototype 3:
+\begin{center}
+\textbf{Prototype 3:}
 Introducing the event class and XML files with the initial flavour texts. 
+\end{center}
+
 
 \subsubsection{Problem solving}
 One of the biggest concerns in terms of being able to present the game with "feel" to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
 
 To exemplify, we will use the dummy flavour "As you arrive at Endriath, you see an old village in the distance. The village seems to have markings that resemble those used by the Highbournes".
 
-The next step would be to reverse engineer this dummy text into blocks of strings that could be combined to reconstruct the original text. So in the start, there is a segment that says "As you arrive at ...". This part would act as an introduction for the island. Next you have the actual name of the island, which is already available in the application. After that there is a smaller part that gives the players insight into what IS on the island. This segment, however, is split up into 3 pieces; first - "you see ", then "an old village" which is the location type, also available within the application, and lastly " in the distance". After this, the flavour goes on to say something about the location that you are currently at. "The village", again, is available from the application, "seems to have markings that resemble those used by the" - extra flavour made to build mood and a sensation of lore or story, then at the very end is the "Highbournes" which is the faction name of one of the factions saved within the application.
+The next step would be to reverse engineer this dummy text into blocks of strings that could be combined to reconstruct the original text. So in the start, there is a segment that says "As you arrive at ...". This part would act as an introduction for the island. Next you have the actual name of the island, which is already available in the application. After that there is a smaller part that gives the players insight into what \textit{is} on the island. This segment, however, is split up into 3 pieces; first - "you see ", then "an old village" which is the location type, also available within the application, and lastly " in the distance". After this, the flavour goes on to say something about the location that you are currently at. "The village", again, is available from the application, "seems to have markings that resemble those used by the" - extra flavour made to build mood and a sensation of lore or story, then at the very end is the "Highbournes" which is the faction name of one of the factions saved within the application.
 
 This way of reverse engineering a piece of text leaves us with the pieces: Introduction, Island name, Location introduction, Location type, Location exit, Location Type(again), Mood flavour and Faction name.
 
@@ -83,16 +91,19 @@ When this all succeeds, the method of combination is discovered, and is ready to
 Scenes and their purpose
 
 The scenes included in the app are as follows:
-- StartScene\\
-- WorldScene\\
-- NodeScene\\
-- EndScene\\
+\begin{itemize}
+\item[-] StartScene
+\item[-] WorldScene
+\item[-] NodeScene
+\item[-] EndScene
+\end{itemize}
+
 
 All of the scenes mentioned above will be explained and gone through in more details in this part.
-\subsubsection{StartScene:}
+\subsubsection{StartScene}
 As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
 As soon as the "Start Game" button is clicked, the app will generate the contents of the world, and present it to the user within the next scene, which is the WorldScene.
-\subsubsection{WorldScene:}
+\subsubsection{WorldScene}
 
 This is the "main" layout of the world. It contains all the locations that the players can travel, and shows them where they are, where they have been, and where they have to go. When you first see this part of the program, you will notice that it has floating islands with circles around it, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
 At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
@@ -102,7 +113,7 @@ Centered around the castle that the players control, you will find a large white
 When travelling from one island to another, the circle around the island you arrived at will turn green (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they so choose. 
 When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will then be moved towards that chosen island and stop once it reaches it. 
 Once the castle has reached the island and the colliders on the object are triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
-\subsubsection{NodeScene:}
+\subsubsection{NodeScene}
 \label{sec:nodeScene}
 The NodeScene is probably best known as the "island scene" or "event scene", because 
 this is the scene where all the events take place, and it is the main place where the players will have to interact with each other in order to choose their wanted event. 
@@ -110,7 +121,7 @@ To briefly describe the looks of the Scene, it has a background representation o
 Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. ((ABOUT THE EVENT TYPES HERE?))
 After the confirmation, a new box will appear, where the event flavour text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
 The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. \\
-\subsubsection{EndScene:}
+\subsubsection{EndScene}
 
 Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. What happens then is that all the data is cleared from the app, the WorldScene shifts to the EndScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
 
