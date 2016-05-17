@@ -163,17 +163,10 @@ Map Layout, spacing and placement
 Raycasting?
 \subsection{PCG - Generating the content}
 \subsubsection{L-system and the world map}
-General Description of an L-system (Theory)
 
-A Lindenmayer system, or L-system in short, is a PCG algorithm that is based on grammars and rules. In the start, you have an axiom, which is the initial value that the system will expand upon, along with rules/grammar that explains what within the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changed; the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that's found within the string, check for matching rules to each given character, and then apply the result of said rule to the result string. \\\\
-
-Quickly refer to the background about L-Systems, and use this example to move on to what we are doing in this project.
-
-
-
-
-For instance:
-\\ you have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
+As described in the background section; the L-System is a way to generate a large outcome based on an axiom and rules on how to change it. With each iteration, the contents of the axiom is changed bit by bit in compliance with the rules that match each element that is being expanded upon.
+To quickly demonstrate how it works, the example will use a simple axion, and only 2 simple rules expanded over a small number of iterations:\\
+You have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
 n0: "A"\\
 n1: "A" $\rightarrow$  "AB"\\
 n2: "AB"  $\rightarrow$ "ABAA"\\
@@ -367,7 +360,7 @@ In order to travel to an island, you will have to click on the sprite image that
 Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the camera a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
 
 When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
-When a location is selected, the event will begin, and based on the choices selected, the outcome will be good, bad or neutral, and the rewards or penalties associated will be presented.
+A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
 
 \subsubsection{Flavor text combinations and it's purpose}
 Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavor text that will tell the players these things. 
