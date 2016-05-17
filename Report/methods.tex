@@ -31,6 +31,26 @@ Infinite number of cards (events)
 Event "memory"
 Special events
 UX (App/Board)
+
+\subsection{Development Structure}
+This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
+\subsubsection{Prototyping}
+
+\subsubsection{From design to implementation}
+
+\subsubsection{Problem solving}
+One of the biggest concerns in terms of being able to present the game with "feel" to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
+
+To exemplify, we will use the dummy flavour "As you arrive at Endriath, you see an old village in the distance. The village seems to have markings that resemble those used by the Highbournes".
+
+The next step would be to reverse engineer this dummy text into blocks of strings that could be combined to reconstruct the original text. So in the start, there is a segment that says "As you arrive at ...". This part would act as an introduction for the island. Next you have the actual name of the island, which is already available in the application. After that there is a smaller part that gives the players insight into what IS on the island. This segment, however, is split up into 3 pieces; first - "you see ", then "an old village" which is the location type, also available within the application, and lastly " in the distance". After this, the flavour goes on to say something about the location that you are currently at. "The village", again, is available from the application, "seems to have markings that resemble those used by the" - extra flavour made to build mood and a sensation of lore or story, then at the very end is the "Highbournes" which is the faction name of one of the factions saved within the application.
+
+This way of reverse engineering a piece of text leaves us with the pieces: Introduction, Island name, Location introduction, Location type, Location exit, Location Type(again), Mood flavour and Faction name.
+
+After all these pieces has been discovered, the next step is validation. This is done by simply making a set of paper prototypes for each of the pieces, each having a few different possibilities, and then trying to combine them in the same fashion as discovered by the reverse engineering. 
+
+When this all succeeds, the method of combination is discovered, and is ready to be implemented into code. Then, when it is all implemented, all that needs to be done, is to create a variety of flavours for each of the blocks and the rest will be done by the program.
+
 \subsection{App structure (How the game is composed (Technical))}
 Scenes and their purpose
 
