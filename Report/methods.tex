@@ -31,6 +31,44 @@ Infinite number of cards (events)
 Event "memory"
 Special events
 UX (App/Board)
+
+\subsection{Development Structure}
+This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
+\subsubsection{From design to implementation}
+When working as a developer, you also work closely with the designer, what we did during our development period, was to get the wants and needs from the designer, and try to implement it into a prototype for overlook and feedback. If things needed to be changed, added or removed, we would be told in general terms what needed to be done, and then we would make the adjustments requested to the prototypes.
+
+In the next part of this section, we will go into more detail on how the prototyping would take place, and how the communication between programmer and developer took place.
+
+\subsubsection{Prototyping}
+Right from the start, it was important to quickly produce smaller prototypes so that we could get an idea of how to continue, and to test the implementations that were made. The first part of the project is to set up the app and have a starting point that you can build on. In our case, this meant an initial screen with a simple UI that could be added to, moved around and overall that could display text and data. On top of that, the backbone of the system would be to have different data classes that could contain the various sorts of information that would be needed.\\\\ 
+
+Prototype 1: 
+A simple UI with text boxes, buttons and a simple data manager that contains the initial values.
+
+Going onwards, designer and programmers alike, would come with inputs as to what would set the grounds for what types of data would be needed in order to produce the desired results.
+It was decided early on that there would be events that the players could interact with, and that these events would have board pieces and flavour text associated with them. The basic layout for the "flow" of the game is then set, with the idea that there would be a main world scene where all the destinations would be displayed, and each of these destinations would have their own scene where the locations possible would be shown.\\\\
+
+Prototype 2:
+Now the application has a main world screen with a multitude of destinations would be displayed in the form of simple circles that can be clicked. When clicked, the destination scene would be shown, which contains the simple representation of locations, also in the form of circles.
+
+At this point, the need to link the application with the board game occurs. A player object is needed within the application, and it needs to be able to move around the world space. Also the initial event structure is taking form, which means there is a need for the data to be constructed along with some dummy flavour to be shown on the screen.\\\\
+
+Prototype 3:
+Introducing the event class and XML files with the initial flavour texts. 
+
+\subsubsection{Problem solving}
+One of the biggest concerns in terms of being able to present the game with "feel" to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
+
+To exemplify, we will use the dummy flavour "As you arrive at Endriath, you see an old village in the distance. The village seems to have markings that resemble those used by the Highbournes".
+
+The next step would be to reverse engineer this dummy text into blocks of strings that could be combined to reconstruct the original text. So in the start, there is a segment that says "As you arrive at ...". This part would act as an introduction for the island. Next you have the actual name of the island, which is already available in the application. After that there is a smaller part that gives the players insight into what IS on the island. This segment, however, is split up into 3 pieces; first - "you see ", then "an old village" which is the location type, also available within the application, and lastly " in the distance". After this, the flavour goes on to say something about the location that you are currently at. "The village", again, is available from the application, "seems to have markings that resemble those used by the" - extra flavour made to build mood and a sensation of lore or story, then at the very end is the "Highbournes" which is the faction name of one of the factions saved within the application.
+
+This way of reverse engineering a piece of text leaves us with the pieces: Introduction, Island name, Location introduction, Location type, Location exit, Location Type(again), Mood flavour and Faction name.
+
+After all these pieces has been discovered, the next step is validation. This is done by simply making a set of paper prototypes for each of the pieces, each having a few different possibilities, and then trying to combine them in the same fashion as discovered by the reverse engineering. 
+
+When this all succeeds, the method of combination is discovered, and is ready to be implemented into code. Then, when it is all implemented, all that needs to be done, is to create a variety of flavours for each of the blocks and the rest will be done by the program.
+
 \subsection{App structure (How the game is composed (Technical))}
 Scenes and their purpose
 
@@ -52,7 +90,7 @@ At first glance, you might not see all of the map and all the different islands 
 Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within said circle, are available to be travelled to.
 
 When travelling from one island to another, the circle around the island you arrived at will turn green (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they so choose. 
-When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavor text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will then be moved towards that chosen island and stop once it reaches it. 
+When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will then be moved towards that chosen island and stop once it reaches it. 
 Once the castle has reached the island and the colliders on the object are triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
 \subsubsection{NodeScene:}
 \label{sec:nodeScene}
@@ -60,7 +98,7 @@ The NodeScene is probably best known as the "island scene" or "event scene", bec
 this is the scene where all the events take place, and it is the main place where the players will have to interact with each other in order to choose their wanted event. 
 To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to. On top of that, every Island (from the WorldScene) has a faction affiliated with it. What this does, is to allow the player to instinctively know whether or not an event will have a positive outcome and if it has a higher chance of success, based on the current standing the players have with that faction.
 Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. ((ABOUT THE EVENT TYPES HERE?))
-After the confirmation, a new box will appear, where the event flavor text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
+After the confirmation, a new box will appear, where the event flavour text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
 The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. \\
 \subsubsection{EndScene:}
 
@@ -76,8 +114,8 @@ In this section, we will go through all the different UI elements within the app
 
 There are a number of different boxes that will appear over the course of a game session with this app. By "boxes" we refer to the dialog boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
 The purpose of each box on a high level, is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
-Each box has it's own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavor text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
-Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavor about that mine. Again there is a button for accepting, and one for declining. 
+Each box has it's own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavour text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
+Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavour about that mine. Again there is a button for accepting, and one for declining. 
 Next up, you have the event box. This is the main box of the game, one might say. It contains a text field where the procedurally generated flavour text is displayed, along with 2 or 3 buttons that has the options for completion that the players may choose from. 
 Once an option has been chosen, the application loads the result box. This box is mainly a field where the description of what happened during the event is shown. it also has a field where the results in terms of board pieces gained/lost, reputation changes, etc. are shown. In addition, it has a "return" button, where once clicked, the players are taken back to the WorldScene where their game continues.
 
@@ -93,7 +131,7 @@ The buttons in this application is the main way for the users to interact. If it
 \subsubsection{Islands}
 	
 The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
-As the main goal of the game, within the application, is to reach the goal node, it is important that the islands are spread around the world in a way so that the players themselves can choose which route they want to take in order to reach it. Be it the shortest way, or a longer way that requires more exploring and will take a longer time. Each island also have their own name and flavor to them, so that it hopefully will feel to the players that they have a history and a meaning.
+As the main goal of the game, within the application, is to reach the goal node, it is important that the islands are spread around the world in a way so that the players themselves can choose which route they want to take in order to reach it. Be it the shortest way, or a longer way that requires more exploring and will take a longer time. Each island also have their own name and flavour to them, so that it hopefully will feel to the players that they have a history and a meaning.
 
 \subsubsection{Castle}
 	
@@ -165,8 +203,8 @@ Raycasting?
 \subsubsection{L-system and the world map}
 
 As described in the background section; the L-System is a way to generate a large outcome based on an axiom and rules on how to change it. With each iteration, the contents of the axiom is changed bit by bit in compliance with the rules that match each element that is being expanded upon.
-To quickly demonstrate how it works, the example will use a simple axion, and only 2 simple rules expanded over a small number of iterations:\\
-You have the axiom "A", and you have the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
+To quickly demonstrate how it works, the example will use a simple axion, and only 2 simple rules expanded over a smaller number of iterations:\\
+We start the axiom "A", and then there are the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
 n0: "A"\\
 n1: "A" $\rightarrow$  "AB"\\
 n2: "AB"  $\rightarrow$ "ABAA"\\
@@ -177,14 +215,14 @@ What we do next, is to interpret the resulting string by going through each char
 
 In our case, we use several other characters than just 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, as the map generation have to keep track of positioning, which means we have to introduce a way of saving the current state of the system.\\
 
-A state as used in the generation of a map layout, has to keep track of positions and angles. So when the L-System hits a '[' in the result string, it knows that it has to save the current state at that position, as this will be needed when the branching is done and it is returning the next time a ']' is hit. 
+A state as used in the generation of a map layout, has to keep track of positions and angles. So when the L-System hits a '[' in the result string, it knows that it has to save the current state at the current position, as this will be needed when the branching is done and the next ']' is hit. 
 
-When the complete expansion of the string is completed, the next stage is to interpret the result. By using this algorithm for a map layout with nodes with different properties, there was a need to use quite a few different characters. For instance, having 'N' will result in a normal node being placed at the current location of the state, whilst having 'E' will result in an end node being placed. Other characters can also be used to have different rules and calculations, e.g. having 'a' and 'A' can result in them having different angles or spacing.
-Going through the resulting axiom string, we make a lot of different calculations to be able to properly place the nodes on the map. Every time a node is being placed, the direction is calculated from the state, along with the spacing. Then the algorithm moves the state's "position marker" forward in the calculated direction, and places the node at that mark and saves the state along with the location and angling.
+When the full expansion of the string is completed, the next stage is to interpret the result. When using this algorithm for a map layout with nodes of different properties, there is a need to use quite a few different characters. For instance, having 'N' will result in a normal node being placed at the current location of the state, whilst having 'E' will result in an end node being placed. Other characters can also be used to have different rules and calculations, e.g. having 'a' and 'A' can result in them having different angles or spacing.
+Going through the resulting axiom string, we make a lot of different calculations to be able to properly place the nodes on the map. Every time a node is being placed, the direction is calculated from the state, along with the spacing. Then the algorithm moves the state's "position marker" forward in the calculated direction, and places the correct node at that mark and saves the state along with the location and angling.
 This goes on until all characters of the string have been visited, and all the nodes have been placed, then the algorithm is complete.
 
 There are many different patterns that can be made with this algorithm, and in our solution, we made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
-In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit.
+In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit, as this is a big enough map to be able to generate a large amount of events and outcomes, and as it gives the players a large space to explore.
 
 The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$\wedge$3(iteration number) + the extra start and goal node $\rightarrow$ 4*5$\wedge$3 + 2 = 502.
 
@@ -193,7 +231,7 @@ The application's main purpose is to generate events which is the main interacti
 
 Throughout the development of the game there have been several approaches to the problem of generating these events in an interesting manner and ensure the perceived space of possibilities was large enough for the events not to repeat themselves to often.
 
-First the event structure of the final events will be explained. Then a short explanation of the first event generation, detailing where the project began and some of the limitations posed by it. This is followed by an explanation of the final event structure. Finally the how the flavor text is generated is explained.
+First the event structure of the final events will be explained. Then a short explanation of the first event generation, detailing where the project began and some of the limitations posed by it. This is followed by an explanation of the final event structure. Finally the how the flavour text is generated is explained.
 
 \subsubsection{Event structure}
 In figure \ref{fig:eStruc} you see the general structure of the events in the applications contextual environment. The keywords presented in this structure is referenced in the following subsections in order to specify where the different aspects are being used.
@@ -233,8 +271,8 @@ The classes are, basic, the one which is always present, second, events which ha
 In this early implementation, the conditions, which needed to be fulfilled, were written as text in the \textit{eventText} XML node. The conditions only appeared as text and had no relation to the the game logic. The text was hard coded in file, making each event text broad so it could appear in all contexts.
 
 The event had a list of results, each which had a chance node determining how often the result would appear. When building the event the result is selected using a percentage based selection process. The chance were set between 1 and 100 percent and the total sum of all the results chances were 100. 
-Each result had a flavor text associated with it, which was used when resolving the event, and a list of event outcomes. 
-The outcomes represented the board pieces and the changes which occurred to them. Each of the outcomes had a piece, the board game piece associated with it, the number range of the amount of pieces given, and extra flavor, which was used for rooms which were destroyed or crew which were injured.
+Each result had a flavour text associated with it, which was used when resolving the event, and a list of event outcomes. 
+The outcomes represented the board pieces and the changes which occurred to them. Each of the outcomes had a piece, the board game piece associated with it, the number range of the amount of pieces given, and extra flavour, which was used for rooms which were destroyed or crew which were injured.
 
 This first structure allowed to populate the application with events which were scripted by the type and selected from a pool of set events. 
 However when adding more events, each event needed to be constructed in its entirety each time. This would also means adding or removing pieces would be have to be hard coded directly. 
@@ -270,36 +308,36 @@ The outcome also contains the results. This node comes in 3 types, success, fail
 Each outcome has 1 or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
 By having the options this way it is possible to add more variety in the outcomes without rewriting the event in any other way.
 
-\subsubsection{Flavor of the Events}
+\subsubsection{Flavour of the Events}
 
 
-The flavor of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavor string. The way they are split up varies from what type of flavor it is. 
+The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is. 
 
-- The Condition Flavor:\\
+- The Condition Flavour:\\
 
-The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavor texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavors that will fit that location, and also how the individual pieces can be used there. All flavor is made so that they can be combined together and form one larger and complete flavor text.\\
+The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.\\
 
-- The Introduction Flavor:\\
+- The Introduction Flavour:\\
 
-The introduction flavor is organized in the same manner as the condition flavor is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavor texts, as only one is selected at any given location.\\
+The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.\\
 
-- The Result Flavor:\\
+- The Result Flavour:\\
 
-The result flavor is a bit more comprehensive than the  condition flavor, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
-Each of these results can have as many flavor texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\
+The result flavour is a bit more comprehensive than the  condition flavour, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
+Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\
 
-- The End Flavor:\\
+- The End Flavour:\\
 
 At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.\\
 
-The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavors will cause few problems, as they all follow the same format and template. Is is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.\\\\
+The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavours will cause few problems, as they all follow the same format and template. Is is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.\\\\
 
 
-There are a number of different files used to keep track of all the flavors and data that is being used within the game, and the reason for splitting them up is to better keep track of where one can find what is needed at any given time, without having to go through just one big file and searching through all its contents.
-For the structure of the events there is the XML file named "EventStructure". This is the main file where all the smaller blocks of text for all the board pieces, conditions and outcomes are located. It is split up into 7 branches; Conditions, ConditionFlavor, Gathering, Research, IntroFlavor, EndFlavor and ResultFlavor.
-The "Conditions" is basically a list of all the possible board pieces that can occur in an event, while the "ConditionsFlavor" is all the flavor associated with those pieces.
+There are a number of different files used to keep track of all the flavours and data that is being used within the game, and the reason for splitting them up is to better keep track of where one can find what is needed at any given time, without having to go through just one big file and searching through all its contents.
+For the structure of the events there is the XML file named "EventStructure". This is the main file where all the smaller blocks of text for all the board pieces, conditions and outcomes are located. It is split up into 7 branches; Conditions, ConditionFlavour, Gathering, Research, IntroFlavour, EndFlavour and ResultFlavour.
+The "Conditions" is basically a list of all the possible board pieces that can occur in an event, while the "ConditionsFlavour" is all the flavour associated with those pieces.
 "Gathering" and "Research" are holding the event setup, how the events can be combined, what the chances of success, neutral and failure is, and what results options there is for the combinations.
-The remaining "IntroFlavor", "EndFlavor" and "ResultFlavor" are holders of the flavor of their respective fields as described above.\\
+The remaining "IntroFlavour", "EndFlavour" and "ResultFlavour" are holders of the flavour of their respective fields as described above.\\
 
 
 
@@ -311,29 +349,21 @@ The structure of event generation\\
 -saving the event\\
 -Structure of events in app\\\\
 
-Combining the flavor text\\
+Combining the flavour text\\
 
-The flavor texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.\\
+The flavour texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.\\
 
 The conditions:\\
-As the event generating algorithm has selected which conditions are to be used in the event, the flavor combination algorithm takes over. What it does, is to have a preset way of combining the flavors, and executes that template on the flavor blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
-This is how the flavor text would then be combined:\\
-In the first option, the algorithm would open up the XML file called EventStructure.xml, find the place where the condition flavor is located, and load that in. Then the algorithm would go through the branches until it came across the one called "crew". This consists of a basic text and a secondary text. The first part would be "Send", the second would be " x Castle crew". Then it would place the number of crew, in this case 1, between the 2 blocks of flavor, and end up with "Send 1x Castle crew".
-Now that we have the introduction of the condition, the next step is to get the location-based flavor. The algorithm would then continue through its data until it came upon the matching location, which in this case would be "mine". Under the mine section, all the pieces are listed again, with their respective lists of flavor blocks. Say the first one is selected, which says: " to explore the mine's riches.". This would then be put at the end of the first part, and combined into the final flavor text for the first option: "Send 1x Castle crew to explore the mine's riches.".
+As the event generating algorithm has selected which conditions are to be used in the event, the flavour combination algorithm takes over. What it does, is to have a preset way of combining the flavours, and executes that template on the flavour blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
+This is how the flavour text would then be combined:\\
+In the first option, the algorithm would open up the XML file called EventStructure.xml, find the place where the condition flavour is located, and load that in. Then the algorithm would go through the branches until it came across the one called "crew". This consists of a basic text and a secondary text. The first part would be "Send", the second would be " x Castle crew". Then it would place the number of crew, in this case 1, between the 2 blocks of flavour, and end up with "Send 1x Castle crew".
+Now that we have the introduction of the condition, the next step is to get the location-based flavour. The algorithm would then continue through its data until it came upon the matching location, which in this case would be "mine". Under the mine section, all the pieces are listed again, with their respective lists of flavour blocks. Say the first one is selected, which says: " to explore the mine's riches.". This would then be put at the end of the first part, and combined into the final flavour text for the first option: "Send 1x Castle crew to explore the mine's riches.".
 
 After the first option was completed, the algorithm would see that there was one more to be done, and do the same for that, but since there is more than one piece in that option, the algorithm would do the same as it did for the crew, for the alchemy point.
 An example of how the selected text could look would be this: "Send 1x Castle Crew to explore the mine's riches. Use 1x alchemy point to create a strenght potion for your crew".\\\\
 
 
-Problem solving
-Paper prototypes of building blocks(Strings)
-Reverse engineering of text
-Finding an acceptable way to combine
 Saving data to produce new data
-Having the right values
-What is needed
-How to access
-How to build from it
 
 \subsection{The app - From start to end}
 In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
@@ -362,14 +392,14 @@ Once you click on the island, you will be greeted with a pop-up box that will as
 When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
 A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
 
-\subsubsection{Flavor text combinations and it's purpose}
-Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavor text that will tell the players these things. 
+\subsubsection{Flavour text combinations and it's purpose}
+Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavour text that will tell the players these things. 
 
 Every island has a name and a short piece of text along with it. These texts are premade and are applied to the island when they are generated in the beginning. 
-It is in the events that the real challenge is. The flavor text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavor for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavor also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
+It is in the events that the real challenge is. The flavour text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavour for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavour also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
 
-Now that all the conditions have been "flavorized", the challenge moves on to the result flavor. This is the flavor that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavor text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
-This concept goes for all possible combinations of result flavor. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.
+Now that all the conditions have been "flavourized", the challenge moves on to the result flavour. This is the flavour that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavour text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
+This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.
 
 
 \subsubsection{Using memory to generate special event occurrences}
