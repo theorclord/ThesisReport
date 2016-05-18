@@ -144,9 +144,13 @@ Oxforddictionaries.com. (2016). \textit{board game - definition of board game in
 Regelous, S. (n.d.). \textit{MASSIVE}. Wellington, New Zealand: Weta Digital.
 
 %S
+<<<<<<< HEAD
+\bibitem{game:FTL}
+=======
 \bibitem{book:rop}
 Salen, K. and Zimmerman, E. (2003). \textit{Rules of Play: Game Design Fundamentals}. Cambridge, Massachusetts: MIT Press.
 \bibitem{game:ftl}
+>>>>>>> f57c1c7388d41c6cc661b4eddc7ab0098c4d1566
 Subset Games (2012). \textit{FTL: Faster Than Light} [Video game]. iOS, OS X, Linux, Microsoft Windows. Subset Games.
 \bibitem{art:pcgbased}
 Smith, G., Gan, E., Othenin-Girard, A. and Whitehead, J. (2011). PCG-based game design in \textit{Proceedings of the 2nd International Workshop on Procedural Content Generation in Games - PCGames '11}. Santa Cruz, California, USA: University of Santa Cruz.
