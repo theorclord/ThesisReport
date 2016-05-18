@@ -1,0 +1,181 @@
+\section{Methods}
+The progress and process of the project
+\subsection{Brainstorming and design choices}
+Co-op game 
+Encourage discussion and exploit the tabletop setting (players sitting around a table)
+2 phases game (management phase / exploration phase / resource input)
+How the app could be used
+\subsection{The Game - One play session}
+From start to end. Full run of a game.
+\subsection{Game design}
+Extract/Specify the design patterns (of the 2 genres we are trying to "combine")
+Designing how the app would work
+Setting
+Management system
+Resources
+Player Specialization
+Risk/Reward
+Infinite number of cards (events)
+Event "memory"
+Special events
+UX (App/Board)
+\subsection{App structure (How the game is composed (Technical))}
+Scenes and their purpose
+
+The scenes included in the app are as follows:
+- StartScene
+- WorldScene
+- NodeScene
+- EndScene
+
+<<<<<<< HEAD
+All of the scenes mentioned above will be explained and gone through in more details in this part.
+
+\subsubsection{StartScene:}
+
+As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
+As soon as the "Start Game" button is clicked, the app will generate the contents of the world, and present it to the user within the next scene, which is the WorldScene.
+
+\subsubsection{WorldScene:}
+=======
+All of the scenes mentioned above will be explained and gone through in more details in this part. \\
+StartScene:
+
+As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
+As soon as the "Start Game" button is clicked, the app will generate the contents of the world, and present it to the user within the next scene, which is the WorldScene. \\
+WorldScene:
+>>>>>>> 5b9ec80db265fb829aa26aea6bee647700596f46
+
+This is the "main" layout of the world. It contains all the locations that the players can travel, and shows them where they are, where they have been, and where they have to go. When you first see this part of the program, you will notice that it has floating islands with circles around it, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
+At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
+
+Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within said circle, are available to be travelled to.
+
+When travelling from one island to another, the circle around the island you arrived at will turn green (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they so choose. 
+When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavor text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will then be moved towards that chosen island and stop once it reaches it. 
+<<<<<<< HEAD
+Once the castle has reached the island and the colliders on the object are triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
+
+\subsubsection{NodeScene:}
+=======
+Once the castle has reached the island and the colliders on the object are triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented. \\
+NodeScene:
+>>>>>>> 5b9ec80db265fb829aa26aea6bee647700596f46
+
+The NodeScene is probably best known as the "island scene" or "event scene", because 
+this is the scene where all the events take place, and it is the main place where the players will have to interact with each other in order to choose their wanted event. 
+To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to. On top of that, every Island (from the WorldScene) has a faction affiliated with it. What this does, is to allow the player to instinctively know whether or not an event will have a positive outcome and if it has a higher chance of success, based on the current standing the players have with that faction.
+Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. ((ABOUT THE EVENT TYPES HERE?))
+After the confirmation, a new box will appear, where the event flavor text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
+The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. \\
+EndScene:
+
+Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. What happens then is that all the data is cleared from the app, the WorldScene shifts to the EndScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
+
+
+
+UI elements
+
+	- Boxes
+	
+	- Faction icons
+	
+	- Buttons
+	
+	- Islands
+	
+	- Castle
+	
+	- Rings
+	
+	- Arrow
+	
+	- Token Indicators (events)
+	
+
+Camera
+
+	- centring on castle
+	
+	- Zoom
+	
+	- Reset Position
+	
+	- Move around
+	
+
+Datamanager
+
+	- Purpose
+	
+	- Access
+	
+	- Usage
+
+World Nodes and Sub Nodes
+Map Layout, spacing and placement
+Raycasting?
+\subsection{PCG Generating the content}
+\subsubsection{L-system}
+General Description of an L-system (Theory)
+
+LRules
+
+RuleCollection
+
+States
+
+Interpreting
+
+Expanding
+\subsubsection{Events}
+The applications main purpose is to generate events which is the main interaction for the physical part of the game. The events provides resources for players and challenges in form of lost crew or constructed rooms.
+
+Throughout the development of the game there have been several approaches to the problem of generating these events in an interesting manner and ensure the perceived space of possibilities was large enough for the events not to repeat themselves to often.
+
+The first implementation used the location of the selected node to determine the events.
+The idea was that the program was supplied with the location type, gathering, research, diplomacy, and from there a set of events were picked. 
+The number of event options were randomly determined between 1 and 3. 
+The event options generated came in three categories, basic, second, and third. This distinction was made to ensure the players always had the opportunity to chose at least one option. 
+The options have a different list of outcomes tied to then, as to give some randomized outcome from selecting a button.
+The outcomes, or results, were given a percent chance of appearing. 
+
+
+The different approaches
+Generating from type and selecting predefined events
+Building from building blocks
+Final version
+
+The xml files.
+How they are used. The scalability 
+The different files
+Flavor vs content
+
+The structure of event generation
+getting the type of event.
+getting the conditions
+getting the outcomes
+saving the event
+
+
+Combining the flavor text
+Conditions and Outcomes (How they are connected)
+Problem solving
+Paper prototypes of building blocks(Strings)
+Reverse engineering of text
+Finding an acceptable way to combine
+Saving data to produce new data
+Having the right values
+What is needed
+How to access
+How to build from it
+\subsection{The app - From start to end}
+The life of the app. 
+Start game 
+Generate nodes
+Generate events
+How an event is built
+Moving around
+Interacting with the islands
+Flavor text combinations and it's purpose
+Using memory to generate special event occurrences
