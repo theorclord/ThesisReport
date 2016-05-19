@@ -145,24 +145,38 @@ The layout of the WordScene can be seen in figure \ref{fig:worldSc}.
     \label{fig:worldSc}
 \end{figure}
 
-Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within said circle, are available to be travelled to.
+Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within this circle, are available to be travelled to.
 
-When travelling from one island to another, the circle around the island you arrived at will turn purple (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they so choose. 
-When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will then be moved towards that chosen island and stop once it reaches it. 
+When travelling from one island to another, the circle around the island you arrived at will change color (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they choose to do so.
+When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will be moved towards that chosen island and stop once it reaches it. 
 Once the castle has reached the island and the collider on the object is triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
 
 \subsubsection{NodeScene}
 \label{sec:nodeScene}
 The NodeScene is probably best known as the "island scene" or "event scene", because 
 this is the scene where all the events take place, and it is the main place where the players will have to interact with each other in order to choose their wanted event. 
-To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to. On top of that, every Island (from the WorldScene) has a faction affiliated with it. What this does, is to allow the player to instinctively know whether or not an event will have a positive outcome and if it has a higher chance of success, based on the current standing the players have with that faction.
-Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. ((ABOUT THE EVENT TYPES HERE?))
+To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to. On top of that, every Island (from the WorldScene) has a faction affiliated with it. What this does, is to allow the player to instinctively know whether or not an event can have a positive outcome and if it has a higher chance of success, based on the current standing the players have with that faction.
+Once an area of the island has been clicked, let's say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. 
+There are 2 main types of events; Research and Gathering events. Research events usually yield more alchemy points, whereas the gathering event has their basis in building materials.
 After the confirmation, a new box will appear, where the event flavour text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
 The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. 
 
 \subsubsection{ScoreScene}
 Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. What happens then is that all the data is cleared from the app, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
 
+\subsubsection{Island Nodes and Location Nodes}
+All over the world map, there are placed a lot of islands. These islands are the places that the players can travel to, and they are represented by a picture of an island that floats, along with a signifier-circle that tells the players whether or not they have already explored it. Inside each of these islands, there are a bigger image that represents the island itself, and on that island, or next to it if there is a "floating rock formation", are smaller images of the available locations that the players can explore. 
+
+All of these nodes, islands and locations alike, are what gives out the events to the players, and they are what causes the story and feel of the game by containing all the events, their flavour, rewards and owners. All of this information is going to be presented to the players at their command, and this means that they must have some way of interacting with them. This is done via use of the UI elements (see the "UI elements" section), and in particular the buttons and images.
+
+\subsubsection{Buttons and Raycasting on images}
+As explained in the section above, the players main source of interaction is via the use of buttons and images. The buttons that can be found on the main screen, on various events and dialog boxes, all have their own respective functionalities connected with them. One button might close a box, another might start the game, each button have specific actions that they perform, and what they do or how they affect the gameplay, is represented on them either via specific text, flavour text or icons.
+The images and icons are a bit more tricky, especially for the players, as they do not necessarily signify to them that they can be interacted with, unlike the buttons which most people instinctively know does something.
+By programming itself, an image is just an image. It has no function attached to it, and does not do anything specific other than portraying a picture. So in order to make the images "clickable" you have to introduce raycasting.
+
+Raycasting is when you create a line from one point to another, and in this case the only logical way to raycast to the images, was to make the initial start point be wherever the user touch the screen. So when the screen is touched, and the initial position is set, a ray will be made from that point and go "into" the screen (the z direction). By doing this, we can calculate if at any point of the ray, it touches an image that we want to give functionality. If this is the case and say that an exploration location is colliding with the ray, the application will then know to execute the functionalities that that images is holding. In the case of a location being clicked, an event box will appear and the players can continue with the game, and explore on.
+
+In the next section, the UI Elements section, you will be introduced to all the remaining elements that is used in the digital part of the game.
 
 
 \subsection{UI elements}
@@ -254,10 +268,18 @@ The faction system is also made possible by the datamanager. Every faction has a
 Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content based on previous events which is something that would be hard to do with only a physical board game. 
 The fact that you at any time can go in and compare previous values to current ones, opens up for possibilities of changing data on the spot. If your current event has too much of the same values as used in previous events, you can just access the saved data, find what needs to be changed, and update your current events accordingly.	
 
+\subsection{The World Map}
+In this section, we will describe how the map is laid out on the screen and represented to the player.
 
-World Nodes and Sub Nodes
-Map Layout, spacing and placement
-Raycasting?
+\subsubsection{Map Layout}
+The layout of the map is generated by the use of an L-System (see L-system and the world map section below) and the interpretation rules that comes with it. The main map layout that is being used, has the spreading angle of 30 degrees, though this value vary from the other map layouts that were developed. The map is split up to go in 4 different directions; North, East, South and West. After each island in these directions, the directions spread in 3, one in front, and two to either side in the spreading angle specified. This is the basic pattern that by being repeated, makes up the map.
+
+\subsubsection{Spacing}
+Each of the islands that are on the map are placed in a very specific way. They are all spaced so that the distance between them are a little bit less than that of the player-castle's maximum travel distance. This is done to ensure that the players always are able to go to at least \textbf{one} island, no matter where the castle is positioned at any given time. However, because of the use of the L-System, and the fact that the placement pattern is repeating with a set spreading angle, there may be more than one possible destination at a given point in the game. Some of the islands might even be rather close to each other and look like a smaller system of islands. And of course the initial start placing of the castle has 4 islands that are available to be visited, and this is to give the players more freedom of exploration in the game.
+
+\subsubsection{Placement}
+The L-system and its rules are there to make sure that the placement of the islands are varied, but at the same time within a given pattern. This means that the look of the map will at times, depending on the how the L-System algorithm is formulated, be able to resemble specific shapes or patterns. Whether this is good or not, depends on how the players respond to it, and if they are even able to see the entirety of the map layout.
+
 \subsection{PCG - Generating the content}
 \subsubsection{L-system and the world map}
 
