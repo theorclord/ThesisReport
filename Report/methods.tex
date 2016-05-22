@@ -19,12 +19,30 @@ In order to explore the use of PCG in tabletop games, the first step was to brai
 \end{itemize}
 Those challenges were the main ones that the project should cover. To do so first required to find a game concept based on core mechanics that would allow the exploration of those challenges.
 \subsubsection{Finding a concept meeting the challenges}
-Based on the principles previously stated and on the related design theory, a first game concept had to be found. The first design pattern that was considered was extracted from PCG-based games was the generation of \textit{nodes} that the players would need to travel to in order to reach a final destination. Examples of such mechanic can be found in \textit{FTL: Faster Than Light} \cite{game:ftl} or \textit{Out There} (Mi-Clos Studio, 2014)\cite{game:outthere}, which both inspired Archipelago in different. This pattern was called \textit{Events}. The players would have to 
+Based on the principles previously stated and on the related pattern design theory, a first game concept based on a core loop had to be found. The first design pattern that was considered was extracted from PCG-based games was the generation of \textit{nodes} that the players would need to travel to in order to reach a final destination (see figure \ref{fig:map}). Examples of such mechanic can be found in \textit{FTL: Faster Than Light} \cite{game:ftl} or \textit{Out There} (Mi-Clos Studio, 2014)\cite{game:outthere}, which both inspired Archipelago in various ways. This design pattern was called \textit{Events}. The players would have to travel or select the nodes one by one, and progress thanks to the outcomes procedurally generated in the nodes. This pattern had several benefits, and also several implications. First of all, the \textit{Events} pattern is often based on a  risk versus reward concept. The player has to foresee the potential reward that an event can provide, and balance it with the necessary risk to take in order to access it. The crucial part of this idea is to be found in the \textit{necessity} of the risk, and the \textit{possibility} of getting a reward. However, this kind of risk versus reward play experience is very frequently used in tabletop games, often reproduced with a dice roll. For this reason, another value should be added to this pattern, thanks to the use of PCG. This would be included in the scope of several prototypes.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Images/Map.png}
+    \caption{First map mock-up used to communicate the basic concept to the team. The green node represents the position of the player, and the red and blue stars are nodes that need to be visited. The circle around the player limits the nodes that can be reached in one move, and the yellow line shows the already visited nodes.}
+    \label{fig:map}
+\end{figure}
+
+The \textit{Base Management} pattern is the next one that was chosen to create Archipelago. The term \textit{base} refers to the central part of the game, that the players would use to travel from one node to the other.  This pattern is closer to tabletop game mechanics, where the players uses the different resources available to progress through the game. As an example, the game \textit{Agricola} (Rosenberg, 2007) \cite{game:agri} illustrates this mechanic in various ways: the players need to improve their resources collecting capacity in order to  The main idea behind this pattern was to use resources in order to build a base and improve it over the different turns. The resources would have different uses and origins. On the same principle, the various ways in which the base could be increased would provide a variety of gameplays and strategies, thus enforcing the "replayability" concept.
+
+The combination of those two patterns would create the following core loop:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Images/Core loop.png}
+    \caption{A visual representation of the core loop, composed by the three different steps composing one turn.}
+    \label{fig:map}
+\end{figure}
+\subsubsection{Supporting the design patterns combination}
+
 \subsubsection{The role of the digital part}
 Mainly, the function of the application is to contain all the information regarding events, movement, factions and overall the data available within the game. The application is the only connection the players will have to what is supposed to happen in the game, as without it, the game would just be an empty board with pieces that would have no purpose. 
 When playing the Archipelago, the digital part of the game, the app, will provide the players with a layout of the world, i.e. the map with all its islands, and it will contain all methods of receiving rewards as well as receiving penalties for executed events. It determines which resource the players will receive, what the "story" is, in terms of flavour presented, and it contains the factions and the players standing with each of them.
 The events in the app, are made to be like cards that the board game would have, if there was no app. But by having the digital computing and memory, the diversity of these events are much greater and there is no need for a huge pile of cards and expansion packs to generate different and diverse events. The app is in full control over what the players get and what is taken away from them, and given that there is now memory in place, the possibility to create new content based on previous events is there. Another part that the application plays in the entirety of the game, is that it controls when effects take place. If there has been an event with a specific outcome, it is then the system that controls if there should be consequences based on those outcomes. If there was no digital application in place, there would have to be a large amount of cards and pieces in the board game, along with very specific rules and combination guides, for the players to sufficiently be able to piece together new events and outcomes. So the biggest purpose of the app, as implemented in this solution, is to have complete control over all actions, story, events and outcomes and be able to present them to the players without using much time, which the players would do if they had to combine their own "gameplay".
-\subsubsection{Board Role}
+
 \subsubsection{Interaction between app and board}
 Encourage discussion and exploit the tabletop setting (players sitting around a table)
 2 phases game (management phase / exploration phase / resource input)
