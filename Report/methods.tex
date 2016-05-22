@@ -1,12 +1,12 @@
-\section{Archipelago}
+\chapter{Archipelago}
 Creating a hybrid game using PCG represents a challenge in both design and technical areas. First of all, the hybrid game genre that has been previously defined in this paper is a recent design space to explore for designers. Even though some experiments (like \textit{False Prophets} and \textit{STARS}) or games (like \textit{XCOM: The Board Game}) already exist, exploring this concept means raising many questions about how should the digital device be integrated, and what kind of play experience is enabled by the use of PCG. The best way to answer these questions is to make a comprehensive use of prototyping.
 
 Some results from this experiment are more related to design choices that are not depending on PCG or the hybrid nature of the game. For that reason, the creation of Archipelago is not to be thought as a universal answer to the use of PCG in hybrid games, but more as a way to point out, illustrate and explain the challenges that appeared while creating the game. In that sense, Archipelago only provides answers to design and technical questions in a particular framework. However, since the game has been thought from the beginning as an experimental concept, it is expected that the answers provided by the different prototypes will transcend the project presented in this paper. This means that the results that will be presented here will contribute to the exploration of making hybrid games in various ways. The successful design choices must be situated in their particular context, and experienced game maker will recognize the patterns that worked. Using the same approach, the experimentations that did not provide the expected results will also be considered useful.
 
 The following section will start describing the process of making archipelago by identifying the challenges that appeared when thinking about hybrid games using PCG. Then, the different prototypes made to create the game and the questions they answer will be thoroughly dissected and explained. Each aspect of the game is intended to provide results both on the design and technical aspect of its creation. 
-\subsection{Brainstorming and Game Concept Choice}
+\section{Brainstorming and Game Concept Choice}
 Brainstorming over the concept of hybrid game was already a challenge in itself. Because of the experimental nature of the project and the time in which the game had to be created, it was decided to focus on the key challenges that were expected, and reveal new ones all along the process.
-\subsubsection{Prior concerns}
+\subsection{Prior concerns}
 In order to explore the use of PCG in tabletop games, the first step was to brainstorm around what PCG bring to the genre, and what were the pitfalls of such a combination. Based on the definition of hybrid games that was previously established and on the expectations of what PCG affords in games, the main ideas were pointed out (see appendix).
 \begin{itemize}
 \item A hybrid game is made of both digital and analogue components. The first challenge to keep in mind was that both types of components must be used for a good reason. In other words, the choice for the core mechanics must prove that the contribution of analogue components could not be simulated on a computer; the same perspective was adopted for the digital part of the game, which could not be replaced by any kind of analogue components.  
@@ -18,7 +18,7 @@ In order to explore the use of PCG in tabletop games, the first step was to brai
 \item Finally and to stress out the core tabletop gameplay, it was necessary to be cautious about how intrusive the application would be in the game. One of the challenge while designing the game would be to provide enough information to the digital device, so that a sufficiently varied content could be generated without requesting too many inputs from the players. More generally, avoiding \textit{algorithm specific inputs} that go directly as parameters to the algorithm in order to customize it to the next state of generation was necessary. Therefore, they should be well hidden  behind the game mechanics.
 \end{itemize}
 Those challenges were the main ones that the project should cover. To do so first required to find a game concept based on core mechanics that would allow the exploration of those challenges.
-\subsubsection{Finding a concept meeting the challenges}
+\subsection{Finding a concept meeting the challenges}
 Based on the principles previously stated and on the related pattern design theory, a first game concept based on a core loop had to be found. The first design pattern that was considered was extracted from PCG-based games was the generation of \textit{nodes} that the players would need to travel to in order to reach a final destination (see figure \ref{fig:map}). Examples of such mechanic can be found in \textit{FTL: Faster Than Light} \cite{game:ftl} or \textit{Out There} (Mi-Clos Studio, 2014)\cite{game:outthere}, which both inspired Archipelago in various ways. This design pattern was called \textit{Events}. The players would have to travel or select the nodes one by one, and progress thanks to the outcomes procedurally generated in the nodes. This pattern had several benefits, and also several implications. First of all, the \textit{Events} pattern is often based on a  risk versus reward concept. The player has to foresee the potential reward that an event can provide, and balance it with the necessary risk to take in order to access it. The crucial part of this idea is to be found in the \textit{necessity} of the risk, and the \textit{possibility} of getting a reward. However, this kind of risk versus reward play experience is very frequently used in tabletop games, often reproduced with a dice roll. For this reason, another value should be added to this pattern, thanks to the use of PCG. This would be included in the scope of several prototypes.
 \begin{figure}[h]
     \centering
@@ -36,39 +36,39 @@ The combination of those two patterns would create the following core loop:
     \caption{A visual representation of the core loop, composed by the three different steps composing one turn.}
     \label{fig:map}
 \end{figure}
-\subsubsection{Supporting the design patterns combination}
+\subsection{Supporting the design patterns combination}
 
-\subsubsection{The role of the digital part}
+\subsection{The role of the digital part}
 Mainly, the function of the application is to contain all the information regarding events, movement, factions and overall the data available within the game. The application is the only connection the players will have to what is supposed to happen in the game, as without it, the game would just be an empty board with pieces that would have no purpose. 
 When playing the Archipelago, the digital part of the game, the app, will provide the players with a layout of the world, i.e. the map with all its islands, and it will contain all methods of receiving rewards as well as receiving penalties for executed events. It determines which resource the players will receive, what the "story" is, in terms of flavour presented, and it contains the factions and the players standing with each of them.
 The events in the app, are made to be like cards that the board game would have, if there was no app. But by having the digital computing and memory, the diversity of these events are much greater and there is no need for a huge pile of cards and expansion packs to generate different and diverse events. The app is in full control over what the players get and what is taken away from them, and given that there is now memory in place, the possibility to create new content based on previous events is there. Another part that the application plays in the entirety of the game, is that it controls when effects take place. If there has been an event with a specific outcome, it is then the system that controls if there should be consequences based on those outcomes. If there was no digital application in place, there would have to be a large amount of cards and pieces in the board game, along with very specific rules and combination guides, for the players to sufficiently be able to piece together new events and outcomes. So the biggest purpose of the app, as implemented in this solution, is to have complete control over all actions, story, events and outcomes and be able to present them to the players without using much time, which the players would do if they had to combine their own "gameplay".
 
-\subsubsection{Interaction between app and board}
+\subsection{Interaction between app and board}
 Encourage discussion and exploit the tabletop setting (players sitting around a table)
 2 phases game (management phase / exploration phase / resource input)
 How the app could be used
-\subsection{The Game - One play session}
+\section{The Game - One play session}
 In this section of the paper, we will go through a full play session of the game, that is all the different stages that occur in a game session, and explain the actions that happen along the different phases of the game.
 The game session presented will be a fictional one, and the game itself will not necessarily be a complete one in terms of going through all the islands that would be represented on the application at runtime, but rather it will explain every step along the way, and go through all the main parts of a complete game session.
 
-\subsubsection{Setup}
+\subsection{Setup}
 
 When starting the game, the first thing that will happen, is to set up the board. The board will be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
 When the assigning of the player tokens have been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and reference the rules when needed.
 After all this initial setup is complete, the only remaining thing to do, is to start up the application part of the game, and be presented with the map that the game session will explore.
 
-\subsubsection{The Board}
+\subsection{The Board}
 When starting the game and placing the board, the initial pieces the players have available are 2 player tokens, or crew tokens, for each player in the game, along with 4 building materials and 1 alchemy point. The castle itself will start off with 3 crystal pieces, which power the castle, and these 3 pieces are enough to start the players off with their castle at tier 1. In order to get to tier 2, the players will need to acquire another crystal piece.
 
 
 - Starting pieces, etc.
 
-\subsubsection{The App}
+\subsection{The App}
 As the application is started, the players are presented with the layout of the map. In the center you will find the castle, as is being represented by the physical board on the table. To move around in the world, all that needs to be done, is to click on an island that is within the circle around the castle, which indicates the travel distance possible for the castle each turn. Once an island is clicked on, a travel confirmation dialogue box will appear, and the players will have to confirm that they do indeed wish to travel there. As the castle reaches the selected island, the events begin. 
 
 - Starting the game and moving around the world
 
-\subsubsection{Phase 1 - Castle Management}
+\subsection{Phase 1 - Castle Management}
 Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the management phase. 
 In this management phase, the players can upgrade, repair and expand upon their castle.
 There is no limit for how much they can do, other than what the players themselves have the resources for. If they want to build a new room, this can be done. However, the cost of doing so is 2 building materials, and a player will have to assign one of their crew tokens to the building task, and that means that that token can not be used in the upcoming event phase this round.\\
@@ -83,7 +83,7 @@ When travelling out into the world, the players would need at least 1 available 
 - Assigning people to rooms\\
 - 
 
-\subsubsection{Phase 2 - Exploring the World}
+\subsection{Phase 2 - Exploring the World}
 When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the world.
 As mentioned before, the first thing the players have to do in the world map, is to click on the reachable island they want to travel to. Once they have accepted to travel there, and have reached the location, the players will have to select an area, or location, that they would like to explore.\\
 Each area are connected to a type of resource, either it is a gathering area which will mainly yield building materials, or it is the research area which will yield mainly alchemy points.
@@ -106,29 +106,29 @@ When the players have received their rewards and applied the results to the boar
 	- Assigning player tokens + resources\\
 	- Completing the Event and apply the results to the board\\
 
-\subsubsection{Clean-up and Reset}
+\subsection{Clean-up and Reset}
 
 When returning from an event, all the pieces that were used the previous round, i.e. the crew tokens used for construction, the tokens assigned to the rooms, and the tokens used in the events, are returned to the players, and the board is cleaned up.
 If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.
 
 When this is done, the game repeats as described above with phase 1 and 2 and back again.
 
-\subsubsection{Special Event Occurs}
+\subsection{Special Event Occurs}
 
 Somewhere along the game, the players will most likely encounter the "special events". There are as of right now, two types of special events.\\
 The first type is the fighting event. When this event occurs, the players will be presented with a scenario where two of the factions within the game, are fighting each other. It is then up to the players to decide whether they want to leave them alone, or if they would like to assist them. If they want to assist them, they have to choose their side. If the players are already friendly with one of the factions, they might want to assist that faction again. This choice is completely up to the players.\\
 The other event type is memory based. It is an event that is based on previous events that the players have completed. If they can remember it, all the better. Either ways, the event is special in that is based on previous data. If the players visited an island controlled by the Highbournes, and they used some special healing on one of the options, then the special event could say something like "The highbournes saw you at the island, and want to learn how to use your healing magic". It is then up to the players to decide whether or not they want to help them, or not. Keeping in mind that their current standing with the faction will influence the outcome of whatever option they choose. 
 
-\subsubsection{Reaching the end - Winning condition}
+\subsection{Reaching the end - Winning condition}
 At one specific point on the map, there is a goal island. This island is the one the arrow is pointing towards, and is the one that the players are supposed to head towards in order to complete the game, and win.
 If the players are able to reach this island, the game is over. The players will be presented with an ending screen in the app, and then they can choose to start a new game if they so choose. 
 
-\subsubsection{Losing the game - Losing conditions}
+\subsection{Losing the game - Losing conditions}
 There are a number of different ways to lose the game. Since it is a collaborative game, if one of the players manages to get all his or her crew tokens killed, the game is over. Every player must have at least one crew token, in order for the game to still be in play.
 Should the castle run out of crystal charges, the game will be over as well, as this would mean that the castle would be stuck floating in space and not be able to move.
 
 
-\subsection{Game design}
+\section{Game design}
 Designing how the app would work
 Setting
 Management system
@@ -140,15 +140,15 @@ Event "memory"
 Special events
 UX (App/Board)
 
-\subsection{Development Structure (Technical)}
+\section{Development Structure (Technical)}
 This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
-\subsubsection{From design to implementation}
+\subsection{From design to implementation}
 When working as a developer, you also work closely with the designer. What we did during our development period, was to get the wants and needs from the designer, and try to implement it into prototypes for overlook and feedback. 
 If things needed to be changed, added or removed, the team would go through in general terms what needed to be done, and then the requested adjustments would be made to the prototypes.
 
 In the next part of this section, we will go into more detail on how the prototyping would take place, how the communication between programmers and developer happened, and what changes were made over time during the period of development.
 
-\subsubsection{Prototyping (Application)}
+\subsection{Prototyping (Application)}
 Right from the start, it was important to quickly produce smaller prototypes so that we could get an idea of how to continue, and to test the implementations that were made. The first part of the project is to set up the app and have a starting point that you can build on. In our case, this meant an initial screen with a simple UI that could be added to, moved around and overall that could display text and data. On top of that, the backbone of the system would be to have different data classes that could contain the various sorts of information that would be needed.
 
 \begin{center}
@@ -198,7 +198,7 @@ The remaining tasks to be solved, is implementing better visuals, icons and sign
 The final product is ready. No more coding and algorithmic calculations are needed. From this point in, polish is the keyword. Optimizing the feel of the application, making sure everything runs smoothly and looks good, and having as many flavour text pieces as possible for every element, so that the game will be as diverse as possible.
 \end{center}
 
-\subsubsection{Problem solving}
+\subsection{Problem solving}
 One of the biggest concerns in terms of being able to present the game with "feel" to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
 
 To exemplify, we will use the dummy flavour "As you arrive at Endriath, you see an old village in the distance. The village seems to have markings that resemble those used by the Highbournes".
@@ -211,7 +211,7 @@ After all these pieces has been discovered, the next step is validation. This is
 
 When this all succeeds, the method of combination is discovered, and is ready to be implemented into code. Then, when it is all implemented, all that needs to be done, is to create a variety of flavours for each of the blocks and the rest will be done by the program.
 
-\subsection{App structure}
+\section{App structure}
 This section details the different scenes which are in the app and their function. 
 Each of the scenes will be explained in detail in the following sections.
 The scenes included in the app and the change between the scenes are detailed in figure \ref{fig:appState}.
@@ -223,14 +223,14 @@ The scenes included in the app and the change between the scenes are detailed in
     \label{fig:appState}
 \end{figure}
 
-\subsubsection{StartScene}
+\subsection{StartScene}
 As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
 
 Furthermore, as this scene is loaded, the preliminaries to the world generation and the loading of required data from XML files is handled. This minor loading, takes some of the load of the rest of the program, giving an overall smoother experience.
 
 As soon as the "Start Game" button is clicked, the app will generate the contents of the world, and present it to the user within the next scene, which is the WorldScene.
 
-\subsubsection{WorldScene}
+\subsection{WorldScene}
 This is the main layout of the world. It contains all the locations that the players can travel to, and shows them where they are, where they have been, and where they have to go.
 When you first see this part of the program, you will notice that it has floating islands with circles around it, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
 At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
@@ -249,7 +249,7 @@ When travelling from one island to another, the circle around the island you arr
 When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will be moved towards that chosen island and stop once it reaches it. 
 Once the castle has reached the island and the collider on the object is triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
 
-\subsubsection{NodeScene}
+\subsection{NodeScene}
 \label{sec:nodeScene}
 The NodeScene is probably best known as the "island scene" or "event scene", because 
 this is the scene where all the events take place, and it is the main place where the players will have to interact with each other in order to choose their wanted event. 
@@ -259,15 +259,15 @@ There are 2 main types of events; Research and Gathering events. Research events
 After the confirmation, a new box will appear, where the event flavour text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
 The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. 
 
-\subsubsection{ScoreScene}
+\subsection{ScoreScene}
 Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. What happens then is that all the data is cleared from the app, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
 
-\subsubsection{Island Nodes and Location Nodes}
+\subsection{Island Nodes and Location Nodes}
 All over the world map, there are placed a lot of islands. These islands are the places that the players can travel to, and they are represented by a picture of an island that floats, along with a signifier-circle that tells the players whether or not they have already explored it. Inside each of these islands, there are a bigger image that represents the island itself, and on that island, or next to it if there is a "floating rock formation", are smaller images of the available locations that the players can explore. 
 
 All of these nodes, islands and locations alike, are what gives out the events to the players, and they are what causes the story and feel of the game by containing all the events, their flavour, rewards and owners. All of this information is going to be presented to the players at their command, and this means that they must have some way of interacting with them. This is done via use of the UI elements (see the "UI elements" section), and in particular the buttons and images.
 
-\subsubsection{Buttons and Raycasting on images}
+\subsection{Buttons and Raycasting on images}
 As explained in the section above, the players main source of interaction is via the use of buttons and images. The buttons that can be found on the main screen, on various events and dialog boxes, all have their own respective functionalities connected with them. One button might close a box, another might start the game, each button have specific actions that they perform, and what they do or how they affect the gameplay, is represented on them either via specific text, flavour text or icons.
 The images and icons are a bit more tricky, especially for the players, as they do not necessarily signify to them that they can be interacted with, unlike the buttons which most people instinctively know does something.
 By programming itself, an image is just an image. It has no function attached to it, and does not do anything specific other than portraying a picture. So in order to make the images "clickable" you have to introduce raycasting.
@@ -277,11 +277,11 @@ Raycasting is when you create a line from one point to another, and in this case
 In the next section, the UI Elements section, you will be introduced to all the remaining elements that is used in the digital part of the game.
 
 
-\subsection{UI elements}
+\section{UI elements}
 
 In this section, we will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
 
-\subsubsection{Boxes}
+\subsection{Boxes}
 
 There are a number of different boxes that will appear over the course of a game session with this app. By "boxes" we refer to the dialog boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
 The purpose of each box on a high level, is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
@@ -291,11 +291,11 @@ Next up, you have the event box. This is the main box of the game, one might say
 Once an option has been chosen, the application loads the result box. This box is mainly a field where the description of what happened during the event is shown. it also has a field where the results in terms of board pieces gained/lost, reputation changes, etc. are shown. In addition, it has a "return" button, where once clicked, the players are taken back to the WorldScene where their game continues.
 
 
-\subsubsection{Faction icons}
+\subsection{Faction icons}
 
 The faction icons have a rather small visual part in the application, but the impact it makes on understanding the game and seeing what opportunities and rewards the players might get, is rather substantial. In the top left corner of each NodeScene screen, there is an icon that conveys to the players, which of the current 3 factions controls the island that they are on. With this information, and the information that the players might have a specific standing with said faction, allows the players to mentally make an image of what the outcomes of the event might be, in terms of good, bad or neutral.
 
-\subsubsection{Buttons}	
+\subsection{Buttons}	
 
 The buttons in this application is the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built on to other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialog boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, we are able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are between 2 or 3 buttons that holds options for how to solve the given event, and that means that we can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
 
@@ -304,52 +304,52 @@ The buttons in this application is the main way for the users to interact. If it
 The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
 As the main goal of the game, within the application, is to reach the goal node, it is important that the islands are spread around the world in a way so that the players themselves can choose which route they want to take in order to reach it. Be it the shortest way, or a longer way that requires more exploring and will take a longer time. Each island also have their own name and flavour to them, so that it hopefully will feel to the players that they have a history and a meaning.
 
-\subsubsection{Castle}
+\subsection{Castle}
 	
 This is the center piece on the table. The board in itself is a layout of the castle as represented within the application.
 When moving around in the generated world, you move your entire castle. The castle is basically acting as the player object within the game. Since this is a collaborative game, however, it is up to the players to discuss amongst themselves how to use and distribute the resources that are "contained" within the castle, and use their own minds to select how an event is to be resolved when the castle is entering an island.
 
-\subsubsection{Rings} 
+\subsection{Rings} 
 
 Every island on the map has a ring around it. The color of the ring indicates whether the island is explored, unexplored or the goal, with the colors green, white and blue respectively. Having these rings is a way to signify to the users where they have been, where they can go, and gives the players a quick and easy overview of the map situation.
 The castle also has a ring around it, but this is a significantly larger ring. This is because this ring signifies how far the castle is able to travel in one turn. Every island that is within that ring around the castle, is an island that they players are able to explore, and the map is made so, by the use of an L-System, that each node is possible to be visited, it is just up to the players to decide how and where they want to travel.
 
-\subsubsection{Arrow} 
+\subsection{Arrow} 
 
 The functionality of the arrow located in the lower right corner of the world scene, is to give an easy way for the players to see which direction they need to go in order to reach the goal island.
 This arrow is a nice little feature, because if the map is too big, and the users of the application were to focus the camera too far away from the map section, they will have an easy way to find the direction again. There are also other "safety" features implemented in case of camera issues, and they are described in the "Camera" section.
 
-\subsubsection{Token Indicators (events)}
+\subsection{Token Indicators (events)}
 	
 Functionality-wise, the token indicators are only there to allow the players to quickly get an idea of what physical board pieces are being used in any given event, whether it be in the conditions, or in the results. The tokens creates a link between the application and the physical part of the game by having recognizable images of the tokens that are identical to the ones actually used in the physical part. This again allows the players to get a notion of what is being used just by having a quick glimpse at the icons.
 
-\subsection{Camera}
+\section{Camera}
 
 In this section, we will explain the uses of the camera and the functionalities that is implemented with it. 
 
-\subsubsection{Centring on castle}
+\subsection{Centring on castle}
 
 A problem that could occur when playing the game, was that the camera would go too far off to one side of the map. This could happen if a player would be reckless when moving the camera around the map in order to get a proper view of the situation. As a result of this problem being able to happen, there came a need to be able to quickly get back to the castle, so the solution was simple: Center the camera on the castle on command. So by simply double clicking anywhere on the map, the camera will reset it's position to the castle's current location. On top of having this, there is also the arrow, as described in the "UI Elements" section, pointing towards the end goal, so that if the players know the castle's relative position to the goal, they can navigate back to the castle if needed. 
 
-\subsubsection{Zoom}
+\subsection{Zoom}
 	
 In order for the players to be able to get a good overview of the entirety of the map, there had to be a way for the camera to zoom out. However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, so the maximum and minimum zoom distance are set within the app itself.	
 
 	
-\subsubsection{Move around}
+\subsection{Move around}
 
 The players using the app are able to move the camera around all of the map in which ever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
 There is not set any max distance the camera can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
 
-\subsection{Datamanager}
+\section{Datamanager}
 
 The data manager is a collection of all the data saved locally within the application. In this section, we will elaborate on the purpose for it, how it is being accessed, and the overall usage of the manager and the data it contains.
 
-\subsubsection{Purpose}
+\subsection{Purpose}
 	
 The purpose of having a data manager, is to have all data we want, in one convenient location. And by doing so, allowing all aspects of the application to have access to it. By allowing access from anywhere, all the data that is saved will be shared and available to use from wherever it is needed whenever it is needed. This also means that we can save data in real-time as for example an event is concluded.
 
-\subsubsection{Usage}
+\subsection{Usage}
 
 There are several usages of the data manager, and they range from saving the islands, events, outcomes and selections, factions and standing to much more.
 
@@ -361,25 +361,25 @@ There are also statistical values of having all data saved in one location. If t
 The faction system is also made possible by the datamanager. Every faction has an allegiance factor, ranging from -150 to 150, and is split up in 3 sections; Enemy, Neutral and Friendly. Having these values saved in the datamanager, allows the events to chance their outcomes and rewards based on said allegiance. A quick look and check against the thresholds and an event can go from being a bountiful one to being a tough one with enemies killing you, just as an example.
 
 
-\subsubsection{Access}
+\subsection{Access}
 	
 Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all it's contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content based on previous events which is something that would be hard to do with only a physical board game. 
 The fact that you at any time can go in and compare previous values to current ones, opens up for possibilities of changing data on the spot. If your current event has too much of the same values as used in previous events, you can just access the saved data, find what needs to be changed, and update your current events accordingly.	
 
-\subsection{The World Map}
+\section{The World Map}
 In this section, we will describe how the map is laid out on the screen and represented to the player.
 
-\subsubsection{Map Layout}
+\subsection{Map Layout}
 The layout of the map is generated by the use of an L-System (see L-system and the world map section below) and the interpretation rules that comes with it. The main map layout that is being used, has the spreading angle of 30 degrees, though this value vary from the other map layouts that were developed. The map is split up to go in 4 different directions; North, East, South and West. After each island in these directions, the directions spread in 3, one in front, and two to either side in the spreading angle specified. This is the basic pattern that by being repeated, makes up the map.
 
-\subsubsection{Spacing}
+\subsection{Spacing}
 Each of the islands that are on the map are placed in a very specific way. They are all spaced so that the distance between them are a little bit less than that of the player-castle's maximum travel distance. This is done to ensure that the players always are able to go to at least \textbf{one} island, no matter where the castle is positioned at any given time. However, because of the use of the L-System, and the fact that the placement pattern is repeating with a set spreading angle, there may be more than one possible destination at a given point in the game. Some of the islands might even be rather close to each other and look like a smaller system of islands. And of course the initial start placing of the castle has 4 islands that are available to be visited, and this is to give the players more freedom of exploration in the game.
 
-\subsubsection{Placement}
+\subsection{Placement}
 The L-system and its rules are there to make sure that the placement of the islands are varied, but at the same time within a given pattern. This means that the look of the map will at times, depending on the how the L-System algorithm is formulated, be able to resemble specific shapes or patterns. Whether this is good or not, depends on how the players respond to it, and if they are even able to see the entirety of the map layout.
 
-\subsection{PCG - Generating the content}
-\subsubsection{L-system and the world map}
+\section{PCG - Generating the content}
+\subsection{L-system and the world map}
 
 As described in the background section; the L-System is a way to generate a large outcome based on an axiom and rules on how to change it. With each iteration, the contents of the axiom is changed bit by bit in compliance with the rules that match each element that is being expanded upon.
 To quickly demonstrate how it works, the example will use a simple axion, and only 2 simple rules expanded over a smaller number of iterations:\\
@@ -405,18 +405,18 @@ In the end we are only showcasing the latest and biggest map pattern layout, whi
 
 The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$\wedge$3(iteration number) + the extra start and goal node $\rightarrow$ 4*5$\wedge$3 + 2 = 502.
 
-\subsubsection{Event Introduction}
+\subsection{Event Introduction}
 In the next section, you will be introduced to the events of the game. The events are in many aspects the biggest part of the game, as the the physical part of the game, the board game part, is affected by the outcomes of the events. Furthermore the events have special requirements from the board game, and with this the connection between the 2 parts of the game is made.
 In the next part of this document, we will go through the events, their structure, how they are constructed and lastly, the flavour text of the events and how they are generated and combined.
 
-\subsection{Events}
+\section{Events}
 The application's main purpose is to generate events which is the main interaction for the physical part of the game. The events provides resources for players and challenges in form of lost crew or constructed rooms.
 
 Throughout the development of the game there have been several approaches to the problem of generating these events in an interesting manner and ensure the perceived space of possibilities was large enough for the events not to repeat themselves to often.
 
 First the event structure of the final events will be explained. Then a short explanation of the first event generation, detailing where the project began and some of the limitations posed by it. This is followed by an explanation of the final event structure. Finally the how the flavour text is generated is explained.
 
-\subsubsection{Event structure}
+\subsection{Event structure}
 In figure \ref{fig:eStruc} you see the general structure of the events in the applications contextual environment. The keywords presented in this structure is referenced in the following subsections in order to specify where the different aspects are being used.
 
 \begin{figure}[h]
@@ -433,7 +433,7 @@ Each of the event options contains 1 to 3 event outcome group. The event outcome
 
 Each of the event outcome groups contains 3 outcomes. An outcome has a type, as explained above, which designates which to pick given if the event is a success, failure, or neutral. The outcome also contains the chance of which this outcome appears. Lastly the outcome contains the pieces and their change amount. 
 
-\subsubsection{Structured Events}
+\subsection{Structured Events}
 The first implementation focussed on having events for each of the options you could select on the UI. The events were stored in an XML file and loaded with the program. The events were assigned to all the nodes as they were generated.
 
 The general XML structure used for the initial generation can be seen in figure \ref{fig:eGen1}.
@@ -460,7 +460,7 @@ The outcomes represented the board pieces and the changes which occurred to them
 This first structure allowed to populate the application with events which were scripted by the type and selected from a pool of set events. 
 However when adding more events, each event needed to be constructed in its entirety each time. This would also means adding or removing pieces would be have to be hard coded directly. 
 
-\subsubsection{Constructed Events}
+\subsection{Constructed Events}
 In order to construct a broader range of events, the idea were to have the building blocks to be interchangeable and then generate events from a pool of building blocks to have a greater diversity of the events.
 
 This change were implemented through several iterations, with several changes being made to the algorithms, to better suit the game. The final event structure uses and XML file containing building blocks which have some linkage as to influence the general idea of the outcomes of the events.
@@ -491,7 +491,7 @@ The outcome also contains the results. This node comes in 3 types, success, fail
 Each outcome has 1 or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
 By having the options this way it is possible to add more variety in the outcomes without rewriting the event in any other way.
 
-\subsubsection{Flavour of the Events}
+\subsection{Flavour of the Events}
 
 
 The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is. 
@@ -548,34 +548,34 @@ An example of how the selected text would look like after completion would be th
 On top of having the selection process brought forth from directly accessing the program saves all the previous events that has been made, and that the players have interacted with. So by having access to this information, the algorithm for the events and in turn the flavour texts of these, are able to be made by taking the existing data into account. If an event has had a special occurrence, the outcomes are saved with it and the flavour combining algorithm can then go in to this saved data, take out any important information, and use that as a baseline for the way the new event flavour is generated. Say an event happened, where the players had to use their healing powers to save a person during the exploration of an island, this information would be accessible to the app at a later time. So when the time comes to generate a new event, it can be based on said previous event. For instance; the new event would take place on an island that is controlled by the Highbourne faction, which was the same faction as the previous event, and since the players used their healer on the previous one, the new event could say that now the Highbournes are interested in knowing how the players did that. This opens up for a new set of conditions that the players can be presented with. Basic options like "Show them how it is done" or "Refuse to show them" are just 2 examples. The outcomes can then be modified to for example say that if the players were to help them out, they are rewarded with reputation gains, crystals or what ever they might get. And on the other side, the negative outcome could be something like the Highbournes tries to kill one of the players' crew in hopes that they once again will witness the amazing effects of the players' healing skills.
 
 
-\subsection{The app - From start to end}
+\section{The app - From start to end}
 In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
 
-\subsubsection{Start}
+\subsection{Start}
 As the game starts, and the application is running, the first screen that is shown is the start screen. Visually, this scene is rather empty, as all it really contains is a button to start the game. The purpose of this screen is to give the users an option to choose when they want to start the game themselves. It is also used as a clean-up scene after having ended a previous game. By going back to the start menu from the end screen will erase any saved data and create a new map as soon as the start button is pressed.
 
-\subsubsection{Generate Nodes}
+\subsection{Generate Nodes}
 After the start button has been pressed, the program will start generating all the nodes that will be portrayed in the world map. This means that the program will initialize the L-System (see the "PCG - Generating the content" section above for the detailed description of how the algorithm works) and create all the nodes, or "islands" based on the result string of the L-System algorithm. Once all the nodes are generated, they will be added into the Datamanager class and be saved there for when they are being loaded in the World Scene after. 
 Each island has a faction affiliated with it, which is also being determined here. Also, the island will have events added to them for each location that is within the island, e.g. a mine, a forest, a lake, etc. These events, however are being added via online PCG which means they will be generated on the go, as the players are entering the island.
 
-\subsubsection{Generate events}
+\subsection{Generate events}
 In the world map, all the islands that were generated are being displayed. And when the player moves the castle to an island, i.e. goes to explore it, a new screen will be shown to the players, called the NodeScene. This screen is showing the island and the "explorable" locations on it. But before they can be displayed, they need to be built. 
 
-\subsubsection{How an event is built}
+\subsection{How an event is built}
 An event is generated by selecting which type of event it is going to be; Gathering or Research. Both of these event types have 5 different location types affiliated with them. Mines, quarry etc. for the gathering, and Lake, forest etc. for the research. As soon as the event type is selected, a location is also selected. Now the algorithm goes into an XML file containing all the different rewards and conditions, and picks a number of them; 1, 2 or 3 different options that the players can select from. Associated with all the conditions used in the event, there are a list of possible outcomes that can happen if said condition is chosen, be it gaining resources or losing player tokens. The outcomes of every event is changed by the current standing the players have with the faction controlling the island the players are currently on. 
 Once the options and outcomes have been generated, the location icons will be loaded to the island, and the players are free to choose which one they would like to explore.
 
-\subsubsection{Moving around the world}
+\subsection{Moving around the world}
 The main course of the game is to move from the start all the way to the goal node. But the castle can only move a certain length each turn. This means that the players will have to plan their way by looking at which island they can reach at any given time. The layout however is made so that the castle that is being moved, always is able to reach at least 1 island each turn. If there are more than 1 island within the circle surrounding the castle (indicator for where they can move to), it is up to the players to choose where they want to go, and which direction to take. There is always the little arrow in the lower right corner of the screen, indicating which direction the final goal is. The players are always welcome to go back where they came from, and travel to already visited islands, though they will not be able to "re-explore" them. So should the players by chance start off going the wrong way, it does not ruin the game for them and make them unable to return.
 
-\subsubsection{Interacting with the islands}
+\subsection{Interacting with the islands}
 In order to travel to an island, you will have to click on the sprite image that is representing them in the world map. The island also have to be within range of the castle in order for any interaction to be possible. 
 Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the camera a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
 
 When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
 A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
 
-\subsubsection{Flavour text combinations and it's purpose}
+\subsection{Flavour text combinations and it's purpose}
 Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavour text that will tell the players these things. 
 
 Every island has a name and a short piece of text along with it. These texts are premade and are applied to the island when they are generated in the beginning. 
@@ -585,7 +585,7 @@ Now that all the conditions have been "flavourized", the challenge moves on to t
 This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.
 
 
-\subsubsection{Using memory to generate special event occurrences}
+\subsection{Using memory to generate special event occurrences}
 
 Special events is a feature that takes use of the fact that the application has memory. By checking the previous events, conditions and overall parameters within the data, we can compare the data and check how everything is connected. In doing so, we can make a list of conditions that needs to be met within an event, in order for a special event to be triggered and created. What we do as of now, is to have very specific requirements for an event to be able to trigger the special events. If the original event has a 3rd option, which is the "special" option, a check will be made to see if the overall conditions of the event checks out in comparison to the list of special events.
 For instance; a special event will be triggered if a preceding event was affiliated with the faction "Highbournes", and the location was a forest. Then the special event will occur on the world map X turns later, determined by a random initializer integer. When said special event then is triggered, it will use the data saved from the event that triggered it, and check which option was chosen, what the conditions for that option was, and then generate the text and result from that data.
