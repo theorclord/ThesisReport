@@ -382,7 +382,7 @@ The map layout itself has a starting node in the center, and expands in 4 direct
 In the next section, you will be introduced to the events of the game. The events are in many aspects the biggest part of the game, as the the physical part of the game, the board game part, is affected by the outcomes of the events. Furthermore the events have special requirements from the board game, and with this the connection between the 2 parts of the game is made.
 In the next part of this document, we will go through the events, their structure, how they are constructed and lastly, the flavour text of the events and how they are generated and combined.
 
-\subsection{Events}
+\section{Events}
 \label{sec:eve}
 The application's main purpose is to generate events which is the main interaction for the physical part of the game. The events provides resources for players and challenges in form of lost crew or constructed rooms.
 
@@ -390,7 +390,7 @@ Throughout the development of the game there have been several approaches to the
 
 First the event structure of the final events will be explained. Then a short explanation of the first event generation, detailing where the project began and some of the limitations posed by it. This is followed by an explanation of the final event structure. Finally the how the flavour text is generated is explained.
 
-\subsubsection{Event structure}
+\subsection{Event structure}
 In figure \ref{fig:eStruc} you see the general structure of the events in the applications contextual environment. The keywords presented in this structure is referenced in the following subsections in order to specify where the different aspects are being used.
 
 \begin{figure}[h]
@@ -423,7 +423,6 @@ The events were first narrowed down by the type of the event, gathering, researc
 
 Next the events were split by the button order, designated as the class, basic for the first button, second for the second button, and third for the third button. 
 The classes are, basic, the one which is always present, second, events which have more requirements, and third, events which have more advanced requirements. 
-
 
 In this early implementation, the conditions, which needed to be fulfilled, were written as text in the \textit{eventText} XML node. The conditions only appeared as text and had no relation to the the game logic. The text was hard coded in file, making each event text broad so it could appear in all contexts.
 
@@ -465,18 +464,18 @@ The outcome also contains the results. This node comes in 3 types, success, fail
 Each outcome has 1 or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
 By having the options this way it is possible to add more variety in the outcomes without rewriting the event in any other way.
 
-\subsubsection{Flavour of the Events}
+\subsection{Flavour of the Events}
 \label{sec:flav}
 
-The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.\\\\
-\textbf{The Condition Flavour:}\\\\
-The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.\\\\
-\textbf{The Introduction Flavour:}\\\\
-The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.\\\\
-\textbf{The Result Flavour:}\\\\
+The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.
+\subsubsection{The Condition Flavour}
+The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.
+\subsubsection{The Introduction Flavour}
+The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.
+\subsubsection{The Result Flavour}
 The result flavour is a bit more comprehensive than the  condition flavour, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
-Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\\\
-\textbf{The End Flavour:}\\\\
+Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece.
+\subsubsection{The End Flavour}
 At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.\\
 The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavours will cause few problems, as they all follow the same format and template. Is is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.\\\\
 There are a number of different files used to keep track of all the flavours and data that is being used within the game, and the reason for splitting them up is to better keep track of where one can find what is needed at any given time, without having to go through just one big file and searching through all its contents.
@@ -485,17 +484,7 @@ The "Conditions" is basically a list of all the possible board pieces that can o
 "Gathering" and "Research" are holding the event setup, how the events can be combined, what the chances of success, neutral and failure is, and what results options there is for the combinations.
 The remaining "IntroFlavour", "EndFlavour" and "ResultFlavour" are holders of the flavour of their respective fields as described above.\\
 
-
-
-
-The structure of event generation\\
--getting the type of event.\\
--getting the conditions\\
--getting the outcomes\\
--saving the event\\
--Structure of events in app\\\\
-
-\textbf{Combining the flavour text:}\\
+\subsubsection{Combining the flavour text}
 The flavour texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.\\
 \textbf{Conditions:}\\
 As the event generating algorithm has selected which conditions are to be used in the event, the flavour combination algorithm takes over. What it does, is to have a preset way of combining the flavours, and executes that template on the flavour blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
