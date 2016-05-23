@@ -7,7 +7,7 @@ The following section will start describing the process of making \textit{Archip
 \section{Brainstorming and Game Concept Choice}
 Brainstorming over the concept of hybrid game was already a challenge in itself. Because of the experimental nature of the project and the time in which the game had to be created, it was decided to focus on the key challenges that were expected, and reveal new ones all along the process.
 \subsection{Prior challenges}
-In order to explore the use of PCG in tabletop games, the first step was to brainstorm around what PCG brings to the genre, and what were the pitfalls of such a combination. Based on the definition of hybrid games that was previously established and on the expectations of what PCG affords in games, the main ideas were pointed out (see appendix).
+In order to explore the use of PCG in tabletop games, the first step was to brainstorm around what PCG brings to the genre, and what were the pitfalls of such a combination. Based on the definition of hybrid games that was previously established and on the expectations of what PCG affords in games, the main ideas were pointed out (see appendix \ref{fig:brainstorm1}).
 \begin{itemize}
 \item A hybrid game is made of both digital and analogue components. The first challenge to keep in mind was that both types of components must be used for a good reason. In other words, the choice for the core mechanics must prove that the contribution of analogue components could not be simulated on a computer; the same perspective was adopted for the digital part of the game, which could not be replaced by any kind of analogue components.  
 \item Another concern was to preserve the tabletop game experience, and not denature it because of hybridization. Therefore, the core concept of the game should stress out the particular element constituting such an experience. As previously stated, tabletop games cannot be reduced to the use of components, or the fact they are played on a table. The social dimension of tabletop games was the key element to stress out in order to make the analogue part of the game relevant.
@@ -57,11 +57,25 @@ The collaboration would also enhance the PCG-based mechanics of the game in an o
     \caption{A visual representation of the core loop, composed by the three different steps composing one turn.}
     \label{fig:loop}
 \end{figure}
-The combination of those patterns was the base of the core loop (see figure \ref{fig:loop}). The players would have to collaborate managing their base using the resources found during the event exploration. The events would be procedurally generated and only occur on the digital device. This intricate the analogue part of the game with its digital part, as the strategy chosen by the players during the management phase of the game would condition the choices made during the exploration of the events.
-
+The combination of those patterns was the base of the core loop (see figure \ref{fig:loop}). The players would have to collaborate managing their base using the resources found during the event exploration. The events would be procedurally generated and only occur on the digital device. This intricate the analogue part of the game with its digital part, as the strategy chosen by the players during the management phase of the game would condition the choices made during the exploration of the events. Building over an abstract game concept requires another brainstorm session to explore the possibilities offered by such mechanic, and exploit the digital component using PCG (see appendix \ref{fig:brainstorm2}). The inspirations found after the brainstorm session gave several directions to explore potential hybrid game specific experiences.
 \section{Designing \textit{Archipelago}}
-Building over an abstract game concept requires another brainstorm session to explore the possibilities offered by such mechanic, and exploit the digital component using PCG. The inspirations found after the brainstorm session gave several directions to explore potential hybrid game specific experiences.
-\subsection{Hybrid game system}
+As mentioned earlier, the PCG integration in hybrid games on a design point of view is explored via prototypes. Based on the prototyping methods and playtest results analysis explained in section \ref{sec:proto}, the game evolved towards a final state which encompasses all the different mechanics used to prove the interest of using PCG in a hybrid game. The most crucial aspects of the game supporting the research purpose of this paper will be described in this section.
+\subsection{Game Setting}
+In \textit{Archipelago}, the players are sent by the king to explore a newly discovered archipelago of floating islands. They are commanding a flying castle that is powered by a crystal emitting energy. The players have to fly from one island to the other in order to reach the final island on the map and finish the game. 
+
+The archipelago is inhabited though, and the players will have to confront the different factions, sometimes by  allying; other times by betraying. The relation with the factions influences the outcomes in various ways, modifying the amount of resources that players gain, and affecting the game difficulty. The events then become more and more dangerous as the players progress and acquire a reputation in the archipelago.
+
+To properly manage the castle, the players must agree on splitting 
+\subsection{Core loop and turn system}
+\textit{Archipelago]} is a game based on two different phases:
+\begin{itemize}
+\item[Management Phase] The phase during which the players discuss and allocate the different resources in the most efficient way.
+\item[Exploration Phase] After the management phase, the players chose an island 
+\end{itemize}
+\subsection{Specialization and collaboration}
+\subsection{Risk, reward and PCG}
+\subsection{
+\subsection{The role of the digital part}
 Setting
 Management system
 Resources
@@ -71,7 +85,6 @@ Infinite number of cards (events)
 Event "memory"
 Special events
 UX (App/Board)
-\subsection{The role of the digital part}
 Mainly, the function of the application is to contain all the information regarding events, movement, factions and overall the data available within the game. The application is the only connection the players will have to what is supposed to happen in the game, as without it, the game would just be an empty board with pieces that would have no purpose. 
 When playing the Archipelago, the digital part of the game, the app, will provide the players with a layout of the world, i.e. the map with all its islands, and it will contain all methods of receiving rewards as well as receiving penalties for executed events. It determines which resource the players will receive, what the "story" is, in terms of flavour presented, and it contains the factions and the players standing with each of them.
 The events in the app, are made to be like cards that the board game would have, if there was no app. But by having the digital computing and memory, the diversity of these events are much greater and there is no need for a huge pile of cards and expansion packs to generate different and diverse events. The app is in full control over what the players get and what is taken away from them, and given that there is now memory in place, the possibility to create new content based on previous events is there. Another part that the application plays in the entirety of the game, is that it controls when effects take place. If there has been an event with a specific outcome, it is then the system that controls if there should be consequences based on those outcomes. If there was no digital application in place, there would have to be a large amount of cards and pieces in the board game, along with very specific rules and combination guides, for the players to sufficiently be able to piece together new events and outcomes. So the biggest purpose of the app, as implemented in this solution, is to have complete control over all actions, story, events and outcomes and be able to present them to the players without using much time, which the players would do if they had to combine their own "gameplay".
@@ -84,7 +97,7 @@ The game session presented will be a fictional one, and the game itself will not
 
 When starting the game, the first thing that will happen, is to set up the board. The board will be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
 When the assigning of the player tokens have been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and reference the rules when needed.
-After all this initial setup is complete, the only remaining thing to do, is to start up the application part of the game, and be presented with the map that the game session will explore.
+After all this initial setup is complete, the only remaining thing to do, is to start up the application part of the game, and be presented with the map that the game session will explore. 
 
 \subsection{The Board}
 When starting the game and placing the board, the initial pieces the players have available are 2 player tokens, or crew tokens, for each player in the game, along with 4 building materials and 1 alchemy point. The castle itself will start off with 3 crystal pieces, which power the castle, and these 3 pieces are enough to start the players off with their castle at tier 1. In order to get to tier 2, the players will need to acquire another crystal piece.
