@@ -90,12 +90,9 @@ After all this initial setup is complete, the only remaining thing to do, is to 
 When starting the game and placing the board, the initial pieces the players have available are 2 player tokens, or crew tokens, for each player in the game, along with 4 building materials and 1 alchemy point. The castle itself will start off with 3 crystal pieces, which power the castle, and these 3 pieces are enough to start the players off with their castle at tier 1. In order to get to tier 2, the players will need to acquire another crystal piece.
 
 
-- Starting pieces, etc.
-
 \subsection{The App}
 As the application is started, the players are presented with the layout of the map. In the center you will find the castle, as is being represented by the physical board on the table. To move around in the world, all that needs to be done, is to click on an island that is within the circle around the castle, which indicates the travel distance possible for the castle each turn. Once an island is clicked on, a travel confirmation dialogue box will appear, and the players will have to confirm that they do indeed wish to travel there. As the castle reaches the selected island, the events begin. 
 
-- Starting the game and moving around the world
 
 \subsection{Phase 1 - Castle Management}
 Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the management phase. 
@@ -107,10 +104,6 @@ Before heading out into the world map, the players can choose to assign their pl
 
 When travelling out into the world, the players would need at least 1 available crew token, as the minimum cost of an event option is to send a crew. Otherwise, they would technically not be able to "explore" the island, as none would be out exploring.
 
-
-- Building rooms\\
-- Assigning people to rooms\\
-- 
 
 \subsection{Phase 2 - Exploring the World}
 When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the world.
@@ -126,20 +119,10 @@ For the 3rd option, the players will need to have the healing room specialized. 
 After the players have reached their conclusion and selected their option, the application will present them with the resulting outcomes of the event. It might be that they have lost a player token, gained one, a room has been destroyed, or simply that they got some resources. The outcomes vary.
 When the players have received their rewards and applied the results to the board, the game goes on to the next phase.
 
-
-- Travel to an island\\
-- Picking a location - gathering/research\\
-- The event occurs\\
-	- Talking amongst the players\\
-	- Selecting a viable option\\
-	- Assigning player tokens + resources\\
-	- Completing the Event and apply the results to the board\\
-
 \subsection{Clean-up and Reset}
 
 When returning from an event, all the pieces that were used the previous round, i.e. the crew tokens used for construction, the tokens assigned to the rooms, and the tokens used in the events, are returned to the players, and the board is cleaned up.
-If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.
-
+If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.\\
 When this is done, the game repeats as described above with phase 1 and 2 and back again.
 
 \subsection{Special Event Occurs}
@@ -155,9 +138,6 @@ If the players are able to reach this island, the game is over. The players will
 \subsection{Losing the game - Losing conditions}
 There are a number of different ways to lose the game. Since it is a collaborative game, if one of the players manages to get all his or her crew tokens killed, the game is over. Every player must have at least one crew token, in order for the game to still be in play.
 Should the castle run out of crystal charges, the game will be over as well, as this would mean that the castle would be stuck floating in space and not be able to move.
-
-
-
 
 \section{Development Structure (Technical)}
 This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
@@ -254,16 +234,12 @@ This is the main layout of the world. It contains all the locations that the pla
 When you first see this part of the program, you will notice that it has floating islands with circles around it, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
 At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
 The layout of the WordScene can be seen in figure \ref{fig:worldSc}.
-
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{Images/WorldScene.png}
     \caption{The WorldScene as seen on the PC version of the App. In the center the player token is represented as a floating castle. Also seen in the center is the green node, denoted as the starting node. In the lower right corner is the arrow pointing towards the goal node. The outer white circle indicates the maximum travelling distance of the players.}
     \label{fig:worldSc}
-\end{figure}
-
-Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within this circle, are available to be travelled to.
-
+\end{figure}\\Centered around the castle that the players control, you will find a large white circle. This circle is indicating the range that the castle can travel in one turn of the game. Any islands that are within this circle, are available to be travelled to.\\
 When travelling from one island to another, the circle around the island you arrived at will change color (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they choose to do so.
 When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will be moved towards that chosen island and stop once it reaches it. 
 Once the castle has reached the island and the collider on the object is triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
@@ -513,22 +489,22 @@ By having the options this way it is possible to add more variety in the outcome
 \subsection{Flavour of the Events}
 
 
-The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is. 
+The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.\\
 
-- The Condition Flavour:\\
+\textbf{The Condition Flavour:}\\
 
 The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.\\
 
-- The Introduction Flavour:\\
+\textbf{The Introduction Flavour:}\\
 
 The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.\\
 
-- The Result Flavour:\\
+\textbf{The Result Flavour:}\\
 
 The result flavour is a bit more comprehensive than the  condition flavour, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
 Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\
 
-- The End Flavour:\\
+\textbf{The End Flavour:}\\
 
 At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.\\
 
@@ -551,11 +527,11 @@ The structure of event generation\\
 -saving the event\\
 -Structure of events in app\\\\
 
-Combining the flavour text\\
+\textbf{Combining the flavour text:}\\
 
 The flavour texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.\\
 
-The conditions:\\
+\textbf{Conditions:}\\
 As the event generating algorithm has selected which conditions are to be used in the event, the flavour combination algorithm takes over. What it does, is to have a preset way of combining the flavours, and executes that template on the flavour blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
 This is how the flavour text would then be combined:\\
 In the first option, the algorithm would open up the XML file called EventStructure.xml, find the place where the condition flavour is located, and load that in. Then the algorithm would go through the branches until it came across the one called "crew". This consists of a basic text and a secondary text. The first part would be "Send", the second would be " x Castle crew". Then it would place the number of crew, in this case 1, between the 2 blocks of flavour, and end up with "Send 1x Castle crew".
