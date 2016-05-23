@@ -1,0 +1,24 @@
+\select@language {english}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces A representation of \textit {False Prophet}'s set up. A hexagon tiled map is projected on a sensor interface. Only the tiles that are close enough to the players are displayed. The colours represent the different types of terrain they are. The players also have a handheld computer used to display some relevant information. The devices are linked to a game controller that handles the computation required to display the map, or communicate information to the players.\relax }}{15}{figure.caption.4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The Roomware\IeC {\textregistered } environment used to create \textit {STARS}. The camera detects the position of the different game pieces on the interactive table and. The wall displays are used for public informations and the Personal Digital Assistants for personal, non-shared information. Audio devices are used for communication.\relax }}{16}{figure.caption.5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces The resolution of the fights in \textit {Golem Arcana} as they are displayed on the app\relax }}{19}{figure.caption.6}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces The content of \textit {XCOM: The Board Game}\relax }}{20}{figure.caption.7}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Instructions displayed by the app during the timed phase\relax }}{21}{figure.caption.8}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces \textit {Rogue}'s dungeon layout (ASCII terminal). A new dungeon is generated each time, showing the game's "replayability".\relax }}{26}{figure.caption.9}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The procedural generation of weapons in \textit {Borderlands 2}(Gearbox Software, 2012) create surprises that enhance the classical First-Person Shooter mechanics. The \textit {orange} weapon is called "Legendary", and is more powerful than the average weapons.)\relax }}{27}{figure.caption.10}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces \textit {Galactic Arms Race}'s weapons are generated based on the ones the player uses the most. Knowing this information allows the player to have a control on the PCG\relax }}{28}{figure.caption.11}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces First map mock-up used to communicate the basic concept to the team. The green node represents the position of the player, and the red and blue stars are nodes that need to be visited. The circle around the player limits the nodes that can be reached in one move, and the yellow line shows the already visited nodes.\relax }}{33}{figure.caption.13}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Early mock-up describing the tiled structure of the base. Each hexagon represents an upgrade of the base.\relax }}{33}{figure.caption.15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces A visual representation of the core loop, composed by the three different steps composing one turn.\relax }}{34}{figure.caption.17}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces The overview of the scenes in the application and their linkage. The diagram shows each of the actions which change to other scenes.\relax }}{41}{figure.caption.18}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The WorldScene as seen on the PC version of the App. In the center the player token is represented as a floating castle. Also seen in the center is the green node, denoted as the starting node. In the lower right corner is the arrow pointing towards the goal node. The outer white circle indicates the maximum travelling distance of the players.\relax }}{42}{figure.caption.21}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The event structure layout within the application. Each event is tied to a location to on the island in the NodeScene as explained in section \ref {sec:nodeScene}.\relax }}{51}{figure.caption.44}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces This is the first event generation xml layout. If not noted on the arrows, the relationship between the boxes is one to one.\relax }}{52}{figure.caption.46}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces This is the event generation XML structure for the final event generation process. Each box represents an XML node and the writing within the name of the node. The few exceptions to this is if a name has a parentheses around it, then the name in the parentheses is an example of the node names in that level. The figure contains two parts, one for the conditions and one for the outcomes.\relax }}{53}{figure.caption.48}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces The first mind map exploring the ideas behind the PCG-based app integration in board games.\relax }}{76}{figure.caption.51}
