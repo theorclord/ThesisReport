@@ -154,7 +154,8 @@ There are a number of different ways to lose the game. Since it is a collaborati
 Should the castle run out of crystal charges, the game will be over as well, as this would mean that the castle would be stuck floating in space and not be able to move.
 
 \section{Development Structure (Technical)}
-This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes making prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
+This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes the making of prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
+
 \subsection{From design to implementation}
 When working as a developer, you also work closely with the designer. What we did during our development period, was to get the wants and needs from the designer, and try to implement it into prototypes for overlook and feedback. 
 If things needed to be changed, added or removed, the team would go through in general terms what needed to be done, and then the requested adjustments would be made to the prototypes.
@@ -224,7 +225,9 @@ After all these pieces has been discovered, the next step is validation. This is
 
 When this all succeeds, the method of combination is discovered, and is ready to be implemented into code. Then, when it is all implemented, all that needs to be done, is to create a variety of flavours for each of the blocks and the rest will be done by the program.
 
-\subsection{App structure}
+\section{App structure}
+This section details the structure of the app. First the scenes in their structure in the game and later the UI and additional elements.
+\subsection{Scenes}
 This section details the different scenes which are in the app and their function. 
 Each of the scenes will be explained in detail in the following sections.
 The scenes included in the app and the change between the scenes are detailed in figure \ref{fig:appState}.
@@ -387,18 +390,11 @@ Each of the islands that are on the map are placed in a very specific way. They 
 The L-system and its rules are there to make sure that the placement of the islands are varied, but at the same time within a given pattern. This means that the look of the map will at times, depending on the how the L-System algorithm is formulated, be able to resemble specific shapes or patterns. Whether this is good or not, depends on how the players respond to it, and if they are even able to see the entirety of the map layout.
 
 \section{PCG - Generating the content}
+
 \subsection{L-system and the world map}
-
 As described in the background section; the L-System is a way to generate a large outcome based on an axiom and rules on how to change it. With each iteration, the contents of the axiom is changed bit by bit in compliance with the rules that match each element that is being expanded upon.
-To quickly demonstrate how it works, the example will use a simple axion, and only 2 simple rules expanded over a smaller number of iterations:\\
-We start the axiom "A", and then there are the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:\\\\
-n0: "A"\\
-n1: "A" $\rightarrow$  "AB"\\
-n2: "AB"  $\rightarrow$ "ABAA"\\
-n3: "ABAA"  $\rightarrow$  "ABAAABAB"\\
-And this would go on if n were set higher.\\
 
-What we do next, is to interpret the resulting string by going through each character and do specific calculations based on how the application will be utilizing the algorithm.
+
 
 In our case, we use several other characters than just 'A' and 'B', we add '[', ']', '-' and '+' as well as other letters. The brackets stand for "push" and "pop" respectively, as the map generation have to keep track of positioning, which means we have to introduce a way of saving the current state of the system.\\
 
