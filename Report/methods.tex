@@ -61,14 +61,12 @@ The combination of those patterns was the base of the core loop (see figure \ref
 \section{Designing \textit{Archipelago}}
 As mentioned earlier, the PCG integration in hybrid games on a design point of view is explored via prototypes. Based on the prototyping methods and playtest results analysis explained in section \ref{sec:proto}, the game evolved towards a final state which encompasses all the different mechanics used to prove the interest of using PCG in a hybrid game. The most crucial aspects of the game supporting the research purpose of this paper will be described in this section.
 \subsection{Game Setting}
-In \textit{Archipelago}, the players are sent by the king to explore a newly discovered archipelago of floating islands. They are commanding a flying castle that is powered by a crystal emitting energy. The players have to fly from one island to the other in order to reach the final island on the map and finish the game.
+In \textit{Archipelago}, the players have been sent by their King to explore a newly discovered archipelago of floating islands. They are commanding a flying castle that is powered by a crystal emitting energy. The castle is composed of rooms that each have a purpose in the game. These rooms range from \textit{Mining Guild} allowing the players to gather the required material for construction; to \textit{Mechanic's Workshop} to repair the rooms that are damaged during the exploration phase. The players have to fly from one island to the other in order to reach the final island on the map and finish the game. Islands are composed of different locations, which are generally filled with magic: magic crystals are scattered around the archipelago and with time created strange effects. The players will have to use Alchemy in order to extract as much resources as possible from the different locations. 
 
-The archipelago is inhabited though, and the players will have to confront the different factions, sometimes by  allying; other times by betraying. The relation with the factions influences the outcomes in various ways, modifying the amount of resources that players gain, and affecting the game difficulty. The events then become more and more dangerous as the players progress and acquire a reputation in the archipelago. 
-
-The locations are generally filled with magic: crystals are scattered around and with time created strange effects. The players will have to use Alchemy in order to extract as much resources as possible from the different locations. 
+The archipelago is inhabited though, and the players will have to confront the different factions, sometimes by  allying; other times by betraying. The relation with the factions influences the outcomes in various ways, modifying the amount of resources that players gain, and affecting the game difficulty. The events then become more and more dangerous as the players progress and acquire a reputation in the archipelago.
 \subsection{Early prototyping}
 In the early stages of the development, it was necessary to test the core mechanic established before moving on to the implementation of the digital device and the PCG. A first prototype was created. The purpose of this prototype was to experiment the basic core mechanic around which the game would be built, and communicate this concept to the team.
-\subsubsection{The first prototype}
+\subsubsection{The first playtest}
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{Images/Board1.png}
@@ -77,7 +75,7 @@ In the early stages of the development, it was necessary to test the core mechan
 \end{figure}
 Based on Lim et al.'s framework to create relevant prototypes, the first iteration of \textit{Archipelago} is described by its main properties
 
-Paper and dice composed the \textit{Material}. The paper was used for the representation of the base on the game's board and the dice were used to simulate the PCG part.This prototype had a low fidelity \textit{Resolution}. The representation of the base is very abstract and the digital component of the game was simulated.The \textit{Scope} included several elements: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game. \\\\
+Since it was one of the first version to be tested by players external to the team, the application using PCG was not yet ready. Therefore paper and dice composed the \textit{Material}. The paper was used for the representation of the base on the game's board and the dice were used to simulate the PCG part. This prototype had a low fidelity \textit{Resolution}. The representation of the base is very abstract and the digital component of the game was simulated.The \textit{Scope} included several elements: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game. \\\\
 The mechanic of the prototype contain several element. Refer to figure \ref{fig:base} for each description given below:
 \begin{itemize}
 \item The base is divided into squares, each square being a space where building a room is possible. \textit{Construction Zones} have to be unlocked in order to extend the available construction space. To unlock a zone, the players have to power the \textit{Core} with \textit{Energy} token. The amount of \textit{Energy} token required to access a construction zone is indicated at the limit between the two zones.
@@ -92,23 +90,25 @@ The mechanic of the prototype contain several element. Refer to figure \ref{fig:
 \end{figure}
 \end{itemize}
 \subsubsection{Feedback}
-Feedback from the first testers showed that even with abstract components, the flow of game provided a sufficiently good base for discussion. According to playtesters, dividing the board in \textit{Construction Zones} was also an interesting mechanic in itself but it appeared several times that the players were stuck with not enough resources to play. It needed to be refined. The randomness of the result (due to the use of dice) also showed the problem of engagement in the game. This emphasized the notion of player control tied to PCG-based game design. Using more than one parameter to 
+Feedback from the first testers showed that even with abstract components, the flow of game provided a sufficiently good base for discussion. According to playtesters, dividing the board in \textit{Construction Zones} was also an interesting mechanic in itself but it appeared several times that the players were stuck with not enough resources to play. It needed to be refined. The randomness of the result (due to the use of dice) also showed the problem of engagement in the game. This emphasized the notion of player control tied to PCG-based game design. Using more than one parameter proved that the players needed to feel their influence on the generation of the rewards. It happened that one player tried to convince the others that using two dice would be more efficient. This also showed the importance of player specialization in the game. 
 Finally, it gave a good idea of how the flow of the game would be. It was decided to build the work over this to start implementing the PCG and the digital device in the game.\\\\
 
 On the bases of the first playtest, it was decided that a turn in \textit{Archipelago} would be divided in two different phases:
 \begin{itemize}
 \item[Management Phase] The phase during which the players discuss and allocate the different resources in the most efficient way.
-\item[Exploration Phase] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting. 
+\item[Exploration Phase] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting.
 \end{itemize}
+Also, the game should encourage the players to specialize in a particular field. This would encourage the discussion even more and use the social dimension of board games.
+
 \subsection{Replayability}
 \subsubsection{An infinite number of events}
 \subsubsection{A flexible board game}
-\subsection{Specialization and collaboration}
-\subsubsection{Constructed Specialization}
-\subsubsection{Encouraging Collaboration}
 \subsection{Player control and Adaptability}
 \subsubsection{Diplomacy system}
 \subsubsection{Risk and Reward}
+\subsection{Specialization and collaboration}
+\subsubsection{Constructed Specialization}
+\subsubsection{Encouraging Collaboration}
 \subsection{A hybrid game}
 \subsubsection{Merging Analogue and Digital}
 Mainly, the function of the application is to contain all the information regarding events, movement, factions and the overall data available within the game. The application is the only connection the players will have to what is happening in the game, as without it, the game would just be an empty board with pieces that would have no purpose. 
