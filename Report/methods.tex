@@ -1,13 +1,13 @@
 \chapter{\textit{Archipelago}}
-Creating a hybrid game using PCG represents a challenge in both design and technical areas. First of all, the hybrid game genre that has been previously defined in this paper is a recent design space to explore for designers. Even though some experiments (like \textit{False Prophets} and \textit{STARS}) or games (like \textit{XCOM: The Board Game}) already exist, exploring this concept means raising many questions about how should the digital device be integrated, and what kind of play experience is enabled by the use of PCG. The best way to answer these questions is to make a comprehensive use of prototyping.
+Creating a hybrid game using PCG represents a challenge in both design and technical areas. The hybrid game genre that has been previously defined in this paper is a recent design space to explore for designers. Even though some experiments (like \textit{False Prophets} and \textit{STARS}) or games (like \textit{XCOM: The Board Game}) already exist, exploring this concept means raising many questions about how should the digital device be integrated, and what kind of play experience is enabled by the use of PCG. The best way to answer these questions is to make a comprehensive use of prototyping.
 
-Some results from this experiment are more related to design choices that are not depending on PCG or the hybrid nature of the game. For that reason, the creation of \textit{Archipelago} is not to be thought as a universal answer to the use of PCG in hybrid games, but more as a way to point out, illustrate and explain the challenges that appeared while creating the game. In that sense, \textit{Archipelago} only provides answers to design and technical questions in a particular framework. However, since the game has been thought from the beginning as an experimental concept, it is expected that the answers provided by the different prototypes will transcend the project presented in this paper. This means that the results that will be presented here will contribute to the exploration of making hybrid games in various ways. The successful design choices must be situated in their particular context, and experienced game maker will recognize the patterns that worked. Using the same approach, the experimentations that did not provide the expected results will also be considered useful.
+Some results from this experiment are more related to design choices that are not depending on PCG or the hybrid nature of the game. For that reason, the creation of \textit{Archipelago} is not to be thought as a universal answer to the use of PCG in hybrid games, but more as a way to point out, illustrate and explain the challenges that appeared while creating the game. In that sense, \textit{Archipelago} only provides answers to design and technical questions in a particular framework. However, since the game has been thought from the beginning as an experimental concept, it is expected that the answers provided by the different prototypes will transcend the project presented in this paper. This means that the results that will be presented here will contribute to the exploration of making hybrid games in various ways: the successful design choices must be situated in their particular context, to recognize the patterns that support the hybrid nature of the gale; using the same approach, the experimentations that did not provide the expected results will also be analysed.
 
-The following section will start describing the process of making \textit{Archipelago} by identifying the challenges that appeared when thinking about hybrid games using PCG. To follow, different aspects of the development will be described in order to clearly understand the purpose of \textit{Archipelago}. Each aspect of the game is analysed in the intention to provide results both on the design and technical aspects of its creation. 
+The following section will start describing the process of making \textit{Archipelago} by identifying the challenges that appeared when thinking about hybrid games using PCG. To follow, different aspects of the development process will be described in order to clearly understand the purpose of \textit{Archipelago}. Each aspect of the game is analysed in the intention to provide results both on the design and technical aspects of its creation. 
 \section{Brainstorming and Game Concept Choice}
 Brainstorming over the concept of hybrid game was already a challenge in itself. Because of the experimental nature of the project and the time in which the game had to be created, it was decided to focus on the key challenges that were expected, and reveal new ones all along the process.
 \subsection{Prior challenges}
-In order to explore the use of PCG in tabletop games, the first step was to brainstorm around what PCG brings to the genre, and what were the pitfalls of such a combination. Based on the definition of hybrid games that was previously established and on the expectations of what PCG affords in games, the main ideas were pointed out (see appendix \ref{fig:brainstorm1}).
+In order to explore the use of PCG in tabletop games, the first step was to brainstorm around what PCG could bring to the genre, and what were the pitfalls of such a combination. Based on the definition of hybrid games that was previously established and on the expectations of what PCG affords in games, the main ideas were pointed out (see appendix \ref{fig:brainstorm1}).
 \begin{itemize}
 \item A hybrid game is made of both digital and analogue components. The first challenge to keep in mind was that both types of components must be used for a good reason. In other words, the choice for the core mechanics must prove that the contribution of analogue components could not be simulated on a computer; the same perspective was adopted for the digital part of the game, which could not be replaced by any kind of analogue components.  
 \item Another concern was to preserve the tabletop game experience, and not denature it because of hybridization. Therefore, the core concept of the game should stress out the particular element constituting such an experience. As previously stated, tabletop games cannot be reduced to the use of components, or the fact they are played on a table. The social dimension of tabletop games was the key element to stress out in order to make the analogue part of the game relevant.
@@ -48,67 +48,93 @@ In \textit{Archipelago}, the resources would have different uses and origins. On
 \subsubsection{A collaborative board game}
 By combining those two main design patterns, \textit{Archipelago} would merge mechanics specific to PCG-based with mechanics that could well be based on a game board, although not specific to the tabletop genre. An additional element from the tabletop game definition was then required to make the physicality of the game a crucial aspect of the game, and justify its \textit{hybrid game} denomination.
 
-To make a successful combination of board game mechanic based on tiles and exploration of locations based on PCG, it was decided that \textit{Archipelago} would be a collaborative game. One single base would be shared by all the players, who would have different roles and specialization. This approach can be found in variety of games (both tabletop and digital) and one example has already been described when presenting the playthrough of \textit{XCOM: The Board Game}. Designing the game as a collaborative board game would emphasize the social dimension of tabletop games. This is one of the thing that makes the board irreplaceable in the case of Archipelago. The board would provide an interface around which they can gather and plan the management of the base and the allocation of the necessary resources. Discussions occurring during the exploration of the nodes would be influenced by the fact that the players would have authority in their area of expertise. This expertise would enable a feeling of importance, and mechanics supporting that feeling would need to be explored as well.
+To make a successful combination of board game mechanic based on tiles and exploration of locations based on PCG, it was decided that \textit{Archipelago} would be a collaborative game. One single base would be shared by all the players. Designing the game as a collaborative board game would emphasize the social dimension of tabletop games. This is one of the thing that makes the board irreplaceable in the case of Archipelago. The board would provide an interface around which players can gather and plan the management of the base and the allocation of the necessary resources.
 
-The collaboration would also enhance the PCG-based mechanics of the game in an original way. Indeed, games using this mechanic leave their player alone when evaluating the risk of performing or not an action. This time, the players would need to take the decisions together, even if one of the player is specialized. This different approach would also bring another kind of flavour to hybrid games, and it was hoped that the discussion that would take place before performing the events would provide an enjoyable experience.
+The collaboration would also enhance the PCG-based mechanics of the game in an original way. Indeed, games using this mechanic leave their player alone when evaluating the risk of performing or not an action. This time, the players would need to take the decisions together. This different approach would also bring another kind of flavour to hybrid games, and it was hoped that the discussion that would take place before performing the events would provide an enjoyable experience.
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{Images/Core loop.png}
+    \includegraphics[scale=0.5]{Images/Core_loop.png}
     \caption{A visual representation of the core loop, composed by the three different steps composing one turn.}
     \label{fig:loop}
 \end{figure}
-The combination of those patterns was the base of the core loop (see figure \ref{fig:loop}). The players would have to collaborate managing their base using the resources found during the event exploration. The events would be procedurally generated and only occur on the digital device. This intricate the analogue part of the game with its digital part, as the strategy chosen by the players during the management phase of the game would condition the choices made during the exploration of the events. Building over an abstract game concept requires another brainstorm session to explore the possibilities offered by such mechanic, and exploit the digital component using PCG (see appendix \ref{fig:brainstorm2}). The inspirations found after the brainstorm session gave several directions to explore potential hybrid game specific experiences.
+The combination of those patterns was the base of the core loop (see figure \ref{fig:loop}). The players would have to collaborate managing their base using the resources found during the event exploration. The events would be procedurally generated and only occur on the digital device. Building over such an abstract game concept required another brainstorm session to explore the possibilities offered by such mechanic, and exploit the digital component using PCG (see appendix \ref{fig:brainstorm2}). The inspirations found after the brainstorm session gave directions to explore potential hybrid game specific experiences.
 \section{Designing \textit{Archipelago}}
 As mentioned earlier, the PCG integration in hybrid games on a design point of view is explored via prototypes. Based on the prototyping methods and playtest results analysis explained in section \ref{sec:proto}, the game evolved towards a final state which encompasses all the different mechanics used to prove the interest of using PCG in a hybrid game. The most crucial aspects of the game supporting the research purpose of this paper will be described in this section.
 \subsection{Game Setting}
-In \textit{Archipelago}, the players are sent by the king to explore a newly discovered archipelago of floating islands. They are commanding a flying castle that is powered by a crystal emitting energy. The players have to fly from one island to the other in order to reach the final island on the map and finish the game. 
+In \textit{Archipelago}, the players are sent by the king to explore a newly discovered archipelago of floating islands. They are commanding a flying castle that is powered by a crystal emitting energy. The players have to fly from one island to the other in order to reach the final island on the map and finish the game.
 
-The archipelago is inhabited though, and the players will have to confront the different factions, sometimes by  allying; other times by betraying. The relation with the factions influences the outcomes in various ways, modifying the amount of resources that players gain, and affecting the game difficulty. The events then become more and more dangerous as the players progress and acquire a reputation in the archipelago.
+The archipelago is inhabited though, and the players will have to confront the different factions, sometimes by  allying; other times by betraying. The relation with the factions influences the outcomes in various ways, modifying the amount of resources that players gain, and affecting the game difficulty. The events then become more and more dangerous as the players progress and acquire a reputation in the archipelago. 
 
-To properly manage the castle, the players must agree on splitting 
-\subsection{Core loop and turn system}
-\textit{Archipelago]} is a game based on two different phases:
+The locations are generally filled with magic: crystals are scattered around and with time created strange effects. The players will have to use Alchemy in order to extract as much resources as possible from the different locations. 
+\subsection{Early prototyping}
+In the early stages of the development, it was necessary to test the core mechanic established before moving on to the implementation of the digital device and the PCG. A first prototype was created. The purpose of this prototype was to experiment the basic core mechanic around which the game would be built, and communicate this concept to the team.
+\subsubsection{The first prototype}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Images/Board1.png}
+    \caption{A representation of the base used in the first prototype.}
+    \label{fig:base}
+\end{figure}
+Based on Lim et al.'s framework to create relevant prototypes, the first iteration of \textit{Archipelago} is described by its main properties
+
+Paper and dice composed the \textit{Material}. The paper was used for the representation of the base on the game's board and the dice were used to simulate the PCG part.This prototype had a low fidelity \textit{Resolution}. The representation of the base is very abstract and the digital component of the game was simulated.The \textit{Scope} included several elements: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game. \\\\
+The mechanic of the prototype contain several element. Refer to figure \ref{fig:base} for each description given below:
+\begin{itemize}
+\item The base is divided into squares, each square being a space where building a room is possible. \textit{Construction Zones} have to be unlocked in order to extend the available construction space. To unlock a zone, the players have to power the \textit{Core} with \textit{Energy} token. The amount of \textit{Energy} token required to access a construction zone is indicated at the limit between the two zones.
+\item The \textit{Cargo Hold} tile limits the \textit{Scrap} players can have to 2 tokens per \textit{Cargo Hold} tile.
+\item The \textit{Crew Quarters} limits the \textit{Crew members} that players can have to 2 tokens per \textit{Crew Quarters} tile.
+\item \textit{Scrap} tokens, \textit{Crew member} tokens and \textit{Energy} tokens are gathered thanks to the \textit{Exploration Room}. To start gathering, the players assign a \textit{Crew member} to the \textit{Exploration Room} and roll a dye. Assigning two \textit{Crew member} tokens provides a second dye roll (see figure \ref{fig:Dicetable}). Gathering can only be done at the end of the turn.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.6]{Images/DiceProto1.png}
+    \caption{Table representing the results of the dice rolls. One dye only gives access to the leftmost column of results. A second dye gives access to better rewards, but there is a risk of losing resources. There is still a chance to get a standard reward with two dice.}
+    \label{fig:Dicetable}
+\end{figure}
+\end{itemize}
+\subsubsection{Feedback}
+Feedback from the first testers showed that even with abstract components, the flow of game provided a sufficiently good base for discussion. According to playtesters, dividing the board in \textit{Construction Zones} was also an interesting mechanic in itself but it appeared several times that the players were stuck with not enough resources to play. It needed to be refined. The randomness of the result (due to the use of dice) also showed the problem of engagement in the game. This emphasized the notion of player control tied to PCG-based game design. Using more than one parameter to 
+Finally, it gave a good idea of how the flow of the game would be. It was decided to build the work over this to start implementing the PCG and the digital device in the game.\\\\
+
+On the bases of the first playtest, it was decided that a turn in \textit{Archipelago} would be divided in two different phases:
 \begin{itemize}
 \item[Management Phase] The phase during which the players discuss and allocate the different resources in the most efficient way.
-\item[Exploration Phase] After the management phase, the players chose an island 
+\item[Exploration Phase] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting. 
 \end{itemize}
+\subsection{Replayability}
+\subsubsection{An infinite number of events}
+\subsubsection{A flexible board game}
 \subsection{Specialization and collaboration}
-\subsection{Risk, reward and PCG}
-\subsection{}
-\subsection{The role of the digital part}
-Setting
-Management system
-Resources
-Player Specialization
-Risk/Reward
-Infinite number of cards (events)
-Event "memory"
-Special events
-UX (App/Board)
-\subsection{The role of the digital part}
+\subsubsection{Constructed Specialization}
+\subsubsection{Encouraging Collaboration}
+\subsection{Player control and Adaptability}
+\subsubsection{Diplomacy system}
+\subsubsection{Risk and Reward}
+\subsection{A hybrid game}
+\subsubsection{Merging Analogue and Digital}
 Mainly, the function of the application is to contain all the information regarding events, movement, factions and the overall data available within the game. The application is the only connection the players will have to what is happening in the game, as without it, the game would just be an empty board with pieces that would have no purpose. 
 When playing the Archipelago, the digital part of the game, the app, will provide the players with a layout of the world, i.e. the map with all its islands, and it will contain all methods of receiving rewards as well as receiving penalties for executed events. It determines which resource the players will receive, what the "story" is, in terms of flavour presented, and it contains the factions and the players standing with each of them.
 The events in the app, are made to be like cards that the board game would have, if there was no app. But by having the digital computing and memory, the diversity of these events are much greater and there is no need for a huge pile of cards and expansion packs to generate different and diverse events. The app is in full control over what the players get and what is taken away from them, and given that there is now memory in place, the possibility to create new content based on previous events is there. Another part that the application plays in the entirety of the game, is that it controls when effects take place. If there has been an event with a specific outcome, it is then the system that controls if there should be consequences based on those outcomes. If there was no digital application in place, there would have to be a large amount of cards and pieces in the board game, along with very specific rules and combination guides, for the players to sufficiently be able to piece together new events and outcomes. So the biggest purpose of the app, as implemented in this solution, is to have complete control over all actions, story, events and outcomes and be able to present them to the players without using much time, which the players would do if they had to combine their own "gameplay".
+\subsubsection{User Experience and Interaction Design}
 
-\section{The Game - One play session}
+\section{The Final Prototype}
 In this section of the paper, we will go through a full play session of the game, that is all the different stages that occur in a game session, and explain the actions that happen along the different phases of the game.
 The game session presented will be a fictional one, and the game itself will not necessarily be a complete one in terms of going through all the islands that would be represented on the application at runtime, but rather it will explain every step along the way, and go through all the main parts of a complete game session.
-
-\subsection{Setup}
+\subsection{The rules}
+\subsubsection{Setup}
 
 When starting the game, the first thing that will happen, is to set up the board. The board will be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
 When the assigning of the player tokens have been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and reference the rules when needed.
 After all this initial setup is complete, the only remaining thing to do, is to start up the application part of the game, and be presented with the map that the game session will explore. 
 
-\subsection{The Board}
+\subsubsection{The Board}
 When starting the game and placing the board, the initial pieces the players have available are 2 player tokens, or crew tokens, for each player in the game, along with 4 building materials and 1 alchemy point. The castle itself will start off with 3 crystal pieces, which power the castle, and these 3 pieces are enough to start the players off with their castle at tier 1. In order to get to tier 2, the players will need to acquire another crystal piece.
 
 
-\subsection{The App}
+\subsubsection{The App}
 As the application is started, the players are presented with the layout of the map. In the center you will find the castle, as is being represented by the physical board on the table. To move around in the world, all that needs to be done, is to click on an island that is within the circle around the castle, which indicates the travel distance possible for the castle each turn. Once an island is clicked on, a travel confirmation dialogue box will appear, and the players will have to confirm that they do indeed wish to travel there. As the castle reaches the selected island, the events begin. 
 
 
-\subsection{Phase 1 - Castle Management}
+\subsubsection{Phase 1 - Castle Management}
 Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the management phase. 
 In this management phase, the players can upgrade, repair and expand upon their castle.
 There is no limit for how much they can do, other than what the players themselves have the resources for. If they want to build a new room, this can be done. However, the cost of doing so is 2 building materials, and a player will have to assign one of their crew tokens to the building task, and that means that that token can not be used in the upcoming event phase this round.\\
@@ -119,7 +145,7 @@ Before heading out into the world map, the players can choose to assign their pl
 When travelling out into the world, the players would need at least 1 available crew token, as the minimum cost of an event option is to send a crew. Otherwise, they would technically not be able to "explore" the island, as none would be out exploring.
 
 
-\subsection{Phase 2 - Exploring the World}
+\subsubsection{Phase 2 - Exploring the World}
 When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the world.
 As mentioned before, the first thing the players have to do in the world map, is to click on the reachable island they want to travel to. Once they have accepted to travel there, and have reached the location, the players will have to select an area, or location, that they would like to explore.\\
 Each area are connected to a type of resource, either it is a gathering area which will mainly yield building materials, or it is the research area which will yield mainly alchemy points.
@@ -133,25 +159,27 @@ For the 3rd option, the players will need to have the healing room specialized. 
 After the players have reached their conclusion and selected their option, the application will present them with the resulting outcomes of the event. It might be that they have lost a player token, gained one, a room has been destroyed, or simply that they got some resources. The outcomes vary.
 When the players have received their rewards and applied the results to the board, the game goes on to the next phase.
 
-\subsection{Clean-up and Reset}
+\subsubsection{Clean-up and Reset}
 
 When returning from an event, all the pieces that were used the previous round, i.e. the crew tokens used for construction, the tokens assigned to the rooms, and the tokens used in the events, are returned to the players, and the board is cleaned up.
 If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.\\
 When this is done, the game repeats as described above with phase 1 and 2 and back again.
 
-\subsection{Special Event Occurs}
+\subsubsection{Special Event Occurs}
 
 Somewhere along the game, the players will most likely encounter the "special events". There are as of right now, two types of special events.\\
 The first type is the fighting event. When this event occurs, the players will be presented with a scenario where two of the factions within the game, are fighting each other. It is then up to the players to decide whether they want to leave them alone, or if they would like to assist them. If they want to assist them, they have to choose their side. If the players are already friendly with one of the factions, they might want to assist that faction again. This choice is completely up to the players.\\
 The other event type is memory based. It is an event that is based on previous events that the players have completed. If they can remember it, all the better. Either ways, the event is special in that is based on previous data. If the players visited an island controlled by the Highbournes, and they used some special healing on one of the options, then the special event could say something like "The highbournes saw you at the island, and want to learn how to use your healing magic". It is then up to the players to decide whether or not they want to help them, or not. Keeping in mind that their current standing with the faction will influence the outcome of whatever option they choose. 
 
-\subsection{Reaching the end - Winning condition}
+\subsubsection{Reaching the end - Winning condition}
 At one specific point on the map, there is a goal island. This island is the one the arrow is pointing towards, and is the one that the players are supposed to head towards in order to complete the game, and win.
 If the players are able to reach this island, the game is over. The players will be presented with an ending screen in the app, and then they can choose to start a new game if they so choose. 
 
-\subsection{Losing the game - Losing conditions}
+\subsubsection{Losing the game - Losing conditions}
 There are a number of different ways to lose the game. Since it is a collaborative game, if one of the players manages to get all his or her crew tokens killed, the game is over. Every player must have at least one crew token, in order for the game to still be in play.
 Should the castle run out of crystal charges, the game will be over as well, as this would mean that the castle would be stuck floating in space and not be able to move.
+
+\subsection{Results of the Final Playtest}
 
 \section{Development Structure (Technical)}
 This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes the making of prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
@@ -495,28 +523,17 @@ By having the options this way it is possible to add more variety in the outcome
 \subsubsection{Flavour of the Events}
 \label{sec:flav}
 
-The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.\\
-
-\textbf{The Condition Flavour:}\\
-
-The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.\\
-
-\textbf{The Introduction Flavour:}\\
-
-The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.\\
-
-\textbf{The Result Flavour:}\\
-
+The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.\\\\
+\textbf{The Condition Flavour:}\\\\
+The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.\\\\
+\textbf{The Introduction Flavour:}\\\\
+The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.\\\\
+\textbf{The Result Flavour:}\\\\
 The result flavour is a bit more comprehensive than the  condition flavour, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
-Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\
-
-\textbf{The End Flavour:}\\
-
+Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece. \\\\
+\textbf{The End Flavour:}\\\\
 At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.\\
-
 The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavours will cause few problems, as they all follow the same format and template. Is is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.\\\\
-
-
 There are a number of different files used to keep track of all the flavours and data that is being used within the game, and the reason for splitting them up is to better keep track of where one can find what is needed at any given time, without having to go through just one big file and searching through all its contents.
 For the structure of the events there is the XML file named "EventStructure". This is the main file where all the smaller blocks of text for all the board pieces, conditions and outcomes are located. It is split up into 7 branches; Conditions, ConditionFlavour, Gathering, Research, IntroFlavour, EndFlavour and ResultFlavour.
 The "Conditions" is basically a list of all the possible board pieces that can occur in an event, while the "ConditionsFlavour" is all the flavour associated with those pieces.
@@ -534,9 +551,7 @@ The structure of event generation\\
 -Structure of events in app\\\\
 
 \textbf{Combining the flavour text:}\\
-
 The flavour texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.\\
-
 \textbf{Conditions:}\\
 As the event generating algorithm has selected which conditions are to be used in the event, the flavour combination algorithm takes over. What it does, is to have a preset way of combining the flavours, and executes that template on the flavour blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
 This is how the flavour text would then be combined:\\
@@ -545,7 +560,6 @@ Now that we have the introduction of the condition, the next step is to get the 
 
 After the first option was completed, the algorithm would see that there was one more to be done, and do the same for that, but since there is more than one piece in that option, the algorithm would do the same as it did for the crew, for the alchemy point.
 An example of how the selected text would look like after completion would be this: "Send 1x Castle Crew to explore the mine's riches. Use 1x alchemy point to create a strenght potion for your crew".\\
-
 On top of having the selection process brought forth from directly accessing the program saves all the previous events that has been made, and that the players have interacted with. So by having access to this information, the algorithm for the events and in turn the flavour texts of these, are able to be made by taking the existing data into account. If an event has had a special occurrence, the outcomes are saved with it and the flavour combining algorithm can then go in to this saved data, take out any important information, and use that as a baseline for the way the new event flavour is generated. Say an event happened, where the players had to use their healing powers to save a person during the exploration of an island, this information would be accessible to the app at a later time. So when the time comes to generate a new event, it can be based on said previous event. For instance; the new event would take place on an island that is controlled by the Highbourne faction, which was the same faction as the previous event, and since the players used their healer on the previous one, the new event could say that now the Highbournes are interested in knowing how the players did that. This opens up for a new set of conditions that the players can be presented with. Basic options like "Show them how it is done" or "Refuse to show them" are just 2 examples. The outcomes can then be modified to for example say that if the players were to help them out, they are rewarded with reputation gains, crystals or what ever they might get. And on the other side, the negative outcome could be something like the Highbournes tries to kill one of the players' crew in hopes that they once again will witness the amazing effects of the players' healing skills.
 
 \subsubsection{Flavour deconstruction}
