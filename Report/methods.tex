@@ -263,7 +263,7 @@ Once this scene is loaded the events for the given island and the locations on i
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{Images/NodeScene.png}
+    \includegraphics[scale=0.3]{Images/NodeScene.png}
     \caption{The node scene as seen on the computer version of the app. In the center is the island, with two locations situated on it, a mine and a ruin. In the top left corner, it can be seen that the island is controlled by the Highbourne.}
     \label{fig:nodescene}
 \end{figure}
@@ -279,23 +279,16 @@ The last box that will appear in this scene is the result box where the players 
 Upon reaching the final island in the WorldScene, the one island with the blue circle around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. 
 What happens then is that all the data is cleared from the app, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
 
-\subsection{Island Nodes and Location Nodes}
-All over the world map, there are placed a lot of islands. These islands are the places that the players can travel to, and they are represented by a picture of an island that floats, along with a signifier-circle that tells the players whether or not they have already explored it. Inside each of these islands, there are a bigger image that represents the island itself, and on that island, or next to it if there is a "floating rock formation", are smaller images of the available locations that the players can explore. 
-
-All of these nodes, islands and locations alike, are what gives out the events to the players, and they are what causes the story and feel of the game by containing all the events, their flavour, rewards and owners. All of this information is going to be presented to the players at their command, and this means that they must have some way of interacting with them. This is done via use of the UI elements (see the "UI elements" section), and in particular the buttons and images.
-
 \subsection{Buttons and Raycasting on images}
-As explained in the section above, the players main source of interaction is via the use of buttons and images. The buttons that can be found on the main screen, on various events and dialog boxes, all have their own respective functionalities connected with them. One button might close a box, another might start the game, each button have specific actions that they perform, and what they do or how they affect the gameplay, is represented on them either via specific text, flavour text or icons.
+The players main source of interaction is via the use of buttons and images. The buttons that can be found on the main screen, on various events and dialog boxes, all have their own respective functionalities connected with them. One button might close a box, another might start the game, each button have specific actions that they perform, and what they do or how they affect the gameplay, is represented on them either via specific text, flavour text or icons.
 The images and icons are a bit more tricky, especially for the players, as they do not necessarily signify to them that they can be interacted with, unlike the buttons which most people instinctively know does something.
-By programming itself, an image is just an image. It has no function attached to it, and does not do anything specific other than portraying a picture. So in order to make the images "clickable" you have to introduce raycasting.
+By programming itself, an image is just an image. It has no function attached to it, and does not do anything specific other than portraying a picture. So in order to make the images \textit{clickable} you have to introduce raycasting.
 
-Raycasting is when you create a line from one point to another, and in this case the only logical way to raycast to the images, was to make the initial start point be wherever the user touch the screen. So when the screen is touched, and the initial position is set, a ray will be made from that point and go "into" the screen (the z direction). By doing this, we can calculate if at any point of the ray, it touches an image that we want to give functionality. If this is the case and say that an exploration location is colliding with the ray, the application will then know to execute the functionalities that that images is holding. In the case of a location being clicked, an event box will appear and the players can continue with the game, and explore on.
+Raycasting is when you create a line from one point to another, and in this case the only logical way to raycast to the images, was to make the initial start point be wherever the user touch the screen. So when the screen is touched, and the initial position is set, a ray will be made from that point and go \textit{into} the screen (the z direction). By doing this, we can calculate if at any point of the ray, it touches an image that we want to give functionality. If this is the case and say that an exploration location is colliding with the ray, the application will then know to execute the functionalities that that images is holding. In the case of a location being clicked, an event box will appear and the players can continue with the game, and explore on.
 
 In the next section, the UI Elements section, you will be introduced to all the remaining elements that is used in the digital part of the game.
 
-
 \subsection{UI elements}
-
 In this section, we will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
 
 \subsubsection{Boxes}
@@ -304,12 +297,12 @@ There are a number of different boxes that will appear over the course of a game
 The purpose of each box on a high level, is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
 Each box has it's own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavour text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
 Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavour about that mine. Again there is a button for accepting, and one for declining. 
+
 Next up, you have the event box. This is the main box of the game, one might say. It contains a text field where the procedurally generated flavour text is displayed, along with 2 or 3 buttons that has the options for completion that the players may choose from. 
 Once an option has been chosen, the application loads the result box. This box is mainly a field where the description of what happened during the event is shown. it also has a field where the results in terms of board pieces gained/lost, reputation changes, etc. are shown. In addition, it has a "return" button, where once clicked, the players are taken back to the WorldScene where their game continues.
 
 
 \subsubsection{Faction icons}
-
 The faction icons have a rather small visual part in the application, but the impact it makes on understanding the game and seeing what opportunities and rewards the players might get, is rather substantial. In the top left corner of each NodeScene screen, there is an icon that conveys to the players, which of the current 3 factions controls the island that they are on. With this information, and the information that the players might have a specific standing with said faction, allows the players to mentally make an image of what the outcomes of the event might be, in terms of good, bad or neutral.
 
 \subsubsection{Buttons}	
@@ -317,18 +310,15 @@ The faction icons have a rather small visual part in the application, but the im
 The buttons in this application is the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built on to other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialog boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, we are able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are between 2 or 3 buttons that holds options for how to solve the given event, and that means that we can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
 
 \subsubsection{Islands}
-	
 The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
 As the main goal of the game, within the application, is to reach the goal node, it is important that the islands are spread around the world in a way so that the players themselves can choose which route they want to take in order to reach it. Be it the shortest way, or a longer way that requires more exploring and will take a longer time. Each island also have their own name and flavour to them, so that it hopefully will feel to the players that they have a history and a meaning.
 
 \subsubsection{Castle}
-	
 This is the center piece on the table. The board in itself is a layout of the castle as represented within the application.
-When moving around in the generated world, you move your entire castle. The castle is basically acting as the player object within the game. Since this is a collaborative game, however, it is up to the players to discuss amongst themselves how to use and distribute the resources that are "contained" within the castle, and use their own minds to select how an event is to be resolved when the castle is entering an island.
+When moving around in the generated world, you move your entire castle. The castle is basically acting as the player object within the game. Since this is a collaborative game, however, it is up to the players to discuss amongst themselves how to use and distribute the resources that are \textit{contained} within the castle, and use their own minds to select how an event is to be resolved when the castle is entering an island.
 
-\subsubsection{Rings} 
-
-Every island on the map has a ring around it. The color of the ring indicates whether the island is explored, unexplored or the goal, with the colors green, white and blue respectively. Having these rings is a way to signify to the users where they have been, where they can go, and gives the players a quick and easy overview of the map situation.
+\subsubsection{Rings}
+Every island on the map has a ring around it. The color of the ring indicates whether the island is explored, unexplored or the goal, with the colors purple, white and blue respectively. Having these rings is a way to signify to the users where they have been, where they can go, and gives the players a quick and easy overview of the map situation.
 The castle also has a ring around it, but this is a significantly larger ring. This is because this ring signifies how far the castle is able to travel in one turn. Every island that is within that ring around the castle, is an island that they players are able to explore, and the map is made so, by the use of an L-System, that each node is possible to be visited, it is just up to the players to decide how and where they want to travel.
 
 \subsubsection{Arrow} 
