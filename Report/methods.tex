@@ -28,7 +28,7 @@ First of all, the node's content varies depending on the game, but is often base
 The outcomes depend on the player's choices at each node. Generally, the difficulty of the choice that the players have to make in PCG-based games enables the very specific pleasure - and sometimes frustration - of randomness. However, this kind of risk versus reward play experience is very frequently used in tabletop games (often reproduced with a dice roll). For this reason, another value should be added to this pattern, thanks to the use of PCG to create the nodes and their content. This would be included in the scope of several prototypes.
 
 Also, this pattern naturally fits into a gameplay loop. It is a mandatory action that can overthrow a situation if the risk taken by the player is too big - in the case the player is unprepared, or if the risk was not realistically estimated. Finally mechanics based on this pattern using PCG are challenging to design because of the many possibilities that the players can be confronted to. 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.25]{Images/Map.png}
     \caption{First map mock-up used to communicate the basic concept to the team. The green node represents the position of the player, and the red and blue stars are nodes that need to be visited. The ring around the player limits the nodes that can be reached in one move, and the yellow line shows the already visited nodes.}
@@ -39,7 +39,7 @@ The \textit{Base Management} pattern is the next one that was chosen to create t
 
 In \textit{Archipelago}, the resources would have different uses and origins. On the same principle, the various ways in which the base could be upgraded would provide a variety of gameplays and strategies, thus enforcing the "replayability" of the game.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/Base.png}
     \caption{Early mock-up describing the tiled structure of the base. Each hexagon represents an upgrade of the base.}
@@ -51,7 +51,7 @@ By combining those two main design patterns, \textit{Archipelago} would merge me
 To make a successful combination of board game mechanic based on tiles and exploration of locations based on PCG, it was decided that \textit{Archipelago} would be a collaborative game. One single base would be shared by all the players. Designing the game as a collaborative board game would emphasize the social dimension of tabletop games. This is one of the thing that makes the board irreplaceable in the case of Archipelago. The board would provide an interface around which players can gather and plan the management of the base and the allocation of the necessary resources.
 
 The collaboration would also enhance the PCG-based mechanics of the game in an original way. Indeed, games using this mechanic leave their player alone when evaluating the risk of performing or not an action. This time, the players would need to take the decisions together. This different approach would also bring another kind of flavour to hybrid games, and it was hoped that the discussion that would take place before performing the events would provide an enjoyable experience.
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/Core_loop.png}
     \caption{A visual representation of the core loop, composed by the three different steps composing one turn.}
@@ -67,7 +67,7 @@ The archipelago is inhabited though, and the players will have to confront the d
 \subsection{Early prototyping}
 In the early stages of the development, it was necessary to test the core mechanic established before moving on to the implementation of the digital device and the PCG. A first prototype was created. The purpose of this prototype was to experiment the basic core mechanic around which the game would be built, and communicate this concept to the team.
 \subsubsection{The first playtest}
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/Board1.png}
     \caption{A representation of the base used in the first prototype.}
@@ -75,14 +75,15 @@ In the early stages of the development, it was necessary to test the core mechan
 \end{figure}
 Based on Lim et al.'s framework to create relevant prototypes, the first iteration of \textit{Archipelago} is described by its main properties
 
-Since it was one of the first version to be tested by players external to the team, the application using PCG was not yet ready. Therefore paper and dice composed the \textit{Material}. The paper was used for the representation of the base on the game's board and the dice were used to simulate the PCG part. This prototype had a low fidelity \textit{Resolution}. The representation of the base is very abstract and the digital component of the game was simulated.The \textit{Scope} included several elements: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game. \\\\
+Since it was one of the first version to be tested by players external to the team, the application using PCG was not yet ready. Therefore paper and dice composed the \textit{Material}. The paper was used for the representation of the base on the game's board and the dice were used to simulate the PCG part. This prototype had a low fidelity \textit{Resolution}. The representation of the base is very abstract and the digital component of the game was simulated.The \textit{Scope} included several elements: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game. 
+
 The mechanic of the prototype contain several element. Refer to figure \ref{fig:base} for each description given below:
 \begin{itemize}
 \item The base is divided into squares, each square being a space where building a room is possible. \textit{Construction Zones} have to be unlocked in order to extend the available construction space. To unlock a zone, the players have to power the \textit{Core} with \textit{Energy} token. The amount of \textit{Energy} token required to access a construction zone is indicated at the limit between the two zones.
 \item The \textit{Cargo Hold} tile limits the \textit{Scrap} players can have to 2 tokens per \textit{Cargo Hold} tile.
 \item The \textit{Crew Quarters} limits the \textit{Crew members} that players can have to 2 tokens per \textit{Crew Quarters} tile.
 \item \textit{Scrap} tokens, \textit{Crew member} tokens and \textit{Energy} tokens are gathered thanks to the \textit{Exploration Room}. To start gathering, the players assign a \textit{Crew member} to the \textit{Exploration Room} and roll a dye. Assigning two \textit{Crew member} tokens provides a second dye roll (see figure \ref{fig:Dicetable}). Gathering can only be done at the end of the turn.
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.6]{Images/DiceProto1.png}
     \caption{Table representing the results of the dice rolls. One dye only gives access to the leftmost column of results. A second dye gives access to better rewards, but there is a risk of losing resources. There is still a chance to get a standard reward with two dice.}
@@ -91,7 +92,7 @@ The mechanic of the prototype contain several element. Refer to figure \ref{fig:
 \end{itemize}
 \subsubsection{Feedback}
 Feedback from the first testers showed that even with abstract components, the flow of game provided a sufficiently good base for discussion. According to playtesters, dividing the board in \textit{Construction Zones} was also an interesting mechanic in itself but it appeared several times that the players were stuck with not enough resources to play. It needed to be refined. The randomness of the result (due to the use of dice) also showed the problem of engagement in the game. This emphasized the notion of player control tied to PCG-based game design. Using more than one parameter proved that the players needed to feel their influence on the generation of the rewards. It happened that one player tried to convince the others that using two dice would be more efficient. This also showed the importance of player specialization in the game. 
-Finally, it gave a good idea of how the flow of the game would be. It was decided to build the work over this to start implementing the PCG and the digital device in the game.\\\\
+Finally, it gave a good idea of how the flow of the game would be. It was decided to build the work over this to start implementing the PCG and the digital device in the game.
 
 On the bases of the first playtest, it was decided that a turn in \textit{Archipelago} would be divided in two different phases:
 \begin{labeling}{Management Phase}

@@ -110,7 +110,7 @@ Another element must also be pointed out. Hybrid games are indeed a combination 
 \subsection{A Hybrid Game Experiment: \textit{False Prophets}}
 People have also started to refer to \textit{hybrid games} as games that try to close the gap between analogue and digital games. \textit{False Prophets} is an experimental game that explores "the space between board games and video games, leveraging the advantages of both" (Mandryk and Maranan, 2002)\cite{art:prophets}. 
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=1]{Images/f_p_fig.png}
     \caption{A representation of \textit{False Prophet}'s set up. A hexagon tiled map is projected on a sensor interface. Only the tiles that are close enough to the players are displayed. The colours represent the different types of terrain they are. The players also have a handheld computer used to display some relevant information. The devices are linked to a game controller that handles the computation required to display the map, or communicate information to the players.}
@@ -134,7 +134,7 @@ During the Ubicomp '03 conference on ubiquitous computing environment
 \footnote{"A proposed development of computing in which computers are sufficiently small and inexpensive to be embedded frequently in everyday objects."(Oxford Dictionaries, 2016)}
 , Magerkurth, Stenzel \& Prante (2003) showed \textit{STARS} \cite{art:stars}, another example of the integration of digital devices in the traditional way of playing tabletop games, though even more complex than \textit{False Prophets}. This project was elaborated as an attempt to show the many possibles interactions between different devices "by realizing computer augmented tabletop games [...] within a smart Roomware® environment" (2003)\cite{art:stars}. In other words, different hybrid games, or adaptations of already existing tabletop games could be played using this platform.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.4]{Images/roomware.png}
     \caption{The Roomware® environment used to create \textit{STARS}. The camera detects the position of the different game pieces on the interactive table and. The wall displays are used for public informations and the Personal Digital Assistants for personal, non-shared information. Audio devices are used for communication.}
@@ -193,7 +193,7 @@ The app maximizes gameplay by virtualizing the mundane aspects, like dice rolls 
 
 The fact that \textit{Zombicide} can be played without the application makes the game fall out of the definition of \textit{hybrid games} (the digital device is not a core component in that case). However, the success proved the commercial potential of such design, and others followed in its steps.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.2]{Images/golem_app.jpg}
     \caption{The resolution of the fights in \textit{Golem Arcana} as they are displayed on the app}
@@ -209,7 +209,7 @@ This overview of the hybrid game market will be concluded by a play-through anal
 
 For the majority of players, X-COM (sometimes written "XCOM") is a series of video games which first instalment was \textit{UFO: Enemy Unknown}\cite{game:xcom} (Microprose, 1994)\footnote{Also known as \textit{X-COM: UFO Defense} in its north-American version.}. The series has many expansions, reboots, and spin-offs, and also a tabletop game plainly called \textit{XCOM: The Board Game} (Lang, 2015)\cite{game:xcomtbg}.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/xc01_layout.png}
     \caption{The content of \textit{XCOM: The Board Game}}
@@ -224,7 +224,7 @@ In \textit{XCOM: The Board Game}, the players are part of the \textit{X-COM}, a 
 
 Fist of all, there are several levels of difficulty available. It must be selected prior to starting the game. The level of difficulty affects in various ways the instructions given by the application integrated in the game.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.3]{Images/xcom_boardgame_app.jpg}
     \caption{Instructions displayed by the app during the timed phase}
@@ -274,6 +274,7 @@ This is what is described as Computer Assisted Design\cite{book:cad}. As explain
 
 The place where the line get blurry is when the algorithms generate content based on human input. The computer assisted design allows a designer to work on the overall structure, rather than spend to much time designing individual plants and similar minor details.
 Within larger companies, CAD is seen as a way to lighten workload of other artists, and its uses range between various fields.
+
 To build on what R. van der Linden, et al. say in their paper, about reducing workloads, PCG is a great tool to create templates for content, based on data from designer, artists, etc. PCG can also be used as a tool for aiding in creating content.
 The general idea behind this is that a tool generates some content or usable structure, which it then exposes to a designer. The designer can tweak parameters and sometimes directly interact with the generated content. This way a designer might be presented with a basic structure of a tree, and then have the ability to add branches and leaves, which are in turn generated by the tool. 
 The work of the artist is aided by the computer, giving the artist more time to work out the details. Computer generates templates and a base, then it is up to the artist to look over the content and see whether it is pleasing enough, fun enough, and/or acceptable in the final form. The final idea behind this is that it is in the minds of humans that creativity lies and that computer can aid in giving the designers more time for creativity, without sacrificing the outcome of the final product. 
@@ -299,7 +300,7 @@ In order to understand the challenges of PCG-based game design, their basic conc
 The first obvious aspects reinforced by PCG that are pointed out in this article are "replayability" and "adaptability"(Smith et al., 2011, p.2)\cite{pdf:pcgbased}, which are considered interconnected. "Replayability" is a concept used to describe the fact that a player can still discover new aspects of a game even after finishing it the first time. The paper refers to the game \textit{Rogue} (Toy et al., 1980)\cite{game:rogue}, as one of the earliest and most famous example of PCG-based games. The basic concept of \textit{Rogue} (see figure \ref{fig:Rogue}) is simple and has given birth to a new game genre - also giving it its name: \textit{Rogue-like games}. The principle of Rogue-like games is the following: the player explores his environment (a dungeon in the case of \textit{Rogue}), collects items (like equipment) to become stronger and defeat more and more dangerous enemies. In Rogue-like games, the environment (and thus the collectible items and the enemies) are procedurally generated which ensures that the players are really unlikely to face the same situation several times when going through the game. This shows how PCG can enhance the replayability of a game.
 In the same paper, "adaptability" is referred as "the use of procedural content generation to adjust content in reaction to player actions or skill levels" (Smith et al., 2011, p.2)\cite{pdf:pcgbased}. An example can be found in the video game \textit{FTL: Faster Than Light} (Subset Games, 2011)\cite{game:ftl}. This game - which uses Rogue-like game mechanics - is based on procedurally generated events that players have to overcome, sometimes by choosing between two different solutions. The selected option will then influence the next events generated by the game. In that case, the player's actions are the parameters used by the algorithm to generate the content. In other words the game content adapts itself to the player's action by saving the inputs and reusing them in later procedurally generated events.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.4]{Images/Rogue.png}
     \caption{\textit{Rogue}'s dungeon layout (ASCII terminal). A new dungeon is generated each time, showing the game's \textit{replayability}.}
@@ -308,7 +309,7 @@ In the same paper, "adaptability" is referred as "the use of procedural content 
 
 A distinction is also made between "PCG systems that augment traditional mechanics and those which enable new mechanics entirely" (Smith et al., 2011, p.3)\cite{pdf:pcgbased}. That distinction is made to differentiate the impact of PCG on the game's mechanics and the effect on the play experience. The example of \textit{Borderlands} (Gearbox Software, 2009)\cite{game:border} is given in the paper to demonstrate that PCG does not change the core mechanics of the game itself - a first-person shooter game in which the players collect more and more powerful procedurally generated weapons. However in the \textit{Borderlands} series, the play experience is vastly affected by the perceived randomness that PCG can enable. The excitement when waiting for the containers holding weapons, or the sudden burst of adrenaline when a powerful weapon appears could not be reproduced without the use of PCG (see figure \ref{fig:Bl2}). The Game Designers seem to have also enhanced that aspect in the multi-player mode by making the generated items collectible by any player, even players that have never taken part in the battle (this mechanic is generally called "ninja-loot"). Another example that comes to mind is the game \textit{Diablo} (Blizzard North, 1996)\cite{game:diablo}. It uses the same approach to procedurally generate equipment, but the emphasis is put on the optimization of the character's attributes and skills. 
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.15]{Images/Borderlands2.jpg}
     \caption{The procedural generation of weapons in \textit{Borderlands 2}(Gearbox Software, 2012) create surprises that enhance the classical First-Person Shooter mechanics. The \textit{orange} weapon is called "Legendary", and is more powerful than the average weapons.)}
@@ -317,7 +318,7 @@ A distinction is also made between "PCG systems that augment traditional mechani
 
 Finally, \textit{Galactic Arms Race} (Evolutionary games, 2010)\cite{game:gar} illustrates the last aspect of PCG-based Game Design described in the article, which is the player's control over the game's content (see figure \ref{fig:GAR}). The more a weapon is used, the more the chances of getting a weapon having similar properties increase. This mechanic is used to base the gameplay on the player's choices, as it becomes important to use the weapons with the preferred attributes, in order to get similar weapons later in the game. This means that the player has an influence over the PCG system in the game. In theory, the players input are often used by the algorithm to use the new content, so the influence of the player is real. However, in order to have a certain control over the game's content, a player must be aware that she influences the algorithm with her choices. This is what is called "direct control" (Smith et al., 2011, p.3). It is opposed to indirect control, when a player's actions are taken into account when the games generating the content without her knowing in what extent the actions have influenced the content generation. This is the model which is used in the majority of PCG-based games. This shows an interesting aspect of using PCG for designing games: PCG can help creating a feeling of surprise (by simulating randomness) as well as it can be used to show the player that her actions influenced the game in some way, thus creating a feeling of responsibility and sometimes even guilt.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.2]{Images/GAR.jpg}
     \caption{\textit{Galactic Arms Race}'s weapons are generated based on the ones the player uses the most. Knowing this information allows the player to have a control on the PCG}
@@ -338,12 +339,26 @@ Another reason for this decision is the fact that this will be a hybrid game, bo
 The version of \textit{Experience}-Driven PCG thought of here, is also thought to be able to show the difference between having only a board game, versus that of having a digital application integrated into the game, and give the players the experience of \textit{history} in a board game, and \textit{consequences} of actions.
 
 \subsection{L-Systems}
-A Lindenmayer system, or L-System in short, is a PCG algorithm which is based on grammars and rules. In the start, you have an axiom, usually a simple string, which is the initial value that the system will expand upon, along with rules/grammar that explains what within the axiom needs to be changed over each iteration. The algorithm also needs a number for how many times the axiom will be changed; the iteration number. What this algorithm does, if you for example are going to be using a string and expand upon that, is to go through each element i.e. the characters, that is found within the string, check for matching rules to each given character, and then apply the result of said rule to the result string.
-What this leaves us with, is a larger expanded string, that has been rebuilt in accordance to the rules that goes with it. This algorithm allows for quick generation of a larger connected outcome, that when interpreted afterwards, can be used in a multitudes of ways. It is a good way to generate maps, dungeons and levels, and it can also be used to create contents within dungeons at the same time. If a rule consists of a marker for a puzzle with its challenge and reward, the interpretation part can hold the code for how to place those objects. 
-Overall, the L-System allows for rapid generation of greater \textit{summarized} data, and it is then up to the interpretation part to create and use the data to its advantage.
+A Lindenmayer system, or L-system in short, is a mathematical formalise which was proposed by a biologist named Aristid Lindenmayer\cite{web:lsys}. The purpose of the system was to be able to describe the behaviour of plant systems.
+
+The L-system is a parallel grammar, that is, a system which generates a new string from an input string. The parallel part means that the entire string is traversed and a new is generated from the string, while the opposite would be to change a part of the string as soon as it is encountered and apply the algorithm to the generated strings. 
+This practice can be applied recursively to the string, creating more an more complex, fractal like, structure with each iteration. 
+
+More detailed a L-system functions as follows:
+In the beginning, you have an axiom, usually a simple string, which is the initial value which the structure will expand from.
+Along with axiom you have the rules/grammar that explains how to transform the string in each iteration. 
+The algorithm is supplied with the desired number of recursive iterations the rules/grammar should be applied to the axiom.
+
+The algorithm then goes through each element of the axiom and builds a new structure, by applying the rules the each element in turn. This new, and often larger, string is now rebuilt in accordance with the rules/grammar of the algorithm.
+The algorithm is then applied again until it has run the desired number of iterations.
+
+This algorithm allows for quick generation of a larger connected outcome, that when interpreted afterwards, can be used in a multitudes of ways. 
+It is a good way to generate maps, dungeons and levels, and it can also be used to create contents within dungeons at the same time. If a rule consists of a marker for a puzzle with its challenge and reward, the interpretation part can hold the code for how to place those objects. 
+Overall, the L-System allows for rapid generation of greater summarized data, and it is then up to the interpretation part to create and use the data to its advantage.
+
 It can be used in both 2D as well as 3D environments, all depending on the interpretation of the generated result. A common way to distinguish between dimensions is to have various special characters specifically assigned to movement and orientation in the 3D space, e.g. '-' and '+' for orientation around the z-axis, '$\&$' and ' $\wedge$ ' for the y-axis, and '/' and '$\backslash$' for the x-axis. In 2D solutions, however, it is most common to only utilize '+' and '-'. 
 
-To quickly demonstrate how it works, the example will use a simple axiom, and only 2 simple rules expanded over a smaller number of iterations:
+To quickly demonstrate how it works, a classic example of the axiom and rule set is demonstrated below:
 
 The axiom starts as "A", and then there are the rules ('A' = 'AB') and ('B' = 'AA'), the number of iterations is set to n = 3. This would yield the results for each iteration:
 \begin{itemize}

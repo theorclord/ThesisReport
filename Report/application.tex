@@ -1,13 +1,15 @@
 \chapter{Technical overview}
+This chapter will detail the technical work done on the app and the execution of each of the parts along with their outcome. 
 
 \section{App structure}
-This section details the structure of the app. First the scenes in their structure in the game and later the UI and additional elements.
+This section details the overall structure of the app.
+First the scenes in their structure in the game and later the UI and additional elements.
 
 \subsection{Scenes}
 This section is dedicated to the overview of the technical relation between the different scenes and their individual purpose. Each scene will be detailed in each of the following subsections going from the first scene in the app, to the last scene.
 The transitions between the different scenes can be seen in the overview presented by figure \ref{fig:appState}.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/StateDiagram.png}
     \caption{The overview of the scenes in the application and their linkage. The diagram shows each of the actions which change to other scenes.}
@@ -30,7 +32,7 @@ When you first see this part of the program, you will notice that it has floatin
 At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
 In figure \ref{fig:worldSc} you can see the scene which meets you once the scene is loaded.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.3]{Images/WorldScene.png}
     \caption{The WorldScene as seen on the PC version of the App. In the center the player token is represented as a floating castle. Also seen in the center is the green node, denoted as the starting node. In the lower right corner is the arrow pointing towards the goal node. The outer white ring indicates the maximum travelling distance of the players.}
@@ -259,7 +261,7 @@ First the event structure of the final events will be explained. Then a short ex
 \subsubsection{Event structure}
 In figure \ref{fig:eStruc} you see the general structure of the events in the applications contextual environment. The keywords presented in this structure is referenced in the following subsections in order to specify where the different aspects are being used.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/EventStructure.png}
     \caption{The event structure layout within the application. Each event is tied to a location to on the island in the NodeScene as explained in section \ref{sec:nodeScene}.}
@@ -278,7 +280,7 @@ The first implementation focussed on having events for each of the options you c
 
 The general XML structure used for the initial generation can be seen in figure \ref{fig:eGen1}.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/EventGen1.png}
     \caption{This is the first event generation xml layout. If not noted on the arrows, the relationship between the boxes is one to one.}
@@ -308,7 +310,7 @@ In figure \ref{fig:eGen2} you can see the total structure of the XML file used i
 The events are built by selecting a number of conditions and selecting outcomes based on the selected conditions. 
 First the conditions and outcomes will be discussed and then how they are combined.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.5]{Images/EventGen2.png}
     \caption{This is the event generation XML structure for the final event generation process. Each box represents an XML node and the writing within the name of the node. The few exceptions to this is if a name has a parentheses around it, then the name in the parentheses is an example of the node names in that level. The figure contains two parts, one for the conditions and one for the outcomes.}
