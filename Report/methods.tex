@@ -228,12 +228,29 @@ Once this scene is loaded the events for the given island and the locations on i
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{Images/NodeScene.png}
+    \includegraphics[width=\textwidth]{Images/NodeScene.png}
     \caption{The node scene as seen on the computer version of the app. In the center is the island, with two locations situated on it, a mine and a ruin. In the top left corner, it can be seen that the island is controlled by the Highbourne.}
     \label{fig:nodescene}
 \end{figure}
 
 To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to (see figure \ref{fig:nodescene}. On top of that, every Island (from the WorldScene) has a faction affiliated with it. What this does, is to allow the player to instinctively know whether or not an event can have a positive outcome and if it has a higher chance of success, based on the current standing the players have with that faction.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+        \includegraphics[width=\textwidth]{Images/EventPanel.png}
+        \caption{Initial event}
+        \label{fig:evepan}
+    \end{subfigure}
+    \begin{subfigure}[b]{\textwidth}
+        \includegraphics[width=\textwidth]{Images/EventResolution.png}
+        \caption{Resolution}
+        \label{fig:everes}
+    \end{subfigure}
+    \caption{Picture of stages in event resolution}
+    \label{fig:eventPans}
+\end{figure}
+
 Once an area of the island has been clicked, let us say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. 
 There are 2 main types of events; Research and Gathering events. Research events usually yield more alchemy points, whereas the gathering event has their basis in building materials.
 
