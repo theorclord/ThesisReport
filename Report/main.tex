@@ -23,6 +23,7 @@
 }
 \newcommand{\tmtable}{\begin{longtable}{ p{2.7cm} p{10cm} }}
 \newcommand{\tmtableend}{\end{longtable}}
+\renewcommand{\baselinestretch}{1.0} 
 
 \begin{document}
 \lstset{language=C}
@@ -270,4 +271,21 @@ K. Lalit Narayan, K. Mallikarjuna Rao, and M.M.M. Sarcar, \emph{Computer Aided D
     \caption{Mind map based on the core concept of exploring the different possibilities.}
     \label{fig:brainstorm2}
 \end{figure}
+\chapter{Digital implementation prototype}
+\begin{figure}[!ht]
+   \centering
+   \begin{subfigure}[b]{\textwidth}
+       \includegraphics[width=\textwidth]{Images/proto2.jpg}
+       \caption{Playtest based on another iteration of the board mechanics.}
+       \label{fig:flowtest}
+   \end{subfigure}
+   \begin{subfigure}[b]{\textwidth}
+       \includegraphics[width=\textwidth]{Images/proto2map.png}
+       \caption{Map layout. The nodes do not contain the events, which are still simulated with dice roll.}
+       \label{fig:flowmap}
+   \end{subfigure}
+   \caption{Testing the implementation of a digital component within the game flow.}
+   \label{fig:gameflow}
+\end{figure}
+
 \end{document}
