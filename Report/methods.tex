@@ -229,7 +229,7 @@ Once the castle has reached the island and the collider on the object is trigger
 \label{sec:nodeScene}
 The NodeScene is probably best known as the "island scene" or "event scene", because this is the scene where all the events take place, and it is the main place where the players will have to interact with each other in order to choose their wanted event.
 
-Once this scene is loaded the events for the given island and the locations on it, are generated. The events uses the information from the world node in order to create the events. The reason the event generation to be moved to this location, were to limit the computing power required to initialize the world node. 
+Once this scene is loaded the events for the given island and the locations on it, are generated. The events uses the information from the world node in order to create the events. The reason the event generation was moved to this location, was to limit the computing power required to initialize the world node. 
 
 \begin{figure}[!ht]
     \centering
@@ -238,11 +238,11 @@ Once this scene is loaded the events for the given island and the locations on i
     \label{fig:nodescene}
 \end{figure}
 
-In figure \ref{fig:nodescene} you can see one of the configurations that the island can have on generation. The island has two locations for the players to explore, a mine and a ruin. 
+In figure \ref{fig:nodescene} you can see one of the configurations that the island can have on generation. The island has two locations for the players to explore, a quarry and a ruin. 
 Each time an island is generated, it always comes with two locations for the players to visit, one for gathering and one for research. The gathering event will have a red icon with a drill on it hovering above the given location, whilst the research event will have will have a blue icon with a alchemical symbol.
 Research events usually yield more alchemy points, whereas the gathering event has their basis in building materials.
 
-Each island also have a general faction which in charge of all the locations on the island. Their icon and their affiliated symbol is located in the top left corner. From this the players are able to easily identify whether they have arrived at a location where they have allies or enemies, and from that conclude whether their events are going to have a higher chance of success with better outcomes, allied faction, or if there is going to be a higher chance of failure with worse outcomes, enemy faction.
+Each island also have a general faction which in charge of all the locations on the island. Their name and their affiliated symbol icon is located in the top left corner. From this the players are able to easily identify whether they have arrived at a location where they have allies or enemies, and from that conclude whether their events are going to have a higher chance of success with better outcomes, allied faction, or if there is going to be a higher chance of failure with worse outcomes, enemy faction.
 The faction is also displayed on the travel panel presented in the WorldScene, giving the players the opportunity to choose which factions they wish to interact with.
 
 \begin{figure}[!ht]
@@ -269,7 +269,7 @@ The panel will come with either 2 or 3 options, in the example there is only two
 Each option have one or more requirements, which a both included in the flavour text on the button and displayed as images next to it. These requirements are the resources the players must commit in order to resolve the event. 
 I.e. "Send 1x castle crew to explore the quarry's riches. Bring 1x building material along to repair items that may get broken.", tells the players that they need 1 castle crew and 1 building material to commit to this option.
 
-Once you have selected an option, the panel will shift to the resolution panel as seen in figure \ref{fig:everes}. The event is concluded and the players is presented with the results of their choice. The result comes in the form of a flavour text describing what happened, and a list of either rewards or penalties.
+Once you have selected an option, the panel will shift to the resolution panel as seen in figure \ref{fig:everes}. The event is concluded and the players are presented with the results from their choice. The result comes in the form of a flavour text describing what happened, and a list of either rewards or penalties.
 Once the players close the resolution panel, they will return back to the WorldScene, ready to move on to the next island.
 
 \subsubsection{ScoreScene}
