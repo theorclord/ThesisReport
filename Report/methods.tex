@@ -240,9 +240,10 @@ Once this scene is loaded the events for the given island and the locations on i
 
 In figure \ref{fig:nodescene} you can see one of the configurations that the island can have on generation. The island has two locations for the players to explore, a mine and a ruin. 
 Each time an island is generated, it always comes with two locations for the players to visit, one for gathering and one for research. The gathering event will have a red icon with a drill on it hovering above the given location, whilst the research event will have will have a blue icon with a alchemical symbol.
+Research events usually yield more alchemy points, whereas the gathering event has their basis in building materials.
 
 Each island also have a general faction which in charge of all the locations on the island. Their icon and their affiliated symbol is located in the top left corner. From this the players are able to easily identify whether they have arrived at a location where they have allies or enemies, and from that conclude whether their events are going to have a higher chance of success with better outcomes, allied faction, or if there is going to be a higher chance of failure with worse outcomes, enemy faction.
-The faction is also 
+The faction is also displayed on the travel panel presented in the WorldScene, giving the players the opportunity to choose which factions they wish to interact with.
 
 \begin{figure}[!ht]
     \centering
@@ -260,11 +261,16 @@ The faction is also
     \label{fig:eventPans}
 \end{figure}
 
-Once an area of the island has been clicked, let us say they chose a mine, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. 
-There are 2 main types of events; Research and Gathering events. Research events usually yield more alchemy points, whereas the gathering event has their basis in building materials.
+Once an area of the island has been clicked, a confirm box will be shown where the player will have to confirm that this is the area they want to explore. 
 
-After the confirmation, a new box will appear, where the event flavour text is presented along with either 2 or 3 options. Each option contains between 1 to 3 board pieces that will be utilized in order to complete the event. I.e. send 1 castle crew along with 1 alchemy point for a potion, etc. As soon as an option is selected, the event is concluded and the players are presented with the results; Success, Failure or Neutral. Each of these outcome types has rewards or penalties associated with them.
-The last box that will appear in this scene is the result box where the players then have to click "return to world", and are then taken back to the WorldScene. 
+Once the explore button is clicked, the panel in figure \ref{fig:evepan} will appear. 
+This panel displays the location you have chosen to explore along with some flavour text about the location. 
+The panel will come with either 2 or 3 options, in the example there is only two, represented as buttons below the flavour text. 
+Each option have one or more requirements, which a both included in the flavour text on the button and displayed as images next to it. These requirements are the resources the players must commit in order to resolve the event. 
+I.e. "Send 1x castle crew to explore the quarry's riches. Bring 1x building material along to repair items that may get broken.", tells the players that they need 1 castle crew and 1 building material to commit to this option.
+
+Once you have selected an option, the panel will shift to the resolution panel as seen in figure \ref{fig:everes}. The event is concluded and the players is presented with the results of their choice. The result comes in the form of a flavour text describing what happened, and a list of either rewards or penalties.
+Once the players close the resolution panel, they will return back to the WorldScene, ready to move on to the next island.
 
 \subsubsection{ScoreScene}
 Upon reaching the final island in the WorldScene, the one island with the blue ring around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. 
