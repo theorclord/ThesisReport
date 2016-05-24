@@ -116,22 +116,25 @@ The first event generation system simply relied on a random percentage based sel
 \item \textit{Research} contain events linked to resources  used to merge the different upgrades in the castle so they are more valuable.
 \item \textit{Diplomacy} handles the encounters with the factions, and is a premise of what would become the later \textit{Faction System}.
 \end{itemize}
-\item[\textbf{Class or Priority}] The options available to the players to solve the events presented to him are divided into \textit{Basic}, \textit{Second} and \textit{Third}. The Events always contain options from the two first \textit{Classes}, but the \textit{Third} only has a 50\% chance of appearing. 
+\item[\textbf{Option Class}] The options available to the players to solve the events presented to him are divided into \textit{Basic}, \textit{Second} and \textit{Third}. The Events always contain options from the two first \textit{Classes}, but the \textit{Third} only has a 50\% chance of appearing. 
 \item[\textbf{Risk}] The higher the class is, the better the associated maximum reward is. However, very penalizing outcomes are introduced to counter balance the rewards.
 \end{labeling}
-
-The texts of the different options and outcomes were handmade. It took a long time to reach a sufficient number of options and outcomes before testing the game. For these reasons, this method was not sufficient to prove the interest of PCG in rapidly generating content to both reduce the workload of creators. Also, playtests have shown that the players could recognize the different patterns in the event generation (i.e. options showing several times in a row), thus ruining the replayable aspect of the game. However, this provided a base to work on a more complex event system.
+The texts of the different options and outcomes were handmade. It took a long time to reach a sufficient number of options and outcomes before testing the game. For these reasons, this method was not sufficient to prove the interest of PCG in rapidly generating content to both reduce the workload of creators. Also, playtests have shown that the players could recognize the different patterns in the event generation (i.e. options showing several times in a row), thus ruining the replayable aspect of the game. However, this provided a base to work on a more complex event system:
 \subsubsection{Flexibility and coherence}
 As observed during playtests of prototypes using the event generation system previously described, the generation of content was not providing enough variety to generate a potentially infinite number of events; also the workload was too high in the prospect of experimenting a sufficient amount possibilities of PCG-based game design. Solving these problems required drastic changes to attain a satisfying amount of coherent results.\\\\
-A new design method for generating was then imagined:
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.5]{Images/eventStructureDesign.png}
-    \caption{More advanced system of parameters used to generate the events. }
-    \label{fig:struct}
-\end{figure}
-As a new set of parameters added to the \textit{Event type}, the \textit{Location type} was used to provide more variety to the events and give a narrative coherence to the game. Each type of events had locations associated to it
-
+A new design method for generating was then imagined. The technical details of how this methods are explained in the technical section of the report (see section \ref{sec:eventGeneration}). The design logic behind this system is determined as follows.
+A \textit{Basic Outcome} is defined when performing the event. This outcome is chosen among several ones according to the following parameters:
+\begin{enumerate}
+\item The \textit{Location Type} chosen among several ones according to the \textit{Event Type}.
+\item The \textit{Faction} controlling the island and the relation of that faction with the players (i.e. allied, neutral or enemy).
+\item The \textit{Option Class} selected by the players.
+\end{enumerate}
+To generate the \textit{Final Outcome}, another set of parameters is taken into account:
+\begin{enumerate}
+\item The \textit{Success Rate} is calculated from a base, which is incremented or decreased according to the \textit{Faction} and the resources (\textit{Conditions}) that the players decide to use during the events.
+\item Finally the \textit{Condition} and the \textit{Success Rate} determine the amount of resource that will be added to or removed from the \textit{Basic Outcome}, in order to generate the \textit{Final Outcome}.
+\end{enumerate}
+The \textit{Final Outcome} is the reward that the players get from the event. 
 
 \subsection{Player control and Adaptability}
 \subsubsection{Diplomacy system}

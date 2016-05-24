@@ -300,6 +300,7 @@ This first structure allowed to populate the application with events which were 
 However when adding more events, each event needed to be constructed in its entirety each time. This would also means adding or removing pieces would be have to be hard coded directly. 
 
 \subsubsection{Constructed Events}
+\label{sec:eventGeneration}
 In order to construct a broader range of events, the idea were to have the building blocks to be interchangeable and then generate events from a pool of those blocks to have a greater diversity of the events.
 
 This change were implemented through several iterations, with several changes being made to the algorithms to better suit the game. The final event structure uses an XML file containing building blocks which have a linkage to, and that influences, the general idea of the outcomes of the events.
