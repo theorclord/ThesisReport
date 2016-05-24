@@ -94,10 +94,10 @@ Feedback from the first testers showed that even with abstract components, the f
 Finally, it gave a good idea of how the flow of the game would be. It was decided to build the work over this to start implementing the PCG and the digital device in the game.\\\\
 
 On the bases of the first playtest, it was decided that a turn in \textit{Archipelago} would be divided in two different phases:
-\begin{itemize}
-\item[Management Phase] The phase during which the players discuss and allocate the different resources in the most efficient way. This phase is based on the physical components, gathering the players around the board and using the game pieces.
-\item[Exploration Phase] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting. The PCG would generate the island, the choices 
-\end{itemize}
+\begin{labeling}{Management Phase}
+\item[\textbf{Management Phase}] The phase during which the players discuss and allocate the different resources in the most efficient way. This phase is based on the physical components, gathering the players around the board and using the game pieces.
+\item[\textbf{Exploration Phase}] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting. The PCG would generate the island, the choices 
+\end{labeling}
 As previously mentioned, one of the challenges of making \textit{Archipelago} was to make both digital and analogue aspects of the game support each other without interfering play as well as being essential in the game. This idea followed the whole design process of the game.
 \subsection{Replayability}
 The first aspect generally cited to enhance the play with PCG-based game design is replayability  the notion of replaying the game without facing the same situations. One of the crucial aspect of \textit{Archipelago} is to exploit PCG to generate the income of resources supporting the collaborative tabletop gameplay. The design of the event generation system was then an important part of the development and is the first element that will be described here.
@@ -427,11 +427,11 @@ In figure \ref{fig:eStruc} you see the general structure of the events in the ap
 \end{figure}
 
 Each location in the NodeScene has an event assigned to it. 
-Each of these events have 2 to three event options assigned to them. The options are represented by buttons in the UI in the NodeScene when you explore a location. An option contains the conditions required for resolving the events. 
+Each of these events have two to three event options assigned to them. The options are represented by buttons in the UI in the NodeScene when you explore a location. An option contains the conditions required for resolving the events. 
 
-Each of the event options contains 1 to 3 event outcome groups. An event outcome group simply is a bundle of event outcomes. It contains an outcome for each of the result types; success, failure, or neutral. These types are attributed to the outcomes.
+Each of the event options contains one to three event outcome groups. An event outcome group simply is a bundle of event outcomes. It contains an outcome for each of the result types; success, failure, or neutral. These types are attributed to the outcomes.
 
-Each of the event outcome groups contains 3 outcomes. An outcome has a type, as explained above, which designates which to pick given if the event is a success, failure, or neutral. The outcome also contains the chance for which this outcome appears. Lastly the outcome contains the pieces and their change amount. 
+Each of the event outcome groups contains three outcomes. An outcome has a type, as explained above, which designates which to pick given if the event is a success, failure, or neutral. The outcome also contains the chance for which this outcome appears. Lastly the outcome contains the pieces and their change amount. 
 
 \subsubsection{Structured Events}
 The first implementation focussed on having events for each of the options you could select on the UI. The events were stored in an XML file and loaded with the program. The events were assigned to all the nodes as they were generated.
@@ -445,7 +445,7 @@ The general XML structure used for the initial generation can be seen in figure 
     \label{fig:eGen1}
 \end{figure}
 
-The events were first narrowed down by the type of the event, gathering, research, or diplomacy. The location type were generated at start along with the events. The number of events for each node where selected randomly between 1 to 3.
+The events were first narrowed down by the type of the event, gathering, research, or diplomacy. The location type were generated at start along with the events. The number of events for each node where selected randomly between one and three.
 
 Next the events were split by the button order, designated as the class, basic for the first button, second for the second button, and third for the third button. 
 The classes are, basic, the one which is always present, second, events which have more requirements, and third, events which have more advanced requirements. 
@@ -460,9 +460,9 @@ This first structure allowed to populate the application with events which were 
 However when adding more events, each event needed to be constructed in its entirety each time. This would also means adding or removing pieces would be have to be hard coded directly. 
 
 \subsubsection{Constructed Events}
-In order to construct a broader range of events, the idea were to have the building blocks to be interchangeable and then generate events from a pool of building blocks to have a greater diversity of the events.
+In order to construct a broader range of events, the idea were to have the building blocks to be interchangeable and then generate events from a pool of those blocks to have a greater diversity of the events.
 
-This change were implemented through several iterations, with several changes being made to the algorithms, to better suit the game. The final event structure uses and XML file containing building blocks which have some linkage as to influence the general idea of the outcomes of the events.
+This change were implemented through several iterations, with several changes being made to the algorithms to better suit the game. The final event structure uses an XML file containing building blocks which have a linkage to, and that influences, the general idea of the outcomes of the events.
 
 In figure \ref{fig:eGen2} you can see the total structure of the XML file used in the final event generation algorithm. 
 The events are built by selecting a number of conditions and selecting outcomes based on the selected conditions. 
@@ -476,19 +476,19 @@ First the conditions and outcomes will be discussed and then how they are combin
 \end{figure}
 
 The top part of the figure visualizes the structure of a condition. The condition is made up of the piece, the related board piece the players require in order to activate the event option, the amount of pieces required, and the classification type.
-The classification type is used in order to group the conditions and limit which pieces appears in what event option. This ensures that the ordinary pieces are more often in use by the application. There are 3 classification types. Type 0 for required, type 1 for secondary, and type 2 for advanced.
+The classification type is used in order to group the conditions and limit which pieces appear in what event option, thus ensuring that ordinary pieces are more often in use by the application. There are 3 classification types. Type 0 for required, type 1 for secondary, and type 2 for advanced.
 
-The bottom part of figure \ref{fig:eGen2} represents the event outcome structure. The events are separated into type as before, gathering and research, and in class, one, two, three. 
-The class in this case is the separator for where the different conditions are situated. The one class only contains outcomes which have one condition in total. It is the fall through part of the event structure as the algorithm will populate the events in the end with information.
-The two class contains outcomes which have two conditions in total, and also have only events which have conditions of type 1 or less. 
+The bottom part of figure \ref{fig:eGen2} is representing the event outcome structure. The events are separated into types like before, gathering and research, and by classes one, two and three. 
+The class in this case is the separator for where the different conditions are situated. Class one only contains outcomes which have one condition in total. It is the fall through part of the event structure as the algorithm will populate the events in the end with information.
+Class two contains outcomes which have two conditions in total, and also only have events which are made up of conditions type 1 or less. 
 This class is used for the secondary options available for the players.
-The three class contains outcomes which primarily have two conditions, but atleast one of which is of type 2.
+Class three contains outcomes which primarily have two conditions, but where atleast one of these is of type 2.
 
-The outcomes contains the the required conditions, following the rules described above. Each of the conditions have a piece, the board game relation, and the amount, the number of pieces. 
-The outcome also contains the results. This node comes in 3 types, success, failure, and neutral. These nodes have an attribute, denoted in figure \ref{fig:eGen2} with cursive, called chance. This is the outcomes basic chance distribution of the results. 
+The outcomes contain the the required conditions, following the rules described above. Each of the conditions have a piece, the board game relation, and the amount of pieces. 
+An outcome also contains the results. This node comes in three types; success, failure, and neutral. These nodes have an attribute, denoted in figure \ref{fig:eGen2} with cursive, called chance. This is the outcome's basic chance distribution of the results. 
 
-Each outcome has 1 or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
-By having the options this way it is possible to add more variety in the outcomes without rewriting the event in any other way.
+Each outcome has one or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
+By having the options this way, it is possible to add more variety in the outcomes without rewriting the event in any other way.
 \subsection{Flavour deconstruction}
 One of the biggest concerns in terms of being able to present the game with \textit{feel} to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
 
@@ -498,27 +498,28 @@ The next step would be to reverse engineer this dummy text into blocks of string
 
 This way of reverse engineering a piece of text leaves us with the pieces: Introduction, Island name, Location introduction, Location type, Location exit, Location Type(again), Mood flavour and Faction name.
 
-After all these pieces has been discovered, the next step is validation. This is done by simply making a set of paper prototypes for each of the pieces, each having a few different possibilities, and then trying to combine them in the same fashion as discovered by the reverse engineering. 
+After all these blocks has been discovered, the next step is validation. This is done by simply making a set of paper prototypes for each of the pieces, each having a few different possibilities, and then trying to combine them in the same fashion as discovered by the reverse engineering. 
 
-When this all succeeds, the method of combination is discovered, and is ready to be implemented into code. Then, when it is all implemented, all that needs to be done, is to create a variety of flavours for each of the blocks and the rest will be done by the program.
+When this all succeeds, the method of combination is discovered and is ready to be implemented into code. Then, when it is all implemented, all that needs to be done is to create a variety of flavours for each of the blocks and the rest will be done by the program.
 \subsection{Flavour of the Events}
 \label{sec:flav}
 
 The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.
 \subsubsection{The Condition Flavour}
-The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour is made so that they can be combined together and form one larger and complete flavour text.
+The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour blocks are made so that they can be combined together and form one larger and complete flavour text.
 \subsubsection{The Introduction Flavour}
-The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitudes of flavour texts, as only one is selected at any given location.
+The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitude of flavour texts, as only one is selected at a time at any given location.
 \subsubsection{The Result Flavour}
 The result flavour is a bit more comprehensive than the  condition flavour, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
-Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Each of these pieces are made so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own piece.
+Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Yet again, each of these pieces are crafted so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own specific piece.
 \subsubsection{The End Flavour}
 At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.
 
-The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavours will cause few problems, as they all follow the same format and template. Is is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.
+\subsubsection{General Flavour}
+The good thing about having all these pieces of text split up in smaller blocks of strings, is that it allows for many more ways for them to be combined. And adding more flavours will cause few problems, as they all follow the same format and template. It is basically a more structured way of generating larger combinations of text, from smaller pieces of diverse text blocks.
 
-There are a number of different files used to keep track of all the flavours and data that is being used within the game, and the reason for splitting them up is to better keep track of where one can find what is needed at any given time, without having to go through just one big file and searching through all its contents.
-For the structure of the events there is the XML file named "EventStructure". This is the main file where all the smaller blocks of text for all the board pieces, conditions and outcomes are located. It is split up into 7 branches; Conditions, ConditionFlavour, Gathering, Research, IntroFlavour, EndFlavour and ResultFlavour.
+There are a number of different sections used to keep track of all the flavours and data that is being used within the game, and the reason for splitting them up is to better be able to keep track of where one can find what is needed at any given time, without having to go through and search through all its content blindly.
+The file used for the structure of the events here is the XML file named "EventStructure". This is the main file where all the smaller blocks of text for all the board pieces, conditions and outcomes are located. It is split up into 7 branches; Conditions, ConditionFlavour, Gathering, Research, IntroFlavour, EndFlavour and ResultFlavour.
 
 The "Conditions" is basically a list of all the possible board pieces that can occur in an event, while the "ConditionsFlavour" is all the flavour associated with those pieces.
 "Gathering" and "Research" are holding the event setup, how the events can be combined, what the chances of success, neutral and failure is, and what results options there is for the combinations.
@@ -527,7 +528,7 @@ The remaining "IntroFlavour", "EndFlavour" and "ResultFlavour" are holders of th
 \subsection{Combining the flavour text}
 The flavour texts are combined in a few ways. Either it is a minor combination of the location name and the owners, Which faction is fighting which faction and where, or the big ones; the conditions and results which will be discussed in more detail here.
 \subsubsection{Conditions}
-As the event generating algorithm has selected which conditions are to be used in the event, the flavour combination algorithm takes over. What it does, is to have a preset way of combining the flavours, and executes that template on the flavour blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew  token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
+As the event generating algorithm has selected which conditions are to be used in the event, the flavour combination algorithm takes over. What it does, is to have the preset way of combining the flavours and then executing that template on the flavour blocks retrieved from the XML files. Let's create a scenario where there are 2 options to choose from, the first one is a single crew token that is to be sent down, and the second one is to send that crew member and use an alchemy point as well. The location of this scenario will be in a Mine controlled by Humans.
 This is how the flavour text would then be combined:
 
 In the first option, the algorithm would open up the XML file called EventStructure.xml, find the place where the condition flavour is located, and load that in. Then the algorithm would go through the branches until it came across the one called "crew". This consists of a basic text and a secondary text. The first part would be "Send", the second would be " x Castle crew". Then it would place the number of crew, in this case 1, between the 2 blocks of flavour, and end up with "Send 1x Castle crew".
@@ -537,8 +538,14 @@ After the first option was completed, the algorithm would see that there was one
 An example of how the selected text would look like after completion would be this: "Send 1x Castle Crew to explore the mine's riches. Use 1x alchemy point to create a strenght potion for your crew".
 
 On top of having the selection process brought forth from directly accessing the program saves all the previous events that has been made, and that the players have interacted with. So by having access to this information, the algorithm for the events and in turn the flavour texts of these, are able to be made by taking the existing data into account. If an event has had a special occurrence, the outcomes are saved with it and the flavour combining algorithm can then go in to this saved data, take out any important information, and use that as a baseline for the way the new event flavour is generated. Say an event happened, where the players had to use their healing powers to save a person during the exploration of an island, this information would be accessible to the app at a later time. So when the time comes to generate a new event, it can be based on said previous event. For instance; the new event would take place on an island that is controlled by the Highbourne faction, which was the same faction as the previous event, and since the players used their healer on the previous one, the new event could say that now the Highbournes are interested in knowing how the players did that. This opens up for a new set of conditions that the players can be presented with. Basic options like "Show them how it is done" or "Refuse to show them" are just 2 examples. The outcomes can then be modified to for example say that if the players were to help them out, they are rewarded with reputation gains, crystals or what ever they might get. And on the other side, the negative outcome could be something like the Highbournes tries to kill one of the players' crew in hopes that they once again will witness the amazing effects of the players' healing skills.
+\subsubsection{Results}
+Much in the same way that the condition flavour is combined, the result flavour is also combined. It selects a flavour string for each of the resulting rewards or penalty. To exemplify we will use the results: 2 Building materials and 1 alchemy point gained.
+The combination would happen like this:
 
+First the algorithm would go into the XML file and find the part where the building material texts are located. Then it would select one of the available flavours, for instance "Your castle crew scavenged all the possible building material they could find". This string would then be saved and the algorithm would go to the next result and find a flavour for that one as well: "As your crew return, you see that they have some strange alchemical material within their findings". 
+These two strings would then be combined into one complete flavour text which would look like this: "Your castle crew scavanged all the possible building material they could find. As your crew return, you see that they have some strange alchemical material within their findings."
 
+Should there be more than these 2 result pieces, the algorithm would go on to do the same combination and add the other blocks to the finalized result flavour.
 
 \section{The app - From start to end}
 In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
@@ -574,8 +581,8 @@ Every island has a name and a short piece of text along with it. These texts are
 It is in the events that the real challenge is. The flavour text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavour for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavour also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
 
 Now that all the conditions have been "flavourized", the challenge moves on to the result flavour. This is the flavour that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavour text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
-This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.
-
+This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.\\\\
+The exact way the different flavours are combined, is described in the event section above.
 
 \subsection{Using memory to generate special event occurrences}
 
