@@ -144,9 +144,9 @@ The castle also has a ring around it, but this is a significantly larger ring. T
 The arrow in question is the big black arrow in the lower right corner of the WorldScene (see figure \ref{fig:worldSc}), and serves the purpose of guiding the players towards the final goal.
 
 The arrow continuously points towards the node marked as the goal, enabling the player quickly to determine which way they want to travel in order to get to the goal. 
-The feature allows the players an overview of their overall direction, even if the total map cannot be completely seen in the maximum zoom of the camera. 
+The feature allows the players an overview of their overall direction, even if the total map cannot be completely seen in the maximum zoom of the screen. 
 
-There are several other \textit{safety} features implemented in case of camera issues, which are described in section \ref{sec:cam}.
+There are several other \textit{safety} features implemented in case of viewing issues, which are described in section \ref{sec:cam}.
 
 \subsubsection{Token Indicators (events)}
 The token indicators refer to the images which accompany the event options on the event panel box. The images are a complete copy of the same tokens which the players have available to them in the physical part of the game. 
@@ -156,26 +156,26 @@ The tokens creates a link between the two parts of the game by supplying a link,
 This representation also leaves little room for confusion, as the text itself might not always be clear on the first reading. 
 Also the representations simple design and presentation ensures that the players quickly understand what they have to spend in order to complete the event. 
 
-\subsection{Camera}
+\subsection{Screen Viewport}
 \label{sec:cam}
-This section will explain the functionalities and limitations of the camera and a reason why they were implemented.
+This section will explain the functionalities and limitations of the viewport and a reason why they were implemented.
 
 \subsubsection{Centring on castle}
-A problem that could occur when playing the game, was that the camera would go too far off to one side of the map. This could happen if a player would be reckless when moving the camera around the map in order to get a proper view of the situation. As a result of this problem being able to happen, there came a need to be able to quickly get back to the castle, so the solution was simple: Center the camera on the castle on command. 
-So by simply double clicking anywhere on the map, the camera will reset its position to the castle's current location. 
+A problem that could occur when playing the game, was that the view would go too far off to one side of the map. This could happen if a player would be reckless when moving the viewport around the map in order to get a proper view of the situation. As a result of this problem being able to happen, there came a need to be able to quickly get back to the castle, so the solution was simple: Center the screen on the castle on command. 
+So by simply double clicking anywhere on the map, the screen will reset its position to the castle's current location. 
 This implementation also ensured the players always could find their way back to the castle at any time, without the fear of getting lost.
 
 On top of having this, there is also the arrow, as described in the "UI Elements" section, pointing towards the end goal, so that if the players know the castle's relative position to the goal, they can navigate back to the castle if needed. 
 
 \subsubsection{Zoom}
-In order for the players to be able to get a good overview of the entirety of the map, there had to be a way for the camera to zoom out. 
+In order for the players to be able to get a good overview of the entirety of the map, there had to be a way to zoom out on the screen. 
 However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, whilst zooming in to much clustered the screen with to large elements. To counteract this a maximum and a minimum zoom was implemented into the app itself.	
 
 	
 \subsubsection{Move around}
 
-The players using the app are able to move the camera around all of the map in which ever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
-There is not set any max distance the camera can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
+The players using the app are able to move the viewport around all of the map in which ever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
+There is not set any max distance that the screen can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
 
 \subsection{Datamanager}
 
@@ -409,7 +409,7 @@ The main course of the game is to move from the start all the way to the goal no
 
 \subsection{Interacting with the islands}
 In order to travel to an island, you will have to click on the sprite image that is representing them in the world map. The island also have to be within range of the castle in order for any interaction to be possible. 
-Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the camera a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
+Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the viewport a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
 
 When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
 A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
