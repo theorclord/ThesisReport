@@ -231,14 +231,18 @@ The NodeScene is probably best known as the "island scene" or "event scene", bec
 
 Once this scene is loaded the events for the given island and the locations on it, are generated. The events uses the information from the world node in order to create the events. The reason the event generation to be moved to this location, were to limit the computing power required to initialize the world node. 
 
-\begin{figure}[h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{Images/NodeScene.png}
     \caption{The node scene as seen on the computer version of the app. In the center is the island, with two locations situated on it, a mine and a ruin. In the top left corner, it can be seen that the island is controlled by the Highbourne.}
     \label{fig:nodescene}
 \end{figure}
 
-To briefly describe the looks of the Scene, it has a background representation of an island, and on that island, it has image representations of the locations that the players will be able to travel to (see figure \ref{fig:nodescene}. On top of that, every Island (from the WorldScene) has a faction affiliated with it. What this does, is to allow the player to instinctively know whether or not an event can have a positive outcome and if it has a higher chance of success, based on the current standing the players have with that faction.
+In figure \ref{fig:nodescene} you can see one of the configurations that the island can have on generation. The island has two locations for the players to explore, a mine and a ruin. 
+Each time an island is generated, it always comes with two locations for the players to visit, one for gathering and one for research. The gathering event will have a red icon with a drill on it hovering above the given location, whilst the research event will have will have a blue icon with a alchemical symbol.
+
+Each island also have a general faction which in charge of all the locations on the island. Their icon and their affiliated symbol is located in the top left corner. From this the players are able to easily identify whether they have arrived at a location where they have allies or enemies, and from that conclude whether their events are going to have a higher chance of success with better outcomes, allied faction, or if there is going to be a higher chance of failure with worse outcomes, enemy faction.
+The faction is also 
 
 \begin{figure}[!ht]
     \centering
