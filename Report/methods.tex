@@ -60,7 +60,7 @@ The collaboration would also enhance the PCG-based mechanics of the game in an o
 The combination of those patterns was the base of the core loop (see figure \ref{fig:loop}). The players would have to collaborate managing their base using the resources found during the event exploration. The events would be procedurally generated and only occur on the digital device. Building over such an abstract game concept required another brainstorm session to explore the possibilities offered by such mechanic, and exploit the digital component using PCG (see appendix \ref{fig:brainstorm2}). The inspirations found after the brainstorm session gave directions to explore potential hybrid game specific experiences.
 \section{Designing \textit{Archipelago}}
 As mentioned earlier, the PCG integration in hybrid games on a design point of view is explored via prototypes. Based on the prototyping methods and playtest results analysis explained in section \ref{sec:proto}, the game evolved towards a final state which encompasses all the different mechanics used to prove the interest of using PCG in a hybrid game. The most crucial aspects of the game supporting the research purpose of this paper will be described in this section.
-\subsection{Game Setting}
+\subsection{Game setting and story}
 In \textit{Archipelago}, the players have been sent by their King to explore a newly discovered archipelago of floating islands. They are commanding a flying castle that is powered by a crystal emitting energy. The castle is composed of rooms that each have a purpose in the game. These rooms range from \textit{Mining Guild} allowing the players to gather the required material for construction; to \textit{Mechanic's Workshop} to repair the rooms that are damaged during the exploration phase. The players have to fly from one island to the other in order to reach the final island on the map and finish the game. Islands are composed of different locations, which are generally filled with magic: magic crystals are scattered around the archipelago and with time created strange effects. The players will have to use Alchemy in order to extract as much resources as possible from the different locations. 
 
 The archipelago is inhabited though, and the players will have to confront the different factions, sometimes by  allying; other times by betraying. The relation with the factions influences the outcomes in various ways, modifying the amount of resources that players gain, and affecting the game difficulty. The events then become more and more dangerous as the players progress and acquire a reputation in the archipelago.
@@ -107,8 +107,32 @@ After simulating the event generation system with dice, the first iteration of t
 \item Finding the right number of parameters to use in order to generate a content in which the patterns of the event generation system would not be recognized by the players.
 \item The parameters should also be coherent both in a technical perspective, as well as being recognizable by the players so that their decisions could be based on those parameters
 \end{itemize}
-It was not the first iteration of the implementation of a digital device in the flow of the game: an iteration of the procedurally generated archipelago map layout had been tested with the dice mechanic to further test the flow of the game (see appendix \ref ). However, it was the earliest prototype using both analogue components and 
-\subsubsection{A flexible board game}
+It was not the first iteration of the implementation of a digital device in the flow of the game: an iteration of the procedurally generated archipelago map layout had been tested with the dice mechanic to further test the flow of the game (see appendix \ref{fig:gameflow}). However, it was the earliest prototype using digital components in its \textit{Material}, to generate text based events. 
+The first event generation system simply relied on a random percentage based selection of outcomes. So, the interesting part of this prototype is not to be found in its technical aspect, but in its exploration of the different parameters needed to generate coherent text based events:
+\begin{labeling}{Class or Priority}
+\item[\textbf{Event Type}] Three classes of event which are guidelines for their content.
+\begin{itemize}
+\item \textit{Gather} is related to the extraction of \textit{Scrap} (Construction Material) used to build new upgrades in the castle.
+\item \textit{Research} contain events linked to resources  used to merge the different upgrades in the castle so they are more valuable.
+\item \textit{Diplomacy} handles the encounters with the factions, and is a premise of what would become the later \textit{Faction System}.
+\end{itemize}
+\item[\textbf{Class or Priority}] The options available to the players to solve the events presented to him are divided into \textit{Basic}, \textit{Second} and \textit{Third}. The Events always contain options from the two first \textit{Classes}, but the \textit{Third} only has a 50\% chance of appearing. 
+\item[\textbf{Risk}] The higher the class is, the better the associated maximum reward is. However, very penalizing outcomes are introduced to counter balance the rewards.
+\end{labeling}
+
+The texts of the different options and outcomes were handmade. It took a long time to reach a sufficient number of options and outcomes before testing the game. For these reasons, this method was not sufficient to prove the interest of PCG in rapidly generating content to both reduce the workload of creators. Also, playtests have shown that the players could recognize the different patterns in the event generation (i.e. options showing several times in a row), thus ruining the replayable aspect of the game. However, this provided a base to work on a more complex event system.
+\subsubsection{Flexibility and coherence}
+As observed during playtests of prototypes using the event generation system previously described, the generation of content was not providing enough variety to generate a potentially infinite number of events; also the workload was too high in the prospect of experimenting a sufficient amount possibilities of PCG-based game design. Solving these problems required drastic changes to attain a satisfying amount of coherent results.\\\\
+A new design method for generating was then imagined:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Images/eventStructureDesign.png}
+    \caption{More advanced system of parameters used to generate the events. }
+    \label{fig:struct}
+\end{figure}
+As a new set of parameters added to the \textit{Event type}, the \textit{Location type} was used to provide more variety to the events and give a narrative coherence to the game. Each type of events had locations associated to it
+
+
 \subsection{Player control and Adaptability}
 \subsubsection{Diplomacy system}
 \subsubsection{Risk and Reward}
