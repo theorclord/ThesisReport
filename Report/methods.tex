@@ -399,11 +399,11 @@ In figure \ref{fig:eStruc} you see the general structure of the events in the ap
 \end{figure}
 
 Each location in the NodeScene has an event assigned to it. 
-Each of these events have 2 to three event options assigned to them. The options are represented by buttons in the UI in the NodeScene when you explore a location. A option contains the conditions required for resolving the events. 
+Each of these events have 2 to three event options assigned to them. The options are represented by buttons in the UI in the NodeScene when you explore a location. An option contains the conditions required for resolving the events. 
 
-Each of the event options contains 1 to 3 event outcome group. The event outcome group simply is a bundle of event outcomes. It contains an outcome for each of the result type, success, failure, or neutral. These types are attributed to the outcomes.
+Each of the event options contains 1 to 3 event outcome groups. An event outcome group simply is a bundle of event outcomes. It contains an outcome for each of the result types; success, failure, or neutral. These types are attributed to the outcomes.
 
-Each of the event outcome groups contains 3 outcomes. An outcome has a type, as explained above, which designates which to pick given if the event is a success, failure, or neutral. The outcome also contains the chance of which this outcome appears. Lastly the outcome contains the pieces and their change amount. 
+Each of the event outcome groups contains 3 outcomes. An outcome has a type, as explained above, which designates which to pick given if the event is a success, failure, or neutral. The outcome also contains the chance for which this outcome appears. Lastly the outcome contains the pieces and their change amount. 
 
 \subsubsection{Structured Events}
 The first implementation focussed on having events for each of the options you could select on the UI. The events were stored in an XML file and loaded with the program. The events were assigned to all the nodes as they were generated.
