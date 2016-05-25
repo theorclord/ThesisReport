@@ -16,7 +16,7 @@ The transitions between the different scenes can be seen in the overview present
     \label{fig:appState}
 \end{figure}
 
-\subsubsection{StartScene}
+\subsubsection{StartMenu}
 As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
 
 Furthermore, as this scene is loaded, the preliminaries to the world generation and the loading of required data from XML files is handled. This minor loading, takes some of the load of the rest of the program, giving an overall smoother experience.
@@ -96,7 +96,7 @@ Once the players close the resolution panel, they will return back to the WorldS
 
 \subsubsection{ScoreScene}
 Upon reaching the final island in the WorldScene, the one island with the blue ring around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. 
-What happens then is that all the data is cleared from the app, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartScene where they can play another game if they so choose.
+What happens then is that all the data is cleared from the app, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartMenu where they can play another game if they so choose.
 
 \subsection{Buttons and Raycasting on images}
 The players main source of interaction is via the use of buttons and images. The buttons that can be found on the main screen, on various events and dialog boxes, all have their own respective functionalities connected with them. One button might close a box, another might start the game, each button have specific actions that they perform, and what they do or how they affect the gameplay, is represented on them either via specific text, flavour text or icons.
@@ -394,7 +394,7 @@ Should there be more than these 2 result pieces, the algorithm would go on to do
 In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
 
 \subsection{Start}
-As the game starts, and the application is running, the first screen that is shown is the start screen. Visually, this scene is rather empty, as all it really contains is a button to start the game. The purpose of this screen is to give the users an option to choose when they want to start the game themselves. It is also used as a clean-up scene after having ended a previous game. By going back to the start menu from the end screen will erase any saved data and create a new map as soon as the start button is pressed.
+As the game starts, and the application is running, the first screen that is shown is the start menu. Visually, this scene is rather empty, as all it really contains is a button to start the game. The purpose of this screen is to give the users an option to choose when they want to start the game themselves. It is also used as a clean-up scene after having ended a previous game. By going back to the start menu from the end screen will erase any saved data and create a new map as soon as the start button is pressed.
 
 \subsection{Generate Nodes}
 After the start button has been pressed, the program will start generating all the nodes that will be portrayed in the world map. This means that the program will initialize the L-System (see the "PCG - Generating the content" section above for the detailed description of how the algorithm works) and create all the nodes, or "islands" based on the result string of the L-System algorithm. Once all the nodes are generated, they will be added into the Datamanager class and be saved there for when they are being loaded in the World Scene after. 
