@@ -1,5 +1,5 @@
 \chapter{Technical overview}
-In this chapter we will elaborate on how the application for \textit{Archipelago} is constructed, the structure of the app and the scenes contained within it and how they function. After that, we will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the viewport to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This is followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter we will go through the app in action from start to end and how it is utilized together with its features.
+In this chapter we will elaborate on how the application for \textit{Archipelago} is constructed, the structure of the app and the scenes contained within it and how they function. After that, we will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the viewport to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This will then be followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter we will go through the app in action from start to end and how it is utilized together with its features.
 
 \section{App structure}
 This section details the overall structure of the app.
@@ -335,6 +335,27 @@ An outcome also contains the results. This node comes in three types; success, f
 Each outcome has one or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
 By having the options this way, it is possible to add more variety in the outcomes without rewriting the event in any other way.
 
+\subsubsection{Event Generation}
+When the events are generated the algorithm is fed two parameters;
+the event type, the same as shown in figure \ref{fig:eGen2}, and the number of options the event should have.
+
+For each of the options, the conditions are found and added. The number of conditions added is equal to the option number. The first option having 1 condition, the second one having 2, and the third having 3. 
+
+By design the game requires one of the conditions to be castle crew. In order to accommodate this, the castle crew condition is the only condition which has the type \textit{required}.
+
+The conditions are added by going through the condition list in a randomized order. If the condition found has the type which is less or equal to the current event level, the condition is added. This is done until all the conditions have been added.
+
+The outcomes are filled using the strategy of finding the most complex event which matches the conditions.
+This is done by first going through outcomes, of the class related to the option number, in a random order, stopping if the conditions of the outcome matches the conditions in the event. 
+If a match is found, the outcome is added to the \textit{EventOption} as an \textit{EventOutcomegroup}. Furthermore the number of conditions used in adding this event - if the event has two conditions; then two events are used - is noted along with the pieces used.
+
+If there is no outcomes which matches the conditions of the event, the algorithm steps down a class, and tries to match with a lower tier. 
+This continues until there is no unmatched conditions left.
+
+As a safeguard, the lowest class of outcomes has an entry for each of the possible conditions, ensuring a 1 to 1 match can always occur on the lowest tier. 
+
+The last feature of the event generation is that there only can be one of conditions of a certain type. This is ensured by noting when one such condition is added and not allowing any more to be added after the first.
+
 \subsection{Flavour deconstruction}
 \label{sec:flavour}
 One of the biggest concerns in terms of being able to present the game with \textit{feel} to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
@@ -402,7 +423,7 @@ Each of the scenes, all have a controller related to them. This is the main comp
 
 \subsection{StartMenu}
 The game starts in the StartMenu scene. This scene contains visually nothing but a button labelled "StartGame". 
-However the behind the visuals the application is loading some of the needed data to run a game.
+However behind the visuals the application is loading some of the needed data to run a game.
 
 The Datamanager (see section \ref{sec:datman}) is loading information in the background. 
 All the board piece information and all the factions, stored in xml files, are loaded and the factions are initialized. 
@@ -424,7 +445,7 @@ The L-system provides the position of the node, along with the type of the node 
 The node is randomly assigned a faction from the available factions stored in the Datamanager. Once the faction is set the node is assigned a name from a list of possible names, and is independently given a description of the location, which incorporates the faction set earlier.
 
 The world node is then assigned two sub nodes which relates to the locations which will be available on the island in the NodeScene. The different nodes have an event type set, one has "gathering" and the other "research".
-Each of the nodes are given a name, which is name of the location, e.g. mine; and a matching description of such a location, both based on the type of event which is tied to the node.
+Each of the nodes are given a name, which is the name of the location, e.g. mine; and a matching description of such a location, both based on the type of event which is tied to the node.
 
 \subsection{World map And World Controller}
 The world map in the "WorldScene" is the were the players will move from island to island over the course of the game. 
@@ -432,16 +453,16 @@ The world map in the "WorldScene" is the were the players will move from island 
 This scene starts by instantiating the world nodes based on the statistics stored in the Datamanager. As the statistics are kept in the Datamanager, whenever the players return to this scene, the same function is called, taking the changes made by the players into account. 
 
 Once all the nodes are spawned, the controller also spawns the player object at the position which is stored in the Datamanager, initially next to the start node. 
-As the player token is spawned, the main camera is centred on the token as well. As the position of the players change during the game, the centering allows the players to quickly find their bearings.
+As the player token is spawned, the main camera, which controls the viewport, is centred on the token as well. As the position of the players change during the game, the centering allows the players to quickly find their bearings.
 
 If the players enter this scene, after completing a special event, and they have managed to change their standing with one of the factions in the game, a dialogue box appears, notifying the players of the change.
 
 As the application runs, the camera position and zoom is subject to change 
 
-Whilst in the world map, the players has the possibility of moving the view around and zoom in and out in order to get the overview required.
+Whilst in the world map, the players have the possibility of moving the view around and zoom in and out in order to get the overview required.
 
 Whenever an island in the world map is clicked, a dialogue box pops up which contains the name of the island along with a flavour text of the location, both acquired from the world node. 
-If the players chose to travel to the location, the player token moves towards the location, ignoring any other collisions, and loads the "NodeScene" when the island and player token collides. 
+If the players choose to travel to the location, the player token moves towards the it, ignoring any other collisions, and loads the "NodeScene" when the island and player token collides. 
 
 \subsubsection{WorldPlayer}
 The "WorldPlayer" is responsible for moving the player token as long as a target is set. 
@@ -457,5 +478,7 @@ Once the player has reached an island they have chosen to explore, the NodeContr
 The controller first generates the location nodes for each of the locations, as set by the L-system.
 The events for each of the locations is generated by supplying the type of event and how many event options. The full description of the events is covered in section \ref{sec:eve}.
 Once the event is generated, the location sprite is instantiated. Using the name of the location, the sprite related and the location of said sprite is found in a related XML file which keeps a list of all the locations, the name of their sprites, where they should be instantiated, and the scaling factor which should be used.
+
+Exploring one of the nodes opens the event panel
 
 \subsubsection{Special Events}
