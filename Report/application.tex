@@ -336,18 +336,18 @@ Each outcome has one or more options attached to it. These basically are the con
 By having the options this way, it is possible to add more variety in the outcomes without rewriting the event in any other way.
 
 \subsubsection{Event Generation}
-When the events are generated the algorithm is fed to parameters.
-The event type, the same as shown in figure \ref{fig:eGen2}, and the number of options the event should have.
+When the events are generated the algorithm is fed two parameters;
+the event type, the same as shown in figure \ref{fig:eGen2}, and the number of options the event should have.
 
 For each of the options, the conditions are found and added. The number of conditions added is equal to the option number. The first option having 1 condition, the second one having 2, and the third having 3. 
 
 By design the game requires one of the conditions to be castle crew. In order to accommodate this, the castle crew condition is the only condition which has the type \textit{required}.
 
-The conditions are added by going through the condition list in a random order. If the condition found has the type which is less or equal to the current event level, the condition is added. This is done until all the conditions have been added.
+The conditions are added by going through the condition list in a randomized order. If the condition found has the type which is less or equal to the current event level, the condition is added. This is done until all the conditions have been added.
 
 The outcomes are filled using the strategy of finding the most complex event which matches the conditions.
 This is done by first going through outcomes, of the class related to the option number, in a random order, stopping if the conditions of the outcome matches the conditions in the event. 
-If a match is found, the outcome is added to the \textit{EventOption} as an \textit{EventOutcomegroup}. Furthermore the number of conditions used in adding this event, if the event has two conditions; then two events are used, is noted along with the pieces used.
+If a match is found, the outcome is added to the \textit{EventOption} as an \textit{EventOutcomegroup}. Furthermore the number of conditions used in adding this event - if the event has two conditions; then two events are used - is noted along with the pieces used.
 
 If there is no outcomes which matches the conditions of the event, the algorithm steps down a class, and tries to match with a lower tier. 
 This continues until there is no unmatched conditions left.
