@@ -73,7 +73,7 @@ In the early stages of the development, it was necessary to test the core mechan
     \caption{A representation of the base used in the first prototype.}
     \label{fig:base1}
 \end{figure}
-Based on Lim et al.'s framework to create relevant prototypes, the first iteration of \textit{Archipelago} is described by its main properties
+Based on Lim et al.'s framework to create relevant prototypes, the first iteration of \textit{Archipelago} is described by the main properties of prototypes.
 
 Since it was one of the first version to be tested by players external to the team, the application using PCG was not yet ready. Therefore paper and dice composed the \textit{Material}. The paper was used for the representation of the base on the game's board and the dice were used to simulate the PCG part. This prototype had a low fidelity \textit{Resolution}. The representation of the base is very abstract and the digital component of the game was simulated.The \textit{Scope} included several elements: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game. \\\\
 The mechanic of the prototype contain several element. Refer to figure \ref{fig:base} for each description given below:
@@ -96,7 +96,7 @@ Finally, it gave a good idea of how the flow of the game would be. It was decide
 On the bases of the first playtest, it was decided that a turn in \textit{Archipelago} would be divided in two different phases:
 \begin{labeling}{Management Phase}
 \item[\textbf{Management Phase}] The phase during which the players discuss and allocate the different resources in the most efficient way. This phase is based on the physical components, gathering the players around the board and using the game pieces.
-\item[\textbf{Exploration Phase}] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting. The PCG would generate the island, the choices 
+\item[\textbf{Exploration Phase}] After the management phase, the players chose an island to explore on the device. This island contains locations to visit, and situations to overcome. The choices made by the players condition the amount and nature of resources they are getting. The PCG would generate the island layout, the situation that the players have to face, the options they have to face it as well as the outcome of the event.
 \end{labeling}
 As previously mentioned, one of the challenges of making \textit{Archipelago} was to make both digital and analogue aspects of the game support each other without interfering play as well as being essential in the game. This idea followed the whole design process of the game.
 \subsection{Replayability}
@@ -107,7 +107,9 @@ After simulating the event generation system with dice, the first iteration of t
 \item Finding the right number of parameters to use in order to generate a content in which the patterns of the event generation system would not be recognized by the players.
 \item The parameters should also be coherent both in a technical perspective, as well as being recognizable by the players so that their decisions could be based on those parameters
 \end{itemize}
-It was not the first iteration of the implementation of a digital device in the flow of the game: an iteration of the procedurally generated archipelago map layout had been tested with the dice mechanic to further test the flow of the game (see appendix \ref{fig:gameflow}). However, it was the earliest prototype using digital components in its \textit{Material}, to generate text based events. 
+It was not the first iteration of the implementation of a digital device in the flow of the game: an iteration of the procedurally generated archipelago map layout had been tested with the dice mechanic to further test the flow of the game (see appendix \ref{fig:gameflow}). However, it was the earliest prototype using digital components in its \textit{Material}, to generate text based events.
+
+In \textit{Archipelago}, the events generated every time the players enter an island have several properties (see figure \ref{}). First, a text describing the situation is generated. This text depends on the \textit{location type} that the players have selected on the island. The players have several \textit{options} to face this situation. These options are only accessible to the players if they possess the required \textit{conditions} (i.e. the necessary resources or upgrades in the castle). The text describing the options is also procedurally generated. After selecting an option, a calculation is made to determine if the event was successful or not. The amount of resources collected is then determined. 
 The first event generation system simply relied on a random percentage based selection of outcomes. So, the interesting part of this prototype is not to be found in its technical aspect, but in its exploration of the different parameters needed to generate coherent text based events:
 \begin{labeling}{Class or Priority}
 \item[\textbf{Event Type}] Three classes of event which are guidelines for their content.
@@ -119,26 +121,37 @@ The first event generation system simply relied on a random percentage based sel
 \item[\textbf{Option Class}] The options available to the players to solve the events presented to him are divided into \textit{Basic}, \textit{Second} and \textit{Third}. The Events always contain options from the two first \textit{Classes}, but the \textit{Third} only has a 50\% chance of appearing. 
 \item[\textbf{Risk}] The higher the class is, the better the associated maximum reward is. However, very penalizing outcomes are introduced to counter balance the rewards.
 \end{labeling}
-The texts of the different options and outcomes were handmade. It took a long time to reach a sufficient number of options and outcomes before testing the game. For these reasons, this method was not sufficient to prove the interest of PCG in rapidly generating content to both reduce the workload of creators. Also, playtests have shown that the players could recognize the different patterns in the event generation (i.e. options showing several times in a row), thus ruining the replayable aspect of the game. However, this provided a base to work on a more complex event system:
+The texts of the different options and outcomes were handmade. It took a long time to reach a sufficient number of options and outcomes before testing the game. For these reasons, this method was not sufficient to prove the interest of PCG in rapidly generating content to reduce the workload of creators. Also, playtests have shown that the players could recognize the different patterns in the event generation (i.e. options showing several times in a row), thus ruining the replayable aspect of the game. However, this provided a base to work on a more complex event system:
 \subsubsection{Flexibility and coherence}
 As observed during playtests of prototypes using the event generation system previously described, the generation of content was not providing enough variety to generate a potentially infinite number of events; also the workload was too high in the prospect of experimenting a sufficient amount possibilities of PCG-based game design. Solving these problems required drastic changes to attain a satisfying amount of coherent results.\\\\
-A new design method for generating was then imagined. The technical details of how this methods are explained in the technical section of the report (see section \ref{sec:eventGeneration}). The design logic behind this system is determined as follows.
-A \textit{Basic Outcome} is defined when performing the event. This outcome is chosen among several ones according to the following parameters:
+A new design method for generating the events was then imagined. The technical details of how this methods are explained in the technical section of the report (see section \ref{sec:eventGeneration}). The design logic behind this system is determined as follows:
+The \textit{Outcome} is defined when performing the event. This outcome is calculated thanks to the following parameters:
 \begin{enumerate}
-\item The \textit{Location Type} chosen among several ones according to the \textit{Event Type}.
-\item The \textit{Faction} controlling the island and the relation of that faction with the players (i.e. allied, neutral or enemy).
-\item The \textit{Option Class} selected by the players.
+\item The \textit{Event Type} to select the most likely resource to be collected.
+\item The \textit{Condition(s)}, which is the resource(s) that the players use to access the different options available to perform the event.
+\item The \textit{Class} of the option selected by the players.
 \end{enumerate}
-To generate the \textit{Final Outcome}, another set of parameters is taken into account:
-\begin{enumerate}
-\item The \textit{Success Rate} is calculated from a base, which is incremented or decreased according to the \textit{Faction} and the resources (\textit{Conditions}) that the players decide to use during the events.
-\item Finally the \textit{Condition} and the \textit{Success Rate} determine the amount of resource that will be added to or removed from the \textit{Basic Outcome}, in order to generate the \textit{Final Outcome}.
-\end{enumerate}
-The \textit{Final Outcome} is the reward that the players get from the event. 
+There are three types of outcomes: success, neutral or failure. The type is defined by the standard risk associated to the \textit{condition}, and the faction controlling the island. 
 
+After an internal test, this method was selected to show the potential of PCG to create a very large number of situations and options for the players during the events. Feedback from playtesters showed that the text also needed to be carefully designed. The text needed to be coherent with the proposed options, and adaptable to a variety of situations. Therefore, the text was composed of different blocks that the digital device organizes in order to create a coherent option, understandable by the players and providing enough information regarding the risk and the potential reward. The system was also flexible enough so it was possible to experiment various rules to create the events, and increase the quantity of possible combinations. The first new implementation to try was to save data during the events in order to reuse it when the players reach another island later in the game.
 \subsection{Player control and Adaptability}
+In PCG-based game design, adaptibility refers to the influence of the players' actions over the generation of content. Although already covered by the event generation system, where the various options that are available to the player determine the outcomes in terms of resources gained or lost, this quality of PCG-based games needed to be emphasized in \textit{Archipelago}. 
 \subsubsection{Diplomacy system}
-\subsubsection{Risk and Reward}
+It has already been mentioned tat early prototypes included a \textit{Diplomacy} type of events. After several prototypes using this parameter to create events, it was decided that diplomacy would be a whole system of mechanics influencing the generation of the events and the gameplay of the whole game.
+
+The different islands of the Archipelago are inhabited by three different \textit{Factions}:
+\begin{itemize}
+\item The \textit{Highbournes} are described as humans native of the archipelago. They are a proud people very close to their traditions. They are the first inhabitants of the islands, and therefore have been under the magic influence of the crystals for a long time now.
+\item The Nomads arrived on the Archipelago for various regions of the world. By exchanging with the Highbournes, they have acquired the rudimentary magic skills necessary to create their own transportation means and scavenge the islands for resources. They live in small villages and often confront the Humans that recently populated the archipelago.
+\item The Humans are the last people who populated the Archipelago. They also arrived from various places of the world, but contrary to the Nomads, they live in large communities based on trade. Their rapid development is the primary cause of tensions between the factions of the archipelago.
+\end{itemize}
+
+The different people react differently to the players' actions. This influence is represented in the game in various ways.
+
+First, every island is controlled by the faction. When players enter an event, they see which faction control the islands by looking at the symbol in the top left corner of the screen on the digital device. As previously explained, the faction controlling the island influences the text generated in the events (both in the options or in the text describing the situation). Until, a certain point in the development, this  
+
+\subsubsection{Influence on the overall experience}
+This system has been proposed to use the data that is saved when the players perform events
 \subsection{Specialization and collaboration}
 \subsubsection{Constructed Specialization}
 \subsubsection{Encouraging Collaboration}
