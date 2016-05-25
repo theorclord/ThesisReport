@@ -85,55 +85,7 @@ Having this fantasy aspect in the theme, allows there to be almost any types of 
 \section{A management-game}
 Although having elements of both exploration and strategy, the game itself is a management type game. What the game of Archipelago focuses most on, is managing the castle as you explore the wider world. Having this as the main mechanic of the games encourages the players to communicate and collaborate to make sure they are able to reach the winning conditions of the game. The game encourages the players to upgrade their castle and build rooms and upgrade them. But in order to be able to do so, they must gather the resources needed. This is done by completing events, and even there, the players have to manage who should send their player tokens out on the mission, and which missions they should complete in order to get the resources they need. Since the players have to manage their resources, and more importantly for the win - their player tokens, discussion and tactical thinking is being enforced onto the players. One player might want to take charge and be the "brains" behind the team, and that is O.K. because any player behaviour that causes the players to be social and interact amongst themselves is valuable for the game. We want the players of Archipelago to get into tactical discussions about how to manage their castle, what to build, what to upgrade, and we want them to be able to think ahead in the game and come to agreement on which events to pursue. 
 \section{The result of the game}
-\section{Future work}
-In this part, we will discuss what possible work could be done in the future. What we would like to implement, thought on how to do that, and what could have been done differently in order to make this easier in the future.
-\subsection{Better use of saved data}
-\label{sec:savdat}
-One of the big impacts this project brought to light, was the use of saved events and its data to generate new events that were based on those. In this solution, we save the events that happen over the course of the game, and we use them in a rather minimalistic way, more as a proof of concept. However, it would be interesting to see how this data could be used more efficiently over an entire game session. Generating more experience driven content, that would have a bigger impact on the players' experience, by creating other mechanics in the game, is one thought that comes to mind. 
 
-The saved data could be used in ways which a board game could never compete. One could use the saved data to challenge the players either more or less, by knowing the amount of resources they have collected, and tailoring the possibilities from that knowledge. In this way the game would either challenge the players to use their resources wisely or give them access to a resource which has been sparse in the previous events. 
-
-The special events could really play to what the players had been doing, in terms of were and for who, giving the players a greater feel of involvement in the world. This could be shown with some sort of faction overlay, which could change each time you dealt with the different factions. It could be possible to have some sort of background faction warfare with variables being influenced by how the players interact with the game.
-
-Also a story could be brewed by linking all the outcomes of the events. In the end building a short story based on the players events. Using a text algorithm of sorts to create a story based on the factions relationships and the deals made at each point of interest. 
-
-By using the current layout, one could even imagine that the app could piece together the state of the board game, using the input from the events. Whenever the players resolves the events, they declare, indirectly the tells the app how they have used their resources. Saving this could help to give a more complete look of how the players are doing and surprise the players by revealing to them in events that the app knows what they have built.
-
-In the end the saved data could be used in many ways to give the players a feeling of a game which reacts to their input, even without them having directly to manipulate the app with the results and state of their board.
-
-\subsection{More options and outcomes}
-At this point in time, there are a finite number of possible outcome types, rewards and penalties. For a future version of the game, it would be interesting to see how the game would be experienced if there were more types of tokens to be played around with. It would also be nice to have more flavour text pieces that could be combined, maybe in a new way, and presented to the players. 
-
-Right now the system is capable of combining the different parts of the game and generate events with flavour text, using combination of the board pieces and flavour text strings.
-The system is built such that more pieces could be added, along with flavour text bits for each of them, and still generate meaningful events. 
-
-However, there is right now around 3-7 text strings for each of the board pieces, all of which can be combined which each other. This could of course be increased, but it would also be interesting to generate text which is capable of having some sort of interrelation between the pieces. 
-This could perhaps be accomplished using some sort of grammar such as the L-systems, which could take the current text being built and use it to create a better interrelation. 
-The grammar could as an example relate Alchemy points to Castle crew and base the flavour text on some sort of potions to improve the crew, or relate the alchemical potency to how it improves the machinery used in a specific event. 
-Having this relation brings the game more to life and makes the players feel more immersed in the experience.
-
-In the end, having more pieces, variety of flavour, and ways of combining the flavour, would be like creating an expansion pack of cards that would be added to the physical board game.
-
-\subsection{Additional features based on the map}
-The current map layout generates a larger structure of floating islands which you can visit in no particular order. The map contains floating islands each with events tied to it and different locations available.
-
-However the map is an unused canvas which could have more features to better engage the players in moving around on the map. 
-There could be included places of interest, where special quest could be implemented. A chain of quest linked in creating a short story or other sub-plots. 
-As said above in section \ref{sec:savdat}, there is also a possibility of having factional warfare, using the saved events. This could both be displayed and engaged directly on the map. 
-Timed events could appear based on factional changes and the events which have been resolved by the players. The events could appear on the map in a small vicinity of the player location. This would engage the players in checking out how the map situation is unfolding. 
-
-Another way to increase the exploration is to hide the end goal. Then perhaps revealing the goal through a quest chain or through some sort of cost of materials. The general direction of the goal could be known to the player, but you have to either complete some quest or guess where the goal were through hints given throughout the game.
-
-The chain quest could be one which spawns the goal once all the quest are completed. Having the players creating a portal to take them home after the quest is done.
-\subsection{Other potential mechanics}
-A feature which could be included in future development, is a visual representation of the current relation to the factions.
-Currently there is feedback from the application whenever there is a change in the relation to the factions. But this information only shows up whenever there is a change, which is somewhat problematic. 
-
-A fix for this would be to have some access to a part of the UI which would display the current standing with the available factions. This would give the players the possibility to make better informed decision of how to react to special events and maybe steer toward some specific relation to the factions.
-
-For the events, it would be interesting to see how the players would act, if there was some progression system in place, that would make it harder and harder as the game went on. And if this would be combined with perhaps some artificial intelligence in order to generate new rewards, it could be educational to see how the mechanics of the game could change along with how the players would perceive the space of possibility.
-
-An option that could yield data for future development, would be to implement some sort of statistic gathering algorithms that would save data like average time of a game, moves made per game, resource and reward amounts and chances of getting these. With this information, we as the developers of the game, can come up with possible solutions and changes that could improve the game and the way it is played.
 \section{PCG contribution and it's benefits}
 What the PCG part did for this project, was to remove the need for the physical part of the game to have cards, map-board, a pre-written explanation on how to set up the map locations, and it removed the need for dice rolls. This being a collaborative game, the focus of the players needed to be more on each other and the "story" of the game, rather than having to focus on reading from a piece of paper each turn, each time one rolls a die, and each time a card would be picked and had to be combined.
 
