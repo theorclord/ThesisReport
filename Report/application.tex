@@ -1,6 +1,4 @@
 \chapter{Technical overview}
-This chapter will detail the technical work done on the app and the execution of each of the parts along with their outcome. 
-
 In this chapter we will elaborate on how the application for \textit{Archipelago} is constructed, the structure of the app and the scenes contained within it and how they function. After that, we will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the viewport to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This is followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter we will go through the app in action from start to end and how it is utilized together with its features.
 
 \section{App structure}
@@ -8,8 +6,10 @@ This section details the overall structure of the app.
 First the scenes in their structure in the game and later the UI and additional elements.
 
 \subsection{Scenes}
+\label{sec:scen}
 This section is dedicated to the overview of the technical relation between the different scenes and their individual purpose. Each scene will be detailed in each of the following subsections going from the first scene in the app, to the last scene.
-The transitions between the different scenes can be seen in the overview presented by figure \ref{fig:appState}.
+The transitions between the different scenes can be seen in the overview presented by figure \ref{fig:appState}. The names on the transitions are related to the button presses which initiate them. 
+The diagram does not show any of the actions which transition to the same state.
 
 \begin{figure}[!ht]
     \centering
@@ -182,7 +182,7 @@ The players using the app are able to move the viewport around all of the map in
 There is not set any max distance that the screen can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
 
 \subsection{Datamanager}
-
+\label{sec:datman}
 The data manager is a collection of all the data saved locally within the application. In this section, we will elaborate on the purpose for it, how it is being accessed, and the overall usage of the manager and the data it contains.
 
 \subsubsection{Purpose}
@@ -334,6 +334,7 @@ An outcome also contains the results. This node comes in three types; success, f
 
 Each outcome has one or more options attached to it. These basically are the container for the pieces which are influenced by the outcome. If the outcome has more than one option, the one used for event resolution is selected at random. 
 By having the options this way, it is possible to add more variety in the outcomes without rewriting the event in any other way.
+
 \subsection{Flavour deconstruction}
 One of the biggest concerns in terms of being able to present the game with \textit{feel} to the players, was to come up with a way of generating the flavour text. The design choice made was that it would be combined by lesser blocks of text that would be combined into one complete sentence that would display the entirety of the flavour. The way to go about this, was to create dummy data and reverse engineer that into a combination system. First you would create a complete flavour text that would be served as an example. This text would contain a combination the elements that would be wanted in the actual implemented solution; Location types, island names, factions, resources, outcomes, etc.
 
@@ -393,48 +394,67 @@ These two strings would then be combined into one complete flavour text which wo
 Should there be more than these 2 result pieces, the algorithm would go on to do the same combination and add the other blocks to the finalized result flavour.
 
 \section{The app - From start to end}
-In this section you will get an overview of how the developed application runs from start to end. Each milestone will be headlined and gone through in a more detailed manner.
+In this section you will get an overview of how the developed application runs from start to end. 
 
-\subsection{Start}
-As the game starts, and the application is running, the first screen that is shown is the start screen. Visually, this scene is rather empty, as all it really contains is a button to start the game. The purpose of this screen is to give the users an option to choose when they want to start the game themselves. It is also used as a clean-up scene after having ended a previous game. By going back to the start menu from the end screen will erase any saved data and create a new map as soon as the start button is pressed.
+Each of the states given in section \ref{sec:scen} and which processes that is executed and how will be detailed in the following subsections.
+Each of the scenes, all have a controller related to them. This is the main component in the interaction with the visuals and the data in the app. As we go through the states, the stated actions are, unless noted other wise, directly controlled by such a controller.
 
-\subsection{Generate Nodes}
-After the start button has been pressed, the program will start generating all the nodes that will be portrayed in the world map. This means that the program will initialize the L-System (see the "PCG - Generating the content" section above for the detailed description of how the algorithm works) and create all the nodes, or "islands" based on the result string of the L-System algorithm. Once all the nodes are generated, they will be added into the Datamanager class and be saved there for when they are being loaded in the World Scene after. 
-Each island has a faction affiliated with it, which is also being determined here. Also, the island will have events added to them for each location that is within the island, e.g. a mine, a forest, a lake, etc. These events, however are being added via online PCG which means they will be generated on the go, as the players are entering the island.
+\subsection{StartMenu}
+The game starts in the StartMenu scene. This scene contains visually nothing but a button labelled "StartGame". 
+However the behind the visuals the application is loading some of the needed data to run a game.
 
-\subsection{Generate events}
-In the world map, all the islands that were generated are being displayed. And when the player moves the castle to an island, i.e. goes to explore it, a new screen will be shown to the players, called the NodeScene. This screen is showing the island and the "explorable" locations on it. But before they can be displayed, they need to be built. 
+The Datamanager (see section \ref{sec:datman}) is loading information in the background. 
+All the board piece information and all the factions, stored in xml files, are loaded and the factions are initialized. 
+This data is being used throughout the entire runtime and needs to be readily available.
 
-\subsection{How an event is built}
-An event is generated by selecting which type of event it is going to be; Gathering or Research. Both of these event types have 5 different location types affiliated with them. Mines, quarry etc. for the gathering, and Lake, forest etc. for the research. As soon as the event type is selected, a location is also selected. Now the algorithm goes into an XML file containing all the different rewards and conditions, and picks a number of them; 1, 2 or 3 different options that the players can select from. Associated with all the conditions used in the event, there are a list of possible outcomes that can happen if said condition is chosen, be it gaining resources or losing player tokens. The outcomes of every event is changed by the current standing the players have with the faction controlling the island the players are currently on. 
-Once the options and outcomes have been generated, the location icons will be loaded to the island, and the players are free to choose which one they would like to explore.
+After all the pieces and factions are in place, the application generates the statistics of all the world nodes, their position, their description, their name, the controlling faction, and all of the statistics for the locations within it.
+The only thing which is not being loaded in this instance is the events for each of the locations in the NodeScene (see section \ref{fig:nodescene}). The reason the events are not being loaded stems both from the work load and for saving computing power in the end. As it is very unlikely that the players ever visit every node and see every event, there is no reason to initialize all the events at start-up. 
+All the generated nodes are stored and saved in the Datamanager so it can be used throughout the game.
 
-\subsection{Moving around the world}
-The main course of the game is to move from the start all the way to the goal node. But the castle can only move a certain length each turn. This means that the players will have to plan their way by looking at which island they can reach at any given time. The layout however is made so that the castle that is being moved, always is able to reach at least 1 island each turn. If there are more than 1 island within the ring surrounding the castle (indicator for where they can move to), it is up to the players to choose where they want to go, and which direction to take. There is always the little arrow in the lower right corner of the screen, indicating which direction the final goal is. The players are always welcome to go back where they came from, and travel to already visited islands, though they will not be able to "re-explore" them. So should the players by chance start off going the wrong way, it does not ruin the game for them and make them unable to return.
+The full explanation of the generation of nodes is detailed in the following section.
 
-\subsection{Interacting with the islands}
-In order to travel to an island, you will have to click on the sprite image that is representing them in the world map. The island also have to be within range of the castle in order for any interaction to be possible. 
-Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the viewport a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
+The scene changes once the "StartGame" button is pressed, and the "WorldScene" is loaded.
 
-When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
-A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
+\subsubsection{Generate Nodes}
+The nodes are generated when the map structure is being generated using the L-System (see section \ref{sec:lsys} above for the detailed description of how the algorithm works).
 
-\subsection{Flavour text combinations and it's purpose}
-Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavour text that will tell the players these things. 
+A node is generated for each of the corresponding characters in the string generated by the L-system.
+The L-system provides the position of the node, along with the type of the node as determined by the character in the string. 
+The node is randomly assigned a faction from the available factions stored in the Datamanager. Once the faction is set the node is assigned a name from a list of possible names, and is independently given a description of the location, which incorporates the faction set earlier.
 
-Every island has a name and a short piece of text along with it. These texts are premade and are applied to the island when they are generated in the beginning. 
-It is in the events that the real challenge is. The flavour text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavour for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavour also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
+The world node is then assigned two sub nodes which relates to the locations which will be available on the island in the NodeScene. The different nodes have an event type set, one has "gathering" and the other "research".
+Each of the nodes are given a name, which is name of the location, e.g. mine; and a matching description of such a location, both based on the type of event which is tied to the node.
 
-Now that all the conditions have been "flavourized", the challenge moves on to the result flavour. This is the flavour that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavour text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
-This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.\\\\
-The exact way the different flavours are combined, is described in the event section above.
+\subsection{World map And World Controller}
+The world map in the "WorldScene" is the were the players will move from island to island over the course of the game. 
 
-\subsection{Using memory to generate special event occurrences}
+This scene starts by instantiating the world nodes based on the statistics stored in the Datamanager. As the statistics are kept in the Datamanager, whenever the players return to this scene, the same function is called, taking the changes made by the players into account. 
 
-Special events is a feature that takes use of the fact that the application has memory. By checking the previous events, conditions and overall parameters within the data, we can compare the data and check how everything is connected. In doing so, we can make a list of conditions that needs to be met within an event, in order for a special event to be triggered and created. What we do as of now, is to have very specific requirements for an event to be able to trigger the special events. If the original event has a 3rd option, which is the "special" option, a check will be made to see if the overall conditions of the event checks out in comparison to the list of special events.
-For instance; a special event will be triggered if a preceding event was affiliated with the faction "Highbournes", and the location was a forest. Then the special event will occur on the world map X turns later, determined by a random initializer integer. When said special event then is triggered, it will use the data saved from the event that triggered it, and check which option was chosen, what the conditions for that option was, and then generate the text and result from that data.
+Once all the nodes are spawned, the controller also spawns the player object at the position which is stored in the Datamanager, initially next to the start node. 
+As the player token is spawned, the main camera is centred on the token as well. As the position of the players change during the game, the centering allows the players to quickly find their bearings.
 
-All the resulting data is then also saved into the datamanager class, and the values are updated, e.g. the reputation with a faction increases/decreases, etc.
+If the players enter this scene, after completing a special event, and they have managed to change their standing with one of the factions in the game, a dialogue box appears, notifying the players of the change.
 
+As the application runs, the camera position and zoom is subject to change 
 
-This concept of having special events being triggered and be based on already saved data, is one that really separates this game from being just a board game, to being something of a more technological game. There are a lot of different way this data can be used, and this is just one of them. More ways and our thoughts and ideas on this matter will be discussed in the discussion section.
+Whilst in the world map, the players has the possibility of moving the view around and zoom in and out in order to get the overview required.
+
+Whenever an island in the world map is clicked, a dialogue box pops up which contains the name of the island along with a flavour text of the location, both acquired from the world node. 
+If the players chose to travel to the location, the player token moves towards the location, ignoring any other collisions, and loads the "NodeScene" when the island and player token collides. 
+
+\subsubsection{WorldPlayer}
+The "WorldPlayer" is responsible for moving the player token as long as a target is set. 
+
+It also controls the action to take on collision with the target island. The target of the player is allowed to be a destination which the players have already explored, however, they cannot explore it again. When a target is reached, the controller checks whether it has already been visited, and if so, the players do not load the "NodeScene" as explained above.
+
+The last case is if the target node is the goal node. This will cause the application to load the "ScoreScene" and effectively end the game.
+As the "ScoreScene" is loaded, the Datamanager is cleared of all the saved nodes, such that a new game can be started.
+
+\subsection{NodeScene and Generating events}
+Once the player has reached an island they have chosen to explore, the NodeController springs to life. 
+
+The controller first generates the location nodes for each of the locations, as set by the L-system.
+The events for each of the locations is generated by supplying the type of event and how many event options. The full description of the events is covered in section \ref{sec:eve}.
+Once the event is generated, the location sprite is instantiated. Using the name of the location, the sprite related and the location of said sprite is found in a related XML file which keeps a list of all the locations, the name of their sprites, where they should be instantiated, and the scaling factor which should be used.
+
+\subsubsection{Special Events}
