@@ -496,7 +496,8 @@ The special events are the key point of interaction for changing the relationshi
 
 The event can have to different overall configurations.
 The first configuration is a battle between two factions, which ask you to pick a side in the conflict and aid against the other.
-After a side has been picked, the factional relationship is updated, +100 for the faction you have aided and -100 for the other faction.
+After a side has been picked, the factional relationship is updated, +100 for the faction you have aided and -100 for the other faction. If the option to leave the factions to settle their battle amongst themselves, the reputation for both factions will decrease by 25 points.
 
-The other configuration is more complex
+The other configuration is more complex. When the criteria match, and this configuration is selected, the event will be made up of the history of the event that caused the special event to be generated. The construction of this event will use the location type, the controlling faction and the special option used before, and build its event on that. An example would be that the causing event required the players to use their healing ward, and that will cause the special event to say something along the lines of "The 'Controlling faction' saw you using your holy powers on the expedition in 'location name', and would like to know how they can do it, so they can be better in their fight against 'opposing faction'". 
+Based on the current standing the players have with the controlling faction, the results will vary. The algorithm will go in to the matching XML file, and check the criteria against it. Since there are 2 options in this special event, one for accepting and one for refusing (generally), the outcomes will be different. Each option has 3 outcomes; one for each reputation standing - Allied, neutral and enemy. Each of these have a set of rewards and penalties associated with them, and when the event is generated, these are chosen for the options based on the standing. The rewards and penalties of each option can vary from getting a new crew token, energy crystal, etc. or just having the reputation value changed.
 
