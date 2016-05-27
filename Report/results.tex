@@ -1,60 +1,89 @@
 \chapter{\textit{Archipelago}}
-In this section of the paper, we will go through a full play session of the game, that is all the different stages that occur in a game session, and explain the actions that happen along the different phases of the game.
-The game session presented will be a fictional one, and the game itself will not necessarily be a complete one in terms of going through all the islands that would be represented on the application at runtime, but rather it will explain every step along the way, and go through all the main parts of a complete game session.
+In this section of the paper, we will go through a full play session of the game as it was during the last playtest, that is all the different stages that occur in a game session, and explain the actions that happen along the different phases of the game.
+
+This playtest was performed at the end of the development and should answer all the questions raised when implementing PCG-based mechanics into hybrid games. Since the game has been thought from the beginning as an experimental concept, it is expected that the answers provided by the different prototypes will transcend the project presented in this paper. This means that the results that will be presented here will contribute to the exploration of making hybrid games in various ways: the successful design choices must be situated in their particular context, to recognize the patterns that support the hybrid nature of the gale; using the same approach, the experimentations that did not provide the expected results will also be analysed.
 \section{The Final Prototype}
 \label{sec:finalproto}
-\subsection{Setup}
-
-When starting the game, the first thing that will happen, is to set up the board. The board will be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
-When the assigning of the player tokens have been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and reference the rules when needed.
+The first important thing to know about the final version used to playtest is that it was modified in order to cover aspects that were not working as intended. The following section will first present the rules as they were conceived; another paragraph will be dedicated to explain why these final modifications were necessary for the sake of the paper.
+\subsection{Setting up the game}
+Setting up the board is the beginning of every tabletop game. The board is to be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
+When the assigning of the player tokens has been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and refer to the rules.
 After all this initial setup is complete, the only remaining thing to do, is to start up the application part of the game, and be presented with the map that the game session will explore. 
 
-\subsection{The Board}
-When starting the game and placing the board, the initial pieces the players have available are 2 player tokens, or crew tokens, for each player in the game, along with 4 building materials and 1 alchemy point. The castle itself will start off with 3 crystal pieces, which power the castle, and these 3 pieces are enough to start the players off with their castle at tier 1. In order to get to tier 2, the players will need to acquire another crystal piece.
+\subsubsection{The Board}
 
+\begin{figure}[!ht]
+   \centering
+   \begin{subfigure}[b]{\textwidth}
+       \includegraphics[width=\textwidth]{Images/Board.png}
+       \caption{The board of the final tested version of \textit{Archipelago} explained.}
+       \label{fig:boardfinal}
+   \end{subfigure}
+   \begin{subfigure}[b]{\textwidth}
+       \includegraphics[scale=0.65]{Images/tokens.png}
+       \caption{The tokens used in the final version of \textit{Archipelago}.}
+       \label{fig:tokens}
+   \end{subfigure}
+   \caption{The analogue components used to play \textit{Archipelago}.}
+   \label{fig:compo}
+\end{figure}
 
-\subsection{The App}
-As the application is started, the players are presented with the layout of the map. In the center you will find the castle, as is being represented by the physical board on the table. To move around in the world, all that needs to be done, is to click on an island that is within the ring around the castle, which indicates the travel distance possible for the castle each turn. Once an island is clicked on, a travel confirmation dialogue box will appear, and the players will have to confirm that they do indeed wish to travel there. As the castle reaches the selected island, the events begin. 
+When starting the game and placing the board, all the players have available 2 \textit{Crew Member}tokens. The \textit{Cargo Hold} contains 4 \textit{Scrap} tokens, and 1 \textit{Alchemy Point}. The castle itself will start off with 3 \textit{Crystal charges} which powers the \textit{Crystal} at level 1. In order to get to level 2, the players will need to acquire another crystal piece. Upgrading the crystal also enlarges the \textit{Cargo Hold}, which can then contain more \textit{Scrap} and \textit{Alchemy Points}.
 
+The \textit{Construction} box is used to place the resources that were spent during the management phase, so they are separated from the \textit{Cargo Hold} - allowing for more clarity when taking decisions. The \textit{Event} box is used to remember which resources are spent during events. 
 
+Finally, the \textit{Allies} box is used to place the \textit{Faction} card of the faction allied with the players. The allied faction being an important parameter in the procedural generation of the events, it was important that players could always remember who they are allied with. 
+\subsubsection{The Application}
+As the application is started, the players are presented with the layout of the map. In the center is the castle, as is being represented by the physical board on the table. To move around in the world, all that needs to be done, is to click on an island that is within the ring around the castle, which indicates the travel distance possible for the castle each turn. Once an island is clicked on, a travel confirmation dialogue box will appear, and the players will have to confirm that they do indeed wish to travel there.
 \subsection{Phase 1 - Castle Management}
 \label{sec:p1}
-Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the management phase. 
-In this management phase, the players can upgrade, repair and expand upon their castle.
-There is no limit for how much they can do, other than what the players themselves have the resources for. If they want to build a new room, this can be done. However, the cost of doing so is 2 building materials, and a player will have to assign one of their crew tokens to the building task, and that means that that token can not be used in the upcoming event phase this round.\\
-If there already exist one or more rooms in the castle, the players can choose to upgrade it to the next level, though they still need to have the required resources. To upgrade a room from tier 1 to tier 2, you will need 2 building materials in order to build the 2nd room, and you will need 1 alchemy point for each room that is being combined, so in this case it would be 2 - one for the old and one for the new. Again, this will require a player to temporarily set a crew inactive, as it has to build the room.\\
+Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the \textit{Management Phase}. In this management phase, the players can upgrade, repair and expand upon their castle.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{Images/rooms.png}
+    \caption{The different types of rooms .}
+    \label{fig:merge}
+\end{figure}
+Building a standard room costs 2 \textit{Scrap} tokens, and one \textit{Crew Member} has to be assigned to the construction. This \textit{Crew Member} will not be available during the next phase of the game.
+There is no limit for how much players can do during this phase, other than what the players themselves have the resources for. A room can be damaged after an event. In that case, the players flip the room and it is not usable until it is repaired for 1 \textit{Alchemy Point} and 1 \textit{Scrap} per tile occupied by the room. A destroyed room has to be rebuilt from the beginning.
 
-Before heading out into the world map, the players can choose to assign their player tokens to the rooms they have built. If they would like to receive more building materials on the upcoming event, they would have to put at least one crew token on the mining room that they would have built. Likewise for alchemy points, they would have to place a crew token on the alchemy room. 
+During the \textit{Management Phase}, the players can also assign \textit{Crew Members} to a room that is already built. All the rooms have different effects:
+\begin{labeling}{\textbf{Mechanic's Workshop}}
+\item[\textbf{Mining room}] The crew members assigned to this room will gather \textit{Scrap}. The amount of \textit{Scrap} gathered per \textit{Crew Member} assigned depends on the level of the room.
+\item[\textbf{Alchemy Lab}] The \textit{Alchemy Lab} is used on the board to gather \textit{Alchemy Point}. The amount of \textit{Alchemy Points} gathered per \textit{Crew Member} assigned also depends on the level of the room.
+\item[\textbf{Mechanic's Workshop}] The \textit{Mechanic's Workshop} is used to repair damaged rooms. When a room is damaged, the players assign 1 \textit{Crew Member} to the mechanic's workshop to repair it. It takes 1 turn per tile occupied by the damaged room to repair it. Upgrading the mechanic's workshop increase the speed at which a room is repaired.
+\item[\textbf{Chapel}] The \textit{Chapel} is used to heal \textit{Crew Members} that got injured during an event. It costs one \textit{Alchemy Point} and takes one turn to heal an injury. The number of \textit{Crew Members} that can be healed per turn depends on the size of the \textit{Chapel}.
+\end{labeling}
 
+When two rooms of the same type are built next to each other, they can be merged, thus accessing the next level and becoming more powerful. Upgrading a room also requires 1 \textit{Alchemy Point} per tile occupied by the upgraded room. Again, this will require a player to temporarily set a crew inactive, as it has to build the room. It is worth noticing that the crystal as to be upgraded in order to merge rooms.\\
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{Images/merge.png}
+    \caption{The room merging system. In the top left corner of each tile, the players can see the \textit{Crystal}'s level required to build the room.}
+    \label{fig:merge}
+\end{figure}
 When travelling out into the world, the players would need at least 1 available crew token, as the minimum cost of an event option is to send a crew. Otherwise, they would technically not be able to "explore" the island, as none would be out exploring.
-
-
 \subsection{Phase 2 - Exploring the World}
 \label{sec:p2}
-When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the world.
-As mentioned before, the first thing the players have to do in the world map, is to click on the reachable island they want to travel to. Once they have accepted to travel there, and have reached the location, the players will have to select an area, or location, that they would like to explore.\\
-Each area are connected to a type of resource, either it is a gathering area which will mainly yield building materials, or it is the research area which will yield mainly alchemy points.
-The players talk amongst themselves which one they would like to explore, and will have to choose based on what their current needs are. If they are low on building materials and want to build a new room in the next management phase, they might want to go for the gathering location. If they want to upgrade a room next turn, they might want to go for a research location.\\
-Once a location has been selected, the players will be presented with the event.
-The player who is currently controlling the application reads out the event along with the possible options.
-It is now up to the players to talk amongst themselves to figure out which option they would like to pick. The first option is usually just sending a member of the crew down to complete the event, but there can be other options as well. Say the 2nd option is to send a crew along with an alchemy point, and the third option is to send a crew, 1 alchemy point and have a healer. 
-If the 1st option is selected, the players will have to decide which player uses their token, as the outcome might be that it dies.
-If the 2nd option is selected, the same question goes: Who sends their token? It might also be the case that they do not have the required alchemy point to spend, in which case they cannot complete that option.
-For the 3rd option, the players will need to have the healing room specialized. If they do so, they will have to decide whether or not it is worth the risk of selection that option, or if they should chance it on something else.\\
-After the players have reached their conclusion and selected their option, the application will present them with the resulting outcomes of the event. It might be that they have lost a player token, gained one, a room has been destroyed, or simply that they got some resources. The outcomes vary.
-When the players have received their rewards and applied the results to the board, the game goes on to the next phase.
+When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the Archipelago.
+As mentioned before, the first thing the players have to do in the world map, is to click on the reachable island they want to travel to. Once they have accepted to travel there, and have reached the location, the players will have to select a \textit{location} that they would like to explore.\\
+Each area are connected to a type of resource, either it is a gathering area which will mainly yield building materials, or it is the research area which will yield mainly alchemy points. The players talk amongst themselves which one they would like to explore, and will have to choose based on what their current needs are. Once a location has been selected, the players will be presented with the event.
 
-\subsection{Clean-up and Reset}
+The player who is currently controlling the application reads out the event along with the possible options. It is now up to the players to talk amongst themselves to figure out which option they would like to pick. They also must decide which player should send a \textit{Crew Member}, according to which player is specialized. Also, the players have to remember that a \textit{Crew Member} can die in the process. The first class option is usually just sending a member of the crew down to complete the event, but there can be other options as well. The second class option adds a resource to the condition. It can be any of the four resources used in the game. The third class option requires a specialization token. In this case, it is the player that has the token that must send one of her \textit{Crew Member}. 
 
+After the players have reached their conclusion and selected their option, the application will present them with the resulting outcomes of the event. It might be that they have lost a player token, gained one, a room has been destroyed, or simply that they got some resources. The outcomes vary. When the players have received their rewards and applied the results to the board, the players go back to the \textit{Management Phase}
+\subsection{Clean-up and start a new turn}
 When returning from an event, all the pieces that were used the previous round, i.e. the crew tokens used for construction, the tokens assigned to the rooms, and the tokens used in the events, are returned to the players, and the board is cleaned up.
 If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.\\
 When this is done, the game repeats as described above with phase 1 and 2 and back again.
 
-\subsection{Special Event Occurs}
+\subsection{Special Events}
 
-Somewhere along the game, the players will most likely encounter the "special events". There are as of right now, two types of special events.\\
-The first type is the fighting event. When this event occurs, the players will be presented with a scenario where two of the factions within the game, are fighting each other. It is then up to the players to decide whether they want to leave them alone, or if they would like to assist them. If they want to assist them, they have to choose their side. If the players are already friendly with one of the factions, they might want to assist that faction again. This choice is completely up to the players.\\
-The other event type is memory based. It is an event that is based on previous events that the players have completed. If they can remember it, all the better. Either ways, the event is special in that is based on previous data. If the players visited an island controlled by the Highbournes, and they used some special healing on one of the options, then the special event could say something like "The highbournes saw you at the island, and want to learn how to use your healing magic". It is then up to the players to decide whether or not they want to help them, or not. Keeping in mind that their current standing with the faction will influence the outcome of whatever option they choose. 
+Somewhere along the game, the players will most likely encounter the \textit{Special Events}. There are as of right now, two types of special events.
+
+The first type is the fighting event. When this event occurs, the players will be presented with a scenario where two of the factions within the game, are fighting each other. It is then up to the players to decide whether they want to leave them alone, or if they would like to assist them. If they want to assist them, they have to choose their side. If the players are already friendly with one of the factions, they might want to assist that faction again. This choice is completely up to the players.
+
+The other event type is memory based. It is an event that is based on previous events that the players have completed. The event is special in that it is based on previous data. If the players visited an island controlled by the Highbournes, and they used some special healing on one of the options, then the special event could say something like "The highbournes saw you at the island, and want to learn how to use your healing magic". It is then up to the players to decide whether or not they want to help them, or not. Keeping in mind that their current standing with the faction will influence the outcome of whatever option they choose. 
 
 \subsection{Reaching the end - Winning condition}
 At one specific point on the map, there is a goal island. This island is the one the arrow is pointing towards, and is the one that the players are supposed to head towards in order to complete the game, and win.
@@ -64,9 +93,15 @@ If the players are able to reach this island, the game is over. The players will
 There are a number of different ways to lose the game. Since it is a collaborative game, if one of the players manages to get all his or her crew tokens killed, the game is over. Every player must have at least one crew token, in order for the game to still be in play.
 Should the castle run out of crystal charges, the game will be over as well, as this would mean that the castle would be stuck floating in space and not be able to move.
 
-\section{Results of the Final Playtest}
+\section{Last Playtest}
+\subsection{Modifications for testing purposes}
+\subsection{Material, Resolution and Scope}
+\subsection{The Playtest}
+\subsection{Questionnaire}
 
-
+\section{Results and Data Analysis}
+\subsubsection{Classifying data}
+\subsubsection{Interpreting Data}
 
 
 
