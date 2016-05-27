@@ -162,7 +162,7 @@ Also the representations simple design and presentation ensures that the players
 
 \subsection{Screen Viewport}
 \label{sec:cam}
-This section will explain the functionalities and limitations of the viewport and a reason why they were implemented.
+This section details the functionality which was built in the viewport, in order to accommodate the different aspects of gameplay, and its limitations, why they were implemented and what function they serve.
 
 \subsubsection{Centring on castle}
 A problem that could occur when playing the game, was that the view would go too far off to one side of the map. This could happen if a player would be reckless when moving the viewport around the map in order to get a proper view of the situation. As a result of this problem being able to happen, there came a need to be able to quickly get back to the castle, so the solution was simple: Center the screen on the castle on command. 
@@ -485,9 +485,19 @@ The event is resolved after the players have chosen an option available to them.
 The final outcome gets a modified chance of success and failure depending on whether the current faction is allied or an enemy. 
 The allegiance of the faction also influence the amount of resources rewarded. If the island is controlled by a friendly faction, the player gets the highest possible amount; if the controlling faction is an enemy, the lowest possible amount; and if the faction is neutral a range in between the two.
 
-\subsubsection{Special Events}
+\subsubsection{Special Events and factions}
 If a resolved event is of the \textit{third class}, and there currently is no active special events. The current resolved event is used to begin the special event generation.
 
 Whenever the NodeScene is loaded after a saved event is set as active, a check is made to see how many turns has passed since the activation. Once the amount passes a certain threshold, a special event is activated.
 
 If the special event matches specific criteria then a factional request will come for the players. Else there will be a struggle between to factions, in which the player can choose to intervene.
+
+The special events are the key point of interaction for changing the relationship with each individual faction.
+
+The event can have to different overall configurations.
+The first configuration is a battle between two factions, which ask you to pick a side in the conflict and aid against the other.
+After a side has been picked, the factional relationship is updated, +100 for the faction you have aided and -100 for the other faction. If the option to leave the factions to settle their battle amongst themselves, the reputation for both factions will decrease by 25 points.
+
+The other configuration is more complex. When the criteria match, and this configuration is selected, the event will be made up of the history of the event that caused the special event to be generated. The construction of this event will use the location type, the controlling faction and the special option used before, and build its event on that. An example would be that the causing event required the players to use their healing ward, and that will cause the special event to say something along the lines of "The 'Controlling faction' saw you using your holy powers on the expedition in 'location name', and would like to know how they can do it, so they can be better in their fight against 'opposing faction'". 
+Based on the current standing the players have with the controlling faction, the results will vary. The algorithm will go in to the matching XML file, and check the criteria against it. Since there are 2 options in this special event, one for accepting and one for refusing (generally), the outcomes will be different. Each option has 3 outcomes; one for each reputation standing - Allied, neutral and enemy. Each of these have a set of rewards and penalties associated with them, and when the event is generated, these are chosen for the options based on the standing. The rewards and penalties of each option can vary from getting a new crew token, energy crystal, etc. or just having the reputation value changed.
+
