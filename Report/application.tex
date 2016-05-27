@@ -485,9 +485,18 @@ The event is resolved after the players have chosen an option available to them.
 The final outcome gets a modified chance of success and failure depending on whether the current faction is allied or an enemy. 
 The allegiance of the faction also influence the amount of resources rewarded. If the island is controlled by a friendly faction, the player gets the highest possible amount; if the controlling faction is an enemy, the lowest possible amount; and if the faction is neutral a range in between the two.
 
-\subsubsection{Special Events}
+\subsubsection{Special Events and factions}
 If a resolved event is of the \textit{third class}, and there currently is no active special events. The current resolved event is used to begin the special event generation.
 
 Whenever the NodeScene is loaded after a saved event is set as active, a check is made to see how many turns has passed since the activation. Once the amount passes a certain threshold, a special event is activated.
 
 If the special event matches specific criteria then a factional request will come for the players. Else there will be a struggle between to factions, in which the player can choose to intervene.
+
+The special events are the key point of interaction for changing the relationship with each individual faction.
+
+The event can have to different overall configurations.
+The first configuration is a battle between two factions, which ask you to pick a side in the conflict and aid against the other.
+After a side has been picked, the factional relationship is updated, +100 for the faction you have aided and -100 for the other faction.
+
+The other configuration is more complex
+
