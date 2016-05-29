@@ -13,7 +13,7 @@ In order to explore the use of PCG in tabletop games, it was important to brains
 \item Another concern is to preserve the tabletop game experience, and not denature it because of hybridization. Therefore, the core concept of the game should stress out the particular element constituting such an experience. As previously stated, tabletop games cannot be reduced to the use of components, or the fact they are played on a table. The social dimension of tabletop games is one of the key elements to stress out in order to make the analogue part of the game relevant.
 \item Creating a hybrid game means comprehensively implementing a digital device to enhance the traditional game mechanics. \textit{Enhancing} does not mean creating \textit{better} mechanics. But using a digital component in the game must "have a clear added value" (De Boer and Lamers, 2004, p.443) \cite{chap:aug}. This brings another challenge which is tied to those above mentioned. The use of the digital component must bring something new to the tabletop game play experience.
 \item Moreover, the concept of "replayability" (Smith et al., 2011, p.2) \cite{pdf:pcgbased} inherent to PCG-based game design must be illustrated. The focus here is to make this concept visible by the players, who should understand that the game they are playing is flexible enough, so that they could replay the game without facing the same situations several times.
-\item The concept of "player control" (both "direct" and "indirect") \cite{pdf:pcgbased} over the procedurally generated content - linked to PCG-based game design - is also one that should be experimented thanks to hybrid games. It is one of the enhancement that was hoped to be achieved and tested throughout the project. It has been previously stated that player control is an interesting contribution of PCG-based game design, as it triggers an uncertainty related to a sufficiently varied creation of content. The players should feel that they have a certain control over the content generation, but still be surprised by unexpected outcomes.
+\item The concept of "player control" (both "direct" and "indirect") \cite{pdf:pcgbased} over the procedurally generated content - linked to PCG-based game design - is also one that should be experimented with thanks to hybrid games. It is one of the enhancement that was hoped to be achieved and tested throughout the project. It has been previously stated that player control is an interesting contribution of PCG-based game design, as it triggers an uncertainty related to a sufficiently varied creation of content. The players should feel that they have a certain control over the content generation, but still be surprised by unexpected outcomes.
 \item This leads to "adaptability" \cite{pdf:pcgbased}. The adaptation of the content to the player's actions in the game would be one of the crucial aspect of the experiment, because it shows one aspect that is hard to recreate in tabletop games without the use of computing (though certainly not impossible). However, by using a large number of parameters to feed the PCG algorithm, the content generation would provide a variety that is in this case definitely impossible to reproduce with only analogue components.
 \item The theme must support the tabletop game experience, as well as being coherent with the use of PCG.
 \item Finally and to stress out the core tabletop gameplay, it is necessary to be cautious about how intrusive the application is in the game. One of the challenge while designing the game would be to provide enough information to the digital device, so that a sufficiently varied content could be generated without requesting too many inputs from the players. More generally, avoiding \textit{algorithm specific inputs} that go directly as parameters to the algorithm in order to customize it to the next state of generation was necessary. Therefore, they should be well hidden  behind the game mechanics.
@@ -32,7 +32,7 @@ The first design pattern that was considered  was the \textit{Node exploration}.
 
 First of all, the node's content varies depending on the game, but is often based on a risk versus reward concept. In \textit{FTL: Faster Than Light} \cite{game:ftl}, the nodes contain events which all have different forms, but in general the player has to make a choice in front of a dilemma (e.g. fight or flee). It is sometime a good idea to run away instead of trying to get the reward because the risk of a situation is sometimes hard to evaluate. In \textit{Out There} \cite{game:outthere} the nodes contain a star system with planets to explore to extract resources. It is sometimes better to save fuel to visit more locations instead of exploiting all the planets that can be found and run out of fuel - and lose the game.  
 
-The player has to foresee the potential reward that the content of the node can provide, and balance it with the necessary risk to take in order to access it. The crucial part of this idea is to be found in the \textit{necessity} of the risk, and the \textit{possibility} of getting a reward. The outcomes depend on the player's choices at each node. Generally, the difficulty of the choice that the players have to make in PCG-based games enables the very specific pleasure - and sometimes frustration - of randomness. However, this kind of risk versus reward play experience is very frequently used in tabletop games (often reproduced with a dice roll). For this reason, another value should be added to this pattern, thanks to the use of PCG to create the nodes and their content. This would be included in the scope of several prototypes.
+The player has to foresee the potential reward that the content of the node can provide, and balance it with the necessary risk to take in order to access it. The crucial part of this idea is to be found in the \textit{necessity} of the risk, and the \textit{possibility} of getting a reward. The outcomes depend on the player's choices at each node. Generally, the difficulty of the choice that the players have to make in PCG-based games enables the very specific pleasure - and sometimes frustration - of randomness. However, this kind of risk versus reward play experience is very frequently used in tabletop games (often reproduced with a die roll). For this reason, another value should be added to this pattern, thanks to the use of PCG to create the nodes and their content. This would be included in the scope of several prototypes.
 
 Finally, this pattern naturally fits into a gameplay loop. It is a mandatory action that can overthrow a situation if the risk taken by the player is too big - in the case the player is unprepared, or if the risk was not realistically estimated. Finally mechanics based on this pattern using PCG are challenging to design because of the many possibilities that the players can be confronted to. 
 \subsubsection{Board Game mechanic}
@@ -76,7 +76,8 @@ Being the first version to be tested by players external to the team, the applic
 
 It has a low-fidelity \textit{Resolution}: the representation of the base is very abstract and the digital component of the game only simulated. There is also no real theme attached to it. 
 
-The \textit{Scope} includes several purposes: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game.\\\\
+The \textit{Scope} includes several purposes: testing how the base should be represented on the board and how it should be managed, experimenting a basic resource system based on collaboration and providing an idea of when the digital component should be used in the game.
+
 The mechanics of the prototype already contains several elements that are still in the final version (sometimes in a different manner). Refer to figure \ref{fig:base} for each description given below:
 \begin{itemize}
 \item The base is divided into squares, each square being a space where building a room is possible. The different spaces are distributed in \textit{Construction Zones}, which have to be unlocked in order to extend the available construction space. To unlock a zone, the players have to power the \textit{Core} with \textit{Energy} tokens. The amount of \textit{Energy} tokens required to access a construction zone is indicated at the limit between the two zones.
@@ -98,7 +99,8 @@ The randomness of the results (due to the use of dice) also showed the problem o
 
 To encourage the players to show more engagement in the game and to allow for more interesting collaboration, a specialization mechanic was built in the later prototypes. This mechanic is a crucial aspect of \textit{Archipelago} and will be described in a later section. 
  
-Finally, this prototype gave a good idea of how the flow of the game should be. It was decided to build the work over this core loop to start implementing the PCG and the digital device in the game.\\\\
+Finally, this prototype gave a good idea of how the flow of the game should be. It was decided to build the work over this core loop to start implementing the PCG and the digital device in the game.
+
 
 Following the bases of the first prototype, a turn in \textit{Archipelago} is divided in two different phases:
 \begin{labeling}{Management Phase}
@@ -160,8 +162,10 @@ The first event generation system simply relied on a random percentage based sel
 \end{labeling}
 The texts of the different options and outcomes were handwritten. It took a long time to reach a sufficient number of options and outcomes before testing the game. For these reasons, this method was not sufficient to prove the interest of PCG in rapidly generating content to reduce the workload of creators. Also, playtesting showed that the players could recognize the different patterns in the event generation (i.e. options showing several times in a row), thus ruining the replayable aspect of the game. However, this provided a base to work on a more complex event system.
 \subsubsection{Prototyping for technical flexibility and narrative coherence}
-As observed during playtests of prototypes using the event generation system previously described, the generation of content could not provide enough variety to generate a potentially infinite number of events and transmit that impression to the players. Also the workload was too high in the prospect of experimenting a sufficient amount of PCG-based game design possibilities. Solving these problems required drastic changes to attain a satisfying amount of coherent results.\\\\
-A new design method for generating the events was then imagined (see section \ref{sec:eventGeneration} for the technical details).\\\\
+As observed during playtests of prototypes using the event generation system previously described, the generation of content could not provide enough variety to generate a potentially infinite number of events and transmit that impression to the players. Also the workload was too high in the prospect of experimenting a sufficient amount of PCG-based game design possibilities. Solving these problems required drastic changes to attain a satisfying amount of coherent results.
+
+A new design method for generating the events was then imagined (see section \ref{sec:eventGeneration} for the technical details).
+
 The \textit{Outcome} is defined when performing the event. This outcome is calculated thanks to the following parameters:
 \begin{enumerate}
 \item The \textit{Event Type} to select the most likely resource to be collected. In the final version of the game, there are two types of standard events. The \textit{Gathering} events during which the players collect more \textit{Scrap}, and the \textit{Alchemy} events during which the players collect more \textit{Alchemy Points}.
@@ -180,6 +184,7 @@ Prototyping the text generation was simple. Based on the results from the differ
 \end{labeling}
 
 A few tries showed that extra parts were also required to connect the different parts together and make the whole text coherent. For each of these parameters, several text blocks were written on bits of coloured paper. Thanks to the combination of the different chunks of text, it was possible to determine how they should be written to be adaptable in any possible combinations (see figure \ref{fig:textproto}). Simple prototypes using generating texts were built and showed to testers. This gave the basic rules to determine how to generate a coherent text. By having many different blocks of text written on the same model, generating a very large number of flavour text with hardly recognizable patterns became easier. 
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Images/textProto.png}
@@ -213,12 +218,14 @@ In a more technical aspect of the design, changing the relation with the faction
 It is important to notice that the \textit{Special Events} are only triggered after a specific combination of parameters are met, and not every time the players chose the third option class. It is almost impossible for the players to know when a special event is going to be triggered. The Special Events then also enable a surprise element specific to a hybrid game experience. Also by using the narrative elements to show the relation between the triggered event and the previously performed action, the goal was to show that the game world is coherent and evolving around the player. 
 \subsection{A hybrid game}
 Coherently generating events and using the stored data to generate others was an experimental use of PCG in hybrid games. Combining this approach with the mechanics encouraging collaboration was also a way to associate two different types of gameplay to create mechanics that rely both on analogue and digital components. One of the prior concern when creating \textit{Archipelago} was to keep the original tabletop experience intact. Therefore the application used to create the world map should not be too intrusive in the gameplay. Using the application only once per turn was one of the possible solutions (see figure \ref{fig:wireframe}).
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{Images/wire.jpg}
     \caption{Early wireframe showing the different steps that the players would have to go through when using the application.}
     \label{fig:wireframe}
 \end{figure}
+
 When playing \textit{Archipelago}, the device is an important element, as without it the players would not get the necessary resources.
 Mainly, the function of the application is to contain all the information regarding events, movement, factions and the overall data available within the game. 
 When playing the Archipelago, the digital part of the game will provide the players with a layout of the world, i.e. the map with all its islands, and contain all methods of receiving rewards as well as receiving penalties for executed events. It determines which resource the players will receive, what the narrative is (in terms of flavour presented), and it contains the factions (and relation with each of them).
@@ -243,7 +250,7 @@ Creating a game using base management and the exploration of procedurally genera
 This part of the paper will go into more detail on how the development of the project went as seen from a more technical aspect. This includes the making of prototypes, the way to go from communicating with a designer to implementing a solution, and lastly problem solving along the way.
 
 \subsection{From design to implementation}
-When working as a developer, you also work closely with the designer. What we did during our development period, was to get the wants and needs from the designer, and try to implement it into prototypes for overlook and feedback. 
+When working as a developer, you have to work closely with the designer. What was done during our development period, was getting the wants and needs from the designer, and then try to implement it into prototypes for overlook and feedback. 
 If things needed to be changed, added or removed, the team would go through in general terms what needed to be done, and then the requested adjustments would be made to the prototypes.
 
 In the next part of this section, we will go into more detail on how the prototyping would take place, how the communication between programmers and developer happened, and what changes were made over time during the period of development.
@@ -260,7 +267,7 @@ It was decided early on that there would be events that the players could intera
 
 \begin{description}
 \item[Prototype 2:] Now the application has a main world screen with a multitude of destinations would be displayed in the form of simple spheres that can be clicked. When clicked, the destination scene would be shown, which contains the simple representation of locations, also in the form of spheres.
-The map layout is generated by using an L-system algorithm\ref{sec:lsys}.
+The map layout is generated by using an L-system algorithm (see section \ref{sec:lsys}).
 \end{description}
 
 At this point, the need to link the application with the board game occurs. A player object is needed within the application, and it needs to be able to move around the world space. Also the initial event structure is taking form, which means there is a need for the data to be constructed along with some dummy flavour to be shown on the screen.
