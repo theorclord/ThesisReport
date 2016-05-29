@@ -8,12 +8,9 @@ The first important thing to know about the final version used to playtest is th
 
 \subsection{Setting up the game}
 Setting up the board is the beginning of every tabletop game. The board is to be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
-When the assigning of the player tokens has been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and refer to the rules.
-Below we will explain how the final prototype is constructed and how \textbf{Archipelago} is played from setting up the game to playing a full round, along with how you win and how you lose.
-
+When the assigning of the player tokens has been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the application, and the players can take the time they need and refer to the rules.
 \subsubsection{The Board}
-The follow is a description of the physical board and its components. 
-In figure \ref{fig:compo} you can see the board used and the tokens the players interact with.
+The following paragraph is a description of the physical board and its components. In figure \ref{fig:compo} are the board used and the tokens the players interact with.
 \begin{figure}[!ht]
    \centering
    \begin{subfigure}[b]{\textwidth}
@@ -62,12 +59,27 @@ When two rooms of the same type are built next to each other, they can be merged
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{Images/merge.png}
-    \caption{The room merging system. In the top left corner of each tile, the players can see the \textit{Crystal}'s level required to build the room.}
+    \caption{The room merging system. In the top left corner of each tile, the players can see the \textit{Crystal}'s level required to build the room.} 
     \label{fig:merge}
 \end{figure}
+\subsubsection{Collaboration and Mastery}
+The merging mechanic introduces specialization or \textit{Mastery}. In \textit{Archipelago}, all players can perform almost all the basic actions in the game. There is no specific skill related to a specific role. However, a player alone cannot perform all the actions required by the game at the same time: the amount of actions that a player can perform is directly related to the number of \textit{Crew Members} that this player commands. Therefore, it is important to encourage the players to split the tasks among them. The tasks can be divided into several groups that are related to the type of rooms that can be built in the castle. When a players spends one of her \textit{Crew Member} to merge a room, that player gain a \textit{Specialization token} of the same type as the room that was upgraded. There are different types of \textit{Specialization Token}, depending on size of the room that has been upgraded after merging (see figure \ref{fig:spec}). 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{Images/Specialization.png}
+    \caption{Examples of specialization tokens that players can have. Each of the tokens represents a bonus that can be useful when performing the procedurally generated events.}
+    \label{fig:spec}
+\end{figure}
+The first type of \textit{Specialization token} grants a small bonus when visiting an island. The second type of \textit{Specialization token} always allow the player who has it to build the biggest rooms, called \textit{Mastery Rooms}. They take four construction spaces and grant the player the \textit{Mastery token}. This token provides important bonuses that affect the outcomes of the event. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=1]{Images/mastery.png}
+    \caption{The Temple, that provides the priest's \textit{Mastery} token. This token allows the player to resurrect \textit{Crew Members} that died during an event for 1 \textit{Alchemy Point}.}
+    \label{fig:spec}
+\end{figure}
+The bonus provided by the \textit{Mastery token} are very important, and the game can hardly be finished without them.
 
-When travelling out into the world, the players would need at least 1 available crew token, as the minimum cost of an event option is to send a crew. Otherwise, they would technically not be able to \textit{explore} the island, as none would be out exploring.
-
+It is important to notice that the \textit{Specialization} tokens are only attributed to the first player who merges rooms of the same type. 
 \subsection{Phase 2 - Exploring the World}
 \label{sec:p2}
 When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the Archipelago.
@@ -93,7 +105,7 @@ The other event type is memory based. It is an event that is based on previous e
 
 \subsection{Reaching the end - Winning condition}
 At one specific point on the map, there is a goal island. This island is the one the arrow is pointing towards, and is the one that the players are supposed to head towards in order to complete the game, and win.
-If the players are able to reach this island, the game is over. The players will be presented with an ending screen in the app, and then they can choose to start a new game if they so choose. 
+If the players are able to reach this island, the game is over. The players will be presented with an ending screen in the application, and then they can choose to start a new game if they so choose. 
 
 \subsection{Losing the game - Losing conditions}
 There are a number of different ways to lose the game. Since it is a collaborative game, if one of the players manages to get all his or her crew tokens killed, the game is over. Every player must have at least one crew token, in order for the game to still be in play.
