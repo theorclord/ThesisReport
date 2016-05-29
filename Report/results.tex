@@ -5,19 +5,15 @@ This playtest was performed at the end of the development and should answer all 
 \section{The Final Prototype}
 \label{sec:finalproto}
 The first important thing to know about the final version used to playtest is that it was modified in order to cover aspects that were not working as intended. The following section will first present the rules as they were conceived; another paragraph will be dedicated to explain why these final modifications were necessary for the sake of the paper.
+
 \subsection{Setting up the game}
 Setting up the board is the beginning of every tabletop game. The board is to be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
 When the assigning of the player tokens has been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and refer to the rules.
 Below we will explain how the final prototype is constructed and how \textbf{Archipelago} is played from setting up the game to playing a full round, along with how you win and how you lose.
-\subsection{Setup}
-
-When starting the game, the first thing that will happen, is to set up the board. The board will be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
-When the assigning of the player tokens have been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the app, and the players can take the time they need and reference the rules when needed.
-
-After all this initial setup is complete, the only remaining thing to do, is to start up the application part of the game, and be presented with the map that the game session will explore. 
 
 \subsubsection{The Board}
-
+The follow is a description of the physical board and its components. 
+In figure \ref{fig:compo} you can see the board used and the tokens the players interact with.
 \begin{figure}[!ht]
    \centering
    \begin{subfigure}[b]{\textwidth}
@@ -48,7 +44,7 @@ Before the players have to travel around the world within the app, they have the
     \centering
     \includegraphics[scale=0.4]{Images/rooms.png}
     \caption{The different types of rooms .}
-    \label{fig:merge}
+    \label{fig:roomtype}
 \end{figure}
 Building a standard room costs 2 \textit{Scrap} tokens, and one \textit{Crew Member} has to be assigned to the construction. This \textit{Crew Member} will not be available during the next phase of the game.
 There is no limit for how much players can do during this phase, other than what the players themselves have the resources for. A room can be damaged after an event. In that case, the players flip the room and it is not usable until it is repaired for 1 \textit{Alchemy Point} and 1 \textit{Scrap} per tile occupied by the room. A destroyed room has to be rebuilt from the beginning.
@@ -61,26 +57,30 @@ During the \textit{Management Phase}, the players can also assign \textit{Crew M
 \item[\textbf{Chapel}] The \textit{Chapel} is used to heal \textit{Crew Members} that got injured during an event. It costs one \textit{Alchemy Point} and takes one turn to heal an injury. The number of \textit{Crew Members} that can be healed per turn depends on the size of the \textit{Chapel}.
 \end{labeling}
 
-When two rooms of the same type are built next to each other, they can be merged, thus accessing the next level and becoming more powerful. Upgrading a room also requires 1 \textit{Alchemy Point} per tile occupied by the upgraded room. Again, this will require a player to temporarily set a crew inactive, as it has to build the room. It is worth noticing that the crystal as to be upgraded in order to merge rooms.\\
+When two rooms of the same type are built next to each other, they can be merged, thus accessing the next level and becoming more powerful (see figure \ref{fig:merge}). Upgrading a room also requires 1 \textit{Alchemy Point} per tile occupied by the upgraded room. Again, this will require a player to temporarily set a crew inactive, as it has to build the room. It is worth noticing that the crystal as to be upgraded in order to merge rooms.
+
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{Images/merge.png}
     \caption{The room merging system. In the top left corner of each tile, the players can see the \textit{Crystal}'s level required to build the room.}
     \label{fig:merge}
 \end{figure}
-When travelling out into the world, the players would need at least 1 available crew token, as the minimum cost of an event option is to send a crew. Otherwise, they would technically not be able to "explore" the island, as none would be out exploring.
+
+When travelling out into the world, the players would need at least 1 available crew token, as the minimum cost of an event option is to send a crew. Otherwise, they would technically not be able to \textit{explore} the island, as none would be out exploring.
+
 \subsection{Phase 2 - Exploring the World}
 \label{sec:p2}
 When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the Archipelago.
-As mentioned before, the first thing the players have to do in the world map, is to click on the reachable island they want to travel to. Once they have accepted to travel there, and have reached the location, the players will have to select a \textit{location} that they would like to explore.\\
+As mentioned before, the first thing the players have to do in the world map, is to click on the reachable island they want to travel to. Once they have accepted to travel there, and have reached the location, the players will have to select a \textit{location} that they would like to explore.
 Each area are connected to a type of resource, either it is a gathering area which will mainly yield building materials, or it is the research area which will yield mainly alchemy points. The players talk amongst themselves which one they would like to explore, and will have to choose based on what their current needs are. Once a location has been selected, the players will be presented with the event.
 
 The player who is currently controlling the application reads out the event along with the possible options. It is now up to the players to talk amongst themselves to figure out which option they would like to pick. They also must decide which player should send a \textit{Crew Member}, according to which player is specialized. Also, the players have to remember that a \textit{Crew Member} can die in the process. The first class option is usually just sending a member of the crew down to complete the event, but there can be other options as well. The second class option adds a resource to the condition. It can be any of the four resources used in the game. The third class option requires a specialization token. In this case, it is the player that has the token that must send one of her \textit{Crew Member}. 
 
-After the players have reached their conclusion and selected their option, the application will present them with the resulting outcomes of the event. It might be that they have lost a player token, gained one, a room has been destroyed, or simply that they got some resources. The outcomes vary. When the players have received their rewards and applied the results to the board, the players go back to the \textit{Management Phase}
+After the players have reached their conclusion and selected their option, the application will present them with the resulting outcomes of the event. It might be that they have lost a player token, gained one, a room has been destroyed, or simply that they got some resources. The outcomes vary. When the players have received their rewards and applied the results to the board, the players go back to the \textit{Management Phase}.
+
 \subsection{Clean-up and start a new turn}
 When returning from an event, all the pieces that were used the previous round, i.e. the crew tokens used for construction, the tokens assigned to the rooms, and the tokens used in the events, are returned to the players, and the board is cleaned up.
-If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.\\
+If an event yielded too much resources so that the cargo hold of the castle would be overfilled, it is up to the players to discuss which they would like to keep, and which to discard, before going back to phase 1 - management.
 When this is done, the game repeats as described above with phase 1 and 2 and back again.
 
 \subsection{Special Events}
@@ -108,44 +108,3 @@ Should the castle run out of crystal charges, the game will be over as well, as 
 \section{Results and Data Analysis}
 \subsubsection{Classifying data}
 \subsubsection{Interpreting Data}
-
-
-
-
-\section{Notes from App from start to end}
-\subsection{Generate Events}
-In the world map, all the islands that were generated are being displayed. And when the player moves the castle to an island, i.e. goes to explore it, a new screen will be shown to the players, called the NodeScene. This screen is showing the island and the "explorable" locations on it. But before they can be displayed, they need to be built. 
-
-\subsection{How an event is built}
-An event is generated by selecting which type of event it is going to be; Gathering or Research. Both of these event types have 5 different location types affiliated with them. Mines, quarry etc. for the gathering, and Lake, forest etc. for the research. As soon as the event type is selected, a location is also selected. Now the algorithm goes into an XML file containing all the different rewards and conditions, and picks a number of them; 1, 2 or 3 different options that the players can select from. Associated with all the conditions used in the event, there are a list of possible outcomes that can happen if said condition is chosen, be it gaining resources or losing player tokens. The outcomes of every event is changed by the current standing the players have with the faction controlling the island the players are currently on. 
-Once the options and outcomes have been generated, the location icons will be loaded to the island, and the players are free to choose which one they would like to explore.
-
-\subsection{Moving around the world}
-The main course of the game is to move from the start all the way to the goal node. But the castle can only move a certain length each turn. This means that the players will have to plan their way by looking at which island they can reach at any given time. The layout however is made so that the castle that is being moved, always is able to reach at least 1 island each turn. If there are more than 1 island within the ring surrounding the castle (indicator for where they can move to), it is up to the players to choose where they want to go, and which direction to take. There is always the little arrow in the lower right corner of the screen, indicating which direction the final goal is. The players are always welcome to go back where they came from, and travel to already visited islands, though they will not be able to "re-explore" them. So should the players by chance start off going the wrong way, it does not ruin the game for them and make them unable to return.
-
-\subsection{Interacting with the islands}
-In order to travel to an island, you will have to click on the sprite image that is representing them in the world map. The island also have to be within range of the castle in order for any interaction to be possible. 
-Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the viewport a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
-
-When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
-A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
-
-\subsection{Flavour text combinations and it's purpose}
-Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavour text that will tell the players these things. 
-
-Every island has a name and a short piece of text along with it. These texts are premade and are applied to the island when they are generated in the beginning. 
-It is in the events that the real challenge is. The flavour text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavour for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavour also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
-
-Now that all the conditions have been "flavourized", the challenge moves on to the result flavour. This is the flavour that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavour text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
-This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.\\\\
-The exact way the different flavours are combined, is described in the event section above.
-
-\subsection{Using memory to generate special event occurrences}
-
-Special events is a feature that takes use of the fact that the application has memory. By checking the previous events, conditions and overall parameters within the data, we can compare the data and check how everything is connected. In doing so, we can make a list of conditions that needs to be met within an event, in order for a special event to be triggered and created. What we do as of now, is to have very specific requirements for an event to be able to trigger the special events. If the original event has a 3rd option, which is the "special" option, a check will be made to see if the overall conditions of the event checks out in comparison to the list of special events.
-For instance; a special event will be triggered if a preceding event was affiliated with the faction "Highbournes", and the location was a forest. Then the special event will occur on the world map X turns later, determined by a random initializer integer. When said special event then is triggered, it will use the data saved from the event that triggered it, and check which option was chosen, what the conditions for that option was, and then generate the text and result from that data.
-
-All the resulting data is then also saved into the datamanager class, and the values are updated, e.g. the reputation with a faction increases/decreases, etc.
-
-
-This concept of having special events being triggered and be based on already saved data, is one that really separates this game from being just a board game, to being something of a more technological game. There are a lot of different way this data can be used, and this is just one of them. More ways and our thoughts and ideas on this matter will be discussed in the discussion section.

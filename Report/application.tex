@@ -13,7 +13,7 @@ The diagram does not show any of the actions which transition to the same state.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.5]{Images/StateDiagram.png}
+    \includegraphics[width=\textwidth]{Images/StateDiagram.png}
     \caption{The overview of the scenes in the application and their linkage. The diagram shows each of the actions which change to other scenes.}
     \label{fig:appState}
 \end{figure}
@@ -44,7 +44,7 @@ In figure \ref{fig:worldSc} you can see the scene which meets you once the scene
 As seen in the figure, there is a large white ring centered on the castle that the players control. This ring is indicating the range that the castle can travel in one turn of the game. Any islands that are within this ring, are available to be travelled to.
 When travelling from one island to another, the ring around the island you arrived at will change color (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they choose to do so.
 
-When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, however, your castle will be moved towards that chosen island and stop once it reaches it. 
+When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, your castle will be moved towards that chosen island and stop once it reaches it. 
 Once the castle has reached the island and the collider on the object is triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
 
 \subsubsection{NodeScene}
@@ -116,7 +116,7 @@ In this section, we will go through all the different UI elements within the app
 
 There are a number of different boxes that will appear over the course of a game session with this app. By "boxes" we refer to the dialog boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
 The purpose of each box on a high level, is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
-Each box has it's own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavour text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
+Each box has its own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app, is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavour text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
 Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavour about that mine. Again there is a button for accepting, and one for declining. 
 
 Next up, you have the event box. This is the main box of the game, one might say. It contains a text field where the procedurally generated flavour text is displayed, along with 2 or 3 buttons that has the options for completion that the players may choose from. 
@@ -178,7 +178,7 @@ However, zooming too far out would make the islands and the castle look too smal
 	
 \subsubsection{Move around}
 
-The players using the app are able to move the viewport around all of the map in which ever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
+The players u	sing the app are able to move the viewport around all of the map in whichever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; fastest way to the goal, or move around and explore first?
 There is not set any max distance that the screen can be from the castle, as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
 
 \subsection{Datamanager}
@@ -246,7 +246,7 @@ This goes on until all characters of the string have been visited, and all the n
 There are many different patterns that can be made with this algorithm, and in our solution, we made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
 In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit, as this is a big enough map to be able to generate a large amount of events and outcomes, and as it gives the players a large space to explore.
 
-The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$\wedge$3(iteration number) + the extra start and goal node $\rightarrow$ 4*5$\wedge$3 + 2 = 502.
+The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$^3$(iteration number) + the extra start and goal node $\rightarrow$ 4*5 $ ^3 $ + 2 = 502.
 
 \subsection{Event Introduction}
 In the next section, you will be introduced to the events of the game. The events are in many aspects the biggest part of the game, as the the physical part of the game, the board game part, is affected by the outcomes of the events. Furthermore the events have special requirements from the board game, and with this the connection between the 2 parts of the game is made.
@@ -305,9 +305,9 @@ However when adding more events, each event needed to be constructed in its enti
 
 \subsubsection{Constructed Events}
 \label{sec:eventGeneration}
-In order to construct a broader range of events, the idea were to have the building blocks to be interchangeable and then generate events from a pool of those blocks to have a greater diversity of the events.
+In order to construct a broader range of events, the idea was to have the building blocks to be interchangeable and then generate events from a pool of those blocks to have a greater diversity of the events.
 
-This change were implemented through several iterations, with several changes being made to the algorithms to better suit the game. The final event structure uses an XML file containing building blocks which have a linkage to, and that influences, the general idea of the outcomes of the events.
+This change was implemented through several iterations, with several changes being made to the algorithms to better suit the game. The final event structure uses an XML file containing building blocks which have a linkage to, and that influences, the general idea of the outcomes of the events.
 
 In figure \ref{fig:eGen2} you can see the total structure of the XML file used in the final event generation algorithm. 
 The events are built by selecting a number of conditions and selecting outcomes based on the selected conditions. 
@@ -324,7 +324,7 @@ The top part of the figure visualizes the structure of a condition. The conditio
 The classification type is used in order to group the conditions and limit which pieces appear in what event option, thus ensuring that ordinary pieces are more often in use by the application. There are 3 classification types. Type 0 for required, type 1 for secondary, and type 2 for advanced.
 
 The bottom part of figure \ref{fig:eGen2} is representing the event outcome structure. The events are separated into types like before, gathering and research, and by classes one, two and three. 
-The class in this case is the separator for where the different conditions are situated. Class one only contains outcomes which have one condition in total. It is the fall through part of the event structure as the algorithm will populate the events in the end with information.
+The class in this case is the separator for where the different conditions are situated. Class one only contains outcomes which have one condition in total, and is the fall back part of the event structure as the algorithm will populate the events in the end with information.
 Class two contains outcomes which have two conditions in total, and also only have events which are made up of conditions type 1 or less. 
 This class is used for the secondary options available for the players.
 Class three contains outcomes which primarily have two conditions, but where atleast one of these is of type 2.
@@ -374,11 +374,11 @@ When this all succeeds, the method of combination is discovered and is ready to 
 
 The flavour of all the events are split up in smaller blocks that can be combined with other blocks in order to make a complete flavour string. The way they are split up varies from what type of flavour it is.
 \subsubsection{The Condition Flavour}
-The basic resource blocks, are based on a couple of things. Firstly, each piece has it's own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour blocks are made so that they can be combined together and form one larger and complete flavour text.
+The basic resource blocks, are based on a couple of things. Firstly, each piece has its own intro part. This part is very basic, and is often no more that one to five words. Secondly, there is an extra block that specifies what the item/room or resource the condition requires, is. After that, there are several other blocks that are organized based upon locations. For instance, the mine will have x amount of flavour texts for each piece, just as the lake will, and all the other locations. This opens up the possibility to quickly come up with new locations, new flavours that will fit that location, and also how the individual pieces can be used there. All flavour blocks are made so that they can be combined together and form one larger and complete flavour text.
 \subsubsection{The Introduction Flavour}
 The introduction flavour is organized in the same manner as the condition flavour is. However, these are a bit larger pieces of strings that are supposed to give a quick and informative overview of the locations the players are entering. The strings themselves are ordered by event types, i.e. gathering or research, and underneath that, they are ordered by what specific location type it is. Each of the location types can have a multitude of flavour texts, as only one is selected at a time at any given location.
 \subsubsection{The Result Flavour}
-The result flavour is a bit more comprehensive than the  condition flavour, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
+The result flavour is also very complex, as it aiming to tell a very short story about each possible result, i.e. alchemy point gained, crew member gained, etc.
 Each of these results can have as many flavour texts as wanted, only they have to be written down first. The algorithm will choose one of them for every block that is in the result. And there can be a number of blocks in a result. Yet again, each of these pieces are crafted so that they should be able to be combined with the other pieces that might also be selected, as they each specify their own specific piece.
 \subsubsection{The End Flavour}
 At the end of the game, there will be displayed a little piece of text telling the players that they made it to the end, and that the game is over. These blocks are not really combinable, as they are meant to be in one string alone.
@@ -417,6 +417,7 @@ Should there be more than these 2 result pieces, the algorithm would go on to do
 
 \section{The app - From start to end}
 In this section you will get an overview of how the developed application runs from start to end. 
+In appendix \ref{app:overviewapp} you can find a high level overview of how the application works.
 
 Each of the states given in section \ref{sec:scen} and which processes that is executed and how will be detailed in the following subsections.
 Each of the scenes, all have a controller related to them. This is the main component in the interaction with the visuals and the data in the app. As we go through the states, the stated actions are, unless noted other wise, directly controlled by such a controller.
@@ -455,9 +456,7 @@ This scene starts by instantiating the world nodes based on the statistics store
 Once all the nodes are spawned, the controller also spawns the player object at the position which is stored in the Datamanager, initially next to the start node. 
 As the player token is spawned, the main camera, which controls the viewport, is centred on the token as well. As the position of the players change during the game, the centering allows the players to quickly find their bearings.
 
-If the players enter this scene, after completing a special event, and they have managed to change their standing with one of the factions in the game, a dialogue box appears, notifying the players of the change.
-
-As the application runs, the camera position and zoom is subject to change 
+If the players enter this scene, after completing a special event, and they have managed to change their standing with one of the factions in the game, a dialogue box appears, notifying the players of the change. 
 
 Whilst in the world map, the players have the possibility of moving the view around and zoom in and out in order to get the overview required.
 
