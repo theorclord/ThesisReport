@@ -131,24 +131,61 @@ The next way was to generate a pre-made set of combinations for the events. This
 The "block system" solution for the text was a very efficient way to generate the combinations. It ensured that more options and content could be added to the list by simply writing in a few lines of text. If another piece was wanted in the game, all that needed to be done in order to have it fully implemented, was to write down the name of the piece, some lines of flavour for it and maybe set a chance rate on it. With these few items added, the combination algorithm is able to create a lot of content with little effort. 
 We felt that this was the way to go, as having larger blocks of flavour text could probably make the sentences more nuanced, but at the same time they would be very static and stiff, and would not necessarily combine with other parts of the game well. With the solution we ended up with here, we will not have that problem, as every item is loosely connected, and by the use of connection blocks, can be combined into more rigid and well-working sentences.
 
-
-
-\subsection{Layout of the map}
-When it comes to the map, the layout possibilities that PCG enables, are endless. Right now the system uses an L-System to generate the layout and place the islands at their correct locations. This is quick and efficient, and allows for endless ways to set up the map. By adding more rules, and specific interpretation logic for them, into the system, each new map can be made to have different experiences to them. You could maybe make a map that looks like the actual world? 
-
-On top of just changing the map's layout, you can add quests and puzzles into the map itself. If combining the L-System with graph grammars, the map can be made so that one island has a quest assigned to it, and that quest could for instance have the players move towards another side of the map, to one specific island. The end island could then be hidden from the players completely, and only be showed/enabled when the players had reached a certain part of the quest line.
-
-If the map was to be analogue and have all these possibilities, the physical weight of the game would potentially be enormous. Either all the map layouts would have to be able to be made with one set of pieces, or each layout would have to be made individually with their own pieces. And if there would be quests and quest-lines assigned to the maps, the rules for how they were played out would have to be thought out in advance, and they would probably make for a very \textit{similar} gameplay each time the game is played. PCG, however, enables the game to have varied contents every time.
-
-During development of the application, there was a discussion whether to use a pcg-algorithm in order to create the map, or to manually create it and have it saved. The conclusion was to use the L-System in order to be able to quickly generate maps, as having more than one map would give the players more replayability and diversity, and by using an L-System there was the possibility to mutate the rules of generation, and have a constantly changing layout. By changing the values such as the spreading angle of the island placement, the map would be different in looks, and by changing the number of iterations of expansion of the axiom, the map would become bigger or smaller. Then by introducing a random value for the angle and distancing of the islands, the maps could have a layout that would never look the same, and that would have a variation of turns and angles and distances from one island to another. However, by doing this, the calculation time for the L-System could become very large, and that could also ruin the player's interest for the game. So by compromising and rather create a multitude of different pre-set patterns, the execution time can easily be managed to be within the time frame that is required, and it allows for more controlled diversity within the layouts of the map.
-
-A rather substantial problem with the L-System, is that it can become very large, very fast. This means that it can reduce the quality of the application, and consume too much of the resources of the device the application is running on. If the system is too big, and taking up too much resources, it can potentially freeze the system, and overheat the device. This is of course not a preferred scenario, and so it is better to have a controlled environment where construction of the rules and axioms of the different layouts to be produced by the system can be monitored and managed.
-
-Our solution has a total of seven different and diverse map layouts, that are available within the code, however, for the sake of managing and testing the game and making sure the produced results and gameplay is coherent, only one of them will be used. This decision was made, because the need for some continuity was needed in order to make sure that all the aspects of the game; the flow, the board, the events, user interaction, etc. all were working as they should. 
-Some of the other maps were smaller, with fewer possible destinations and events, and so they could be suited for a tutorial if that is desired. But for a full game, the need for a bigger map layout with all the islands in a set location is outweighing the need for diversity and changeable maps.
-
 \subsection{World map}
-Early on, we came to the conclusion that we wanted the world map to be on the application. This would remove the need for the physical part of the game to have extra pieces to represent it. It also meant that the game could possibly have an endless amount of maps. By generating the map layout with the use of an L-System and interpretation logic, we could accomplish just that. As we kept developing the game, there were added several different layouts for the map. The need to experiment with the patterns and rules for the L-System arose as we wanted to try out different layouts. What was good with having multiple maps to choose from, was that it made the different game sessions feel different each time, by having a random map being selected at the start-up of the game. What could be done to further enhance the diversity of the layouts, is to introduce some sort of genetic mutation on the grammar of the L-System. This would allow the maps to be constantly changing, and with the use of a validation, or fitness function, the maps could be tailored to better fit the different types of players. However since the time scope of the project was as short as it was, this idea was left untouched as it would require extensive programming and testing, and it would be more or less out of scope in regards to the purpose of this thesis.
+Early on, we came to the conclusion that we wanted the world map to be on the application. This would remove the need for the 
+physical part of the game to have extra pieces to represent it. It also meant that the game could possibly have an endless 
+amount of maps. By generating the map layout with the use of an L-System and interpretation logic, we could accomplish just 
+that. As we kept developing the game, there were added several different layouts for the map. The need to experiment with 
+the patterns and rules for the L-System arose as we wanted to try out different layouts. What was good with having multiple 
+maps to choose from, was that it made the different game sessions feel different each time, by having a random map being 
+selected at the start-up of the game. What could be done to further enhance the diversity of the layouts, is to introduce some 
+sort of genetic mutation on the grammar of the L-System. This would allow the maps to be constantly changing, and with the use 
+of a validation, or fitness function, the maps could be tailored to better fit the different types of players. However since the 
+time scope of the project was as short as it was, this idea was left untouched as it would require extensive programming and testing, 
+and it would be more or less out of scope in regards to the purpose of this thesis.
+
+Right now the system uses an L-System to generate the layout and place the islands at their correct locations.
+ This is quick and efficient, and allows for near endless ways to set up the map. By adding more rules, and specific 
+ interpretation logic for them, into the system, each new map can be made to have different experiences to them. 
+ You could maybe make a map that looks like the actual world? 
+
+On top of just changing the map's layout, you can add quests and puzzles into the map itself. 
+If combining the L-System with graph grammars, the map can be made so that one island has a quest assigned to it, 
+and that quest could for instance have the players move towards another side of the map, to one specific island. 
+The end island could then be hidden from the players completely, and only be showed/enabled when the players 
+had reached a certain part of the quest line.
+
+If the map was to be analogue and have all these possibilities, the physical weight of the game would potentially be enormous. 
+Either all the map layouts would have to be able to be made with one set of pieces, or each layout would have to be 
+made individually with their own pieces. And if there would be quests and quest-lines assigned to the maps, the rules 
+for how they were played out would have to be thought out in advance, and they would probably make for a very \textit{similar}
+ gameplay each time the game is played. PCG, however, enables the game to have varied contents every time.
+
+During development of the application, there was a discussion whether to use a pcg-algorithm in order to create the map,
+ or to manually create it and have it saved. The conclusion was to use the L-System in order to be able to quickly generate maps,
+ as having more than one map would give the players more replayability and diversity, and by using an L-System there was 
+ the possibility to mutate the rules of generation, and have a constantly changing layout. By changing the values such 
+ as the spreading angle of the island placement, the map would be different in looks, and by changing the number of iterations 
+ of expansion of the axiom, the map would become bigger or smaller. Then by introducing a random value for the angle and 
+ distancing of the islands, the maps could have a layout that would never look the same, and that would have a variation of 
+ turns and angles and distances from one island to another. However, by doing this, the calculation time for the L-System 
+ could become very large, and that could also ruin the player's interest for the game. So by compromising and rather create a 
+ multitude of different pre-set patterns, the execution time can easily be managed to be within the time frame that is required, 
+ and it allows for more controlled diversity within the layouts of the map.
+
+A rather substantial problem with the L-System, is that it can become very large, very fast. This means that it can reduce 
+the quality of the application, and consume too much of the resources of the device the application is running on. 
+If the system is too big, and taking up too much resources, it can potentially freeze the system, and overheat the device. 
+This is of course not a preferred scenario, and so it is better to have a controlled environment where construction of the 
+rules and axioms of the different layouts to be produced by the system can be monitored and managed.
+
+Our solution has a total of seven different and diverse map layouts, that are available within the code, however, for the 
+sake of managing and testing the game and making sure the produced results and gameplay is coherent, only one of them will 
+be used. This decision was made, because the need for some continuity was needed in order to make sure that all the aspects 
+of the game; the flow, the board, the events, user interaction, etc. all were working as they should. 
+Some of the other maps were smaller, with fewer possible destinations and events, and so they could be suited for a tutorial 
+if that is desired. But for a full game, the need for a bigger map layout with all the islands in a set location is outweighing 
+the need for diversity and changeable maps.
 
 \subsection{Player representation in app}
 The players needed to have a token of sorts in the app which quickly identified their location and presence.
