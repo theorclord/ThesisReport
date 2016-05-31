@@ -94,7 +94,7 @@ At this stage, the mechanics of the prototype already contain several elements t
     \label{fig:Dicetable}
 \end{figure}
 \end{itemize}
-\subsubsection{Feedback from playtests}
+\subsubsection{Feedback from early playtests}
 Feedback from the first testers showed that even with abstract components, the flow of the game provides a sufficiently good base for discussion. According to playtesters, dividing the board in \textit{Construction Zones} is also an interesting mechanic in itself. But it appeared several times that the players were stuck with not enough resources to play.
 
 The randomness of the results (due to the use of dice) also showed the problem of engagement in the game. The players were easily frustrated to lose resources because of a simple dice roll. This emphasizes the notion of player control tied to PCG-based game design. On the other hand, using more than one parameter proved that the players need to feel their influence on the generation of the rewards: it happened that one player tried to convince the others that using two dice would be more efficient, whereas the others thought that the risk to lose a reward was too big. Later prototypes also based on dice and paper proved that giving the possibility to influence (increasing or decreasing) the chance of getting a negative outcome could strengthen the feeling of control. This enabled more engaging discussions between the players. However, the level of abstraction showed problems of frustration.
@@ -150,7 +150,7 @@ After simulating the event generation system with dice, the first iteration of t
 This is not the first iteration implementing a digital device in the flow of the game: an iteration of the procedurally generated archipelago map layout had been tested along with the dice mechanic to further experiment on the flow of the game (see appendix \ref{fig:gameflow}). However, it was the earliest prototype using digital components in its \textit{Material}, to generate text based events.
 
 In \textit{Archipelago}, the events are generated every time the players enter an island and have several properties. First, a text describing the situation is generated. This text depends on the \textit{location type} that the players have selected on the island. The players have several \textit{options} to face this situation. These options are only accessible to the players if they possess the required \textit{conditions} (i.e. the necessary resources or upgrades in the castle). The text describing the options is also procedurally generated. After selecting an option, a calculation is made to determine if the event was successful or not. The amount of resources collected is then determined. 
-\subsubsection{First iteration}
+\subsubsection{First iteration of the event system}
 The first event generation system simply relied on a random percentage based selection of outcomes. So, the interesting part of this prototype is not to be found in its technical aspect, but in the exploration of the different parameters needed to generate coherent text based events:
 \begin{labeling}{Class or Priority}
 \item[\textbf{Event Type}] Three classes of event which are guidelines for their content.
