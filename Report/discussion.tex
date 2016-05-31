@@ -4,7 +4,7 @@ This section presents a discussion over the different choices made when designin
 
 The knowledge gained after writing the background and analysis of already existing hybrid games will be one of the bases of the discussion. It will be completed by the theory on which the framework was based on. The choices made during the development will be discussed, both on a design and a technical perspective. Combining all those information with the knowledge acquired after the development of \textit{Archipelago} is one of the crucial aspect of this report, as learning by experimenting is what motivated this project in the first place.
 
-\section{} 
+\section{Design and technical choices} 
 In this section, we will elaborate on various different design choices during the development process. How certain aspects became as they did, and the reason behind the decisions for doing it so.
 
 \subsection{Event structure and generation}
@@ -20,17 +20,10 @@ This would ensure that there were no bias towards any outcomes and have the poss
 However, it might provide weird and unforgiving outcomes to the players at all times, or pander to the players by giving them only positive outcomes.
 
 Another way to steer the event generation is to have specific events for each input. This would give total control of the events to the designer and present a clear way to chose the correct options for the players needs.
+The downside is that the game would be very predictable and provide very little reason to replay it once you knew all the outcomes presented by the game.
 
-
-We chose to have the 
-
-
-
-\subsection{Option combinations}
-There are a multitude of ways to come up with a way to combine the options the players will have. Some that were touched will be discussed here.
-The first way is to have a random selection. This would mean to just have a collection of all the possible requirements that would constitute an option, and having a number of them be selected at random.
-Some good things about this, is that it reduces the need for expensive and complex computing, as it only requires a simple random value to be chosen. This can of course also be influenced by a seed or a bias counter leaning towards a specific option, however then it would not be completely random either.
-The fact that it is so simplistic and random, means that several things can go wrong. The same option can be selected multiple times, there may not be enough options to choose from so that the options might not be diverse enough, and the overall feel that the options are based on anything might get lost by the overwhelming randomness, just to mention some.
+We chose to have a compromise of sorts. The game can utilizes any condition at any location, chosen at random in tiers, and the conditions are then used to select outcomes, which have a random element, by design, as the outcomes have several possibilities linked to each condition group.
+This structure of events allows for an easy increase or decrease in the amount of randomness and possibilities, whilst having some structure as to what should be expected, preserving some sort of predictability. The hope is to have a greater replayability from this structure as well as giving the players the ability to wisely select between different choices presented to them.
 
 \subsubsection{Flavour text combinations}
 Early on we knew that we would have to have the flavour text and events being shown to the players. Showing it to the player required generating connected strings in some form that could relate to what was happening in game terms.
