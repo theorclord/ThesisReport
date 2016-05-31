@@ -1,6 +1,6 @@
 \chapter{\textit{Archipelago}}
-In this section of the paper, we will go through a full play session of the game as it was during the last playtest, that is all the different stages that occur in a game session, and explain the actions that happen along the different phases of the game.
-
+The game as it is explained in the following section is the result of the process explained in section \ref{sec:dev}. The rules of the game will be explained before moving on to the final playtest.
+ 
 This playtest was performed at the end of the development and should answer all the questions raised when implementing PCG-based mechanics into hybrid games. Since the game has been thought from the beginning as an experimental concept, it is expected that the answers provided by the different prototypes will transcend the project presented in this paper. This means that the results that will be presented here will contribute to the exploration of making hybrid games in various ways: the successful design choices must be situated in their particular context, to recognize the patterns that support the hybrid nature of the gale; using the same approach, the experimentations that did not provide the expected results will also be analysed.
 \section{The Final Prototype}
 \label{sec:finalproto}
@@ -120,8 +120,31 @@ There are a number of different ways to lose the game. Since it is a collaborati
 Should the castle run out of crystal charges, the game will be over as well, as this would mean that the castle would be stuck floating in space and not be able to move.
 
 \section{Last Playtest}
+The prototype described above is the last one that was built during this prototype. It is the result of the combination of the game mechanics created for the purpose of experimenting hybrid games and the implementation of PCG to create a new kind of play experience.
 \subsection{Modifications for testing purposes}
-\subsection{Material, Resolution and Scope}
+Earlier prototypes showed that the game was not ready to provide relevant results about its experimental purpose. Therefore it was decided to alter the prototypes with a few modifications in order to obtain the necessary results. The players were not aware of the modifications.
+
+\subsubsection{Map layout}
+Originally, the map should have introduced a mechanic based on \textit{interest points}. The players should not have to only reach the final island on the map to win the game, but explore the Archipelago in order to find three specific islands before going to the final island. The islands should have been possible to localise thanks to clues gained in some special events. The intermediary islands would then only be revealed when the players would be close enough (if the island is within the circle showing the range of the next move). First, the provided clues should have been visual, and thus recognizable thanks to a variety of graphical assets, which were not ready when the game needed to be tested.
+
+It was decided to simulate it by indicating the next island to reach thanks to the arrow. The arrow only showed a general direction where the island was, and would be revealed with a halo of another colour as the one used for the other islands when the players would be close enough. This would not perfectly reproduce the intended experience, but at least it would simulate the feeling of exploration by trying to find the correct island among others. This difference between the intended experience and the one simulated by the prototype was of course taken into account when analysing the results.
+\subsubsection{Special events occurrences}
+The special events were a difficult part of the design of the game. It was necessary to have them occurring not too often, so they would always be unpredictable for the players. This is also why they have such particular parameters to be triggered. However, internal tests performed before the final playtest with players showed that the events were not occurring often enough. 
+
+Since analysing the reaction of the players when facing a special event, it was decided that some regular events would be pre-made and set to occur at a given turn. To do so, the island would also be set to only generate one location during this turn. Also, two out of the three options offered in the event included in that location would trigger a special event, which would ensure that the players would have to go through it before moving on to the next island. The special events were set to be triggered at least once between each intermediary islands.
+\subsubsection{Progression and risk}
+Since the special events are a way to increase the risk, and so the difficulty of the game, the problem of the special events not being triggered often enough generated a problem in the game's progressive difficulty. It happened that the layers would literally have very few difficulties progressing through the game, because the risk was not increasing fast enough. To solve this problem, the risk parameter was set to be also altered every time the players would reach an intermediary island.
+
+This altered the experimental purpose of the game, because the difficulty was supposed to naturally increase with the player's progression. However, it was necessary to have more control over the difficulty so that the final prototype could offer more relevant results about the play experience itself, and not only the technical data about the generation of content.
+
+\subsubsection{Using a portable device}
+After these modifications, the application was ready to provide relevant data. However, there was a last problem that would alter the data too much to be ignored. This experiment was supposed to test hybrid games as tabletop games using a digital component to enhance its gameplay. Throughout the development of the game, the application was running on a Personal Computer during playtests. It was important for the final playtest to be able to use a smartphone or a tablet as a digital component. This would allow us to gather data of better quality about how intrusive the digital component is in the flow of hybrid games.  
+\subsection{Material, Scope and resolution}
+The \textbf{Material} of the prototype was closer of what players would expect when playing a hybrid game. It was the first time that the game was tested with analogue components using other material than paper, thus changing the tactility of the different pieces. With earlier prototypes using paper to iterate more quickly, the players had shown frustration when not being able to pick up the bits of paper, or losing them. Using other material than paper for the tokens would ensure that this problem would not alter the results. As explained above, the digital component was a tablet for the first time. This would help providing the necessary information related to the flow of the game. However, since the port to tablet was made in a very brief time, some problems with zooming as well as fluidity drops when moving the camera around on the map would alter the experience. This problem was explained to the players prior to testing, and taken into account in the final results.
+
+The 
+
+This is the highest fidelity prototype that was created during this project. Although all the visual assets are still place-holders, the prototype uses a tablet as a digital device and that all the mechanics are implemented. 
 \subsection{The Playtest}
 \subsection{Questionnaire}
 
