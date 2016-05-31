@@ -182,29 +182,47 @@ It allows the game to have player control in terms of the resources given to the
 Since there is now memory in the application, calculations can be made to see which types of options the players select during an event. For instance, if one event has a third option that requires the players to have a specialization in healing, the application would then be able to calculate that the players have used at least 4 building materials, along with 2 alchemy points in order to get that room. The application would then do the calculations and save the result in the app, that the players now have 4 less materials, and 2 less alchemy points. Without the memory, this would not be possible, and the application would rather have to have set rules for how the events could be made up, or the players would have to give the app inputs so that it would know where to continue.
 So one of the biggest benefits with having memory in the app, is that it allows for continuous generation of content that is directly connected to preceding events and content, and the current state of the players' resources.
 \section{Theme and story}
-\subsection{Story and theme}
-In regards to having a story or theme for the game, the devices which we used played little to no role. 
-This is mainly due to the focus on mechanics in the game, rather than the theme. This meant that no specific actions were taken in order to utilize the app to, in any way, push a narrative or theme.
-As explained in section \ref{sec:theme}, the theme is interchangeable with only few tweaks to the layout of the application and the board game. 
-
-One could however imagine a hybrid game where the application generates some sort of narrative in the designed world. A short introduction to this story could then be displayed before the game begins. 
-
-It could also be possible to have the app change theme by replacing the graphical elements. The change of the board is of course a more problematic matter, but one could image having a theme pack which could be a new physical board and a graphical package for the app.
-\subsection{Theme}
-\label{sec:theme}
-There was a lot of different themes going around during construction of the project. The initial thought was Space and something in the lines of FTL: Faster Than Light. 
-Other themes that came up were "Western Caravan" in a sort of "Mad Max" setting, "Pirates at sea" travelling from islands to islands, and plundering what they could find, "Magical Flying Castle" that would fly through a vast world of floating islands with unexplored areas of varying types and locations.
-The last one was chosen. The reason for this choice, is that it gives us a feeling of familiarity, as it is in a fantasy setting, and most people are familiar with some sort of fantasy story, whether it is "The Lord of the Rings", "The Chronicles of Narnia" or other fantasy stories. Most games that are in this genre and has creatures or factions, usually have a connected base that is the basis for all fantasy. Usually it contains Orcs, Elves, Dwarves, etc. and this makes it easier for players to accept how the feel of the overall game story is set. 
-Going with the theme of a flying castle roaming the skies, the setting itself would be some combination of the dark ages mixed with fantasy. When you see a stone castle, you usually think of the dark ages, and when that castle is flying, the thoughts go to a more made up world, a fantasy world. 
-Having this fantasy aspect in the theme, allows there to be almost any types of creatures and areas, as they can be created from scratch and added into the story, as fantasy have room for any new things that might be created.
+There was a lot of different themes going around during construction of the project.
+ The initial thought was Space and something in the lines of FTL: Faster Than Light. 
+ Other themes that came up were "Western Caravan" in a sort of "Mad Max" setting, "Pirates at sea" travelling 
+ from islands to islands, and plundering what they could find, "Magical Flying Castle" that would fly through a 
+ vast world of floating islands with unexplored areas of varying types and locations. The last one was chosen. 
+ The reason for this choice, is that it gives us a feeling of familiarity, as it is in a fantasy setting,
+ and most people are familiar with some sort of fantasy story, whether it is "The Lord of the Rings", 
+ "The Chronicles of Narnia" or other fantasy stories. Most games that are in this genre and has creatures or factions, 
+ usually have a connected base that is the basis for all fantasy. Usually it contains Orcs, Elves, Dwarves, etc. 
+ and this makes it easier for players to accept how the feel of the overall game story is set. 
+ Going with the theme of a flying castle roaming the skies, the setting itself would be some combination of the dark ages mixed with fantasy.
+ When you see a stone castle, you usually think of the dark ages, and when that castle is flying, the thoughts go to a more made up world,
+ a fantasy world. Having this fantasy aspect in the theme, allows there to be almost any types of creatures and areas,
+ as they can be created from scratch and added into the story, as fantasy have room for any new things that might be created.
+ 
+Initially there was not much of a concept of story, since it took a while before settling on a theme. 
+However, since we had the concept of a node-based system, every story and theme we would come up with,
+ would have to support this system. The world would be made up of a large overview of the map that had smaller 
+ "nodes" that the players would be able to visit. Each one of these nodes would then have smaller nodes within them.
+ With a theme of pirates, the story would become something along the lines of 
+the pirates would travel on the oceans from island to island, from port to port, and there they would be plundering all 
+the villages and taverns they could find. In this case, each outer node would have smaller areas within it that would be 
+the different places the island would have, like a tavern, village or other types of hubs. We were also considering the 
+concept of space. Having a spaceship that would travel through the universe, visiting planet after planet, and exploring
+ the areas of each one of these. Since the whole space scenario is a rather big one, and the science-fiction stories are many,
+ coming up with an original and consistent story for the game, would be a rather immense task, and the risk of it being too
+ generic or on the other side, too abstract, was something that had to be kept in mind. In the end, we landed with a more fantasy theme,
+ with a floating castle that would travel around an unknown world where other people and factions would roam the lands
+ and fight amongst each other. The story behind this scenario is that you, the player, are in control of this large floating
+ castle, that is lost in a new and unexplored world. It is up to you, as the player, to make sure that your castle and its crew are able to
+ get to the destination safely. You will have to explore the vast world and its islands that are scattered around in all directions
+ and expand upon your castle and try to power it up by getting more crystals like the ones that are powering up your castle.
+ Along the way, you will encounter new races and factions, and see vast forests, huge lakes, old villages and factories, and 
+ it is up to you and your crew to gather what you can from these places and rebuild your castle and get home safely. 
+ You will make new allies and enemies along the way, so be careful not to aggravate the people you meet, or they might 
+ just attack your crew or your castle. Manage the castle efficiently, or you might just get stuck, floating in mid air in 
+ an unknown world, never to be able to return home.
 
 \subsection{Graphics and visualization}
 Since the theme of the game ended up on being a fantasy based dark-ages one, we wanted the look and feel of the UI to be somewhat rustic and stony. We ended up with making our own graphics for them. The background of the dialogue boxes and the buttons, even the player castle. We could possibly have found pre-made graphics online, but as they might be copyright protected, we came to the conclusion that it would be better to take a little extra time and do it ourselves. Since the main concept of our problem statement does not necessarily concern the graphics all that much, the creation of these graphics were not a big concern of ours, and was held off with until late in the project. It was more important to focus on game design and PCG implementation, and the fact that neither of the members within this project are graphical designers only enhanced this decision.
 
-\subsection{Story}
-In the start, there was not much story or concept of story, since it took a while before settling on a theme for the game. However, as we came up with different ideas for different themes, a part of the development was to have some sort of story basis in the back of our heads that would combine with the overall theme. Since we had the concept of a node-based system, every story and theme we would come up with, would have to support this. The world would be made up of a large overview of the map that had smaller "nodes" that the players would be able to visit. Each one of these nodes would then have smaller nodes within them. 
-With a theme of pirates, the story would become something along the lines of the pirates would travel on the oceans from island to island, from port to port, and there they would be plundering all the villages and taverns they could find. In this case, each outer node would have smaller areas within it that would be the different places the island would have, like a tavern, village or other types of hubs. We were also considering the concept of space. Having a spaceship that would travel through the universe, visiting planet after planet, and exploring the areas of each one of these. Since the whole space scenario is a rather big one, and the science-fiction stories are many, coming up with an original and consistent story for the game, would be a rather immense task, and the risk of it being too generic or on the other side, too abstract, was something that had to be kept in mind. 
-In the end, we landed with a more fantasy theme, with a floating castle that would travel around an unknown world where other people and factions would roam the lands and fight amongst each other. The story behind this scenario is that you, the player, are in control of this large floating castle, that is lost in a new and unexplored world. It is up to you to make sure that your castle and its crew are able to get to the destination safely. You will have to explore the vast world and its islands that are scattered around in all directions and expand upon your castle and try to power it up by getting more crystals like the ones that are powering up your castle. Along the way, you will encounter new races and factions, and see vast forests, huge lakes, old villages and factories, and it is up to you and your crew to gather what you can from these places and rebuild your castle and get home safely. You will make new allies and enemies along the way, so be careful not to aggravate the people you meet, or they might just attack your crew or your castle. Manage the castle efficiently, or you might just get stuck, floating in mid air in an unknown world, never to be able to return home.
 
 
 \section{The result of the game}

@@ -20,7 +20,7 @@ The diagram does not show any of the actions which transition to the same state.
 \end{figure}
 
 \subsubsection{StartMenu}
-As the game is started, you immediately enter the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
+As the game is started, the player immediately enters the start screen. This is a simple scene containing only the button that says "Start Game". The purpose behind this scene is to let the users be able to chose when they want to start the game, so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
 
 Furthermore, as this scene is loaded, the preliminaries to the world generation and the loading of required data from XML files is handled. This minor loading, takes some of the load of the rest of the program, giving an overall smoother experience.
 This includes the general l-system structure, which is run in the start menu, the loading of board game pieces, and the loading of the different factions in the game.
@@ -31,7 +31,7 @@ As soon as the "Start Game" button is clicked, the app will initialize the conte
 \label{sec:worldscene}
 This is the main layout of the world. It contains all the locations that the players can travel to, and shows them where they are, where they have been, and where they have to go.
 
-When you first see this part of the program, you will notice that it has floating islands with rings around them, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
+When this part of the program appears for the first time, you will notice that it has floating islands with rings around them, as well as a flying castle. The castle is the piece the players control, and it is what the board is representing in the physical part of the game.
 At first glance, you might not see all of the map and all the different islands you can travel to, but by simply zooming out, the players are able to get a better view of the entire map layout, and from there, they can plan their chosen way. There is also a little arrow in the lower right corner of the screen, which always will point towards the goal-island. 
 In figure \ref{fig:worldSc} you can see the scene which meets you once the scene is loaded.
 
