@@ -1,6 +1,6 @@
 \chapter{Technical overview}
 \label{sec:tech}
-In this chapter we will elaborate on how the application for \textit{Archipelago} is constructed, the structure of the app and the scenes contained within it and how they function. After that, we will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the view-port to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This will then be followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter we will go through the app in action from start to end and how it is utilized together with its features.
+In this chapter there will an elaboration on how the application for \textit{Archipelago} is constructed, the structure of the app and the scenes contained within it and how they function. After that, it will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the view-port to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This will then be followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter the app will be gone through in action from start to end along how it is utilized together with its features.
 
 \section{App structure}
 This section details the overall structure of the app.
@@ -106,12 +106,12 @@ The players main source of interaction is via the use of buttons and images. The
 The images and icons are a bit more tricky, especially for the players, as they do not necessarily signify to them that they can be interacted with, unlike the buttons which most people instinctively know does something.
 By programming itself, an image is just an image. It has no function attached to it, and does not do anything specific other than portraying a picture. So in order to make the images \textit{clickable} you have to introduce raycasting.
 
-Raycasting is when you create a line from one point to another, and in this case the only logical way to raycast to the images, was to make the initial start point be wherever the user touch the screen. So when the screen is touched, and the initial position is set, a ray will be made from that point and go \textit{into} the screen (the z direction). By doing this, we can calculate if at any point of the ray, it touches an image that we want to give functionality. If this is the case and say that an exploration location is colliding with the ray, the application will then know to execute the functionalities that that images is holding. In the case of a location being clicked, an event box will appear and the players can continue with the game, and explore on.
+Raycasting is when you create a line from one point to another, and in this case the only logical way to raycast to the images, was to make the initial start point be wherever the user touch the screen. So when the screen is touched, and the initial position is set, a ray will be made from that point and go \textit{into} the screen (the z direction). By doing this, you can calculate if at any point of the ray, it touches an image that you want to give functionality. If this is the case and say that an exploration location is colliding with the ray, the application will then know to execute the functionalities that that images is holding. In the case of a location being clicked, an event box will appear and the players can continue with the game, and explore on.
 
 In the next section, the UI Elements section, you will be introduced to all the remaining elements that is used in the digital part of the game.
 
 \subsection{UI elements}
-In this section, we will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
+This section will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
 
 \subsubsection{Boxes}
 
@@ -128,7 +128,7 @@ Once an option has been chosen, the application loads the result box. This box i
 The faction icons have a rather small visual part in the application, but the impact it makes on understanding the game and seeing what opportunities and rewards the players might get, is rather substantial. In the top left corner of each NodeScene screen, there is an icon that conveys to the players, which of the current 3 factions controls the island that they are on. With this information, and the information that the players might have a specific standing with said faction, allows the players to mentally make an image of what the outcomes of the event might be, in terms of good, bad or neutral.
 
 \subsubsection{Buttons}	
-The buttons in this application is the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built on to other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialogue boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, we are able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are between 2 or 3 buttons that holds options for how to solve the given event, and that means that we can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
+The buttons in this application is the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built on to other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialogue boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, one is able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are between 2 or 3 buttons that holds options for how to solve the given event, and that means that you can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
 
 \subsubsection{Islands}
 The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
@@ -184,11 +184,11 @@ There is not set any max distance that the screen can be from the castle, as the
 
 \subsection{Datamanager}
 \label{sec:datman}
-The data manager is a collection of all the data saved locally within the application. In this section, we will elaborate on the purpose for it, how it is being accessed, and the overall usage of the manager and the data it contains.
+The data manager is a collection of all the data saved locally within the application. This section will elaborate on the purpose for it, how it is being accessed, and the overall usage of the manager and the data it contains.
 
 \subsubsection{Purpose}
 	
-The purpose of having a data manager, is to have all data we want, in one convenient location. And by doing so, allowing all aspects of the application to have access to it. By allowing access from anywhere, all the data that is saved will be shared and available to use from wherever it is needed whenever it is needed. This also means that we can save data in real-time as for example an event is concluded.
+The purpose of having a data manager, is to have all data you want, in one convenient location. And by doing so, allowing all aspects of the application to have access to it. By allowing access from anywhere, all the data that is saved will be shared and available to use from wherever it is needed whenever it is needed. This also means that you can save data in real-time as for example an event is concluded.
 
 \subsubsection{Usage}
 
@@ -202,11 +202,11 @@ There are also statistical values of having all data saved in one location, alth
 The faction system is also made possible by the datamanager. Every faction has an allegiance factor, ranging from -150 to 150, and is split up in 3 sections; Enemy, Neutral and Friendly. Having these values saved in the datamanager, allows the events to chance their outcomes and rewards based on said allegiance. A quick look and check against the thresholds and an event can go from being a bountiful one to being a tough one with enemies killing you, just as an example.
 
 \subsubsection{Access}
-Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, we can access all its contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content based on previous events which is something that would be hard to do with only a physical board game. 
+Since the Datamanager class is a shared class across the application, it can be accessed from anywhere at any time. This is done by calling the instance of the class object, and once that is done, you can access all its contents, save events and all data, and bring already saved data forth to create new content. Having this access to all saved data makes it possible to generate new content based on previous events which is something that would be hard to do with only a physical board game. 
 The fact that you at any time can go in and compare previous values to current ones, opens up for possibilities of changing data on the spot. If your current event has too much of the same values as used in previous events, you can just access the saved data, find what needs to be changed, and update your current events accordingly.	
 
 \subsection{The World Map}
-In this section, we will describe how the map is laid out on the screen and represented to the player.
+This section will describe how the map is laid out on the screen and represented to the player.
 
 An overview of a zoomed-out map can be found in figure \ref{fig:worldmapzoom}. This is the initial layout of the world map as the game begins, zoomed out to the maximum value.
 
@@ -244,14 +244,14 @@ When the full expansion of the string is completed, the next stage is to interpr
 Going through the resulting axiom string, we make a lot of different calculations to be able to properly place the nodes on the map. Every time a node is being placed, the direction is calculated from the state, along with the spacing. Then the algorithm moves the state's "position marker" forward in the calculated direction, and places the correct node at that mark and saves the state along with the location and angling.
 This goes on until all characters of the string have been visited, and all the nodes have been placed, then the algorithm is complete.
 
-There are many different patterns that can be made with this algorithm, and in our solution, we made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
+There are many different patterns that can be made with this algorithm, and in our solution, there is made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
 In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit, as this is a big enough map to be able to generate a large amount of events and outcomes, and as it gives the players a large space to explore.
 
 The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$^3$(iteration number) + the extra start and goal node $\rightarrow$ 4*5 $ ^3 $ + 2 = 502.
 
 \subsection{Event Introduction}
 In the next section, you will be introduced to the events of the game. The events are in many aspects the biggest part of the game, as the the physical part of the game, the board game part, is affected by the outcomes of the events. Furthermore the events have special requirements from the board game, and with this the connection between the 2 parts of the game is made.
-In the next part of this document, we will go through the events, their structure, how they are constructed and lastly, the flavour text of the events and how they are generated and combined.
+The next part of this document will go through the events, their structure, how they are constructed and lastly, the flavour text of the events and how they are generated and combined.
 
 \subsection{Events}
 \label{sec:eve}
@@ -401,7 +401,7 @@ As the event generating algorithm has selected which conditions are to be used i
 This is how the flavour text would then be combined:
 
 In the first option, the algorithm would open up the XML file called EventStructure.xml, find the place where the condition flavour is located, and load that in. Then the algorithm would go through the branches until it came across the one called "crew". This consists of a basic text and a secondary text. The first part would be "Send", the second would be " x Castle crew". Then it would place the number of crew, in this case 1, between the 2 blocks of flavour, and end up with "Send 1x Castle crew".
-Now that we have the introduction of the condition, the next step is to get the location-based flavour. The algorithm would then continue through its data until it came upon the matching location, which in this case would be "mine". Under the mine section, all the pieces are listed again, with their respective lists of flavour blocks. Say the first one is selected, which says: " to explore the mine's riches.". This would then be put at the end of the first part, and combined into the final flavour text for the first option: "Send 1x Castle crew to explore the mine's riches.".
+Now that the introduction of the condition is set, the next step is to get the location-based flavour. The algorithm would then continue through its data until it came upon the matching location, which in this case would be "mine". Under the mine section, all the pieces are listed again, with their respective lists of flavour blocks. Say the first one is selected, which says: " to explore the mine's riches.". This would then be put at the end of the first part, and combined into the final flavour text for the first option: "Send 1x Castle crew to explore the mine's riches.".
 
 After the first option was completed, the algorithm would see that there was one more to be done, and do the same for that, but since there is more than one piece in that option, the algorithm would do the same as it did for the crew, for the alchemy point.
 An example of how the selected text would look like after completion would be this: "Send 1x Castle Crew to explore the mine's riches. Use 1x alchemy point to create a strength potion for your crew".
