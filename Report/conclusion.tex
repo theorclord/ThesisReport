@@ -30,6 +30,7 @@ In XCOM: The Board Game \cite{game:xcomtbg}, there are a number of pre-made even
 
 \section{Future work}
 In this part, we will discuss what possible work could be done in the future. What we would like to implement, thought on how to do that, and what could have been done differently in order to make this easier in the future.
+
 \subsection{Better use of saved data}
 \label{sec:savdat}
 One of the big impacts this project brought to light, was the use of saved events and its data to generate new events that were based on those. In this solution, we save the events that happen over the course of the game, and we use them in a rather minimalistic way, more as a proof of concept. However, it would be interesting to see how this data could be used more efficiently over an entire game session. Generating more experience driven content, that would have a bigger impact on the players' experience, by creating other mechanics in the game, is one thought that comes to mind. 
@@ -89,3 +90,9 @@ One of the big wants for future work is to see how we could make the events evol
 
 \subsubsection{Saving play progression}
 Currently the app does not save the players current progression and if the app is closed, the players will have to start over. Saving the current progression of the application, allowing players to load and progress from a point, instead of starting over each time. This would also ensure the session could be restored in case of power failure, so that time playing the game would not be wasted and the session lost.
+
+\subsection{Difficulty -- NEEDS WORK!!!}
+Earlier there was a mention of changing the difficulty in the middle of the game. Another way of making the options, would be to do this difficulty change gradually as the players progress. Starting off easy, and then getting harder and harder. Or the other way around, easier and easier, if that is preferable. If this is what is wanted, there has to be some sort of scale that shows what constitutes hard, medium and easy. When this is established, the algorithms can be made into generating the content on a declining or increasing scale. How much is going to be changed, and how much it will be modified each turn, is then up to the scaling system itself, or the players, if they are given the possibility to set this themselves.
+
+While on the topic of gradually changing the content, another way that comes up, is to increase the costs and rewards based on stages.
+Each stage could be a finite amount of turns, or a stage can change to the next one when a certain threshold has been reached, be it turns, resources gained, resources lost, etc.
