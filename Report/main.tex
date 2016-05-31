@@ -250,6 +250,10 @@ Moon, A.R. (2004). \textit{Ticket to Ride} [Board Game]. Days of Wonder.
 \bibitem{game:xcom}
 Mythos Games and MicroProse (1994). \textit{UFO: Enemy Unknown} [Video game]. Microsoft Windows, MS-DOS, Amiga, Amiga 1200, Amiga CD32. USA: MicroProse.
 
+%N
+\bibitem{book:cad}
+Narayan, K., Rao, K. and Sarcar, M.M.M (2008). Computer aided design and manufacturing. New Delhi: Prentice-Hall of India.
+
 %O
 \bibitem{web:lsys}
 Ochoa, G. (1998). \textit{An Introduction to Lindenmayer Systems} [online]. Available at:  \url{http://ldc.usb.ve/~gabro/lsys/lsys.html}.[Accessed 24 May 2016].
@@ -321,12 +325,6 @@ Yannakakis, G., N., Togelius, J. (2011). \textit{Experience-Driven Procedural Co
 \bibitem{art:collab}
 Zagal, J., and Rick,J. (2006). Collaborative games: Lessons learned from board games in \textit{Simulation \& Gaming}, 37(1), 24-40 [online]. Available at: \url{https://home.cc.gatech.edu/je77/uploads/3/hobbits-sg.pdf}
 
-\bibitem{art:exppcg}
-Georgios N. Yannakakis and Togelius, \emph{Experience-Driven Procedural Content2008.Generation}, Member, IEEE, 2011.
-{juto, eeka, dasc, yannakakis}@itu.dk
-
-\bibitem{book:cad}
-Narayan, K., Rao, K. and Sarcar, M.M.M (2008). Computer aided design and manufacturing. New Delhi: Prentice-Hall of India.
 
 \end{thebibliography}
 \pagebreak
@@ -376,7 +374,7 @@ The main course of the game is to move from the start all the way to the goal no
 
 \section{Interacting with the islands}
 In order to travel to an island, you will have to click on the sprite image that is representing them in the world map. The island also have to be within range of the castle in order for any interaction to be possible. 
-Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the viewport a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
+Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on it's way. If however you change your mind for some reason, and wish to travel to another island, you can either move the view-port a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
 
 When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them have their own look, feel and purpose.
 A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
@@ -384,10 +382,10 @@ A location point is clicked on and as it is a sprite, the click has to be regist
 \section{Flavour text combinations and it's purpose}
 Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavour text that will tell the players these things. 
 
-Every island has a name and a short piece of text along with it. These texts are premade and are applied to the island when they are generated in the beginning. 
-It is in the events that the real challenge is. The flavour text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of premade text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavour for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavour also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
+Every island has a name and a short piece of text along with it. These texts are pre-made and are applied to the island when they are generated in the beginning. 
+It is in the events that the real challenge is. The flavour text for the events needed to be linked with the location type, i.e. if the location type is a lake, the text needs to reflect that the area is a lake. So in order to make this happen, every location have a number of pre-made text strings associated with them, and one of those are selected as soon as the event is generated. On top of that, one of the bigger challenges was to have flavour for all the options, or buttons, that the players would be able to select from. The text needed to be based on what the players are using and it needs to be able to be combined with more text in case there are more than one board piece required for the option. The flavour also needs to be somehow connected with the type of location, so if you were at a lake and had to send out a castle crew, the text would say something like "send a crew down to the lake" instead of saying "send a crew to explore". The feel that it is connected and not just generic for everything, is important, as without it, one could just as easily have a deck of cards. 
 
-Now that all the conditions have been "flavourized", the challenge moves on to the result flavour. This is the flavour that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material pluss 1 crystal charge, the resulting finished flavour text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
+Now that all the conditions have been "flavourized", the challenge moves on to the result flavour. This is the flavour that is being shown as soon as an option is selected. It is constructed by combining strings of text that are based on the resulting rewards. So if you get 1 piece of Alchemical Material plus 1 crystal charge, the resulting finished flavour text would look something like "You found a new piece of material when you were exploring. As you enter the castle again you notice that within your findings, were a piece of shiny crystal". 
 This concept goes for all possible combinations of result flavour. And each piece is selected from a variety of strings associated with each type of reward and penalty. By having all these pieces being able to be combined, we remove the need for having a huge bunch of cards on the table, as all the "cards" are being made procedurally. Also we can just make more blocks of text and by doing so we are creating another deck of cards for each piece of text added.
 
 The exact way the different flavours are combined, is described in the event section above.
@@ -436,7 +434,7 @@ The Board, tokens and event generation system is the same as the previous protot
 \section{The test}
 
 \subsubsection{Place and time}
-ITU, 4th floor on the black tables; 10/05/2016 in the afternoon. They play on a table with Mats’s  tablet. I am sitting on the same table but a bit behind.
+ITU, 4th floor on the black tables; 10/05/2016 in the afternoon. They play on a table with Mats'  tablet. I am sitting on the same table but a bit behind.
 
 \subsubsection{Testers}
 We are playtesting the game with 3 game design students, that are used to tabletop gaming (Magic) but not really with board games. Two of them (T. and M.) have never played  the game. K. has tested the first prototype using the digital application(first event generation system.
