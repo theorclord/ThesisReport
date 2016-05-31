@@ -184,14 +184,6 @@ Some of the other maps were smaller, with fewer possible destinations and events
 if that is desired. But for a full game, the need for a bigger map layout with all the islands in a set location is outweighing 
 the need for diversity and changeable maps.
 
-\subsection{Player representation in app}
-The players needed to have a token of sorts in the app which quickly identified their location and presence.
-As discussed in section \ref{sec:theme}, there were several ideas of how the gameplay should be tied to a theme. After the theme was solved, the question came whether the players should send expeditions out from a base or just move the base around.
-
-After the final decision to have a moving base, a basic sprite were created to look like a floating castle, with the themed crystal hovering above it.
-
-In terms of the app, the visuals of the individual tokens could easily be replaced with another sprite, whilst if it had been a board game that might have been more time consuming.
-However, changing the method of which the players interacted with the app through this token, might take considerable time to change technically, whilst if it were only a board game, you could just decide that it was how it worked now.
 
 \subsection{Tokens used in the application and on the board}
 When coming up with the mechanics and the pieces needed in the game, we also needed to figure out which pieces and elements should be in the application part. Since the story of the game required \textit{people} to explore the islands in the world, and complete events on them, there was a need for the app to have player tokens as an input. Same goes for the resources that are used in the game. If an event required building material as a condition for the resolution, this would also have to be stored in some way in the app. One could argue that instead of having these parameters in the app, the algorithm behind the events could just generate several different and randomly connected outcomes. However since we want to explore the PCG aspect in connection with hybrid games, it is better to make sure that the application has the correct inputs and values so that it can generate content that actually influences the players' behaviour, and that is influenced by it.
