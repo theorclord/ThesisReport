@@ -1,13 +1,13 @@
 \chapter{\textit{Archipelago}}
-The game as it is explained in the following section is the result of the design and development process explained in sections \ref{sec:dev} and \ref{sec:tech} of this paper. The rules of the game will be explained before moving on to the final playtest, and especially the results. Because this prototype is the one covering the largest \textit{scope} among all the prototypes created during this project, it deserves its own section of the report to be explained in details along with the analysis process of the results.
+The game as it is explained in the following section is the result of the design and development process explained in chapters \ref{sec:dev} and \ref{sec:tech} of this paper. Because this prototype is the one covering the largest \textit{scope} among all the prototypes created during this project, it deserves its own section of the report to be explained in details along with the analysis process of the results.
  
 This playtest was performed at the end of the development and should answer all the questions raised when implementing PCG-based mechanics into hybrid games. Since the game has been thought from the beginning as an experimental concept, it is expected that the answers provided by the different prototypes will transcend the project presented in this paper. This means that the results that will be presented here will contribute to the exploration of making hybrid games in various ways: the successful design choices must be situated in their particular context, to recognize the patterns that support the hybrid nature of the gale; using the same approach, the experimentations that did not provide the expected results will also be analysed.
 \section{The Final Prototype}
 \label{sec:finalproto}
 The first important thing to know about the final version used to playtest is that it was modified in order to cover aspects that were not working as intended. The following section will first present the rules as they were conceived; another paragraph will be dedicated to explain why these final modifications were necessary for the sake of the paper.
 
-\subsection{Setting up the game}
-Setting up the board is the beginning of every tabletop game. The board is to be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the player tokens to the respective players. Each player will have their own color on their own "crew tokens" and the color itself is arbitrary, and has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
+\subsection{The components}
+Setting up the board is the beginning of every tabletop game. The board is to be placed on the surface area that the players are using, i.e. a table, and the starting conditions, like the initial resources the players have, will be distributed onto the board. Next step is to assign the \textit{Crew Member} tokens to the respective players. Each player will have their own color on their own tokens and the color itself is arbitrary: it has no relevant meaning to the game itself, rather than making it easier for the players to know which one is theirs.
 When the assigning of the player tokens has been done, and the board has been placed, if the game is played by new players, the next step will be to read through the rules of the game, and to have one of the players read out loud and explain the different phases and the possible actions that can be done, along with the costs and rewards of said actions. If this is not done during the start-up of the game, it can also be done at runtime, as there is no set timer within the application, and the players can take the time they need and refer to the rules.
 \subsubsection{The Board}
 The following paragraph is a description of the physical board and its components. In figure \ref{fig:compo} are the board used and the tokens the players interact with.
@@ -27,67 +27,69 @@ The following paragraph is a description of the physical board and its component
    \label{fig:compo}
 \end{figure}
 
-When starting the game and placing the board, all the players have available 2 \textit{Crew Member}tokens. The \textit{Cargo Hold} contains 4 \textit{Scrap} tokens, and 1 \textit{Alchemy Point}. The castle itself will start off with 3 \textit{Crystal charges} which powers the \textit{Crystal} at level 1. In order to get to level 2, the players will need to acquire another crystal piece. Upgrading the crystal also enlarges the \textit{Cargo Hold}, which can then contain more \textit{Scrap} and \textit{Alchemy Points}.
+When starting the game and placing the board, all the players have available 2 \textit{Crew Member} tokens. The \textit{Cargo Hold} contains 4 \textit{Scrap} tokens, and 1 \textit{Alchemy Point}. The castle itself will start off with 3 \textit{Crystal charges} which powers the \textit{Crystal} at level 1. In order to get to level 2, the players will need to acquire another crystal piece. Upgrading the crystal also enlarges the \textit{Cargo Hold}, which can then contain more \textit{Scrap} and \textit{Alchemy Points}.
 
 The \textit{Construction} box is used to place the resources that were spent during the management phase, so they are separated from the \textit{Cargo Hold} - allowing for more clarity when taking decisions. The \textit{Event} box is used to remember which resources are spent during events. 
 
-Finally, the \textit{Allies} box is used to place the \textit{Faction} card of the faction allied with the players. The allied faction being an important parameter in the procedural generation of the events, it was important that players could always remember who they are allied with. 
+Finally, the \textit{Allies} box is used to place the \textit{Faction} card of the faction(s) allied with the players. The allied faction being an important parameter in the procedural generation of the events, it was important that players could always remember who they are allied with. 
 \subsubsection{The Application}
 As the application is started, the players are presented with the layout of the map. In the center is the castle, as is being represented by the physical board on the table. To move around in the world, all that needs to be done, is to click on an island that is within the ring around the castle, which indicates the travel distance possible for the castle each turn. Once an island is clicked on, a travel confirmation dialogue box will appear, and the players will have to confirm that they do indeed wish to travel there.
 \subsection{Phase 1 - Castle Management}
 \label{sec:p1}
-Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the \textit{Management Phase}. In this management phase, the players can upgrade, repair and expand upon their castle.
+Before the players have to travel around the world within the app, they have the first phase on the board. This phase is called the \textit{Management Phase}. In this phase, the players can upgrade, repair and expand their castle by building more rooms.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.4]{Images/rooms.png}
+    \includegraphics[scale=0.5]{Images/rooms.png}
     \caption{The different types of rooms.}
     \label{fig:roomtype}
 \end{figure}
 
-Building a standard room costs 2 \textit{Scrap} tokens, and one \textit{Crew Member} has to be assigned to the construction. This \textit{Crew Member} will not be available during the next phase of the game.
+In figure \ref{fig:roomtype} are the different types of rooms available for construction. Building a standard room (taking only one construction space) costs 2 \textit{Scrap} tokens, and 1 \textit{Crew Member} has to be assigned to the construction. This \textit{Crew Member} will not be available during the next phase of the game.
 There is no limit for how much players can do during this phase, other than what the players themselves have the resources for. A room can be damaged after an event. In that case, the players flip the room and it is not usable until it is repaired for 1 \textit{Alchemy Point} and 1 \textit{Scrap} per tile occupied by the room. A destroyed room has to be rebuilt from the beginning.
 
-In figure \ref{fig:roomtype} you can see the different rooms available for construction.
+
 
 During the \textit{Management Phase}, the players can also assign \textit{Crew Members} to a room that is already built. All the rooms have different effects:
 \begin{labeling}{\textbf{Mechanic's Workshop}}
 \item[\textbf{Mining room}] The crew members assigned to this room will gather \textit{Scrap}. The amount of \textit{Scrap} gathered per \textit{Crew Member} assigned depends on the level of the room.
 \item[\textbf{Alchemy Lab}] The \textit{Alchemy Lab} is used on the board to gather \textit{Alchemy Point}. The amount of \textit{Alchemy Points} gathered per \textit{Crew Member} assigned also depends on the level of the room.
-\item[\textbf{Mechanic's Workshop}] The \textit{Mechanic's Workshop} is used to repair damaged rooms. When a room is damaged, the players assign 1 \textit{Crew Member} to the mechanic's workshop to repair it. It takes 1 turn per tile occupied by the damaged room to repair it. Upgrading the mechanic's workshop increase the speed at which a room is repaired.
-\item[\textbf{Chapel}] The \textit{Chapel} is used to heal \textit{Crew Members} that got injured during an event. It costs one \textit{Alchemy Point} and takes one turn to heal an injury. The number of \textit{Crew Members} that can be healed per turn depends on the size of the \textit{Chapel}.
+\item[\textbf{Mechanic's Workshop}] The \textit{Mechanic's Workshop} is used to repair damaged rooms. When a room is damaged, the players assign 1 \textit{Crew Member} to the mechanic's workshop to repair it. It takes one turn per tile occupied by the damaged room to repair it. Upgrading the mechanic's workshop increase the speed at which a room is repaired.
+\item[\textbf{Chapel}] The \textit{Chapel} is used to heal \textit{Crew Members} that got injured during an event. It costs 1 \textit{Alchemy Point} and takes one turn to heal an injury. The number of \textit{Crew Members} that can be healed per turn depends on the size of the \textit{Chapel}.
 \end{labeling}
 
 When two rooms of the same type are built next to each other, they can be merged, thus accessing the next level and becoming more powerful (see figure \ref{fig:merge}). Upgrading a room also requires 1 \textit{Alchemy Point} per tile occupied by the upgraded room. Again, this will require a player to temporarily set a crew inactive, as it has to build the room. It is worth noticing that the crystal as to be upgraded in order to merge rooms.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[scale=0.4]{Images/merge.png}
+    \includegraphics[scale=0.5]{Images/merge.png}
     \caption{The room merging system. In the top left corner of each tile, the players can see the \textit{Crystal}'s level required to build the room.} 
     \label{fig:merge}
 \end{figure}
 \subsubsection{Collaboration and Mastery}
-The merging mechanic introduces specialization or \textit{Mastery}. In \textit{Archipelago}, all players can perform almost all the basic actions in the game. There is no specific skill related to a specific role. However, a player alone cannot perform all the actions required by the game at the same time: the amount of actions that a player can perform is directly related to the number of \textit{Crew Members} that this player commands. Therefore, it is important to encourage the players to split the tasks among them. The tasks can be divided into several groups that are related to the type of rooms that can be built in the castle. When a players spends one of her \textit{Crew Member} to merge a room, that player gain a \textit{Specialization token} of the same type as the room that was upgraded. There are different types of \textit{Specialization Token}, depending on size of the room that has been upgraded after merging (see figure \ref{fig:spec}). 
+The merging mechanic introduces specialization or \textit{Mastery}. In \textit{Archipelago}, all players can perform almost all the basic actions in the game. There is no specific skill related to a specific role. However, a player alone cannot perform all the actions required by the game at the same time: the amount of actions that a player can perform is directly related to the number of \textit{Crew Members} that this player commands. Therefore, it is important to encourage the players to split the tasks among them. The tasks can be divided into several groups that are related to the type of rooms that can be built in the castle. 
+
+When a players spends one of her \textit{Crew Member} to merge a room, that player gain a \textit{Specialization token} of the same type as the room that was upgraded. There are 3 different levels per specialization, depending on the size of the room that has been upgraded after merging (see figure \ref{fig:spec}). 
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{Images/Specialization.png}
-    \caption{Examples of specialization tokens that players can have. Each of the tokens represents a bonus that can be useful when performing the procedurally generated events.}
+    \caption{Examples of specialization tokens that players can have. Each of the tokens represents a bonus that can be useful when performing the procedurally generated events. The last token is the Priest's \textit{Mastery token}.}
     \label{fig:spec}
 \end{figure}
 
-The first type of \textit{Specialization token} grants a small bonus when visiting an island. The second type of \textit{Specialization token} always allow the player who has it to build the biggest rooms, called \textit{Mastery Rooms}. They take four construction spaces and grant the player the \textit{Mastery token} (see figure \ref{fig:temp}. This token provides important bonuses that affect the outcomes of the event.
+The first type of \textit{Specialization token} grants a small bonus when visiting an island. The second type of \textit{Specialization token} always allow the player who has it to build the biggest rooms, called \textit{Mastery Rooms}. These rooms are not gained after merging. They are directly constructed for 8 \textit{Scrap} tokens, do not cost \textit{Alchemy Points} and require the castle's \textit{Crystal} to be powered at level 3. They take four construction spaces and grant the player the \textit{Mastery token} (see figure \ref{fig:temp}. This token provides important bonuses that affect the outcomes of the event.
  
 \begin{figure}[!ht]
     \centering
     \includegraphics[scale=1]{Images/mastery.png}
-    \caption{The Temple, that provides the priest's \textit{Mastery} token. This token allows the player to resurrect \textit{Crew Members} that died during an event for 1 \textit{Alchemy Point}.}
+    \caption{The Temple, that provides the priest's \textit{Mastery} token. The token allows the player to resurrect \textit{Crew Members} that died during an event for 1 \textit{Alchemy Point}.}
     \label{fig:temp}
 \end{figure}
 
 The bonus provided by the \textit{Mastery token} are very important, and the game can hardly be finished without them.
 
-It is important to notice that the \textit{Specialization} tokens are only attributed to the first player who merges rooms of the same type. 
+It is important to notice that the specialization tokens are only attributed to the first player who merges rooms of the same type. Therefore, two different players cannot have the same tokens.
 \subsection{Phase 2 - Exploring the World}
 \label{sec:p2}
 When the first phase is over, and all the crew tokens have been assigned, the next phase is to explore the Archipelago.
@@ -163,4 +165,5 @@ The players are informed that the application is not completely ready, and that 
 The game being a hybrid board game, the players have been informed that they could ask questions to the observers in case they could not find the solution of a problem in the rules. If the observers think that the question is legit and the answer is hard to find in the rules, they decide to give that information and take notes about how to solve the problem. 
 
 \section{Results and Data Analysis}
+
 
