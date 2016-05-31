@@ -8,22 +8,22 @@ The knowledge gained after writing the background and analysis of already existi
 In this section, we will elaborate on various different design choices during the development process. How certain aspects became as they did, and the reason behind the decisions for doing it so.
 
 \subsection{Event structure and generation}
-Choosing how the events should be structured and how to generate the flavour of the events, required several iterations and the implementation evolved throughout the development process.
+Choosing how the events should be structured and how to generate the flavour of the events, required several iterations, and the implementation evolved throughout the development process.
 
 The final idea based itself on combining different attributes known about a given node into events which in some way utilized the attributes to generate their content. 
 
 There are a multitude of ways to combine the these attributes and many different approaches to solving the problem of generating interesting events.
 
 One could imagine at random getting the outcomes from the attributes available. 
-The would mean you could have a collection of all possible events you would have and simply pick randomly between them. 
-This would ensure that there were no bias towards any outcomes and have the possibilities be unpredictable. This also have the benefit of requiring the least amount computing power. 
+This would mean you could have a collection of all possible events you can have, and simply pick randomly from them. 
+This would ensure that there would be no bias towards any of the outcomes and have the possibilities be unpredictable. This also have the benefit of requiring the least amount computing power. 
 However, it might provide weird and unforgiving outcomes to the players at all times, or pander to the players by giving them only positive outcomes.
 
-Another way to steer the event generation is to have specific events for each input. This would give total control of the events to the designer and present a clear way to chose the correct options for the players needs.
+Another way to steer the event generation is to have specific events for each input. This would give total control of the events to the designer and present a clear way to choose the correct options for the players' needs.
 The downside is that the game would be very predictable and provide very little reason to replay it once you knew all the outcomes presented by the game.
 
-We chose to have a compromise of sorts. The game can utilizes any condition at any location, chosen at random in tiers, and the conditions are then used to select outcomes, which have a random element, by design, as the outcomes have several possibilities linked to each condition group.
-This structure of events allows for an easy increase or decrease in the amount of randomness and possibilities, whilst having some structure as to what should be expected, preserving some sort of predictability. The hope is to have a greater replayability from this structure as well as giving the players the ability to wisely select between different choices presented to them.
+We chose to have a compromise of sorts. The game can utilize any condition at any location, chosen at random in tiers, and the conditions are then used to select outcomes which have a random element by design, as the outcomes have several possibilities linked to each condition group.
+This structure of events allows for an easy increase or decrease in the amount of randomness and possibilities, whilst having some structure as to what should be expected, preserving some sort of predictability. The hope is to have a greater replayability from this structure as well as giving the players the ability to tactically select between different choices presented to them.
 
 \subsubsection{Flavour text combinations}
 Early on we knew that we would have to have the flavour text and events being shown to the players. Showing it to the player required generating connected strings in some form that could relate to what was happening in game terms.
