@@ -4,7 +4,8 @@ In this chapter there will an elaboration on how the application for \textit{Arc
 
 \section{App structure}
 This section details the overall structure of the app.
-First the scenes in their structure in the game and later the UI and additional elements.
+First the scenes in their structure in the game and later the UI and additional elements. After that he viewport and the different functionalities implemented within it will be explained. This is then followed by a description of the Datamanager, the component responsible for all the saved and loaded data.
+Finally the world map and its features will be discussed.
 
 \subsection{Scenes}
 \label{sec:scen}
@@ -247,7 +248,7 @@ This goes on until all characters of the string have been visited, and all the n
 There are many different patterns that can be made with this algorithm, and in our solution, there is made a variety of them, including, but not limited to, star patterns, sea weeds, box fractals and more. 
 In the end we are only showcasing the latest and biggest map pattern layout, which is a 4-way branching net of about 500 nodes or islands, that you can visit, as this is a big enough map to be able to generate a large amount of events and outcomes, and as it gives the players a large space to explore.
 
-The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)$^3$(iteration number) + the extra start and goal node $\rightarrow$ 4*5 $ ^3 $ + 2 = 502.
+The map layout itself has a starting node in the center, and expands in 4 directions from there. North, south, east and west, with the initial axiom looking like this: "[N][+++N][---N][------N]". Each of these four directions are also expanding on themselves, with the main rule which is "N" $\rightarrow$ "N[-N][+N][NN]". This means that each node will spawn another to the left, right, and two in the forward direction. The angle is set to be 30 degrees, which means that there will be a good spread of the nodes all across the map. Having set the iteration number to be 3 gives us the number of nodes: 4(initial nodes) * 5(each become 5 new nodes)\textasciicircum 3(iteration number) + the extra start and goal node $\rightarrow$ 4*5 $ ^3 $ + 2 = 502.
 
 \subsection{Event Introduction}
 In the next section, you will be introduced to the events of the game. The events are in many aspects the biggest part of the game, as the the physical part of the game, the board game part, is affected by the outcomes of the events. Furthermore the events have special requirements from the board game, and with this the connection between the 2 parts of the game is made.
