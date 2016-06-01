@@ -23,10 +23,12 @@ In this part, we will elaborate upon possible work that could be done in the fut
 One of the big impacts this project brought to light, was the use of saved events and its data to generate new events that were based on those. In this solution, we save the events that happen over the course of the game, and we use them in a rather minimalistic way, more as a proof of concept. However, it would be interesting to see how this data could be used more efficiently over an entire game session. Generating more experience driven content, that would have a bigger impact on the players' experience, by creating other mechanics in the game, is one thought that comes to mind. 
 
 The saved data could be used in ways which a board game could never compete. One could use the saved data to challenge the players either more or less, by knowing the number of resources they have collected, and tailoring the possibilities from that knowledge. In this way, the game would either challenge the players to use their resources wisely or give them access to a resource which has been sparse in the previous events. 
+One could even imagine using some sort of genetic algorithm to tailor the events directly to the player profiles, all built from the saved data.
 
 The special events could really play to what the players had been doing, in terms of where and for who, giving the players a greater feel of involvement in the world. This could be shown with some sort of faction overlay, which could change each time you dealt with the different factions. It could be possible to have some sort of background faction warfare with variables being influenced by how the players interact with the game.
 
 Also, a story could be brewed by linking all the outcomes of the events. In the end building a short story based on the players events. Using a text algorithm of sorts to create a story based on the factions relationships and the deals made at each point of interest. 
+Furthermore a progression in difficulty based on the progression of the saved data would give rise to new challenges for the players.
 
 By using the current layout, one could even imagine that the application could piece together the state of the board game, using the input from the events. Whenever the players resolve the events, they declare, indirectly the tells the application how they have used their resources. Saving this could help to give a complete look at how the players are doing and surprise the players by revealing to them in events that the application knows what they have built.
 
@@ -70,16 +72,8 @@ Currently, there is feedback from the application whenever there is a change in 
 
 A fix for this would be to have some access to a part of the UI which would display the current standing with the available factions. This would give the players the possibility to make a better informed decision of how to react to special events and maybe steer toward some specific relation to the factions.
 
-\subsubsection{Event progression}
-For the events, it would be interesting to see how the players would act, if there was some progression system in place, that would make it harder and harder as the game went on. And if this would be combined with perhaps some artificial intelligence in order to generate new rewards, it could be educational to see how the mechanics of the game could change along with how the players would perceive the space of possibility.
-
 \subsubsection{Data gathering}
 An option that could yield data for future development, would be to implement some sort of statistic gathering algorithms that would save data like average time of a game, moves made per game, resource and reward amounts and chances of getting these. With this information, we as the developers of the game can come up with possible solutions and changes that could improve the game and the way it is played.
-
-\subsubsection{Other event mechanics}
-For the PCG part, it could be interesting to see how the game would be perceived if the players could give the application some more specified inputs like what resources they were needing so that the event algorithm could take that into consideration and maybe generate the events with a bias towards getting more resources. Maybe even having a new mechanic that allows the players to select from different event types; i.e. fighting, researching, gathering, etc. and if they selected one of them, it would create consequences for the next events to come.
-
-One of the big wants for future work is to see how we could make the events evolve as the players progress. Having different difficulty modes and perhaps introducing a genetic algorithm for the evolution of events and resources, rewards and penalties. This is all speculation at this point, but the mechanics it could bring with them could definitely be worth exploring.
 
 \subsubsection{Memory based feature}
 By having access to the memory and computation power that is in the digital device, calculations can be made to see which types of options the players select during an event. For instance, if one event has a third option that requires the players to have a specialization in healing, the application would then be able to calculate that the players have used at least 4 building materials, along with 2 alchemy points in order to get that room. The application would then do the calculations and save the result in the application, that the players now have 4 fewer materials, and 2 fewer alchemy points. Without the memory, this would not be possible, and the application would rather have to have set rules for how the events could be made up, or the players would have to give the application inputs so that it would know where to continue. By taking better advantage of this scenario, the application could start checking the previously gathered resources against the selected options, and calculate how well a player is doing, and by this also be able to adjust the difficulty of the game accordingly.
@@ -87,6 +81,3 @@ By having access to the memory and computation power that is in the digital devi
 \subsubsection{Saving play progression}
 Currently, the application does not save the players current progression and if the application is closed, the players will have to start over. Saving the current progression of the application, allowing players to load and progress from a point, instead of starting over each time. This would also ensure the session could be restored in case of power failure, so that time playing the game would not be wasted and the session lost.
 
-\subsubsection{Previous events}
-The new events could be generated based on all the previous events which have occurred. This way the application could take into account if the players were doing too badly or if a certain resource had never been shown, the application could adapt and ensure the players were not being unfairly challenged. 
-This could go the other way as well, ensuring that players which have had it too easy would get more difficult events as the game progressed.
