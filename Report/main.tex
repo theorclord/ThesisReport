@@ -379,7 +379,7 @@ Zagal, J., and Rick,J. (2006). Collaborative games: Lessons learned from board g
    \label{fig:gameflow}
 \end{figure}
 
-\chapter{High level walk through of the app}
+\chapter{High level walk through of the application}
 \section{Generate Events}
 \label{overviewapp}
 In the world map, all the islands that were generated are being displayed. And when the player moves the castle to an island, i.e. goes to explore it, a new screen will be shown to the players, called the NodeScene. This screen is showing the island and the "explorable" locations on it. But before they can be displayed, they need to be built. 
@@ -396,7 +396,7 @@ In order to travel to an island, you will have to click on the sprite image that
 Once you click on the island, you will be greeted with a pop-up box that will ask you to confirm that you want to travel there. If this is the case, just hit the "travel" button, and the castle is on its way. If however you change your mind for some reason and wish to travel to another island, you can either move the viewport a little (click outside the box) or you can travel there, and go back later, or click the close button. If you click outside the box or the close button, the box will close, and you are free to select an alternative route.
 
 When you have reached the island and the next scene is loaded, you will be able to choose from the possible variations of locations on the island. As mentioned before, there are a number of different types of locations, and each of them has their own look, feel, and purpose.
-A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the app, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes, and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
+A location point is clicked on and as it is a sprite, the click has to be registered via raycasting. The touch on the screen has its location found, and a ray is then cast between the touch point and the world point within the application, and if the resulting ray goes through the sprite with the location attached to it, the event will begin. When the event begins, the possible options, outcomes, and the success indicator; good, bad or neutral and the rewards or penalties associated with them, will be presented to the user.
 
 \section{Flavour text combinations and it's purpose}
 Being a hybrid between a board game and a digital game, it is important that the players are presented with text that they can read in order to get into the feel of the game, and the setting in which it takes place. This means that there was a need for a lot of flavour text that will tell the players these things. 
@@ -419,160 +419,6 @@ All the resulting data is then also saved into the datamanager class, and the va
 
 This concept of having special events being triggered and be based on already saved data is one that really separates this game from being just a board game, to being something of a more technological game. There are a lot of different ways this data can be used, and this is just one of them. More ways and our thoughts and ideas on this matter will be discussed in the discussion section.
 
-\chapter{Playtest notes transcript: 10/05/2016}
-\label{sec:transcript}
-The testers' names are replaced by K., M. and T. The notes are taken by Maxime. Mats is also observing.
-
-\section{Goal of the test}
-This time we introduce some new rules:
-\begin{itemize}
-\item Introduction of the faction system
-\item Introduction of story elements related to the factions
-\item New special events
-\item Specialization tokens
-\end{itemize}
-
-We want to see if the players can see the influence of their choices during the events, and if they are able to make informed decisions in order to plan these choices. The implementation of new UI elements should help them making those decisions.
-
-Also we made several modifications to the prototype, based on results of earlier tests:
-\begin{itemize}
-\item Added intermediary islands to find and reach, before going to the final islands
-\item Modified the Special Events so they occur more often
-\item Increasing difficulty with different intermediary islands
-\end{itemize}
-
-This is also the first time that we test the game with a tablet, as it was intended since the beginning of the development. The app has been directly adapted from a computer version to a tablet version, and a few problems still remain:
-\begin{itemize}
-\item No real time scaling of the UI
-\item The movement on the world map is not fluid due to unsolved problems with the sensitivity of the inputs
-\item Only one map layout is being used.
-\end{itemize}
-
-The Board, tokens and event generation system is the same as the previous prototype. The notes will then focus on the special events, the risk, the factions. Also a point of focus is the specialization construction and the collaborative decisions. The time spent on the app will be measured, as well as the time spent on the board.
-
-\section{The test}
-
-\subsubsection{Place and time}
-ITU, 4th floor on the black tables; 10/05/2016 in the afternoon. They play on a table with Mats'  tablet. I am sitting on the same table but a bit behind.
-
-\subsubsection{Testers}
-We are playtesting the game with 3 game design students, that are used to tabletop gaming (Magic) but not really with board games. Two of them (T. and M.) have never played  the game. K. has tested the first prototype using the digital application(first event generation system.
-
-\subsubsection{Remarks}
-We are playtesting after Mats and I tested T. and M.'s thesis project. The feedback was good so we expect them to refrain their criticisms. The open discussion will insist on the particular design questions that need honest feedback. K. is generally honest when giving feedback. The testers know each other, play games together (both digital and analogue). They know how to analyse a game, both like players or designers (or programmers in the case of K. who also knows programming quite well). We need to remember that they probably will not look at the game with the same perspective as regular players would.
-
-\subsubsection{Questions before playtest}
-
-\begin{description}
-\item[What is your experience with board games (and particularly resource management games)?] They do not have so much experience with board games using resource management. But they do have experience with tabletop games in general.
-\item[Have you already played tabletop games using a digital device?] First time for M. and T. but K. has already played an earlier version of our game.
-\item[Do you play PCG based games?] T. plays \textit{FTL: Faster Than Light}. M. cannot thin of any games using PCG she ever played. K. has played many of them.
-\end{description}
-
-\subsubsection{Notes during observation}
-
-- K. reads the rules. T. and M. ask questions almost every time he finishes a line, to show the tokens and pieces he is talking about.
-
--He asks questions about the specialization system. I say this is explained later.he needs clarification about how to obtain them. (needs to be more clear). I explain. The rest seems to make sense. They ask me if they can start playing and learn along. I say ok, but they should try to find the solution in the rules before asking me.
-
--The rules have been read. I decide to step back a bit more and be more discrete.
-
--Discussions start right away after the explanations are finished.
-
--Problem of the theme and visual assets. 
-
--K. explains while playing but does not take any decisions by himself. His explanations are not entirely true though. He did not quite understand the merging system.
-
--They understand the basic concepts of the rooms pretty easily.
-
--They understood that they need resources at the beginning. They built a mining room. M.'s decision. K. approves. T. asks who should build it to get the specialization token. K. looks into the rules and says that it is only when you merge rooms that you get a token.
-
--They go on to the exploration phase. T. takes the device.
-
--They do not know where to go and look at the rules. They see that they need to follow the general direction of the arrow.
-
--They chose the location on the island randomly.
-
--They read the situation and the options out loud.They do not understand who should make the choice. They ask me, I just answer that it is not a problem. 
-
--Island is control by humans.
-
--Actually no, they decided to change location after looking at the resources they have, and go to the gathering location.
-
--They decide to take the option that costs the more resources, because "they can afford it" (T.)
-
--They got many resources. (This time the cargo works as intended, but there needs to be a way to exchange what you want to keep or not)
-
--+2 Scrap (event) + 2 Scrap (management). No real risk was taken this time.
-
--They are going to upgrade: T. becomes "chief miner" and smiles at M. when taking the token. M. says she wants her token as well.
-
--T. Has 3 crew members; the two others have two.
-
--They lack power to upgrade the crystal and get more resources.
-
--Discussions seem to work as they choose which resource to keep. They try to base their decisions on the resource they have, and by planning the next upgrades to make.
-
--No Special Events ... so far. They are not really looking at which faction controls the island. The information are provided in the texts, but it's useless, as they are not allied with any faction.
-
--They are unlucky with the crystal charges. They don't find any which limits their progression.
-
--Downtime during the next phase. They try to find something to do for each of them.
-
--They say the assignment in rooms is a bit redundant... 
-
--They see the first special event. They don't understand why they can't choose a location this time. M. Shows the "Special Event" text written top of the panel.
-
--They found the first intermediary island. 
-
--K. Asks T. to read out loud. T. tries to describe what happens. They all want to see the app and T. has to show them.
-
--Finally reached crystal level 2.
-
--They are all specialized in something. Mira is mech + alchemist. K. is priest.
-
--T. Reaches Chief miner level 2.
-
--The majority of the discussion is based on who should assign his or her crew members.
-
--There is a problem with redundancy, you reach the limits of the gameplay fairly quickly. All the discussions are the same at every turn.
-
--First room getting destroyed. It creates a variation in the gameplay, but they have the resources to take care of it.
--They now pay closer attention to the choices they make.
-
--A combat special event appears. They decide to help the nomads and become allied with them.
-
--During next phase, they say they would like to know which island is controlled by nomads before going on the island.
-
--The 2nd intermediary island is reached. There's almost no space left on the board to build rooms. 
-
--There is still a problem with progression: they have the resource to build everything they want. 
-
--The 3rd intermediary island is reached. It was quite close. The final island appears on the map. They go towards it. Now the events should be much harder and require more resources.
-
--They fail two events at the same time. The discussions are more tensed. 
-
--They lose crew members. 
-
--Finally reach level 3 of crystal.
-
--They spend all the resources remaining to build  the Temple. K. is Master Priest.
-
--They lose another crew member because they do not have the necessary resources.
-
--The game goes on and they reach the final island. They won.
-
--(The game took 22 minutes to be finished) (Choosing an island and solving an event took between 25 seconds and 1 minute)
-
-\subsubsection{Open Discussion (after the playtest)}
-
-\begin{description}
-\item[Did you feel that you had some control over the events?] There was too much random. Also not enough failures at the beginning. You quickly forget that your actions are taken into account. There should be something showing it in the first turns of the game. Sometimes you do not really understand why you success or fail at performing an event. There should be more special events, but they should not be random (they are not, but they did not realize). The special events could be like interest points on the map. Same principles as the intermediary island. You move close to a node, it reveals an interest point that you decide to visit or not. In general, they would have wanted more stuff to do on the world map.
-\item[About the flow?] You know when to move on the application. There is always a final discussion in order to know if all the possible actions are done. But it would be nice to have the events to be read out loud...so that everybody feels concerned about what is going on. Sometimes they were just listening to the outcome. Redundancy of the assignment in rooms. There should be more different rooms and ways of upgrading them. This could be a nice base to create more discussions.
-\item[Specialization?] Feels nice getting the chips. Constructing your specialization feels nice. "My role was more important than K.'s" (T.). "But I wanted to be the other one" (M.). But sometimes "you are disappointed to see that yours was only useful a few times" (M.). She is talking about the mechanic.
-\item[Using the app?] Makes sense integrating an app. Could have been like drawing a card. Even if I realised the cards are not pre-made (T.). There needs to be much feeling that what the app is doing is actually particular... You should spend more time on the app. Using the app is a problem when you have to show it to everybody (show the number of resources required)...
-\item[More general questions?] Understand the project's issues. Would be better if everybody had a digital component to play with. There could be informations only available to one player. Secretly transferring information from one player to the other. Concept of cards with memory is very interesting. You could have a PCG based trading card game. Colour detection. Many design ideas.
-\end{description}
 
 \chapter{Game Rules}
 \label{sec:rules}

@@ -1,15 +1,15 @@
 \chapter{Technical overview}
 \label{sec:tech}
-In this chapter, there will an elaboration on how the application for \textit{Archipelago} is constructed, the structure of the app and the scenes contained within it and how they function. After that, it will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the viewport to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This will then be followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter, the app will be gone through in action from start to end along how it is utilized together with its features.
+In this chapter, there will an elaboration on how the application for \textit{Archipelago} is constructed, the structure of the application and the scenes contained within it and how they function. After that, it will go into more details on the UI elements and user interaction, as well as how the users can interact with and move around the viewport to better get an overlook of the map, and this will lead on to the world map itself with its layout and how it is constructed. This will then be followed by a detailed description of how the PCG algorithms work and how the events with its options, outcomes and flavour is constructed. In the end of this chapter, the application will be gone through in action from start to end along how it is utilized together with its features.
 
-\section{App structure}
-This section details the overall structure of the app.
+\section{Application structure}
+This section details the overall structure of the application.
 First the scenes in their structure in the game and later the UI and additional elements. After that he viewport and the different functionalities implemented within it will be explained. This is then followed by a description of the Datamanager, the component responsible for all the saved and loaded data.
 Finally the world map and its features will be discussed.
 
 \subsection{Scenes}
 \label{sec:scen}
-This section is dedicated to the overview of the technical relation between the different scenes and their individual purpose. Each scene will be detailed in each of the following subsections going from the first scene in the app, to the last scene.
+This section is dedicated to the overview of the technical relation between the different scenes and their individual purpose. Each scene will be detailed in each of the following subsections going from the first scene in the application, to the last scene.
 The transitions between the different scenes can be seen in the overview presented by figure \ref{fig:appState}. The names on the transitions are related to the button presses which initiate them. 
 The diagram does not show any of the actions which transition to the same state.
 
@@ -21,12 +21,12 @@ The diagram does not show any of the actions which transition to the same state.
 \end{figure}
 
 \subsubsection{StartMenu}
-As the game is started, the player immediately enters the start screen. This is a simple scene containing only the button that says "Start Game". The purpose of this scene is to let the users be able to choose when they want to start the game so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the app itself when started.
+As the game is started, the player immediately enters the start screen. This is a simple scene containing only the button that says "Start Game". The purpose of this scene is to let the users be able to choose when they want to start the game so that they are not necessarily overpowered by the rules of the game (board game part) and the visuals of the application itself when started.
 
 Furthermore, as this scene is loaded, the preliminaries to the world generation and the loading of required data from XML files is handled. This minor loading, takes some of the load of the rest of the program, giving an overall smoother experience.
 This includes the general l-system structure, which is run in the start menu, the loading of board game pieces, and the loading of the different factions in the game.
 
-As soon as the "Start Game" button is clicked, the app will initialize the contents of the world, and present it to the user within the next scene, which is the WorldScene.
+As soon as the "Start Game" button is clicked, the application will initialize the contents of the world, and present it to the user within the next scene, which is the WorldScene.
 
 \subsubsection{WorldScene}
 \label{sec:worldscene}
@@ -39,7 +39,7 @@ In figure \ref{fig:worldSc} you can see the scene which meets you once the scene
 \begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.3]{Images/WorldScene.png}
-    \caption{The WorldScene as seen on the PC version of the App. In the center, the player token is represented as a floating castle. Also seen in the center is the green node, denoted as the starting node. In the lower right corner is the arrow pointing towards the goal node. The outer white ring indicates the maximum travelling distance of the players.}
+    \caption{The WorldScene as seen on the PC version of the Application. In the center, the player token is represented as a floating castle. Also seen in the center is the green node, denoted as the starting node. In the lower right corner is the arrow pointing towards the goal node. The outer white ring indicates the maximum travelling distance of the players.}
     \label{fig:worldSc}
 \end{figure}
 
@@ -47,7 +47,7 @@ As seen in the figure, there is a large white ring centred on the castle that th
 When travelling from one island to another, the ring around the island you arrived at will change color (from the initial white color). This signifies to the players that they have already been to that island and therefore do not necessarily have to go back to that place again unless they choose to do so.
 
 When you click an island on the map, you will be faced with a pop-up box. This box is containing the name of the island, and a piece of text that somewhat describes it; flavour text. The box then has 2 buttons, or choices, either "exit" or "travel". If you exit, the box is closed, and you are free to choose another island to travel to. If you click travel, your castle will be moved towards that chosen island and stop once it reaches it. 
-Once the castle has reached the island and the collider on the object is triggered, the app will move on to the NodeScene, where the island that you travelled to will be represented.
+Once the castle has reached the island and the collider on the object is triggered, the application will move on to the NodeScene, where the island that you travelled to will be represented.
 
 \subsubsection{NodeScene}
 \label{sec:nodeScene}
@@ -58,7 +58,7 @@ Once this scene is loaded the events for the given island and the locations on i
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\textwidth]{Images/NodeScene.png}
-    \caption{The node scene as seen on the computer version of the app. In the center is the island, with two locations situated on it, a mine and a ruin. In the top left corner, it can be seen that the island is controlled by the Highbourne.}
+    \caption{The node scene as seen on the computer version of the application. In the center is the island, with two locations situated on it, a mine and a ruin. In the top left corner, it can be seen that the island is controlled by the Highbourne.}
     \label{fig:nodescene}
 \end{figure}
 
@@ -100,7 +100,7 @@ Once the players close the resolution panel, they will return back to the WorldS
 
 \subsubsection{ScoreScene}
 Upon reaching the final island in the WorldScene, the one island with the blue ring around it and that the arrow, that was mentioned earlier, is pointing towards, the game ends. 
-What happens then is that all the data is cleared from the app, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartMenu where they can play another game if they so choose.
+What happens then is that all the data is cleared from the application, the WorldScene shifts to the ScoreScene, and the players are presented with an end text that basically tells them that they reached the goal. This scene also includes a button that takes the players back to the StartMenu where they can play another game if they so choose.
 
 \subsection{Buttons and Raycasting on images}
 The players main source of interaction is via the use of buttons and images. The buttons that can be found on the main screen, on various events and dialogue boxes, all have their own respective functionalities connected with them. One button might close a box, another might start the game, each button have specific actions that they perform, and what they do or how they affect the gameplay, is represented on them either via specific text, flavour text or icons.
@@ -112,13 +112,13 @@ Raycasting is when you create a line from one point to another, and in this case
 In the next section, the UI Elements section, you will be introduced to all the remaining elements that are used in the digital part of the game.
 
 \subsection{UI elements}
-This section will go through all the different UI elements within the app and explain in more detail their purpose and how they work.
+This section will go through all the different UI elements within the application and explain in more detail their purpose and how they work.
 
 \subsubsection{Boxes}
 
-There are a number of different boxes that will appear over the course of a game session with this app. By "boxes" we refer to the dialogue boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
+There are a number of different boxes that will appear over the course of a game session with this application. By "boxes" we refer to the dialogue boxes that pop up when interacting with different elements of the application itself, e.g. an event popping up when interacting with an island.
 The purpose of each box on a high level is to convey information to the players, be it information about the location that they are travelling to, or the results of an event they have just completed.
-Each box has its own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the app is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavour text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
+Each box has its own purpose, but as just stated, the main purpose is to convey information. The first box that appears when interacting with the application is the "travel confirmation" box. This box tells a little information about the island that the player wishes to travel to, like the name of the island, and a few lines of flavour text that goes with said name. It also contains two buttons; one for accepting the travel location, and another one cancelling.
 Once you have travelled to a location the next box will appear when the region the players want to explore is clicked. This box, like the one before, has a name (the location type like "mine") and a text field for the flavour about that mine. Again there is a button for accepting, and one for declining. 
 
 Next up, you have the event box. This is the main box of the game, one might say. It contains a text field where the procedurally generated flavour text is displayed, along with 2 or 3 buttons that have the options for completion that the players may choose from. 
@@ -129,7 +129,7 @@ Once an option has been chosen, the application loads the result box. This box i
 The faction icons have a rather small visual part in the application, but the impact it makes on understanding the game and seeing what opportunities and rewards the players might get, is rather substantial. In the top left corner of each NodeScene screen, there is an icon that conveys to the players, which of the current 3 factions controls the island that they are on. With this information and the information that the players might have a specific standing with said faction, allows the players to mentally make an image of what the outcomes of the event might be, in terms of good, bad or neutral.
 
 \subsubsection{Buttons}	
-The buttons in this application are the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built onto other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the app itself, like accepting to travel to one place, or closing one of the dialogue boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, one is able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are 2 or 3 buttons that hold options for how to solve the given event, and that means that you can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
+The buttons in this application are the main way for the users to interact. If it is not the ray-casting and clicking on the islands in the world scene, the only other physical interaction with the application is through the buttons. The beauty of the buttons is that it allows the game to be rather easily built onto other platforms, such as android or IOS. The button has two main functionalities; the first would be to navigate within the application itself, like accepting to travel to one place, or closing one of the dialogue boxes as described earlier. The other one is that the buttons themselves have a text field on them. By taking use of this feature, one is able to give the buttons meaning, in terms of carefully choosing what to display to the users. In the event box, there are 2 or 3 buttons that hold options for how to solve the given event, and that means that you can set the text on the buttons to tell the players what each option will cost or require, e.g. one option can be to send out 1 of your crew to explore, whilst another option can be to send out 2 crew plus a cleric. Using precise and to-the-point text on the buttons allows the players to quickly understand what is required, and will allow for discussion to take place as to which one is the best option for the current state of the game.
 
 \subsubsection{Islands}
 The islands are the centre of the World Scene. All of them contains individually unique events that differ from each other. Each island is also controlled by a faction and as the players might get different standing with different factions at any given time in the course of a game, each tailored event will have a range of different outcomes depending on the players' standing with the controlling faction. 
@@ -175,12 +175,12 @@ On top of having this, there is also the arrow, as described in the "UI Elements
 
 \subsubsection{Zoom}
 In order for the players to be able to get a good overview of the entirety of the map, there had to be a way to zoom out on the screen. 
-However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, whilst zooming in too much clustered the screen with too large elements. To counteract this a maximum and a minimum zoom were implemented into the app itself.	
+However, zooming too far out would make the islands and the castle look too small, and not really give the proper resolution of the elements, whilst zooming in too much clustered the screen with too large elements. To counteract this a maximum and a minimum zoom were implemented into the application itself.	
 
 	
 \subsubsection{Move around}
 
-The players using the app are able to move the viewport around all of the maps in whichever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; the fastest way to the goal, or move around and explore first?
+The players using the application are able to move the viewport around all of the maps in whichever direction they choose. This is also to encourage discussion and collaboration as to choosing which way they want to go, and which islands they want to explore; the fastest way to the goal, or move around and explore first?
 There is not set any max distance that the screen can be from the castle as the size of the map layout may vary depending on how the islands are organized and which layout is generated. This is also why the safety features of castle centring and the direction arrow are implemented.
 
 \subsection{Datamanager}
@@ -407,7 +407,7 @@ Now that the introduction of the condition is set, the next step is to get the l
 After the first option was completed, the algorithm would see that there was one more to be done, and do the same for that, but since there is more than one piece in that option, the algorithm would do the same as it did for the crew, for the alchemy point.
 An example of how the selected text would look like after completion would be this: "Send 1x Castle Crew to explore the mine's riches. Use 1x alchemy point to create a strength potion for your crew".
 
-On top of having the selection process brought forth from directly accessing the program saves all the previous events that has been made, and that the players have interacted with. So by having access to this information, the algorithm for the events and in turn the flavour texts of these, are able to be made by taking the existing data into account. If an event has had a special occurrence, the outcomes are saved with it and the flavour combining algorithm can then go into this saved data, take out any important information, and use that as a baseline for the way the new event flavour is generated. Say an event happened, where the players had to use their healing powers to save a person during the exploration of an island, this information would be accessible to the app at a later time. So when the time comes to generate a new event, it can be based on said previous event. For instance; the new event would take place on an island that is controlled by the Highbourne faction, which was the same faction as the previous event, and since the players used their healer on the previous one, the new event could say that now the Highbournes are interested in knowing how the players did that. This opens up for a new set of conditions that the players can be presented with. Basic options like "Show them how it is done" or "Refuse to show them" are just 2 examples. The outcomes can then be modified to for example say that if the players were to help them out, they are rewarded with reputation gains, crystals or whatever they might get. And on the other side, the negative outcome could be something like the Highbournes tries to kill one of the players' crew in hopes that they once again will witness the amazing effects of the players' healing skills.
+On top of having the selection process brought forth from directly accessing the program saves all the previous events that has been made, and that the players have interacted with. So by having access to this information, the algorithm for the events and in turn the flavour texts of these, are able to be made by taking the existing data into account. If an event has had a special occurrence, the outcomes are saved with it and the flavour combining algorithm can then go into this saved data, take out any important information, and use that as a baseline for the way the new event flavour is generated. Say an event happened, where the players had to use their healing powers to save a person during the exploration of an island, this information would be accessible to the application at a later time. So when the time comes to generate a new event, it can be based on said previous event. For instance; the new event would take place on an island that is controlled by the Highbourne faction, which was the same faction as the previous event, and since the players used their healer on the previous one, the new event could say that now the Highbournes are interested in knowing how the players did that. This opens up for a new set of conditions that the players can be presented with. Basic options like "Show them how it is done" or "Refuse to show them" are just 2 examples. The outcomes can then be modified to for example say that if the players were to help them out, they are rewarded with reputation gains, crystals or whatever they might get. And on the other side, the negative outcome could be something like the Highbournes tries to kill one of the players' crew in hopes that they once again will witness the amazing effects of the players' healing skills.
 \subsubsection{Results}
 Much in the same way that the condition flavour is combined, the resulting flavour is also combined. It selects a flavour string for each of the resulting rewards or penalty. To exemplify we will use the results: 2 Building materials and 1 alchemy point gained.
 The combination would happen like this:
@@ -417,12 +417,12 @@ These two strings would then be combined into one complete flavour text which wo
 
 Should there be more than these 2 result pieces, the algorithm would go on to do the same combination and add the other blocks to the finalized result flavour.
 
-\section{The app - From start to end}
+\section{The application - From start to end}
 In this section, you will get an overview of how the developed application runs from start to end. 
 In appendix \ref{overviewapp} you can find a high-level overview of how the application works.
 
 Each of the states given in section \ref{sec:scen} and which processes that is executed and how will be detailed in the following subsections.
-Each of the scenes, all have a controller related to them. This is the main component in the interaction with the visuals and the data in the app. As we go through the states, the stated actions are, unless noted otherwise, directly controlled by such a controller.
+Each of the scenes, all have a controller related to them. This is the main component in the interaction with the visuals and the data in the application. As we go through the states, the stated actions are, unless noted otherwise, directly controlled by such a controller.
 
 \subsection{StartMenu}
 The game starts in the StartMenu scene. This scene contains visually nothing but a button labelled "StartGame". 
