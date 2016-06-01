@@ -1,6 +1,4 @@
 \chapter{Conclusion}
-
-
 The creation of \textit{Archipelago} had the purpose of exploring a new type of tabletop games using digital components to enhance their gameplay. This was done thanks to the use of PCG. This chapter will conclude the project by answering the questions at its origin. This will be done by identifying the key results of the experiment based on the constructed framework and on the knowledge gained thanks to the playtests, and the development itself. Finally, the last section will show how \textit{Archipelago} paves the way for experimentations relative to the purpose of this project.
 
 \section{The exploration of hybrid games}
@@ -16,25 +14,21 @@ The special events, which uses the players previous actions, are even harder to 
 
 \section{Future work}
 \label{sec:future}
-In this part, we will elaborate upon possible work that could be done in the future. This includes what we would like to implement, thoughts on how to do it, and what could have been done differently in order to make this easier in the future.
+Being an experimental concept, \textit{Archipelago} has been created as a project on which it would be possible to build upon in order to experiment various possibilities exploiting PCG. The final part of this paper will be dedicated to this purpose by listing possible implementations that are based on \textit{Archipelago}'s concept.
 
-\subsection{Better use of saved data}
+\subsection{Better use of saved data for player control}
 \label{sec:savdat}
-One of the big impacts this project brought to light, was the use of saved events and its data to generate new events that were based on those. In this solution, we save the events that happen over the course of the game, and we use them in a rather minimalistic way, more as a proof of concept. However, it would be interesting to see how this data could be used more efficiently over an entire game session. Generating more experience driven content, that would have a bigger impact on the players' experience, by creating other mechanics in the game, is one thought that comes to mind. 
+One of the big impacts this project brought to light, was the use of saved events and its data to generate new events that were based on those. In this solution, we save the events that happen over the course of the game, and we use them in a rather minimalistic way, more as a proof of concept. However, it would be interesting to see how this data could be used more efficiently over an entire game session. Generating more experience driven content, that would have a bigger impact on narrative and make a deeper used of the theme by creating other mechanics in the game, is one thought that comes to mind. 
 
-The saved data could be used in ways which a board game could never compete. One could use the saved data to challenge the players either more or less, by knowing the number of resources they have collected, and tailoring the possibilities from that knowledge. In this way, the game would either challenge the players to use their resources wisely or give them access to a resource which has been sparse in the previous events. 
-One could even imagine using some sort of genetic algorithm to tailor the events directly to the player profiles, all built from the saved data.
+The saved data could be used in ways which a board game could never compete with. One could use the saved data to challenge the players either more or less, by knowing the number of resources they have collected, and tailoring the possibilities from that knowledge. In this way, the game would either challenge the players to use their resources wisely or give them access to a resource which has been sparse in the previous events. One could even imagine using some sort of genetic algorithm to tailor the events directly to the player profiles, all built from the saved data.
 
-The special events could really play to what the players had been doing, in terms of where and for who, giving the players a greater feel of involvement in the world. This could be shown with some sort of faction overlay, which could change each time you dealt with the different factions. It could be possible to have some sort of background faction warfare with variables being influenced by how the players interact with the game.
-
-Also, a story could be brewed by linking all the outcomes of the events. In the end building a short story based on the players events. Using a text algorithm of sorts to create a story based on the factions relationships and the deals made at each point of interest. 
-Furthermore a progression in difficulty based on the progression of the saved data would give rise to new challenges for the players.
+The special events could really relate to what the players had been doing, in terms of where and for who, giving the players a greater feel of involvement in the world, and enhancing the feeling of relative control. This could be shown with some sort of faction overlay, which could change each time the different factions are dealt with. It could be possible to have some sort of background faction warfare with variables being influenced by how the players interact with the game. Also, a story could be brewed by linking all the outcomes of the events. In the end building a short story based on the players events. Using a text algorithm of sorts to create a story based on the factions relationships and the deals made at each point of interest. Furthermore a progression in difficulty based on the progression of the saved data would give rise to new challenges for the players.
 
 By using the current layout, one could even imagine that the application could piece together the state of the board game, using the input from the events. Whenever the players resolve the events, they declare, indirectly the tells the application how they have used their resources. Saving this could help to give a complete look at how the players are doing and surprise the players by revealing to them in events that the application knows what they have built.
 
 In the end, the saved data could be used in many ways to give the players a feeling of a game which reacts to their input, even without them having directly to manipulate the application with the results and state of their board.
 
-\subsection{More options and outcomes}
+\subsection{More options and outcomes for diversity}
 At this point in time, there are a finite number of possible outcome types, rewards, and penalties. For a future version of the game, it would be interesting to see how the game would be experienced if there were more types of tokens to be played around with. It would also be nice to have more flavour text pieces that could be combined, maybe in a new way, and presented to the players. 
 
 Right now the system is capable of combining the different parts of the game and generate events with flavour text, using a combination of the board pieces and flavour text strings.
@@ -48,36 +42,22 @@ Having this relation brings the game more to life and makes the players feel mor
 In the end, having more pieces, a variety of flavour, and ways of combining the flavour, would be like creating an expansion pack of cards that would be added to the physical board game.
 
 \subsection{Additional features based on the map}
-The current map layout generates a larger structure of floating islands which you can visit in no particular order. The map contains floating islands each with events tied to it and different locations available.
-
-However, the map is an unused canvas which could have more features to better engage the players in moving around on the map. 
-There could be included places of interest, where special quest could be implemented. A chain of quest linked in creating a short story or other sub-plots. 
-As said above in section \ref{sec:savdat}, there is also a possibility of having factional warfare, using the saved events. This could both be displayed and engaged directly on the map. 
-Timed events could appear based on factional changes and the events which have been resolved by the players. The events could appear on the map in a small vicinity of the player location. This would engage the players in checking out how the map situation is unfolding. 
-
-Another way to increase the exploration is to hide the end goal. Then perhaps revealing the goal through a quest chain or through some sort of cost of materials. The general direction of the goal could be known to the player, but you have to either complete some quest or guess where the goal was through hints given throughout the game.
-
-The chain quest could be one which spawns the goal once all the quest are completed. Having the players creating a portal to take them home after the quest is done.
+Increasing the feeling of exploration is also one of the purposes that \textit{Archipelago} could explore. The current map layout generates a larger structure of floating islands which can be visited in no particular order. The map contains floating islands each with events tied to it and different locations available. However, the map is an unused canvas which could have more features to better engage the players in moving around on the map. 
+There could be included places of interest, like special quests to tell stories, or trading posts.
+As said above in section \ref{sec:savdat}, there is also a possibility of having factional warfare, using the saved events. This could both be displayed and engaged directly on the map. Timed events could appear based on factional changes and the events which have been resolved by the players. The events could appear on the map in a small vicinity of the player location. This would engage the players in checking out how the map situation is unfolding. 
 
 What could be done to further enhance the diversity of the layouts, is to introduce some sort of genetic mutation on the grammar of the L-System. This would allow the maps to be constantly changing, and with the use of a validation, or fitness function, the maps could be tailored to better fit the different types of players.
 
-On top of just changing the map's layout, you can add quests and puzzles into the map itself. If combining the L-System with graph grammars, the map can be made so that one island has a quest assigned to it, and that quest could, for instance, have the players move towards another side of the map, to one specific island. 
-The end island could then be hidden from the players completely, and only be showed/enabled when the players had reached a certain part of the quest line.
 
-\subsection{Other potential mechanics}
+\subsection{Other potential improvements}
 In the following subsections, other mechanics which might improve the game or bring new aspects, are described in brevity. 
-\subsubsection{Faction visualization}
-A feature which could be included in the future development is a visual representation of the current relation to the factions.
-Currently, there is feedback from the application whenever there is a change in the relation to the factions. But this information only shows up whenever there is a change, which is somewhat problematic. 
-
+\subsubsection{Feedback and User Experience}
+Currently, the playtests have shown the importance of feedback to combine analogue and digital components as a whole. This has mainly been shown when playtesting the implementation of the faction system for the first time. The results of the final playtest clearly showed that the relevant information used to perform the event were not enough emphasized.
 A fix for this would be to have some access to a part of the UI which would display the current standing with the available factions. This would give the players the possibility to make a better informed decision of how to react to special events and maybe steer toward some specific relation to the factions.
 
-\subsubsection{Data gathering}
+Another improvement that has proved interesting when developing \textit{Archipelago} but fell out of the scope of its creation is the use of the digital device to display and teach the rules. This does not involve the use of PCG, but has proved to be a nice way to ameliorate the general play experience by rapidly teaching us the rules when playing \textit{XCOM: The Board Game} \cite{game:xcomtbg}. 
+
+\subsubsection{Data collection for further improvement}
 An option that could yield data for future development, would be to implement some sort of statistic gathering algorithms that would save data like average time of a game, moves made per game, resource and reward amounts and chances of getting these. With this information, we as the developers of the game can come up with possible solutions and changes that could improve the game and the way it is played.
-
-\subsubsection{Memory based feature}
-By having access to the memory and computation power that is in the digital device, calculations can be made to see which types of options the players select during an event. For instance, if one event has a third option that requires the players to have a specialization in healing, the application would then be able to calculate that the players have used at least 4 building materials, along with 2 alchemy points in order to get that room. The application would then do the calculations and save the result in the application, that the players now have 4 fewer materials, and 2 fewer alchemy points. Without the memory, this would not be possible, and the application would rather have to have set rules for how the events could be made up, or the players would have to give the application inputs so that it would know where to continue. By taking better advantage of this scenario, the application could start checking the previously gathered resources against the selected options, and calculate how well a player is doing, and by this also be able to adjust the difficulty of the game accordingly.
-
-\subsubsection{Saving play progression}
-Currently, the application does not save the players current progression and if the application is closed, the players will have to start over. Saving the current progression of the application, allowing players to load and progress from a point, instead of starting over each time. This would also ensure the session could be restored in case of power failure, so that time playing the game would not be wasted and the session lost.
-
+\\\\
+More generally, developing \textit{Archipelago} has clearly been useful to identify the issues behind the creation of hybrid games. Both successes and failures were analysed to provide the necessary results to understand how such games must be thought and conceived as new field to explore for designers, and new challenges to tackle for programmers by using existing methods as well as experimenting new possibilities to enhance tabletop gameplay. 
